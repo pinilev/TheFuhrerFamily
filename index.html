@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משפחת גלזר - אילן יוחסין ושורשים</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2316a34a'/><path d='M50 20 C35 20 25 32 25 45 C25 55 32 62 40 68 L40 80 L60 80 L60 68 C68 62 75 55 75 45 C75 32 65 20 50 20 Z' fill='%23ffffff'/><path d='M47 80 L47 50 M53 80 L53 55 M47 60 L38 52 M53 58 L62 50 M47 48 L40 42 M53 46 L60 38' stroke='%2316a34a' stroke-width='3' stroke-linecap='round'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gen-0 { border-top: 4px solid #0d9488; background-color: #ffffff; }
+        .gen-1 { border-top: 4px solid #2563eb; background-color: #ffffff; }
+        .gen-2 { border-top: 4px solid #16a34a; background-color: #ffffff; }
+        .gen-3 { border-top: 4px solid #d97706; background-color: #ffffff; }
+        .gen-4 { border-top: 4px solid #9333ea; background-color: #ffffff; }
+        .gen-5 { border-top: 4px solid #db2777; background-color: #ffffff; }
+
+        .badge-gen-0 { background-color: #0d9488; color: white; }
+        .badge-gen-1 { background-color: #2563eb; color: white; }
+        .badge-gen-2 { background-color: #16a34a; color: white; }
+        .badge-gen-3 { background-color: #d97706; color: white; }
+        .badge-gen-4 { background-color: #9333ea; color: white; }
+        .badge-gen-5 { background-color: #db2777; color: white; }
+
+        .tree-line {
+            position: relative;
+        }
+        .tree-line::before {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #cbd5e1;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 text-sm">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-3 py-2.5 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת גלזר</h1>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+                <!-- Branch Filter -->
+                <div class="relative">
+                    <select id="branchFilter" class="py-1.5 px-2.5 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-700">
+                        <option value="all">כל הענפים (11 צאצאים)</option>
+                        <option value="malka_rivkin">1. מלכה והרב ראובן ריבקין</option>
+                        <option value="velve_glazer">2. וֶולְוֶוה (זאב) גלזר</option>
+                        <option value="shimon_glazer">3. שמעון גלזר</option>
+                        <option value="dvora_lea_l">4. דבורה־לאה לוויתן (לביתן?)</option>
+                        <option value="pesia_alperovich">5. פסיה (פֶּשֶׁה) וברוך אלפרוביץ'</option>
+                        <option value="chayim_glazer">6. חיים גלזר</option>
+                        <option value="aharon_glazer">7. אהרון ודינה גלזר</option>
+                        <option value="toybe_glazer">8. טוֹיְּבֶּה (יונה) בלומנטל</option>
+                        <option value="motel_glazer">9. מוטל (מרדכי) גלזר</option>
+                        <option value="faige_michel_lev">10. פייגה־מיכל ונתן־נטע לב</option>
+                        <option value="leibe_glazer">11. לֶיְבֶּה (אריה) גלזר</option>
+                    </select>
+                </div>
+
+                <button id="printTreeBtn" class="px-2.5 py-1.5 text-[11px] font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5" title="הדפסת כל עץ היוחסין">
+                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>הדפסה</span>
+                </button>
+
+                <a href="https://wa.me/972545244344" target="_blank" rel="noopener noreferrer" class="p-1.5 bg-green-500 hover:bg-green-600 text-white rounded-md transition shadow-sm flex items-center justify-center" title="שליחת הודעה בוואטסאפ" aria-label="וואטסאפ">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+                    </svg>
+                </a>
+                <button id="emailContactBtn" class="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition shadow-sm flex items-center justify-center" title="יצירת קשר באימייל" aria-label="אימייל">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Stats Bar Header -->
+    <section class="bg-slate-800 text-white py-2 shadow-inner border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+                <div class="flex items-center gap-1.5">
+                    <span class="font-bold text-slate-300">📊 שושלת:</span>
+                    <span class="bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalPersons">סופר...</span>
+                    <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalDescendants">סופר...</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-1" id="genBreakdown">
+                    <!-- Dynamic Generation Breakdown -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
+        <div id="treeContainer" class="space-y-2.5"></div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-xl max-w-md w-full p-5 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[85vh] overflow-y-auto">
+            <button id="closeModal" class="absolute top-3 left-3 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Email Contact Modal -->
+    <div id="emailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-xl max-w-sm w-full p-5 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200">
+            <button id="closeEmailModal" class="absolute top-3 left-3 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="space-y-3 text-center pt-1">
+                <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-base font-extrabold text-slate-900">יצירת קשר באימייל</h3>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 flex items-center justify-between gap-2" dir="ltr">
+                    <span id="emailAddressText" class="text-xs font-mono font-bold text-slate-800 select-all">pinilev@gmail.com</span>
+                    <button id="copyEmailBtn" class="px-2.5 py-1 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded text-[11px] font-bold transition shrink-0" dir="rtl">
+                        העתק כתובת
+                    </button>
+                </div>
+                <div id="copyFeedback" class="hidden text-[11px] font-bold text-emerald-600">✓ הכתובת הועתקה ללוח!</div>
+                <div class="flex flex-col gap-2 pt-1">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pinilev@gmail.com&su=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%92%D7%9C%D7%96%D7%A8" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5">
+                        <span>פתיחה ישירה ב-Gmail</span>
+                    </a>
+                    <a href="mailto:pinilev@gmail.com?subject=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%92%D7%9C%D7%96%D7%A8" target="_top" class="w-full py-2 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5">
+                        <span>פתיחה בתוכנת המייל במכשיר</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data derived directly from historical documents and family records
+        const rawFamilyData = {
+            id: "root",
+            name: "יהושע־צבי ופרידע־רחל גלזר",
+            gen: 0,
+            dates: "??18 - ??19",
+            location: "יורבורג, ליטא",
+            bio: "גרו ביורבורג, ליטא. היו להם פרדסים גדולים, פונדק דרכים, מאפייה ופרה שרעתה על גדות נהר הניימן. יהושע־צבי היה תלמיד חכם גדול ובקי בהלכה, בעל ספרייה גדולה של ספרי קודש שלא הייתה כמותה בכל האזור, וחבר לעט של הרב יצחק־אלחנן ספקטור (הרב מקובנה 1896-1917). היו להם 11 צאצאים.",
+            children: [
+                {
+                    id: "malka_rivkin",
+                    name: "1. מלכה והרב ראובן ריבקין",
+                    gen: 1,
+                    dates: "מלכה: 1865? - 1918/1919 | הרב ראובן: 1874 - 6.1.1953",
+                    location: "בולטימור, ארה״ב",
+                    bio: "נישאו בליטא בשנת ??18. הרב ראובן נסמך לרבנות בשנת 1890 בגיל 17 בישיבת קובנה. היגרו עם המשפחה לארה\"ב ב-1906. הגיעו לבולטימור מלוורנס, מסצ'וסטס ב-1914. מ-1919 כיהן הרב ראובן כרב עדת 'עץ חיים' והיה זקן רבני אורתודוקסיה בולטימור. היה ציוני נלהב, יזם ועבד יחד עם ד\"ר חיים ויצמן. היה ביחסי ידידות הדוקים עם הקרדינל גיבונס (ששוחח עמו עברית שוטפת). מלכה נפטרה במגפת השפעת ב-1918 או 1919. לאחר פטירתה נישא הרב ראובן שנית ללנה (מאלקע). באלבום המשפחתי נשמרו צילומים נדירים ומסמכים היסטוריים.",
+                    children: [
+                        {
+                            id: "baruch_rivkin",
+                            name: "ברנרד (ברוך־משה) ורות ריבקין",
+                            gen: 2,
+                            dates: "ברוך: 1895 - 1977 | רות: 1.8.1900 - 6.2001 (נפטרה בגיל 101)",
+                            location: "בוסטון, מסצ'וסטס",
+                            bio: "עזב את בולטימור כשהיה צעיר והתיישב בבוסטון. אשתו רות נפטרה בגיל 101 והייתה בוגרת הרווארד המבוגרת ביותר בחיים. ביקר בבני ברק בשנת 1962.",
+                            children: [
+                                {
+                                    id: "steven_rivkin",
+                                    name: "סטיבן (רוברט זוסיה) ומרי ריבקין",
+                                    gen: 3,
+                                    location: "בת'סדה, מרילנד",
+                                    children: [
+                                        { id: "sarah_rivkin", name: "שרה־יהודית ומארק ברנן", gen: 4, dates: "1971", bio: "בתם של סטיבן ואשתו הראשונה מריאן אוסטרביס (Marian Osterweis)." },
+                                        { id: "jesse_rivkin", name: "ג'סי ריבקין", gen: 4, dates: "1978", bio: "בנם של סטיבן ואשתו מרי (Mary)." }
+                                    ]
+                                },
+                                {
+                                    id: "malcolm_david_rivkin",
+                                    name: "מלקולם (אלימלך־דוד) וגולדי (זהבה ריבה) ריבקין",
+                                    gen: 3,
+                                    location: "בת'סדה, מרילנד",
+                                    bio: "מתכנן ערים מפורסם, יועץ לפיתוח כלכלי ועמית בכיר בבית הספר למדיניות ציבורית באוניברסיטת מרילנד. בעל תואר ראשון מהרווארד, תואר שני ודוקטורט (Ph.D) מ-MIT, ומלגאי פולברייט.",
+                                    children: [
+                                        { id: "aliza_rivkin", name: "עליזה ריבקין", gen: 4 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "harvey_rivkins",
+                            name: "הארווי־חיים ריבקינס",
+                            gen: 2,
+                            dates: "1901? - 8.1993",
+                            location: "ארה\"ב",
+                            bio: "הוסיף S לסוף שם המשפחה שלו (Rivkins). בבר המצווה שלו קיבל מסבו הרב ראובן ריבקין לקרוא את קטע הקריאה הארוך ביותר בעברית בבית הכנסת שלו.",
+                            children: [
+                                { id: "malcolm_joan_rivkins", name: "מלקולם וג'ואן ריבקינס", gen: 3, marriageDate: "נישאו 1951", location: "סונומה, קליפורניה" },
+                                {
+                                    id: "henia_rivkins",
+                                    name: "הניה ריבקינס",
+                                    gen: 3,
+                                    location: "סן פרנסיסקו, קליפורניה",
+                                    bio: "נולדה בבולטימור, מתגוררת כיום בסן פרנסיסקו לאחר שנים רבות באנגליה, בקאריביים ובאיטליה.",
+                                    children: [
+                                        { id: "lee_r", name: "לי", gen: 4 },
+                                        { id: "carol_r", name: "קרול", gen: 4 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "abe_rivkin",
+                            name: "אברהם (אייב) ומרגרט ריבקין",
+                            gen: 2,
+                            dates: "1899 - 1984",
+                            location: "בולטימור, מרילנד",
+                            bio: "לא היו להם ילדים.",
+                            children: [
+                                { id: "samson_gregory", name: "שמשון־גרגורי ריבקין", gen: 3, dates: "??18 - 1961" }
+                            ]
+                        },
+                        {
+                            id: "ben_zion_rivkin",
+                            name: "בן-ציון (מלקולם) ורוזה ריבקין",
+                            gen: 2,
+                            dates: "1907 - 1988",
+                            bio: "הוסיף את השם מלקולם לאחר מות אמו.",
+                            children: [
+                                { id: "robert_h_r", name: "רוברט ריבקין", gen: 3 },
+                                { id: "joseph_j_r", name: "יוסף (ג'ו) ריבקין", gen: 3 },
+                                { id: "lynn_rosenfeld", name: "לין־רחל רוזנפלד", gen: 3, location: "גליל > משגב", bio: "עלתה ארצה בשנת 1981 והתיישבה ביישוב שורשים.", children: [
+                                    { id: "yaniv_r", name: "יניב", gen: 4 },
+                                    { id: "rakefet_r", name: "רקפת", gen: 4, bio: "נקראה על שם סבתה רוזה ז\"ל." },
+                                    { id: "nancy_malka", name: "ננסי (מלכה־שמחה)", gen: 4 }
+                                ]},
+                                { id: "toby_rivkin", name: "טובי ריבקין", gen: 3, location: "בולטימור, מרילנד", bio: "מורה לצרפתית וקרמיקה." }
+                            ]
+                        },
+                        {
+                            id: "sholem_solly_rivkin",
+                            name: "שלום (סאלם־סולי) וליבה (ליבי) ריבקין",
+                            gen: 2,
+                            dates: "9.2.1909 - 10.6.1994",
+                            location: "בולטימור, מרילנד",
+                            bio: "נולד בלוורנס, מסצ'וסטס כשאביו הרב ראובן כיהן שם כרב. משגיח כשרות ומזכיר ועד הרבנים בבולטימור. אשתו ליבה הייתה פעילה מרכזית בהקמת ישיבת 'נר ישראל'.",
+                            children: [
+                                { id: "robert_m_r", name: "רוברט וג'ין ריבקין", gen: 3, location: "רנדלסטאון, מרילנד", bio: "ביקר בישראל ב-1967 כחייל בצבא ארה\"ב. שיפץ וחידש ב-1993 את האהל של סבו הרב ראובן ריבקין.", children: [
+                                    { id: "faye_rachel_r", name: "פיי־רחל ריבקין", gen: 4, dates: "27.7.1967", location: "ניו ג'רזי" },
+                                    { id: "richard_benjamin_r", name: "ריצ'רד־בנימין ריבקין", gen: 4, dates: "3.4.1970", location: "סייקסוויל, מרילנד" }
+                                ]},
+                                { id: "alan_ilene_r", name: "אלן ואיילין ריבקין", gen: 3, location: "בולטימור, מרילנד", children: [{ id: "stacy_r", name: "סטייסי", gen: 4 }] },
+                                { id: "baruch_bruce_r", name: "ברוך (ברוס) וברכה ריבקין", gen: 3, location: "שיקגו, אילינוי", children: [
+                                    { id: "shaul_miriam", name: "שאול ומרים ריבקין", gen: 4, location: "קליבלנד, אוהיו", children: [
+                                        { id: "yisrael_ahron", name: "ישראל־אהרון", gen: 5, dates: "2004" },
+                                        { id: "sara_faiga", name: "שרה פייגה", gen: 5, dates: "2006" }
+                                    ]},
+                                    { id: "avi_reuven", name: "אברהם ראובן ריבקין", gen: 4, location: "גלנווד, איווה" },
+                                    { id: "liba_bruce", name: "ליבה ריבקין", gen: 4 },
+                                    { id: "moshe_bruce", name: "משה ריבקין", gen: 4 }
+                                ]}
+                            ]
+                        }
+                    ]
+                },
+                { id: "velve_glazer", name: "2. וֶולְוֶוה (זאב) גלזר", gen: 1, location: "ליטא > ארה\"ב", bio: "היגר לארה\"ב. ייתכן שהיה רופא של אחד מהנשיאים." },
+                { id: "shimon_glazer", name: "3. שמעון גלזר", gen: 1, location: "ליטא > ארה\"ב", bio: "התנגד לפוגרום באומץ. כנראה היגר לארה\"ב." },
+                { id: "dvora_lea_l", name: "4. דבורה־לאה לוויתן (לביתן?)", gen: 1, dates: "??18 - 28.2.1961", location: "ליטא > לונדון > ירושלים", bio: "איבדה בליטא את השימוש בידה בניסיון להגן על אביה במהלך פוגרום (למרות זאת הצליחה לרקום ביד אחת). היתה נשואה, התגוררה תקופה בלונדון ללא ילדים. עלתה לישראל, שם יצחק לב שימש כאפוטרופוס שלה. נפטרה ב-28 בפברואר 1961 ונקברה בסנהדריה בירושלים (בסמוך לבעלה)." },
+                {
+                    id: "pesia_alperovich",
+                    name: "5. פסיה (פֶּשֶׁה) וברוך אלפרוביץ'",
+                    gen: 1,
+                    dates: "פסיה: 1880 - 1959 | ברוך: ??18 - 1927?",
+                    location: "ליטא > מוסקבה > ריגה > בני ברק",
+                    bio: "בעלי חנות למוצרי זכוכית וכלי בית במוסקבה. פסיה עלתה מריגה לארץ ישראל עם בתה אידה ב-1934 והייתה מראשוני המתיישבים בשכונת זיכרון מאיר בבני ברק. ברוך נהרג בתאונת דרכים ברוסיה.",
+                    children: [
+                        {
+                            id: "ida_gerchon",
+                            name: "אידה ויעקב גרשון",
+                            gen: 2,
+                            dates: "אידה: 1919 - 1992 | יעקב: 1919 - 1977",
+                            location: "ריגה > בני ברק > כפר עציון",
+                            bio: "גרו שנים רבות בבני ברק. נקברו בכפר עציון.",
+                            children: [
+                                {
+                                    id: "bracha_g",
+                                    name: "ברכה",
+                                    gen: 3,
+                                    children: [
+                                        { id: "mirit_g", name: "מירית", gen: 4 },
+                                        { id: "tzachi_g", name: "צחי", gen: 4 }
+                                    ]
+                                },
+                                {
+                                    id: "nachum_g",
+                                    name: "נחום גרשון",
+                                    gen: 3,
+                                    location: "בני ברק > וושינגטון DC",
+                                    children: [
+                                        { id: "daniel_g", name: "דניאל", gen: 4 }
+                                    ]
+                                },
+                                {
+                                    id: "chana_amit_g",
+                                    name: "חנה ודוד עמית",
+                                    gen: 3,
+                                    location: "כפר עציון > ירושלים",
+                                    bio: "גרו בכפר עציון ובירושלים. נקברו בכפר עציון.",
+                                    children: [
+                                        { id: "eitan_am_g", name: "איתן", gen: 4 },
+                                        { id: "ayala_am_g", name: "איילה", gen: 4 },
+                                        { id: "rivka_am_g", name: "רבקה", gen: 4 },
+                                        { id: "ariel_am_g", name: "אריאל", gen: 4 },
+                                        { id: "tal_am_g", name: "טל", gen: 4 }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                { id: "chayim_glazer", name: "6. חיים גלזר", gen: 1 },
+                {
+                    id: "aharon_glazer",
+                    name: "7. אהרון ודינה גלזר",
+                    gen: 1,
+                    dates: "אהרון: 1872 - ~1939/1942 | דינה: 1876 - ~1941/1943",
+                    location: "יורבורג > קניגסברג > ברלין > קובנה, ליטא",
+                    bio: "אהרון נולד ביורבורג, היה בעל קול ערב ונחשב ל'ילד פלא'. חזן מפורסם מקניגסברג, אדוארד בירנבאום, שיכן אותו בביתו מגיל 12 וטיפח את כשרונו, ולאחר מכן נשלח לקונסרבטוריון בברלין ללמוד פיתוח קול, ניצוח והלחנה. שירת כמנצח תזמורת בצבא הצאר בקווקז ובשבי. נישא לדינה (לבית איוונסקי, ילידת 1876, מיילדות שלמדה בדורפאט שבאסטוניה ועבדה בבי\"ח מקומי עם ד\"ר הגנטורן). התגוררו במתחם המשפחתי הענק במוזיאוס גאטבה בקובנה (גוש בנינים בצורת ח' שהתרע על פני 3 רחובות על שפת הנהר ניימן, יחד עם הורי דינה - דבורה אסתר ומשה איוונסקי, בעל מפעל ענק לניקוי מעיים עם כ-300 פועלים). בביתם אירחו את גדולי החזנים (יוסלה רוזנבלט, סירוטה, קוסביצקי). אהרון נרצח בפורט התשיעי, ודינה נפטרה בגטו קובנה ב-1941/1943. בביתם טיפלה במסירות במשך כ-15 שנה המשרתת הגרמניה מטילדה שדיברה אידיש שוטפת.",
+                    children: [
+                        {
+                            id: "raaya_azulai",
+                            name: "רעיה ויהודה אזולאי",
+                            gen: 2,
+                            location: "קובנה > חיפה",
+                            bio: "רעיה עלתה ארצה ב-1930. יהודה קנה מגרש ב-1933 ובנה את ביתם ברחוב מסדה 26 בחיפה (שודכו דרך לינה וזלמן לויטה). בתה אורה נולדה ב-1931 ובקקרה בביקור משתרש בקובנה ב-1933.",
+                            children: [
+                                { id: "ora_venig", name: "אורה ונתן וניג", gen: 3, location: "חיפה", children: [{ id: "anat_v", name: "ענת", gen: 4 }, { id: "guy_v", name: "גיא", gen: 4 }] },
+                                { id: "carmela_n", name: "כרמלה ונחום", gen: 3, location: "קריית אתא", children: [{ id: "talya_g", name: "טליה וגיא", gen: 4 }] },
+                                { id: "mordechai_d", name: "מרדכי ודפנה", gen: 3 },
+                                { id: "ronit_y", name: "רונית ויעקב", gen: 3, location: "חיפה", children: [{ id: "arnon_a", name: "ארנון", gen: 4 }, { id: "revital_a", name: "רויטל", gen: 4 }] }
+                            ]
+                        },
+                        {
+                            id: "gavriel_glazer",
+                            name: "גבריאל ומירה גלזר",
+                            gen: 2,
+                            location: "קובנה > חיפה",
+                            bio: "עלה לארץ ב-1936 ללמוד בטכניון. עבד במשרד הדואר, ועם פרוץ מלחה\"ע ה-2 התגייס לצבא הבריטי (תועד לבוש מדים ליד אופנוע).",
+                            children: [
+                                { id: "aharon_renan", name: "אהרון ורות רנן", gen: 3, location: "ירושלים", children: [{ id: "guy_renan", name: "גיא", gen: 4 }, { id: "itai_renan", name: "איתי", gen: 4 }, { id: "mira_renan", name: "מירה", gen: 4 }] },
+                                { id: "oded_glazer", name: "עודד ולאה גלזר", gen: 3, location: "חיפה", bio: "רופא.", children: [{ id: "yoav_g", name: "יואב", gen: 4 }, { id: "avigail_g", name: "אביגיל", gen: 4 }] },
+                                { id: "chana_amit", name: "חנה ודוד עמית", gen: 3, location: "ירושלים", children: [{ id: "eitan_am", name: "איתן", gen: 4 }, { id: "ayala_am", name: "איילה", gen: 4 }, { id: "rivka_am", name: "רבקה", gen: 4 }, { id: "ariel_am", name: "אריאל", gen: 4 }, { id: "tal_am", name: "טל", gen: 4 }] }
+                            ]
+                        },
+                        {
+                            id: "imanoel_glazer",
+                            name: "עמנואל (מוניה) ומרסל גלזר",
+                            gen: 2,
+                            location: "קובנה > חיפה",
+                            bio: "למד טכנאות שיניים בקובנה אצל מר קפליוש. עלה ארצה ב-1934 כיש צוות בביתן ביח\"ר 'רוזמרין' ליריד המזרח ונשאר כעולה בלתי ליגאלי. עבד בבנק 'קופת עם' בחיפה. בעליית הגג שלו נמצאו מכתבים מקוריים מרתקים משנים 1930–1934.",
+                            children: [
+                                { id: "dina_e", name: "דינה ואליעזר פינקמן", gen: 3, bio: "אליעזר מרצה/חוקר בטכניון.", children: [{ id: "shiri_d", name: "שירי פינקמן", gen: 4 }, { id: "noam_d", name: "נועם", gen: 4 }] },
+                                { id: "orna_i", name: "אורנה בן ארי", gen: 3, children: [{ id: "yoav_i", name: "יואב", gen: 4 }] }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "toybe_glazer",
+                    name: "8. טוֹיְּבֶּה (יונה) בלומנטל",
+                    gen: 1,
+                    dates: "??19 - 1985",
+                    location: "ליטא > בת ים",
+                    bio: "טויבה־לאה בלומנטל. אמו של יעקב בלומנטל (ניצול שואה מקועקע שעבד בארץ כטכנאי רדיו והיגר לאוסטרליה), האמנית חנה בלומנטל (נ. 1972), ובלומה לוין שבווילנה (אמה של גליה לוין מראשון לציון ויונה וולף). ידועה בבישוליה המסורתיים כמו טייגלאך ואינגבערלאך.",
+                    children: [
+                        {
+                            id: "toybe_blumental",
+                            name: "לאה ודוד קליין",
+                            gen: 2,
+                            dates: "??19 - 1985",
+                            location: "בת ים",
+                            bio: "דוד קליין היה שוטר והם היו חשוכי ילדים משותפים.",
+                            children: [
+                                { id: "chana_blum", name: "חנה בלומנטל", gen: 3, dates: "1972 - ??19", bio: "אמנית. נולדה בליטא, עלתה ארצה מרוסיה." },
+                                { id: "yakov_blum", name: "יעקב בלומנטל", gen: 3, location: "ליטא > ישראל > מלבורן, אוסטרליה", bio: "ניצול שואה עם מספר מקועקע על זרועו. עבד בארץ כטכנאי רדיו והיגר לאוסטרליה בשנות ה-50. בנו מייקל מתגורר באזור מלבורן.", children: [{ id: "mula_b", name: "מולה (מייקל) בלומנטל", gen: 4, location: "מלבורן, אוסטרליה" }, { id: "faige_b", name: "פייגה", gen: 4, location: "אוסטרליה" }] },
+                                {
+                                    id: "bluma_levin",
+                                    name: "בלומה ואלחנן לוין",
+                                    gen: 3,
+                                    location: "וילנה, ליטא",
+                                    children: [
+                                        { id: "galya_b", name: "גליה לוין", gen: 4, location: "וילנה > ראשון לציון", bio: "עלתה ארצה בתחילת שנות ה-1970." },
+                                        { id: "yona_wolf", name: "יונה־נינה וסמואל (מולה) וולף", gen: 4, location: "וילנה > ראשון לציון", bio: "עלתה ארצה עם שני בניה באמצע שנות ה-1990.", children: [{ id: "david_w", name: "דוד וולף", gen: 5 }, { id: "michael_w", name: "סאשה (מיכאל) וולף", gen: 5 }] },
+                                        { id: "misha_levin", name: "מישה (משה) לוין", gen: 4, location: "וילנה, ליטא" }
+                                    ]
+                                },
+                                { id: "moshe_blum", name: "משה בלומנטל", gen: 3, bio: "נרצח בליטא על ידי גרמני." },
+                                { id: "david_klein", name: "דוד קליין", gen: 3, bio: "בנה של טויבה־לאה." }
+                            ]
+                        }
+                    ]
+                },
+                { id: "motel_glazer", name: "9. מוטל (מרדכי) גלזר", gen: 1, bio: "למיטב ידיעתנו נרצח בשואה. ייתכן שהיה פרטיזן." },
+                {
+                    id: "faige_michel_lev",
+                    name: "10. פייגה־מיכל ונתן־נטע לב",
+                    gen: 1,
+                    dates: "פייגה־מיכל: 1883 - 1974 | נתן־נטע: 1883 - 1939",
+                    location: "ליטא > בלארוס > סיביר > מלחובקה, רוסיה > בני ברק",
+                    bio: "פייגה־מיכל (בתם של יהושע־צבי ופרידע־רחל גלזר) נישאה לנתן־נטע (סוחר עצים בליטא) בחנוכה שנת תרע\"ה (1914) במינסק, בלארוס. תחילה גרו באורנבורג (סיביר) ולאחר מכן במלאחובקה (סמוך למוסקבה). פייגה־מיכל נסעה לאנגליה למעלה משנה יחד עם שני הבנים ב-1927 וחזרה למלאחובקה. תחת המשטר הסובייטי גורשה לבניין משרד הפנים (הקג\"ב) ונאלצה לעבוד בעבודת פרך במטבח הנחתה, תוך שהיא שומרת כשרות בסתר ואופה מצות. נתן־נטע נעצר באשמת פולחן דתי ונשלח פעמים רבות לעבודת פרך בסיביר. בשנת 1936 קיבלו באורח נסי אישור לצאת מרוסיה, מכרו מכונה להכנת גומי ששמרו שנים למימון המסע, נסעו דרך אודסה (אוקראינה) ועלו לארץ ישראל. תחילה התיישבו בתל אביב ולאחר מכן בני ברק. נקברו בהר הזיתים (הסיפור תועד על ידי נכדתם אורה גליקמן).",
+                    children: [
+                        {
+                            id: "yehosua_tzvi_lev",
+                            name: "יהושע־צבי ויולנדה־זמרודה לב",
+                            gen: 2,
+                            dates: "יהושע־צבי: 1918 - 6.10.2001 | יולנדה־זמרודה: 1930? - 1984",
+                            location: "סיביר > מלחובקה > בני ברק",
+                            bio: "צבי נולד באורנבורג (סיביר) בתקופת גלות המשפחה. היה ממייסדי 'הפלוגה הדתית' בבן-שמן (1948).",
+                            children: [
+                                { id: "natan_lev_dr", name: "נתן לב", gen: 3, location: "גבעת שמואל", bio: "רופא ילדים.", children: [
+                                    { id: "rotem_yolanda", name: "רותם־יולנדה", gen: 4, dates: "1994" },
+                                    { id: "avishag_lev", name: "אבישג", gen: 4, dates: "2002" },
+                                    { id: "tzvi_yehosua", name: "צבי־יהושע", gen: 4, dates: "2004" }
+                                ]},
+                                { id: "ester_glikman", name: "אסתר וברוך־דוד אריה גליקמן", gen: 3, dates: "דוד־ברוך־אריה: 1959 - 2026", location: "ביתר עילית", bio: "הוריה של אורה גליקמן (מחברת סיפור השורשים והתיעוד ההיסטורי).", children: [
+                                    { id: "nechama_nof", name: "נחמה־נוף", gen: 4, dates: "1986" },
+                                    { id: "brurya_beile", name: "ברוריה־ביילה", gen: 4, dates: "1988" },
+                                    { id: "yakov_isachar", name: "יעקב־יששכר", gen: 4, dates: "1990" },
+                                    { id: "faige_hodaya", name: "פייגה־מיכל־הודיה", gen: 4, dates: "1993" },
+                                    { id: "shimon_glik", name: "שמעון", gen: 4, dates: "1995" },
+                                    { id: "sara_bracha_g", name: "שרה־ברכה", gen: 4, dates: "1997" }
+                                ]}
+                            ]
+                        },
+                        {
+                            id: "yitzchak_lev",
+                            name: "יצחק ורות לב",
+                            gen: 2,
+                            dates: "יצחק: 1923 - 2008 | רות: 1937 - 2015",
+                            location: "מלחובקה > בני ברק > עפרה",
+                            bio: "יצחק היה מהנדס אלקטרוניקה וקצין הנדסה בצה\"ל במשך 40 שנה. רות הייתה מורה לעברית והיסטוריה. נקברו בעפרה.",
+                            children: [
+                                { id: "shlomit_soch", name: "אהרון ושלומית־דבורה סוכצ'בסקי", gen: 3, location: "אשדוד", children: [
+                                    { id: "yisrael_srulik", name: "ישראל ושרה־לאה סוכצ'בסקי", gen: 4, dates: "", children: [
+                                        { id: "simcha_b1", name: "שמחה־בונם", gen: 5 },
+                                        { id: "malka_s1", name: "מלכה", gen: 5 },
+                                        { id: "yitzchak_m1", name: "יצחק־מאיר", gen: 5 },
+                                        { id: "shmuel_y1", name: "שמואל־יהודה", gen: 5 },
+                                        { id: "shlomo_s1", name: "שלמה", gen: 5 },
+                                        { id: "tzvi_elimelech_s1", name: "צבי־אלימלך", gen: 5 },
+                                        { id: "yuta_henas1", name: "יוטא־הענא", gen: 5 }
+                                    ]},
+                                    { id: "avraham_mordechay", name: "אברהם־מרדכי ואסתר־ליבה סוכצ'בסקי", gen: 4, dates: "", children: [
+                                        { id: "chana_roizi", name: "חנה־רוייזי", gen: 5 },
+                                        { id: "yitzchak_a1", name: "יצחק", gen: 5 },
+                                        { id: "rut_a1", name: "רות", gen: 5 },
+                                        { id: "shmuel_a1", name: "שמואל", gen: 5 },
+                                        { id: "chaim_yechzekel", name: "חיים־יחזקאל", gen: 5 }
+                                    ]},
+                                    { id: "shmuel_shmulik", name: "שמואל ורות סוכצ'בסקי", gen: 4, dates: "", children: [
+                                        { id: "rachel_s", name: "רחל־רוייזי", gen: 5 },
+                                        { id: "sara_hinda", name: "שרה־הינדה", gen: 5 },
+                                        { id: "shlomo_zalman", name: "שלמה־זלמן", gen: 5 },
+                                        { id: "yitzchak_m2", name: "יצחק־מאיר", gen: 5 },
+                                        { id: "yehuda_s", name: "יהודית", gen: 5 },
+                                        { id: "yuta_ratsel", name: "יוטא־הענא־ראצל", gen: 5 }
+                                    ]},
+                                    { id: "faige_lerner", name: "פייגה־מיכל לרנר", gen: 4, dates: "", children: [
+                                        { id: "simcha_b2", name: "שמחה־בונים", gen: 5 },
+                                        { id: "baruch_m", name: "ברוך־מנחם", gen: 5 }
+                                    ]},
+                                    { id: "sara_avraham", name: "שרה ואברהם־חיים מונדרי", gen: 4, dates: "", children: [
+                                        { id: "rut_m1", name: "רות", gen: 5 },
+                                        { id: "simcha_b3", name: "שמחה־בונים", gen: 5 },
+                                        { id: "shmuel_m1", name: "שמואל", gen: 5 },
+                                        { id: "chana_מרים", name: "חנה־מרים", gen: 5 },
+                                        { id: "chaya_ratsel", name: "חיה־ראצל", gen: 5 },
+                                        { id: "yitzchak_m3", name: "יצחק", gen: 5 }
+                                    ]},
+                                    { id: "simcha_bunim_s", name: "שמחה־בונים ורחל סוכצ'בסקי", gen: 4, dates: "", children: [
+                                        { id: "bluma_tova", name: "בלומה־טובה", gen: 5 },
+                                        { id: "rut_s2", name: "רות", gen: 5 },
+                                        { id: "yuta_rachel2", name: "יוטא־הענא־ראצל", gen: 5 },
+                                        { id: "israel_s1", name: "ישראל", gen: 5 }
+                                    ]},
+                                    { id: "tzvi_elimelech_s", name: "צבי־אלימלך ויוטא־הענא סוכצ'בסקי", gen: 4, dates: "", children: [
+                                        { id: "lea_chana", name: "לאה־חנה", gen: 5 },
+                                        { id: "rut_s3", name: "רות", gen: 5 }
+                                    ]}
+                                ]},
+                                { id: "natan_bela_lev", name: "נתן ובלה לב", gen: 3, dates: "1967", location: "בית שמש", children: [
+                                    { id: "michal_partok", name: "מיכל ויהונתן פרטוק", gen: 4, dates: "1993", children: [
+                                        { id: "hadar_ruth", name: "הדר־רות", gen: 5 },
+                                        { id: "oriya_zhaya", name: "אוֹרְיָה־ז'היָה", gen: 5 },
+                                        { id: "avinoam_p", name: "אבינועם־חיים", gen: 5 },
+                                        { id: "yehosuda_pinchas", name: "יהודה־פנחס", gen: 5 }
+                                    ]},
+                                    { id: "yoel_lev", name: "יואל ודבורה לב", gen: 4, dates: "1995", children: [
+                                        { id: "yinon_l", name: "ינון־יצחק", gen: 5 },
+                                        { id: "yedidya_l", name: "ידידיה", gen: 5 },
+                                        { id: "nily_l", name: "נילי", gen: 5 }
+                                    ]},
+                                    { id: "david_menachem_l", name: "דוד־מנחם וחנה לב", gen: 4, dates: "1997", children: [
+                                        { id: "ayla_ruth", name: "אילה־רות", gen: 5 },
+                                        { id: "rivka_l", name: "רבקה", gen: 5 },
+                                        { id: "naama_l", name: "נעמה", gen: 5 }
+                                    ]},
+                                    { id: "lea_katzburg", name: "לאה ויוסף־שלמה קצבורג", gen: 4, dates: "2001", children: [
+                                        { id: "mayan_ruth", name: "מעיין־רות", gen: 5 },
+                                        { id: "liat_tehila", name: "ליאל־תהילה", gen: 5 }
+                                    ]},
+                                    { id: "meir_lev", name: "מאיר ופנינה לב", gen: 4, dates: "2004" },
+                                    { id: "tzvi_lev_2", name: "צבי ואסתר־זיסל לב", gen: 4, dates: "2004", children: [
+                                        { id: "moria_l", name: "מוריה", gen: 5 }
+                                    ]},
+                                    { id: "yitzchak_lev_3", name: "יצחק", gen: 4, dates: "2011" }
+                                ]},
+                                { id: "pini_lev", name: "פינחס־אליה לב", gen: 3, dates: "1968", location: "ירושלים" },
+                                { id: "moti_lev", name: "מרדכי ואסתר לב", gen: 3, dates: "1970", location: "עלי", children: [
+                                    { id: "yehuda_ozer", name: "יהודה־עוזר", gen: 4, dates: "1996" },
+                                    { id: "menachem_l", name: "מנחם", gen: 4, dates: "1997" },
+                                    { id: "noa_sintes", name: "נועה־רבקה ואליהו־משה־אברהם סינטס", gen: 4, dates: "2000", children: [
+                                        { id: "matan_chaim", name: "מתן־חיים", gen: 5 },
+                                        { id: "sivan_s", name: "סיוון", gen: 5 },
+                                        { id: "hillel_shalom", name: "הלל־שלום", gen: 5 }
+                                    ]},
+                                    { id: "devora_izaks", name: "דבורה ויעקב איזקס", gen: 4, dates: "2003" },
+                                    { id: "sara_i", name: "שרה", gen: 4, dates: "2006" },
+                                    { id: "roni_l", name: "רוני", gen: 4 }
+                                ]},
+                                { id: "beni_lev", name: "בנימין־זאב ומלכה לב", gen: 3, dates: "1971", location: "עפרה", children: [
+                                    { id: "tal_l", name: "טל־מרום", gen: 4, dates: "1999" },
+                                    { id: "aviad_l", name: "אביעד", gen: 4, dates: "2001" },
+                                    { id: "eitan_l", name: "איתן", gen: 4, dates: "2003" },
+                                    { id: "ziv_l", name: "זיו", gen: 4, dates: "2006" }
+                                ]},
+                                { id: "michael_lev", name: "מיכאל ואילה לב", gen: 3, dates: "1975", location: "כוכב השחר", children: [
+                                    { id: "asael_chayim", name: "עשהאל־חיים וחסד לב", gen: 4, dates: "2001", children: [
+                                        { id: "shmuel_oz", name: "שמואל־עוז", gen: 5 },
+                                        { id: "yaala_l", name: "יעלה", gen: 5 }
+                                    ]},
+                                    { id: "tzvi_nerya", name: "צבי־נריה ואמונה־שמחה לב", gen: 4, dates: "2002" },
+                                    { id: "miryam_michael", name: "מרים לב", gen: 4, dates: "" },
+                                    { id: "elyada_michael", name: "אלידע לב", gen: 4, dates: "" },
+                                    { id: "simcha_michael", name: "שמחה לב", gen: 4, dates: "" },
+                                    { id: "mayan_michael", name: "מעין לב", gen: 4, dates: "" }
+                                ]}
+                            ]
+                        }
+                    ]
+                },
+                { id: "leibe_glazer", name: "11. לֶיְבֶּה (אריה) גלזר", gen: 1 }
+            ]
+        };
+
+        const expandedState = {};
+
+        // המרת מספר דור לאות עברית (א, ב, ג, ד, ה)
+        function getHebrewGen(gen) {
+            const hebrewGens = { 1: "א", 2: "ב", 3: "ג", 4: "ד", 5: "ה" };
+            return hebrewGens[gen] || gen;
+        }
+
+        function calculateStats(node) {
+            let totalDescendants = 0;
+            const genCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+            const countedIds = new Set();
+            
+            function traverse(currNode) {
+                if (!currNode || countedIds.has(currNode.id)) return;
+                countedIds.add(currNode.id);
+
+                if (currNode.gen >= 1 && currNode.gen <= 5) {
+                    genCounts[currNode.gen]++;
+                    totalDescendants++;
+                }
+
+                if (currNode.children && currNode.children.length > 0) {
+                    currNode.children.forEach(child => {
+                        traverse(child);
+                    });
+                }
+            }
+
+            if (node.children) {
+                node.children.forEach(traverse);
+            }
+
+            const totalPersons = 2 + totalDescendants;
+            return { totalPersons, totalDescendants, genCounts };
+        }
+
+        function initInitialState(node) {
+            if (node.id === "root") {
+                expandedState[node.id] = true;
+            } else {
+                expandedState[node.id] = false;
+            }
+            if (node.children) {
+                node.children.forEach(initInitialState);
+            }
+        }
+
+        function renderNode(node) {
+            const hasChildren = node.children && node.children.length > 0;
+            const isExpanded = !!expandedState[node.id];
+            
+            const hasDetails = !!(node.dates || node.marriageDate || node.location || node.bio);
+            const isUnknownNode = !hasDetails;
+            const isRootNode = node.id === 'root';
+            
+            const card = document.createElement("div");
+            card.id = `node-${node.id}`;
+            card.className = `node-card rounded-lg shadow-sm border border-slate-200 p-2.5 transition-all duration-200 gen-${node.gen} mb-2 relative`;
+
+            const titleSizeClass = node.id === 'root' ? 'text-[17px] sm:text-[19px] font-black text-slate-900 tracking-wide' : 
+                                 node.gen === 0 ? 'text-xs sm:text-sm font-black text-slate-900 tracking-wide' : 
+                                 (node.gen >= 4 ? 'text-[11px] font-bold text-slate-900' : 'text-xs sm:text-sm font-bold text-slate-900');
+
+            let infoButtonContent = isUnknownNode ? `
+                <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            ` : `
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+            `;
+
+            let infoButtonClass = isUnknownNode ? 
+                "w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 rounded-lg transition flex items-center justify-center shadow-sm" : 
+                "w-7 h-7 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-lg transition flex items-center justify-center shadow-sm";
+
+            let html = `
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <!-- Empty left spacer -->
+                    </div>
+
+                    <div class="flex-1 cursor-pointer flex flex-col gap-0.5" onclick="openModal('${node.id}')">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            ${node.gen > 0 ? `
+                                <span class="node-badge text-[10px] font-bold px-1.5 py-0.2 rounded badge-gen-${node.gen} shrink-0">
+                                    ${getHebrewGen(node.gen)}
+                                </span>
+                            ` : ''}
+                            <h3 class="node-title ${titleSizeClass} leading-tight hover:text-blue-600 transition">
+                                ${node.name}
+                            </h3>
+                        </div>
+
+                        ${node.dates ? `
+                            <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                                <span>🗓️</span> <span>${node.dates}</span>
+                            </div>
+                        ` : ''}
+
+                        ${node.location ? `
+                            <div class="text-[11px] text-slate-600 font-medium flex items-center gap-1 mt-0.5">
+                                <span>📍</span> <span>${node.location}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        ${isRootNode ? `
+                            <button onclick="collapseAllBranches(event)" class="w-7 h-7 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-700 transition flex items-center justify-center border border-emerald-400 shadow-sm" title="כווץ הכל">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+                                </svg>
+                            </button>
+                        ` : (hasChildren ? `
+                            <button onclick="toggleNode('${node.id}', event)" class="w-7 h-7 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition flex items-center justify-center border border-emerald-300 shadow-sm" title="${isExpanded ? 'כווץ' : 'הרחב'}">
+                                <svg class="w-3.5 h-3.5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                        ` : '')}
+                        <button onclick="openModal('${node.id}'); event.stopPropagation();" class="${infoButtonClass}" title="מידע נוסף">
+                            ${infoButtonContent}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            card.innerHTML = html;
+
+            if (hasChildren) {
+                const childrenContainer = document.createElement("div");
+                childrenContainer.className = `pr-3 sm:pr-4 mt-2 space-y-1.5 tree-line ${isExpanded ? '' : 'hidden'}`;
+                childrenContainer.id = `children-${node.id}`;
+                
+                node.children.forEach(child => {
+                    childrenContainer.appendChild(renderNode(child));
+                });
+                
+                card.appendChild(childrenContainer);
+            }
+
+            return card;
+        }
+
+        function findNodeById(node, id) {
+            if (node.id === id) return node;
+            if (node.children) {
+                for (let child of node.children) {
+                    const res = findNodeById(child, id);
+                    if (res) return res;
+                }
+            }
+            return null;
+        }
+
+        function toggleNode(nodeId, event) {
+            if (event) event.stopPropagation();
+            expandedState[nodeId] = !expandedState[nodeId];
+            
+            const childrenContainer = document.getElementById(`children-${nodeId}`);
+            if (childrenContainer) {
+                if (expandedState[nodeId]) {
+                    childrenContainer.classList.remove('hidden');
+                } else {
+                    childrenContainer.classList.add('hidden');
+                }
+            }
+            
+            const card = document.getElementById(`node-${nodeId}`);
+            if (card) {
+                const btnSvg = card.querySelector('button svg');
+                if (btnSvg) {
+                    if (expandedState[nodeId]) {
+                        btnSvg.classList.add('rotate-180');
+                    } else {
+                        btnSvg.classList.remove('rotate-180');
+                    }
+                }
+            }
+        }
+
+        function openModal(nodeId) {
+            const node = findNodeById(rawFamilyData, nodeId);
+            if (!node) return;
+
+            const modalContent = document.getElementById("modalContent");
+            
+            let childrenDisplayHtml = '';
+            if (node.children && node.children.length > 0) {
+                let formattedChildren = node.children.map(c => {
+                    return `<span class="bg-slate-100 text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-200 font-medium">${c.name}</span>`;
+                }).join('');
+
+                childrenDisplayHtml = `
+                    <div class="pt-1.5">
+                        <h4 class="font-bold text-xs text-slate-700 mb-1.5">👨‍👩‍👧‍👦 צאצאים ישירים (${node.children.length}):</h4>
+                        <div class="flex flex-wrap gap-1">
+                            ${formattedChildren}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (modalContent) {
+                modalContent.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            ${node.gen > 0 ? `
+                                <span class="text-[11px] font-bold px-2 py-0.5 rounded badge-gen-${node.gen}">
+                                    דור ${getHebrewGen(node.gen)}
+                                </span>
+                            ` : ''}
+                            <h2 class="text-base font-extrabold text-slate-900">${node.name}</h2>
+                        </div>
+
+                        ${node.marriageDate ? `
+                            <div class="bg-slate-50 p-2.5 rounded-md border border-slate-200 text-xs">
+                                <span class="font-bold text-slate-700">💍 נישואין:</span> ${node.marriageDate}
+                            </div>
+                        ` : ''}
+
+                        ${node.bio ? `
+                            <div class="bg-blue-50/60 p-3 rounded-lg border border-blue-100 text-xs leading-relaxed text-slate-800">
+                                <span class="font-bold text-blue-900 block mb-1">📜 ביוגרפיה והיסטוריה:</span>
+                                ${node.bio}
+                            </div>
+                        ` : ''}
+
+                        ${childrenDisplayHtml}
+                    </div>
+                `;
+            }
+
+            const detailModal = document.getElementById("detailModal");
+            if (detailModal) detailModal.classList.remove("hidden");
+        }
+
+        function setupBranchFilter() {
+            const branchFilter = document.getElementById("branchFilter");
+
+            if (branchFilter) {
+                branchFilter.addEventListener("change", () => {
+                    const currentData = getFilteredData();
+                    if (branchFilter.value === "all") {
+                        initInitialState(currentData);
+                    } else {
+                        setAllExpanded(currentData, true);
+                    }
+                    renderTreeWithData(currentData);
+                });
+            }
+        }
+
+        function getFilteredData() {
+            const branchFilter = document.getElementById("branchFilter");
+            const branchId = branchFilter ? branchFilter.value : "all";
+            if (branchId === "all") return rawFamilyData;
+
+            const rootClone = JSON.parse(JSON.stringify(rawFamilyData));
+            const targetChild = rootClone.children.find(c => c.id === branchId);
+            if (targetChild) {
+                rootClone.children = [targetChild];
+            }
+            return rootClone;
+        }
+
+        function renderTreeWithData(dataNode) {
+            const container = document.getElementById("treeContainer");
+            if (container) {
+                container.innerHTML = "";
+                container.appendChild(renderNode(dataNode));
+            }
+        }
+
+        function renderTree() {
+            renderTreeWithData(getFilteredData());
+        }
+
+        function setAllExpanded(node, state) {
+            expandedState[node.id] = state;
+            if (node.children) {
+                node.children.forEach(child => setAllExpanded(child, state));
+            }
+        }
+
+        function collapseAllBranches(event) {
+            if (event) event.stopPropagation();
+            const currentData = getFilteredData();
+            initInitialState(currentData);
+            renderTreeWithData(currentData);
+        }
+
+        function openPrintWindow() {
+            const dataToPrint = getFilteredData();
+            const branchFilter = document.getElementById("branchFilter");
+            const isBranchFiltered = branchFilter && branchFilter.value !== "all";
+            const branchTitle = isBranchFiltered && dataToPrint.children && dataToPrint.children[0]
+                ? `ענף משפחת ${dataToPrint.children[0].name.replace(/^\d+\.\s*/, '')}`
+                : "";
+
+            function buildPrintHtml(node) {
+                const hasChildren = node.children && node.children.length > 0;
+                const badgeHtml = node.gen > 0
+                    ? `<span class="badge badge-gen-${node.gen}">${getHebrewGen(node.gen)}</span>`
+                    : '';
+                const titleClass = node.id === 'root' ? 'root-title' : 'node-title';
+
+                let html = `
+                    <div class="node-wrapper gen-${node.gen}">
+                        <div class="node-item">
+                            <div class="node-header">
+                                ${badgeHtml}
+                                <span class="${titleClass}">${node.name}</span>
+                            </div>
+                            ${node.dates ? `<div class="node-meta">🗓️ ${node.dates}</div>` : ''}
+                            ${node.location ? `<div class="node-meta">📍 ${node.location}</div>` : ''}
+                        </div>
+                `;
+
+                if (hasChildren) {
+                    html += `<div class="tree-children">`;
+                    node.children.forEach(child => {
+                        html += buildPrintHtml(child);
+                    });
+                    html += `</div>`;
+                }
+
+                html += `</div>`;
+                return html;
+            }
+
+            const printWindow = window.open('', '_blank', 'width=900,height=700');
+            if (!printWindow) return;
+
+            const treeHtml = buildPrintHtml(dataToPrint);
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="he" dir="rtl">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>עץ יוחסין משפחת גלזר</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+                    <style>
+                        @page {
+                            size: A4 portrait;
+                            margin: 12mm 10mm 15mm 10mm;
+                            @bottom-center {
+                                content: counter(page) "/" counter(pages);
+                                font-family: 'Assistant', Arial, sans-serif;
+                                font-size: 9pt;
+                                color: #64748b;
+                            }
+                        }
+                        body {
+                            font-family: 'Assistant', Arial, sans-serif;
+                            color: #1e293b;
+                            margin: 0;
+                            padding: 0;
+                            direction: rtl;
+                            font-size: 9.5pt;
+                        }
+                        .print-header {
+                            text-align: center;
+                            margin-bottom: 12px;
+                            padding-bottom: 8px;
+                            border-bottom: 2px solid #cbd5e1;
+                        }
+                        .print-header h1 {
+                            margin: 0;
+                            font-size: 16pt;
+                            font-weight: 800;
+                            color: #0f172a;
+                        }
+                        .print-header h2 {
+                            margin: 4px 0 0 0;
+                            font-size: 12pt;
+                            font-weight: 700;
+                            color: #2563eb;
+                        }
+                        .node-wrapper {
+                            margin-bottom: 4px;
+                            padding-right: 7px;
+                        }
+                        .node-item {
+                            border: 1px solid #e2e8f0;
+                            border-radius: 4px;
+                            padding: 3px 7px;
+                            background: #ffffff;
+                            break-inside: avoid;
+                            page-break-inside: avoid;
+                        }
+                        .gen-0 { border-right: 4px solid #0d9488; }
+                        .gen-1 { border-right: 4px solid #2563eb; }
+                        .gen-2 { border-right: 4px solid #16a34a; }
+                        .gen-3 { border-right: 4px solid #d97706; }
+                        .gen-4 { border-right: 4px solid #9333ea; }
+                        .gen-5 { border-right: 4px solid #db2777; }
+
+                        .node-header {
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        .badge {
+                            font-size: 7.5pt;
+                            font-weight: 700;
+                            padding: 0 5px;
+                            border-radius: 3px;
+                            color: #ffffff;
+                        }
+                        .badge-gen-1 { background-color: #2563eb; }
+                        .badge-gen-2 { background-color: #16a34a; }
+                        .badge-gen-3 { background-color: #d97706; }
+                        .badge-gen-4 { background-color: #9333ea; }
+                        .badge-gen-5 { background-color: #db2777; }
+
+                        .root-title {
+                            font-size: 12.5pt;
+                            font-weight: 800;
+                        }
+                        .node-title {
+                            font-weight: 700;
+                        }
+                        .gen-1 > .node-item .node-title { font-size: 10.5pt; }
+                        .gen-2 > .node-item .node-title { font-size: 9.5pt; }
+                        .gen-3 > .node-item .node-title { font-size: 8.8pt; }
+                        .gen-4 > .node-item .node-title { font-size: 8.2pt; }
+                        .gen-5 > .node-item .node-title { font-size: 7.6pt; }
+
+                        .node-meta {
+                            font-size: 7.5pt;
+                            color: #475569;
+                            margin-top: 1px;
+                        }
+                        .tree-children {
+                            margin-top: 4px;
+                            padding-right: 6px;
+                        }
+                        @media print {
+                            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <h1>עץ יוחסין משפחת גלזר</h1>
+                        ${branchTitle ? `<h2>${branchTitle}</h2>` : ''}
+                    </div>
+                    <div class="tree-root">
+                        ${treeHtml}
+                    </div>
+                    <script>
+                        window.onload = function() {
+                            setTimeout(function() {
+                                window.print();
+                            }, 300);
+                        };
+                    <\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const stats = calculateStats(rawFamilyData);
+            
+            const totalPersonsEl = document.getElementById("totalPersons");
+            if (totalPersonsEl) totalPersonsEl.textContent = `${stats.totalPersons} נפשות`;
+
+            const totalDescEl = document.getElementById("totalDescendants");
+            if (totalDescEl) totalDescEl.textContent = `${stats.totalDescendants} צאצאים`;
+
+            const genBreakdownEl = document.getElementById("genBreakdown");
+            if (genBreakdownEl) {
+                genBreakdownEl.innerHTML = `
+                    <span class="px-1.5 py-0.2 rounded badge-gen-1 font-semibold">דור א: ${stats.genCounts[1]}</span>
+                    <span class="px-1.5 py-0.2 rounded badge-gen-2 font-semibold">דור ב: ${stats.genCounts[2]}</span>
+                    <span class="px-1.5 py-0.2 rounded badge-gen-3 font-semibold">דור ג: ${stats.genCounts[3]}</span>
+                    <span class="px-1.5 py-0.2 rounded badge-gen-4 font-semibold">דור ד: ${stats.genCounts[4]}</span>
+                    <span class="px-1.5 py-0.2 rounded badge-gen-5 font-semibold">דור ה: ${stats.genCounts[5]}</span>
+                `;
+            }
+
+            initInitialState(rawFamilyData);
+            renderTree();
+            setupBranchFilter();
+
+            const printTreeBtn = document.getElementById("printTreeBtn");
+            if (printTreeBtn) {
+                printTreeBtn.addEventListener("click", openPrintWindow);
+            }
+
+            const closeModal = document.getElementById("closeModal");
+            if (closeModal) {
+                closeModal.addEventListener("click", () => {
+                    const detailModal = document.getElementById("detailModal");
+                    if (detailModal) detailModal.classList.add("hidden");
+                });
+            }
+
+            const detailModal = document.getElementById("detailModal");
+            if (detailModal) {
+                detailModal.addEventListener("click", (e) => {
+                    if (e.target.id === "detailModal") {
+                        detailModal.classList.add("hidden");
+                    }
+                });
+            }
+
+            const emailContactBtn = document.getElementById("emailContactBtn");
+            const emailModal = document.getElementById("emailModal");
+            const closeEmailModal = document.getElementById("closeEmailModal");
+            const copyEmailBtn = document.getElementById("copyEmailBtn");
+            const copyFeedback = document.getElementById("copyFeedback");
+
+            if (emailContactBtn && emailModal) {
+                emailContactBtn.addEventListener("click", () => {
+                    if (copyFeedback) copyFeedback.classList.add("hidden");
+                    emailModal.classList.remove("hidden");
+                });
+            }
+
+            if (closeEmailModal && emailModal) {
+                closeEmailModal.addEventListener("click", () => {
+                    emailModal.classList.add("hidden");
+                });
+            }
+
+            if (emailModal) {
+                emailModal.addEventListener("click", (e) => {
+                    if (e.target.id === "emailModal") {
+                        emailModal.classList.add("hidden");
+                    }
+                });
+            }
+
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener("click", () => {
+                    const tempInput = document.createElement("input");
+                    tempInput.value = "pinilev@gmail.com";
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tempInput);
+
+                    if (copyFeedback) {
+                        copyFeedback.classList.remove("hidden");
+                        setTimeout(() => copyFeedback.classList.add("hidden"), 2500);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
