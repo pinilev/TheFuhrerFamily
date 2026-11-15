@@ -44,23 +44,41 @@
 
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
-        <div class="max-w-7xl mx-auto px-3 py-2.5 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-2.5">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
+        <div class="max-w-7xl mx-auto px-3 py-2.5 sm:px-6 lg:px-8 flex flex-col gap-2.5">
+            <!-- Top Row: Title & Contact Icons -->
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
+
+                <!-- Contact Icons (WhatsApp & Email) -->
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <a href="https://wa.me/972545244344" target="_blank" rel="noopener noreferrer" class="p-1.5 bg-green-500 hover:bg-green-600 text-white rounded-md transition shadow-sm flex items-center justify-center" title="שליחת הודעה בוואטסאפ" aria-label="וואטסאפ">
+                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+                        </svg>
+                    </a>
+                    <button id="emailContactBtn" class="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition shadow-sm flex items-center justify-center" title="יצירת קשר באימייל" aria-label="אימייל">
+                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
             
-            <!-- Controls -->
-            <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
-                <!-- Search Input -->
+            <!-- Second Row: Search, Branch Filter & Print -->
+            <div class="flex flex-wrap items-center gap-2 w-full">
+                <!-- Search Input Container -->
                 <div class="relative flex-1 sm:flex-initial">
-                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-48 md:w-56 py-1.5 pr-7 pl-7 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-700">
+                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-48 md:w-56 py-1.5 pr-7 pl-7 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
                     <svg class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -71,19 +89,31 @@
                     </button>
                 </div>
 
-                <!-- Branch Filter -->
-                <div class="relative">
-                    <select id="branchFilter" class="py-1.5 px-2.5 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-700">
+                <!-- Visual Divider between Search and Branch Filter -->
+                <div class="hidden sm:block h-6 w-0.5 bg-slate-400 rounded-full mx-1 select-none" aria-hidden="true"></div>
+
+                <!-- Branch Filter Container -->
+                <div class="relative flex items-center bg-emerald-50/70 border border-emerald-200/90 rounded-md pr-2 pl-0.5 py-0.5 shadow-2xs">
+                    <span class="text-[11px] font-bold text-emerald-800 ml-1.5 flex items-center gap-1 shrink-0">
+                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                        <span>ענף:</span>
+                    </span>
+                    <select id="branchFilter" class="py-1 px-2 text-xs bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer">
                         <option value="all">כל הענפים (7 צאצאים)</option>
                         <option value="tova_klotz">1. טובה־יונה (טוני) ושלמה זלמן קלוץ</option>
-                        <option value="avraham_firer">2. אברהם אריה (לייביש) וגולדה גוסטי פירר</option>
-                        <option value="menachem_firer">3. מנחם מנדל ושרה פירר</option>
+                        <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה גוסטי פירר</option>
+                        <option value="menachem_firer">3. מנחם־מנדל ושרה פירר</option>
                         <option value="liza_pitovsky">4. ליזה ומשה פיטובסקי</option>
                         <option value="rachel_laufer">5. רחל ואריה לאופר</option>
-                        <option value="shmuel_firer">6. שמואל (מוללו) וגבריאלה גולדה (גבי) פירר</option>
+                        <option value="shmuel_firer">6. שמואל (מוללו) וגבריאלה־גולדה (גבי) פירר</option>
                         <option value="yeshayahu_firer">7. ישעיהו (איזי) וחנה פירר</option>
                     </select>
                 </div>
+
+                <!-- Divider before Action Buttons -->
+                <div class="hidden sm:block h-5 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
 
                 <button id="printTreeBtn" class="px-2.5 py-1.5 text-[11px] font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5" title="הדפסת כל עץ היוחסין">
                     <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -91,19 +121,7 @@
                         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                         <rect x="6" y="14" width="12" height="8"></rect>
                     </svg>
-                    <span>הדפסה</span>
-                </button>
-
-                <a href="https://wa.me/972545244344" target="_blank" rel="noopener noreferrer" class="p-1.5 bg-green-500 hover:bg-green-600 text-white rounded-md transition shadow-sm flex items-center justify-center" title="שליחת הודעה בוואטסאפ" aria-label="וואטסאפ">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
-                    </svg>
-                </a>
-                <button id="emailContactBtn" class="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition shadow-sm flex items-center justify-center" title="יצירת קשר באימייל" aria-label="אימייל">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                    </svg>
+                    <span id="printTreeBtnText">הדפסת הכל</span>
                 </button>
             </div>
         </div>
@@ -187,14 +205,14 @@
                 },
                 {
                     id: "avraham_firer",
-                    name: "2. אברהם אריה (לייביש) וגולדה גוסטי פירר",
+                    name: "2. אברהם־אריה (לייביש) וגולדה גוסטי פירר",
                     gen: 1,
                     dates: "1907 - 2009",
                     location: "צאנז, פולין > אנטוורפן, בלגיה > קלן, גרמניה > שוויץ > ניו יורק, ארה\"ב",
                     children: [
                         {
                             id: "shmuel_dvora_firer",
-                            name: "שמואל ודבורה חיה פירר",
+                            name: "שמואל ודבורה־חיה פירר",
                             gen: 2,
                             location: "שוויץ > ניו יורק, ארה\"ב"
                         },
@@ -208,7 +226,7 @@
                 },
                 {
                     id: "menachem_firer",
-                    name: "3. מנחם מנדל ושרה פירר",
+                    name: "3. מנחם־מנדל ושרה פירר",
                     gen: 1,
                     dates: "מנחם מנדל: 1909 - 1997 | שרה: 1914 - 1980",
                     location: "צאנז, פולין > אנטוורפן, בלגיה > קלן, גרמניה > כפר פינס",
@@ -222,7 +240,7 @@
                             children: [
                                 {
                                     id: "aharon_shlomit_soch",
-                                    name: "אהרון ושלומית דבורה סוכצ'בסקי",
+                                    name: "אהרון ושלומית־דבורה סוכצ'בסקי",
                                     gen: 3,
                                     location: "אשדוד",
                                     children: [
@@ -373,7 +391,7 @@
                                 },
                                 {
                                     id: "pinchas_eliyahu_lev",
-                                    name: "פינחס אליה לב",
+                                    name: "פינחס־אליה לב",
                                     gen: 3,
                                     location: "ירושלים"
                                 },
@@ -408,7 +426,7 @@
                                 },
                                 {
                                     id: "binyamin_malka_lev",
-                                    name: "בנימין זאב ומלכה לב",
+                                    name: "בנימין־זאב ומלכה לב",
                                     gen: 3,
                                     location: "עפרה",
                                     children: [
@@ -518,12 +536,12 @@
                                         },
                                         { id: "elisha_g_1", name: "אלישע", gen: 4 },
                                         { id: "nave_g_1", name: "נווה", gen: 4 },
-                                        { id: "daniel_menachem_1", name: "דניאל-מנחם", gen: 4 }
+                                        { id: "daniel_menachem_1", name: "דניאל־מנחם", gen: 4 }
                                     ]
                                 },
                                 {
                                     id: "zeev_sima_kfir",
-                                    name: "זאב וסימה",
+                                    name: "זאב וסימה כפיר",
                                     gen: 3,
                                     location: "רבבה",
                                     children: [
@@ -581,7 +599,7 @@
                                 },
                                 {
                                     id: "avigail_shmulik_shukri",
-                                    name: "אביגיל-יונית ושמוליק שקרי",
+                                    name: "אביגיל־יונית ושמוליק שקרי",
                                     gen: 3,
                                     location: "רחובות",
                                     children: [
@@ -594,7 +612,7 @@
                         },
                         {
                             id: "yosef_yoel_rina",
-                            name: "יוסף־יואל ורינה",
+                            name: "יוסף־יואל ורינה כפיר",
                             gen: 2,
                             dates: "1943",
                             location: "מרכז שפירא",
@@ -647,7 +665,7 @@
                                 },
                                 {
                                     id: "binyamin_shula_kfir",
-                                    name: "בנימין זאב (ביני) ושולה כפיר",
+                                    name: "בנימין־זאב (ביני) ושולה כפיר",
                                     gen: 3,
                                     location: "תקומה",
                                     children: [
@@ -672,7 +690,7 @@
                         },
                         {
                             id: "binyamin_ida_kfir",
-                            name: "בנימין זאב כפיר הי\"ד ואידה ברונפמן תבלח\"א",
+                            name: "בנימין־זאב כפיר הי\"ד ואידה ברונפמן תבלח\"א",
                             gen: 2,
                             dates: "1945 - 1970",
                             children: [
@@ -682,7 +700,7 @@
                                     gen: 3,
                                     location: "מעלה אדומים",
                                     children: [
-                                        { id: "binyamin_adiel_mushkal", name: "בנימין זאב ועדיאל מושכל", gen: 4 },
+                                        { id: "binyamin_adiel_mushkal", name: "בנימין־זאב ועדיאל מושכל", gen: 4 },
                                         {
                                             id: "shmuel_renana_mushkal",
                                             name: "שמואל ורננה מושכל",
@@ -692,7 +710,7 @@
                                             ]
                                         },
                                         { id: "yisrael_baruch_m", name: "ישראל־ברוך", gen: 4 },
-                                        { id: "mevaseret_yinon_glazer", name: "מבשרת שמחה וינון גלזר", gen: 4 },
+                                        { id: "mevaseret_yinon_glazer", name: "מבשרת־שמחה וינון גלזר", gen: 4 },
                                         { id: "pirchia_netanel_neeman", name: "פרחיה ונתנאל נאמן", gen: 4 },
                                         { id: "levana_mushkal_1", name: "לבנה", gen: 4 },
                                         { id: "sara_mushkal_1", name: "שרה", gen: 4 },
@@ -703,7 +721,7 @@
                         },
                         {
                             id: "yisrael_batya_kfir",
-                            name: "ישראל ובתיה",
+                            name: "ישראל ובתיה כפיר",
                             gen: 2,
                             dates: "1947",
                             location: "קשת",
@@ -722,7 +740,7 @@
                                 },
                                 {
                                     id: "moria_chagai_katz",
-                                    name: "מוריה רחל וחגי כץ",
+                                    name: "מוריה־רחל וחגי כץ",
                                     gen: 3,
                                     location: "הר ברכה",
                                     children: [
@@ -783,7 +801,7 @@
                                 },
                                 {
                                     id: "ora_shlomi_wurmstein",
-                                    name: "אורה הדסה ושלומי וורמשטיין",
+                                    name: "אורה־הדסה ושלומי וורמשטיין",
                                     gen: 3,
                                     location: "מגדלים",
                                     children: [
@@ -797,13 +815,13 @@
                                 },
                                 {
                                     id: "yitzchak_chaim_kfir",
-                                    name: "יצחק חיים",
+                                    name: "יצחק חיים כפיר",
                                     gen: 3,
                                     location: "בית זית"
                                 },
                                 {
                                     id: "ayelet_tehila_kfir",
-                                    name: "איילת תהילה",
+                                    name: "איילת תהילה כפיר",
                                     gen: 3,
                                     location: "ירושלים"
                                 },
@@ -820,7 +838,7 @@
                                 },
                                 {
                                     id: "mordechai_dana_kfir",
-                                    name: "מרדכי יהודה שרגא ודנה כפיר",
+                                    name: "מרדכי־יהודה־שרגא ודנה כפיר",
                                     gen: 3,
                                     children: [
                                         { id: "reuven_ilay_1", name: "ראובן־עילאי", gen: 4 }
@@ -834,7 +852,7 @@
                                 },
                                 {
                                     id: "sara_avraham_zisno",
-                                    name: "שרה אודיה ואברהם זיסנו",
+                                    name: "שרה־אודיה ואברהם זיסנו",
                                     gen: 3
                                 }
                             ]
@@ -866,7 +884,7 @@
                 },
                 {
                     id: "shmuel_firer",
-                    name: "6. שמואל (מוללו) וגבריאלה גולדה (גבי) פירר",
+                    name: "6. שמואל (מוללו) וגבריאלה־גולדה (גבי) פירר",
                     gen: 1,
                     dates: "שמואל: 1920 - | גבריאלה: 1928 -",
                     location: "קלן, גרמניה > כפר פינס > ירושלים > ניו יורק, ארה\"ב > רעננה",
@@ -1182,9 +1200,26 @@
 
         function applyFiltersAndRender() {
             const branchFilter = document.getElementById("branchFilter");
+            const printTreeBtn = document.getElementById("printTreeBtn");
+            const printTreeBtnText = document.getElementById("printTreeBtnText");
             const searchBanner = document.getElementById("searchStatusBanner");
             const searchStatusText = document.getElementById("searchStatusText");
             const container = document.getElementById("treeContainer");
+
+            // עדכון דינמי של כפתור ההדפסה בהתאם לענף הנבחר
+            if (branchFilter && printTreeBtn && printTreeBtnText) {
+                if (branchFilter.value === "all") {
+                    printTreeBtnText.textContent = "הדפסת הכל";
+                    printTreeBtn.title = "הדפסת כל עץ היוחסין (כל הענפים)";
+                    printTreeBtn.classList.remove("bg-emerald-600", "hover:bg-emerald-700", "ring-2", "ring-emerald-300");
+                    printTreeBtn.classList.add("bg-slate-700", "hover:bg-slate-800");
+                } else {
+                    printTreeBtnText.textContent = "הדפסת הענף";
+                    printTreeBtn.title = "הדפסת הענף הנבחר בלבד";
+                    printTreeBtn.classList.remove("bg-slate-700", "hover:bg-slate-800");
+                    printTreeBtn.classList.add("bg-emerald-600", "hover:bg-emerald-700", "ring-2", "ring-emerald-300");
+                }
+            }
 
             let baseData = getFilteredData();
 
