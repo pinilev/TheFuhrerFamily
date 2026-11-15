@@ -58,6 +58,19 @@
             
             <!-- Controls -->
             <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+                <!-- Search Input -->
+                <div class="relative flex-1 sm:flex-initial">
+                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-48 md:w-56 py-1.5 pr-7 pl-7 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-700">
+                    <svg class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <button id="clearSearchBtn" class="hidden text-slate-400 hover:text-slate-600 absolute left-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-slate-200 transition" title="נקה חיפוש">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
                 <!-- Branch Filter -->
                 <div class="relative">
                     <select id="branchFilter" class="py-1.5 px-2.5 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-700">
@@ -114,20 +127,12 @@
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
+        <div id="searchStatusBanner" class="hidden mb-3 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-between">
+            <span id="searchStatusText"></span>
+            <button id="resetSearchBannerBtn" class="text-blue-600 hover:text-blue-800 underline font-bold">הצג הכל</button>
+        </div>
         <div id="treeContainer" class="space-y-2.5"></div>
     </main>
-
-    <!-- Detail Modal -->
-    <div id="detailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
-        <div class="bg-white rounded-xl max-w-md w-full p-5 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[85vh] overflow-y-auto">
-            <button id="closeModal" class="absolute top-3 left-3 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
 
     <!-- Email Contact Modal -->
     <div id="emailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
@@ -909,6 +914,59 @@
         };
 
         const expandedState = {};
+        let currentSearchQuery = "";
+
+        // הדגשת טקסט תואם לחיפוש
+        function highlightText(text, query) {
+            if (!text || !query) return text || "";
+            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+            return text.replace(regex, '<mark class="bg-amber-200 text-slate-900 px-0.5 rounded font-extrabold">$1</mark>');
+        }
+
+        // סינון עץ הנתונים לפי שאילתת חיפוש ושמירה על נתיב האבות
+        function filterTreeBySearch(node, query) {
+            const q = query.trim().toLowerCase();
+            if (!q) return { node, matchCount: 0 };
+
+            let localMatchCount = 0;
+
+            function traverse(curr) {
+                const nameMatch = curr.name && curr.name.toLowerCase().includes(q);
+                const datesMatch = curr.dates && curr.dates.toLowerCase().includes(q);
+                const locationMatch = curr.location && curr.location.toLowerCase().includes(q);
+                const isDirectMatch = nameMatch || datesMatch || locationMatch;
+
+                if (isDirectMatch) {
+                    localMatchCount++;
+                }
+
+                let filteredChildren = [];
+                if (curr.children && curr.children.length > 0) {
+                    for (const child of curr.children) {
+                        const childRes = traverse(child);
+                        if (childRes) {
+                            filteredChildren.push(childRes);
+                        }
+                    }
+                }
+
+                if (isDirectMatch || filteredChildren.length > 0) {
+                    const cloned = { ...curr, isDirectMatch };
+                    if (filteredChildren.length > 0) {
+                        cloned.children = filteredChildren;
+                    } else {
+                        delete cloned.children;
+                    }
+                    return cloned;
+                }
+
+                return null;
+            }
+
+            const filteredRoot = traverse(node);
+            return { node: filteredRoot, matchCount: localMatchCount };
+        }
 
         // המרת מספר דור לאות עברית (א, ב, ג, ד, ה)
         function getHebrewGen(gen) {
@@ -959,36 +1017,20 @@
         function renderNode(node) {
             const hasChildren = node.children && node.children.length > 0;
             const isExpanded = !!expandedState[node.id];
-            
-            const hasDetails = !!(node.dates || node.marriageDate || node.location || node.bio);
-            const isUnknownNode = !hasDetails;
             const isRootNode = node.id === 'root';
+            const isHighlightedCard = currentSearchQuery && node.isDirectMatch;
             
             const card = document.createElement("div");
             card.id = `node-${node.id}`;
-            card.className = `node-card rounded-lg shadow-sm border border-slate-200 p-2.5 transition-all duration-200 gen-${node.gen} mb-2 relative`;
+            card.className = `node-card rounded-lg shadow-sm border ${isHighlightedCard ? 'border-amber-400 ring-2 ring-amber-200/70 bg-amber-50/30' : 'border-slate-200'} p-2.5 transition-all duration-200 gen-${node.gen} mb-2 relative`;
 
             const titleSizeClass = node.id === 'root' ? 'text-[17px] sm:text-[19px] font-black text-slate-900 tracking-wide' : 
                                  node.gen === 0 ? 'text-xs sm:text-sm font-black text-slate-900 tracking-wide' : 
                                  (node.gen >= 4 ? 'text-[11px] font-bold text-slate-900' : 'text-xs sm:text-sm font-bold text-slate-900');
 
-            let infoButtonContent = isUnknownNode ? `
-                <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-            ` : `
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-            `;
-
-            let infoButtonClass = isUnknownNode ? 
-                "w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 rounded-lg transition flex items-center justify-center shadow-sm" : 
-                "w-7 h-7 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-lg transition flex items-center justify-center shadow-sm";
+            const displayName = highlightText(node.name, currentSearchQuery);
+            const displayDates = highlightText(node.dates, currentSearchQuery);
+            const displayLocation = highlightText(node.location, currentSearchQuery);
 
             let html = `
                 <div class="flex items-center justify-between gap-2">
@@ -996,27 +1038,27 @@
                         <!-- Empty left spacer -->
                     </div>
 
-                    <div class="flex-1 cursor-pointer flex flex-col gap-0.5" onclick="openModal('${node.id}')">
+                    <div class="flex-1 flex flex-col gap-0.5">
                         <div class="flex items-center gap-1.5 flex-wrap">
                             ${node.gen > 0 ? `
                                 <span class="node-badge text-[10px] font-bold px-1.5 py-0.2 rounded badge-gen-${node.gen} shrink-0">
                                     ${getHebrewGen(node.gen)}
                                 </span>
                             ` : ''}
-                            <h3 class="node-title ${titleSizeClass} leading-tight hover:text-blue-600 transition">
-                                ${node.name}
+                            <h3 class="node-title ${titleSizeClass} leading-tight">
+                                ${displayName}
                             </h3>
                         </div>
 
                         ${node.dates ? `
                             <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
-                                <span>🗓️</span> <span>${node.dates}</span>
+                                <span>🗓️</span> <span>${displayDates}</span>
                             </div>
                         ` : ''}
 
                         ${node.location ? `
                             <div class="text-[11px] text-slate-600 font-medium flex items-center gap-1 mt-0.5">
-                                <span>📍</span> <span>${node.location}</span>
+                                <span>📍</span> <span>${displayLocation}</span>
                             </div>
                         ` : ''}
                     </div>
@@ -1035,9 +1077,6 @@
                                 </svg>
                             </button>
                         ` : '')}
-                        <button onclick="openModal('${node.id}'); event.stopPropagation();" class="${infoButtonClass}" title="מידע נוסף">
-                            ${infoButtonContent}
-                        </button>
                     </div>
                 </div>
             `;
@@ -1096,75 +1135,88 @@
             }
         }
 
-        function openModal(nodeId) {
-            const node = findNodeById(rawFamilyData, nodeId);
-            if (!node) return;
-
-            const modalContent = document.getElementById("modalContent");
-            
-            let childrenDisplayHtml = '';
-            if (node.children && node.children.length > 0) {
-                let formattedChildren = node.children.map(c => {
-                    return `<span class="bg-slate-100 text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-200 font-medium">${c.name}</span>`;
-                }).join('');
-
-                childrenDisplayHtml = `
-                    <div class="pt-1.5">
-                        <h4 class="font-bold text-xs text-slate-700 mb-1.5">👨‍👩‍👧‍👦 צאצאים ישירים (${node.children.length}):</h4>
-                        <div class="flex flex-wrap gap-1">
-                            ${formattedChildren}
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (modalContent) {
-                modalContent.innerHTML = `
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            ${node.gen > 0 ? `
-                                <span class="text-[11px] font-bold px-2 py-0.5 rounded badge-gen-${node.gen}">
-                                    דור ${getHebrewGen(node.gen)}
-                                </span>
-                            ` : ''}
-                            <h2 class="text-base font-extrabold text-slate-900">${node.name}</h2>
-                        </div>
-
-                        ${node.marriageDate ? `
-                            <div class="bg-slate-50 p-2.5 rounded-md border border-slate-200 text-xs">
-                                <span class="font-bold text-slate-700">💍 נישואין:</span> ${node.marriageDate}
-                            </div>
-                        ` : ''}
-
-                        ${node.bio ? `
-                            <div class="bg-blue-50/60 p-3 rounded-lg border border-blue-100 text-xs leading-relaxed text-slate-800">
-                                <span class="font-bold text-blue-900 block mb-1">📜 ביוגרפיה והיסטוריה:</span>
-                                ${node.bio}
-                            </div>
-                        ` : ''}
-
-                        ${childrenDisplayHtml}
-                    </div>
-                `;
-            }
-
-            const detailModal = document.getElementById("detailModal");
-            if (detailModal) detailModal.classList.remove("hidden");
-        }
-
         function setupBranchFilter() {
             const branchFilter = document.getElementById("branchFilter");
 
             if (branchFilter) {
                 branchFilter.addEventListener("change", () => {
-                    const currentData = getFilteredData();
-                    if (branchFilter.value === "all") {
-                        initInitialState(currentData);
-                    } else {
-                        setAllExpanded(currentData, true);
-                    }
-                    renderTreeWithData(currentData);
+                    applyFiltersAndRender();
                 });
+            }
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById("searchInput");
+            const clearSearchBtn = document.getElementById("clearSearchBtn");
+            const resetSearchBannerBtn = document.getElementById("resetSearchBannerBtn");
+
+            function clearSearch() {
+                if (searchInput) searchInput.value = "";
+                currentSearchQuery = "";
+                if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+                applyFiltersAndRender();
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener("input", (e) => {
+                    currentSearchQuery = e.target.value;
+                    if (clearSearchBtn) {
+                        if (currentSearchQuery.trim().length > 0) {
+                            clearSearchBtn.classList.remove("hidden");
+                        } else {
+                            clearSearchBtn.classList.add("hidden");
+                        }
+                    }
+                    applyFiltersAndRender();
+                });
+            }
+
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener("click", clearSearch);
+            }
+
+            if (resetSearchBannerBtn) {
+                resetSearchBannerBtn.addEventListener("click", clearSearch);
+            }
+        }
+
+        function applyFiltersAndRender() {
+            const branchFilter = document.getElementById("branchFilter");
+            const searchBanner = document.getElementById("searchStatusBanner");
+            const searchStatusText = document.getElementById("searchStatusText");
+            const container = document.getElementById("treeContainer");
+
+            let baseData = getFilteredData();
+
+            if (currentSearchQuery.trim() !== "") {
+                const { node: searchedNode, matchCount } = filterTreeBySearch(baseData, currentSearchQuery);
+                
+                if (searchBanner && searchStatusText) {
+                    searchBanner.classList.remove("hidden");
+                    searchStatusText.textContent = matchCount > 0 
+                        ? `נמצאו ${matchCount} תוצאות עבור "${currentSearchQuery.trim()}"` 
+                        : `לא נמצאו תוצאות עבור "${currentSearchQuery.trim()}"`;
+                }
+
+                if (searchedNode) {
+                    setAllExpanded(searchedNode, true);
+                    renderTreeWithData(searchedNode);
+                } else if (container) {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-xl border border-slate-200 p-8 text-center shadow-sm">
+                            <p class="text-slate-600 font-bold text-sm mb-1">לא נמצאו התאמות לחיפוש "${currentSearchQuery.trim()}"</p>
+                            <p class="text-slate-400 text-xs">נסו לחפש שם פרטי, שם משפחה, יישוב או שנת לידה/פטירה</p>
+                        </div>
+                    `;
+                }
+            } else {
+                if (searchBanner) searchBanner.classList.add("hidden");
+                if (branchFilter && branchFilter.value === "all") {
+                    initInitialState(baseData);
+                } else {
+                    setAllExpanded(baseData, true);
+                }
+                renderTreeWithData(baseData);
             }
         }
 
@@ -1403,27 +1455,11 @@
             initInitialState(rawFamilyData);
             renderTree();
             setupBranchFilter();
+            setupSearch();
 
             const printTreeBtn = document.getElementById("printTreeBtn");
             if (printTreeBtn) {
                 printTreeBtn.addEventListener("click", openPrintWindow);
-            }
-
-            const closeModal = document.getElementById("closeModal");
-            if (closeModal) {
-                closeModal.addEventListener("click", () => {
-                    const detailModal = document.getElementById("detailModal");
-                    if (detailModal) detailModal.classList.add("hidden");
-                });
-            }
-
-            const detailModal = document.getElementById("detailModal");
-            if (detailModal) {
-                detailModal.addEventListener("click", (e) => {
-                    if (e.target.id === "detailModal") {
-                        detailModal.classList.add("hidden");
-                    }
-                });
             }
 
             const emailContactBtn = document.getElementById("emailContactBtn");
