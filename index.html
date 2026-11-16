@@ -12,14 +12,15 @@
             font-family: 'Assistant', sans-serif;
             background-color: #f8fafc;
         }
-        .gen-0 { border-top: 4px solid #0d9488; background-color: #ffffff; }
+        /* צבע ייעודי ומובחן (בורדו-ארגמן) לשורש המשפחה - פנחס ואלטה-חנה פירר */
+        .gen-0 { border-top: 4px solid #881337; background-color: #fff1f2; border-color: #fecdd3; }
         .gen-1 { border-top: 4px solid #2563eb; background-color: #ffffff; }
         .gen-2 { border-top: 4px solid #16a34a; background-color: #ffffff; }
         .gen-3 { border-top: 4px solid #d97706; background-color: #ffffff; }
         .gen-4 { border-top: 4px solid #9333ea; background-color: #ffffff; }
         .gen-5 { border-top: 4px solid #db2777; background-color: #ffffff; }
 
-        .badge-gen-0 { background-color: #0d9488; color: white; }
+        .badge-gen-0 { background-color: #881337; color: white; }
         .badge-gen-1 { background-color: #2563eb; color: white; }
         .badge-gen-2 { background-color: #16a34a; color: white; }
         .badge-gen-3 { background-color: #d97706; color: white; }
@@ -40,7 +41,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen text-slate-800 text-sm">
+<body class="bg-slate-100 min-h-screen text-slate-800 text-base">
 
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
@@ -54,7 +55,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
+                        <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
                     </div>
                 </div>
 
@@ -78,12 +79,12 @@
             <div class="flex flex-wrap items-center gap-2 w-full">
                 <!-- Search Input Container -->
                 <div class="relative flex-1 sm:flex-initial">
-                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-48 md:w-56 py-1.5 pr-7 pl-7 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
-                    <svg class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-52 md:w-60 py-1.5 pr-8 pl-7 text-sm bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
+                    <svg class="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                     <button id="clearSearchBtn" class="hidden text-slate-400 hover:text-slate-600 absolute left-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-slate-200 transition" title="נקה חיפוש">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
@@ -93,17 +94,17 @@
                 <div class="hidden sm:block h-6 w-0.5 bg-slate-400 rounded-full mx-1 select-none" aria-hidden="true"></div>
 
                 <!-- Branch Filter Container -->
-                <div class="relative flex items-center bg-emerald-50/70 border border-emerald-200/90 rounded-md pr-2 pl-0.5 py-0.5 shadow-2xs">
-                    <span class="text-[11px] font-bold text-emerald-800 ml-1.5 flex items-center gap-1 shrink-0">
+                <div class="relative flex items-center bg-emerald-50/70 border border-emerald-200/90 rounded-md pr-2.5 pl-1 py-0.5 shadow-2xs">
+                    <span class="text-xs font-bold text-emerald-800 ml-1.5 flex items-center gap-1 shrink-0">
                         <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                         </svg>
                         <span>ענף:</span>
                     </span>
-                    <select id="branchFilter" class="py-1 px-2 text-xs bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer">
+                    <select id="branchFilter" class="py-1 px-2 text-sm bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer">
                         <option value="all">כל הענפים (7 צאצאים)</option>
-                        <option value="tova_klotz">1. טובה־יונה (טוני) ושלמה זלמן קלוץ</option>
-                        <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה גוסטי פירר</option>
+                        <option value="tova_klotz">1. טובה־יונה (טוני) ושלמה־זלמן קלוץ</option>
+                        <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה־גוסטי פירר</option>
                         <option value="menachem_firer">3. מנחם־מנדל ושרה פירר</option>
                         <option value="liza_pitovsky">4. ליזה ומשה פיטובסקי</option>
                         <option value="rachel_laufer">5. רחל ואריה לאופר</option>
@@ -115,8 +116,8 @@
                 <!-- Divider before Action Buttons -->
                 <div class="hidden sm:block h-5 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
 
-                <button id="printTreeBtn" class="px-2.5 py-1.5 text-[11px] font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5" title="הדפסת כל עץ היוחסין">
-                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button id="printTreeBtn" class="px-3 py-1.5 text-xs font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5" title="הדפסת כל עץ היוחסין">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 6 2 18 2 18 9"></polyline>
                         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                         <rect x="6" y="14" width="12" height="8"></rect>
@@ -130,13 +131,13 @@
     <!-- Dynamic Stats Bar Header -->
     <section class="bg-slate-800 text-white py-2 shadow-inner border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
                 <div class="flex items-center gap-1.5">
                     <span class="font-bold text-slate-300">📊 שושלת:</span>
-                    <span class="bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalPersons">סופר...</span>
-                    <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalDescendants">סופר...</span>
+                    <span class="bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-bold" id="totalPersons">סופר...</span>
+                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-bold" id="totalDescendants">סופר...</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-1" id="genBreakdown">
+                <div class="flex flex-wrap items-center gap-1.5" id="genBreakdown">
                     <!-- Dynamic Generation Breakdown -->
                 </div>
             </div>
@@ -145,7 +146,7 @@
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
-        <div id="searchStatusBanner" class="hidden mb-3 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-between">
+        <div id="searchStatusBanner" class="hidden mb-3 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-lg text-sm font-semibold flex items-center justify-between">
             <span id="searchStatusText"></span>
             <button id="resetSearchBannerBtn" class="text-blue-600 hover:text-blue-800 underline font-bold">הצג הכל</button>
         </div>
@@ -193,21 +194,21 @@
             id: "root",
             name: "פנחס ואלטה־חנה פירר",
             gen: 0,
-            dates: "פנחס: 1882 - 1953 | אלטה־חנה: 1883 - 1970",
+            dates: "פנחס: 1882 - 23/1/1953 (ז' שבט תשי\"ג) | אלטה־חנה: 1883 - 12/1/1970 (ה' שבט תש\"ל)",
             location: "צאנז, פולין > אנטוורפן, בלגיה > קלן, גרמניה > כפר פינס > ירושלים",
             children: [
                 {
                     id: "tova_klotz",
-                    name: "1. טובה־יונה (טוני) ושלמה זלמן קלוץ",
+                    name: "1. טובה־יונה (טוני) ושלמה־זלמן קלוץ",
                     gen: 1,
                     dates: "טובה־יונה: 1906 - 1979 | שלמה זלמן: - 1972",
                     location: "צאנז, פולין > אנטוורפן, בלגיה"
                 },
                 {
                     id: "avraham_firer",
-                    name: "2. אברהם־אריה (לייביש) וגולדה גוסטי פירר",
+                    name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי פירר",
                     gen: 1,
-                    dates: "1907 - 2009",
+                    dates: "אברהם־אריה: 1907 - 2009",
                     location: "צאנז, פולין > אנטוורפן, בלגיה > קלן, גרמניה > שוויץ > ניו יורק, ארה\"ב",
                     children: [
                         {
@@ -220,7 +221,7 @@
                             id: "chaim_breindel_firer",
                             name: "חיים ובריינדל פירר",
                             gen: 2,
-                            location: "ניו יורק, ארה\"ב"
+                            location: "ניו יורק, ארה\"ב > פלורידה, ארה\"ב"
                         }
                     ]
                 },
@@ -476,7 +477,7 @@
                                     children: [
                                         {
                                             id: "meir_shifra_g",
-                                            name: "מאיר יצחק ושפרה",
+                                            name: "מאיר־יצחק ושפרה",
                                             gen: 4,
                                             location: "ירושלים",
                                             children: [
@@ -496,10 +497,10 @@
                                             children: [
                                                 { id: "elyashiv_yisrael_1", name: "אלישיב־ישראל", gen: 5 },
                                                 { id: "yedidya_shimon_1", name: "ידידיה־שמעון", gen: 5 },
-                                                { id: "hadas_tchiya_1", name: "הדס תחיה", gen: 5 },
+                                                { id: "hadas_tchiya_1", name: "הדס־תחיה", gen: 5 },
                                                 { id: "amiel_j_1", name: "עמיאל", gen: 5 },
                                                 { id: "tohar_j_1", name: "טוהר", gen: 5 },
-                                                { id: "emuna_tama_1", name: "אמונה תמה", gen: 5 },
+                                                { id: "emuna_tama_1", name: "אמונה־תמה", gen: 5 },
                                                 { id: "halleli_tzion_1", name: "הללי־ציון", gen: 5 }
                                             ]
                                         },
@@ -527,7 +528,7 @@
                                         },
                                         {
                                             id: "ziv_emuna_g",
-                                            name: "זיו ואמונה",
+                                            name: "זיו ואמונה גרשנזון",
                                             gen: 4,
                                             location: "ירושלים",
                                             children: [
@@ -547,14 +548,14 @@
                                     children: [
                                         {
                                             id: "refael_moria_k",
-                                            name: "רפאל־אריאל ומוריה",
+                                            name: "רפאל־אריאל ומוריה כפיר",
                                             gen: 4,
                                             location: "תפוח",
                                             children: [
                                                 { id: "malachi_k_1", name: "מלאכי", gen: 5 }
                                             ]
                                         },
-                                        { id: "oz_menachem_1", name: "עוז מנחם", gen: 4 },
+                                        { id: "oz_menachem_1", name: "עוז־מנחם", gen: 4 },
                                         { id: "raz_k_1", name: "רז", gen: 4 },
                                         { id: "tzipora_k_1", name: "צפורה", gen: 4 },
                                         { id: "hillel_sara_1", name: "הלל־שרה", gen: 4 }
@@ -591,7 +592,7 @@
                                     gen: 3,
                                     location: "פתח תקווה",
                                     children: [
-                                        { id: "noam_rivka_1", name: "נועם רבקה", gen: 4 },
+                                        { id: "noam_rivka_1", name: "נועם־רבקה", gen: 4 },
                                         { id: "ori_yosef_1", name: "אורי־יוסף", gen: 4 },
                                         { id: "boaz_b_1", name: "בועז", gen: 4 },
                                         { id: "efraim_b_1", name: "אפרים", gen: 4 }
@@ -625,7 +626,7 @@
                                     children: [
                                         { id: "tohar_priel_gueta", name: "טוהר־שרה ופריאל גואטה", gen: 4 },
                                         { id: "kinar_binyamin_chaim", name: "כינר־בנימין־חיים", gen: 4 },
-                                        { id: "neriya_menachem", name: "נריה מנחם", gen: 4 }
+                                        { id: "neriya_menachem", name: "נריה־מנחם", gen: 4 }
                                     ]
                                 },
                                 {
@@ -636,7 +637,7 @@
                                     children: [
                                         {
                                             id: "sara_lior_somech",
-                                            name: "שרה חיה וליאור סומך",
+                                            name: "שרה־חיה וליאור סומך",
                                             gen: 4,
                                             children: [
                                                 { id: "tzofia_somech_1", name: "צופיה", gen: 5 }
@@ -681,9 +682,9 @@
                                     name: "שלמה ויונינה כפיר",
                                     gen: 3,
                                     children: [
-                                        { id: "nofar_choshen_1", name: "נופר חושן", gen: 4 },
+                                        { id: "nofar_choshen_1", name: "נופר־חושן", gen: 4 },
                                         { id: "erez_yehuda_1", name: "ארז־יהודה", gen: 4 },
-                                        { id: "elinor_julia_1", name: "אלינור ג'וליה", gen: 4 }
+                                        { id: "elinor_julia_1", name: "אלינור־ג'וליה", gen: 4 }
                                     ]
                                 }
                             ]
@@ -763,12 +764,12 @@
                                     location: "פסגות",
                                     children: [
                                         { id: "ori_kfir_1", name: "אורי", gen: 4 },
-                                        { id: "yehuda_tzvi_kfir", name: "יהודה צבי", gen: 4 },
+                                        { id: "yehuda_tzvi_kfir", name: "יהודה־צבי", gen: 4 },
                                         { id: "reut_kfir_1", name: "רעות", gen: 4 },
                                         { id: "emuna_kfir_1", name: "אמונה", gen: 4 },
                                         { id: "shvut_chana_1", name: "שבות־חנה", gen: 4 },
-                                        { id: "raaya_ahuva_1", name: "רעיה אהובה", gen: 4 },
-                                        { id: "eliyah_menachem_1", name: "אליה מנחם", gen: 4 }
+                                        { id: "raaya_ahuva_1", name: "רעיה־אהובה", gen: 4 },
+                                        { id: "eliyah_menachem_1", name: "אליה־מנחם", gen: 4 }
                                     ]
                                 },
                                 {
@@ -806,11 +807,11 @@
                                     location: "מגדלים",
                                     children: [
                                         { id: "tzuri_yehuda_1", name: "צורי־יהודה", gen: 4 },
-                                        { id: "david_menachem_w", name: "דוד מנחם", gen: 4 },
+                                        { id: "david_menachem_w", name: "דוד־מנחם", gen: 4 },
                                         { id: "kave_w_1", name: "קווה", gen: 4 },
                                         { id: "chever_w_1", name: "חבר", gen: 4 },
                                         { id: "shir_chana_1", name: "שיר־חנה", gen: 4 },
-                                        { id: "roni_golda_1", name: "רוני גולדה", gen: 4 }
+                                        { id: "roni_golda_1", name: "רוני־גולדה", gen: 4 }
                                     ]
                                 },
                                 {
@@ -833,7 +834,7 @@
                                         { id: "yishai_moshe_1", name: "ישי־משה", gen: 4 },
                                         { id: "nachshon_meir_1", name: "נחשון־מאיר", gen: 4 },
                                         { id: "talya_nisimi_1", name: "טליה", gen: 4 },
-                                        { id: "mordechai_bnaya_1", name: "מרדכי בניה", gen: 4 }
+                                        { id: "mordechai_bnaya_1", name: "מרדכי־בניה", gen: 4 }
                                     ]
                                 },
                                 {
@@ -866,7 +867,7 @@
                     dates: "ליזה: 1912 - | משה: 1900 - 1960",
                     location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
                     children: [
-                        { id: "miryam_shlomo_natan", name: "מרים ושלמה נתן", gen: 2 },
+                        { id: "miryam_shlomo_natan", name: "מרים ושלמה (פיטר) נתן", gen: 2 },
                         { id: "michaela_yosef_swid", name: "מיכאלה ויוסף סוויד", gen: 2 },
                         { id: "itamar_liora_pitovsky", name: "איתמר וליאורה פיטובסקי", gen: 2 }
                     ]
@@ -893,13 +894,15 @@
                             id: "monika_moshe_mechtinger",
                             name: "מוניקה ומשה מכטינגר",
                             gen: 2,
-                            dates: "מוניקה: 1956 - | משה: 1954 -"
+                            dates: "מוניקה: 1956 - | משה: 1954 -",
+                            location: "ישראל"
                         },
                         {
                             id: "dafna_michael_eidman",
                             name: "דפנה ומייקל איידמן",
                             gen: 2,
-                            dates: "דפנה: 1959 - | מייקל: 1954 -"
+                            dates: "דפנה: 1959 - | מייקל: 1954 -",
+                            location: "ניו ג'רזי, ארה\"ב"
                         }
                     ]
                 },
@@ -1040,11 +1043,11 @@
             
             const card = document.createElement("div");
             card.id = `node-${node.id}`;
-            card.className = `node-card rounded-lg shadow-sm border ${isHighlightedCard ? 'border-amber-400 ring-2 ring-amber-200/70 bg-amber-50/30' : 'border-slate-200'} p-2.5 transition-all duration-200 gen-${node.gen} mb-2 relative`;
+            card.className = `node-card rounded-lg shadow-sm border ${isHighlightedCard ? 'border-amber-400 ring-2 ring-amber-200/70 bg-amber-50/30' : (isRootNode ? 'border-rose-200' : 'border-slate-200')} p-3 transition-all duration-200 gen-${node.gen} mb-2 relative`;
 
-            const titleSizeClass = node.id === 'root' ? 'text-[17px] sm:text-[19px] font-black text-slate-900 tracking-wide' : 
-                                 node.gen === 0 ? 'text-xs sm:text-sm font-black text-slate-900 tracking-wide' : 
-                                 (node.gen >= 4 ? 'text-[11px] font-bold text-slate-900' : 'text-xs sm:text-sm font-bold text-slate-900');
+            const titleSizeClass = node.id === 'root' ? 'text-[19px] sm:text-[22px] font-black text-rose-950 tracking-wide' : 
+                                 node.gen === 0 ? 'text-sm sm:text-base font-black text-rose-950 tracking-wide' : 
+                                 (node.gen >= 4 ? 'text-[13px] sm:text-sm font-bold text-slate-900' : 'text-sm sm:text-base font-bold text-slate-900');
 
             const displayName = highlightText(node.name, currentSearchQuery);
             const displayDates = highlightText(node.dates, currentSearchQuery);
@@ -1059,23 +1062,23 @@
                     <div class="flex-1 flex flex-col gap-0.5">
                         <div class="flex items-center gap-1.5 flex-wrap">
                             ${node.gen > 0 ? `
-                                <span class="node-badge text-[10px] font-bold px-1.5 py-0.2 rounded badge-gen-${node.gen} shrink-0">
+                                <span class="node-badge text-xs font-bold px-2 py-0.5 rounded badge-gen-${node.gen} shrink-0">
                                     ${getHebrewGen(node.gen)}
                                 </span>
                             ` : ''}
-                            <h3 class="node-title ${titleSizeClass} leading-tight">
+                            <h3 class="node-title ${titleSizeClass} leading-snug">
                                 ${displayName}
                             </h3>
                         </div>
 
                         ${node.dates ? `
-                            <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                            <div class="text-xs sm:text-[13px] ${isRootNode ? 'text-rose-900/85' : 'text-slate-500'} font-medium flex items-center gap-1 mt-0.5">
                                 <span>🗓️</span> <span>${displayDates}</span>
                             </div>
                         ` : ''}
 
                         ${node.location ? `
-                            <div class="text-[11px] text-slate-600 font-medium flex items-center gap-1 mt-0.5">
+                            <div class="text-xs sm:text-[13px] ${isRootNode ? 'text-rose-950/90' : 'text-slate-600'} font-medium flex items-center gap-1 mt-0.5">
                                 <span>📍</span> <span>${displayLocation}</span>
                             </div>
                         ` : ''}
@@ -1083,7 +1086,7 @@
 
                     <div class="flex items-center gap-1.5 shrink-0">
                         ${isRootNode ? `
-                            <button onclick="collapseAllBranches(event)" class="w-7 h-7 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-700 transition flex items-center justify-center border border-emerald-400 shadow-sm" title="כווץ הכל">
+                            <button onclick="collapseAllBranches(event)" class="w-7 h-7 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-800 transition flex items-center justify-center border border-rose-300 shadow-sm" title="כווץ הכל">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
                                 </svg>
@@ -1394,7 +1397,9 @@
                             break-inside: avoid;
                             page-break-inside: avoid;
                         }
-                        .gen-0 { border-right: 4px solid #0d9488; }
+                        .gen-0 { border-right: 4px solid #881337; }
+                        .gen-0 > .node-item { background-color: #fff1f2; border-color: #fecdd3; }
+                        .gen-0 > .node-item .root-title { color: #881337; }
                         .gen-1 { border-right: 4px solid #2563eb; }
                         .gen-2 { border-right: 4px solid #16a34a; }
                         .gen-3 { border-right: 4px solid #d97706; }
