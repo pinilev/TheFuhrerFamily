@@ -148,7 +148,6 @@
     <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
         <div id="searchStatusBanner" class="hidden mb-3 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-lg text-sm font-semibold flex items-center justify-between">
             <span id="searchStatusText"></span>
-            <button id="resetSearchBannerBtn" class="text-blue-600 hover:text-blue-800 underline font-bold">הצג הכל</button>
         </div>
         <div id="treeContainer" class="space-y-2.5"></div>
     </main>
@@ -189,7 +188,7 @@
     </div>
 
     <script>
-        // Data derived directly from פירר ראשי.pdf
+        // Data derived directly from פירר ראשי.pdf + הוספות מהמסמך המשלים
         const rawFamilyData = {
             id: "root",
             name: "פנחס ואלטה־חנה פירר",
@@ -215,6 +214,7 @@
                             id: "shmuel_dvora_firer",
                             name: "שמואל ודבורה־חיה פירר",
                             gen: 2,
+                            dates: "שמואל: 1940",
                             location: "שוויץ > ניו יורק, ארה\"ב",
                             children: [
                                 { id: "sara_shmuel_firer", name: "שרה", gen: 3 },
@@ -226,6 +226,7 @@
                             id: "chaim_breindel_firer",
                             name: "חיים ובריינדל פירר",
                             gen: 2,
+                            dates: "חיים: 1946",
                             location: "ניו יורק, ארה\"ב > פלורידה, ארה\"ב",
                             children: [
                                 { id: "aviva_chaim_firer", name: "אביבה", gen: 3 },
@@ -257,28 +258,28 @@
                                     children: [
                                         {
                                             id: "yisrael_sara_soch",
-                                            name: "ישראל ושרה לאה סוכצ'בסקי",
+                                            name: "ישראל ושרה־לאה סוכצ'בסקי",
                                             gen: 4,
                                             children: [
-                                                { id: "simcha_bunim_1", name: "שמחה בונם", gen: 5 },
+                                                { id: "simcha_bunim_1", name: "שמחה־בונם", gen: 5 },
                                                 { id: "malka_soch_1", name: "מלכה", gen: 5 },
-                                                { id: "yitzchak_meir_1", name: "יצחק מאיר", gen: 5 },
+                                                { id: "yitzchak_meir_1", name: "יצחק־מאיר", gen: 5 },
                                                 { id: "shmuel_yehuda_1", name: "שמואל־יהודה", gen: 5 },
                                                 { id: "shlomo_soch_1", name: "שלמה", gen: 5 },
-                                                { id: "tzvi_elimelech_1", name: "צבי אלימלך", gen: 5 },
+                                                { id: "tzvi_elimelech_1", name: "צבי־אלימלך", gen: 5 },
                                                 { id: "yuta_hena_1", name: "יוטא־הענא", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "avraham_ester_soch",
-                                            name: "אברהם מרדכי ואסתר ליבה סוכצ'בסקי",
+                                            name: "אברהם־מרדכי ואסתר־ליבה סוכצ'בסקי",
                                             gen: 4,
                                             children: [
                                                 { id: "chana_roizi_1", name: "חנה־רוייזי", gen: 5 },
                                                 { id: "yitzchak_soch_2", name: "יצחק", gen: 5 },
                                                 { id: "rut_soch_2", name: "רות", gen: 5 },
                                                 { id: "shmuel_soch_2", name: "שמואל", gen: 5 },
-                                                { id: "chaim_yechezkel_1", name: "חיים יחזקאל", gen: 5 }
+                                                { id: "chaim_yechezkel_1", name: "חיים־יחזקאל", gen: 5 }
                                             ]
                                         },
                                         {
@@ -287,49 +288,49 @@
                                             gen: 4,
                                             children: [
                                                 { id: "rachel_roizi_1", name: "רחל־רוייזי", gen: 5 },
-                                                { id: "sara_hinda_1", name: "שרה הינדה", gen: 5 },
-                                                { id: "shlomo_zalman_soch", name: "שלמה זלמן", gen: 5 },
-                                                { id: "yitzchak_meir_2", name: "יצחק מאיר", gen: 5 },
+                                                { id: "sara_hinda_1", name: "שרה־הינדה", gen: 5 },
+                                                { id: "shlomo_zalman_soch", name: "שלמה־זלמן", gen: 5 },
+                                                { id: "yitzchak_meir_2", name: "יצחק־מאיר", gen: 5 },
                                                 { id: "yehudit_soch_1", name: "יהודית", gen: 5 },
-                                                { id: "yuta_hena_ratsel_1", name: "יוטא הענא ראצל", gen: 5 }
+                                                { id: "yuta_hena_ratsel_1", name: "יוטא־הענא־ראצל", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "faige_michel_lerner",
-                                            name: "פייגה מיכל לרנר",
+                                            name: "פייגה־מיכל לרנר",
                                             gen: 4,
                                             children: [
-                                                { id: "simcha_bunim_2", name: "שמחה בונים", gen: 5 },
+                                                { id: "simcha_bunim_2", name: "שמחה־בונים", gen: 5 },
                                                 { id: "baruch_menachem_1", name: "ברוך־מנחם", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "sara_avraham_mondri",
-                                            name: "שרה ואברהם חיים מונדרי",
+                                            name: "שרה ואברהם־חיים מונדרי",
                                             gen: 4,
                                             children: [
                                                 { id: "rut_mondri_1", name: "רות", gen: 5 },
-                                                { id: "simcha_bunim_3", name: "שמחה בונם", gen: 5 },
+                                                { id: "simcha_bunim_3", name: "שמחה־בונם", gen: 5 },
                                                 { id: "shmuel_mondri_1", name: "שמואל", gen: 5 },
-                                                { id: "chana_miriam_1", name: "חנה מרים", gen: 5 },
+                                                { id: "chana_miriam_1", name: "חנה־מרים", gen: 5 },
                                                 { id: "chaya_ratsel_1", name: "חיה־ראצל", gen: 5 },
                                                 { id: "yitzchak_mondri_1", name: "יצחק", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "simcha_rachel_soch",
-                                            name: "שמחה בונם ורחל סוכצ'בסקי",
+                                            name: "שמחה־בונם ורחל סוכצ'בסקי",
                                             gen: 4,
                                             children: [
                                                 { id: "bluma_tova_1", name: "בלומה־טובה", gen: 5 },
                                                 { id: "rut_soch_3", name: "רות", gen: 5 },
-                                                { id: "yuta_hena_ratsel_2", name: "יוטא הענא ראצל", gen: 5 },
+                                                { id: "yuta_hena_ratsel_2", name: "יוטא־הענא־ראצל", gen: 5 },
                                                 { id: "yisrael_soch_2", name: "ישראל", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "tzvi_yuta_soch",
-                                            name: "צבי אלימלך ויוטא הענא סוכצ'בסקי",
+                                            name: "צבי־אלימלך ויוטא־הענא סוכצ'בסקי",
                                             gen: 4,
                                             children: [
                                                 { id: "lea_chana_1", name: "לאה־חנה", gen: 5 },
@@ -353,7 +354,7 @@
                                                 { id: "hadar_ruth_1", name: "הדר־רות", gen: 5 },
                                                 { id: "oriya_zhaya_1", name: "אוֹרִיָה־ז'היָה", gen: 5 },
                                                 { id: "avinoam_chaim_1", name: "אבינועם־חיים", gen: 5 },
-                                                { id: "yehuda_pinchas_1", name: "יהודה פנחס", gen: 5 }
+                                                { id: "yehuda_pinchas_1", name: "יהודה־פנחס", gen: 5 }
                                             ]
                                         },
                                         {
@@ -362,7 +363,7 @@
                                             gen: 4,
                                             location: "חריש",
                                             children: [
-                                                { id: "yinon_yitzchak_1", name: "ינון יצחק", gen: 5 },
+                                                { id: "yinon_yitzchak_1", name: "ינון־יצחק", gen: 5 },
                                                 { id: "yedidya_lev_1", name: "ידידיה", gen: 5 },
                                                 { id: "nily_lev_1", name: "נילי", gen: 5 }
                                             ]
@@ -381,7 +382,7 @@
                                         },
                                         {
                                             id: "lea_yosef_katzburg",
-                                            name: "לאה ויוסף שלמה קצבורג",
+                                            name: "לאה ויוסף־שלמה קצבורג",
                                             gen: 4,
                                             dates: "לאה: 2001",
                                             location: "רמת בית שמש",
@@ -393,7 +394,7 @@
                                         { id: "meir_pnina_lev", name: "מאיר ופנינה לב", gen: 4 },
                                         {
                                             id: "tzvi_ester_lev",
-                                            name: "צבי ואסתר זיסל לב",
+                                            name: "צבי ואסתר־זיסל לב",
                                             gen: 4,
                                             children: [
                                                 { id: "moria_lev_1", name: "מוריה", gen: 5 }
@@ -418,7 +419,7 @@
                                         { id: "menachem_lev_1", name: "מנחם", gen: 4, dates: "1997" },
                                         {
                                             id: "noa_eliyahu_sintes",
-                                            name: "נועה רבקה ואליהו משה אברהם סינטס",
+                                            name: "נועה־רבקה ואליהו־משה־אברהם סינטס",
                                             gen: 4,
                                             dates: "נועה: 2000",
                                             location: "עלי",
@@ -466,7 +467,7 @@
                                                 { id: "yaala_lev_1", name: "יעלה", gen: 5 }
                                             ]
                                         },
-                                        { id: "tzvi_emuna_lev", name: "צבי נריה ואמונה שמחה לב", gen: 4 },
+                                        { id: "tzvi_emuna_lev", name: "צבי־נריה ואמונה־שמחה לב", gen: 4 },
                                         { id: "miryam_lev_1", name: "מרים", gen: 4 },
                                         { id: "elyada_lev_1", name: "אלידע", gen: 4 },
                                         { id: "simcha_lev_1", name: "שמחה", gen: 4 },
@@ -499,12 +500,12 @@
                                                 { id: "yikrat_g_1", name: "יקרת", gen: 5 },
                                                 { id: "hillel_g_1", name: "הלל", gen: 5 },
                                                 { id: "naama_g_1", name: "נעמה", gen: 5 },
-                                                { id: "klila_rivka_1", name: "כלילה רבקה", gen: 5 }
+                                                { id: "klila_rivka_1", name: "כלילה־רבקה", gen: 5 }
                                             ]
                                         },
                                         {
                                             id: "moria_eliyahu_julius",
-                                            name: "מוריה שרה ואליהו יוליוס",
+                                            name: "מוריה־שרה ואליהו יוליוס",
                                             gen: 4,
                                             location: "נתניה",
                                             children: [
@@ -545,7 +546,7 @@
                                             gen: 4,
                                             location: "ירושלים",
                                             children: [
-                                                { id: "eliraz_malka_1", name: "אלירז מלכה", gen: 5 }
+                                                { id: "eliraz_malka_1", name: "אלירז־מלכה", gen: 5 }
                                             ]
                                         },
                                         { id: "elisha_g_1", name: "אלישע", gen: 4 },
@@ -830,13 +831,13 @@
                                 },
                                 {
                                     id: "yitzchak_chaim_kfir",
-                                    name: "יצחק חיים כפיר",
+                                    name: "יצחק־חיים כפיר",
                                     gen: 3,
                                     location: "בית זית"
                                 },
                                 {
                                     id: "ayelet_tehila_kfir",
-                                    name: "איילת תהילה כפיר",
+                                    name: "איילת־תהילה כפיר",
                                     gen: 3,
                                     location: "ירושלים"
                                 },
@@ -915,7 +916,13 @@
                             id: "sara_avraham_bartish",
                             name: "שרה ואברהם (אבי) ברטיש",
                             gen: 2,
-                            location: "רעננה"
+                            location: "רעננה",
+                            children: [
+                                { id: "rachel_bertisch", name: "רחל ברטיש", gen: 3 },
+                                { id: "issachar_bertisch", name: "יששכר ברטיש", gen: 3 },
+                                { id: "benjamin_bertisch", name: "בנימין ברטיש", gen: 3 },
+                                { id: "michal_bertisch", name: "מיכל ברטיש", gen: 3 }
+                            ]
                         }
                     ]
                 },
@@ -931,14 +938,23 @@
                             name: "מוניקה ומשה מכטינגר",
                             gen: 2,
                             dates: "מוניקה: 1956 | משה: 1954",
-                            location: "ישראל"
+                            location: "ישראל",
+                            children: [
+                                { id: "avigayil_mechtinger", name: "אביגיל מכטינגר", gen: 3, dates: "1990" },
+                                { id: "gilad_mechtinger", name: "גלעד מכטינגר", gen: 3, dates: "1992" },
+                                { id: "eitan_mechtinger", name: "איתן מכטינגר", gen: 3, dates: "1993" }
+                            ]
                         },
                         {
                             id: "dafna_michael_eidman",
                             name: "דפנה ומייקל איידמן",
                             gen: 2,
                             dates: "דפנה: 1959 | מייקל: 1954",
-                            location: "ניו ג'רזי, ארה\"ב"
+                            location: "ניו ג'רזי, ארה\"ב",
+                            children: [
+                                { id: "jona_eidman", name: "יונה איידמן", gen: 3, dates: "1991" },
+                                { id: "benjamin_eidman", name: "בנימין איידמן", gen: 3, dates: "1994" }
+                            ]
                         }
                     ]
                 },
@@ -1211,7 +1227,6 @@
         function setupSearch() {
             const searchInput = document.getElementById("searchInput");
             const clearSearchBtn = document.getElementById("clearSearchBtn");
-            const resetSearchBannerBtn = document.getElementById("resetSearchBannerBtn");
 
             function clearSearch() {
                 if (searchInput) searchInput.value = "";
@@ -1236,10 +1251,6 @@
 
             if (clearSearchBtn) {
                 clearSearchBtn.addEventListener("click", clearSearch);
-            }
-
-            if (resetSearchBannerBtn) {
-                resetSearchBannerBtn.addEventListener("click", clearSearch);
             }
         }
 
