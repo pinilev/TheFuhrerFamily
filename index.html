@@ -146,6 +146,41 @@
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
+        <!-- אזור הרחבה (שורשים קדומים מחוץ לספירת העץ המרכזית) -->
+        <section id="expansionSection" class="mb-3 rounded-xl border-2 border-dashed border-amber-300 bg-amber-50/70 shadow-2xs overflow-hidden transition-all">
+            <button type="button" id="toggleExpansionBtn" class="w-full px-3.5 py-2.5 flex items-center justify-between gap-2 text-right hover:bg-amber-100/60 transition">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="inline-flex items-center gap-1 text-xs font-extrabold px-2.5 py-0.5 rounded-md bg-amber-600 text-white shadow-2xs">
+                        <span>🌿</span>
+                        <span>אזור הרחבה</span>
+                    </span>
+                    <span class="text-xs sm:text-sm font-bold text-amber-950">שורשים קדומים ומשפחות המוצא (מעל שורש העץ)</span>
+                </div>
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <span id="expansionToggleLabel" class="text-xs font-bold text-amber-800">הצג פרטים</span>
+                    <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center">
+                        <svg id="expansionChevron" class="w-3.5 h-3.5 transform transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </span>
+                </div>
+            </button>
+            <div id="expansionContent" class="hidden px-3.5 pb-3 pt-1 border-t border-amber-200/80 space-y-2">
+                <div class="bg-white/95 rounded-lg border border-amber-200 p-3 shadow-2xs">
+                    <div class="flex items-center gap-2 flex-wrap mb-1">
+                        <span class="text-[11px] font-extrabold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">הורי אלטה־חנה פירר (לבית ליפסקר)</span>
+                    </div>
+                    <h3 class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">
+                        בנימין־זאב ליפסקר (1860?–1945) ודינה ליפסקר לבית פרידמן (1862–1942)
+                    </h3>
+                    <div class="text-xs sm:text-[13px] text-slate-600 font-medium flex items-center gap-1 mt-1">
+                        <span>📍</span>
+                        <span>בנימין־זאב: דוקלה, גליציה | דינה: בארטפלד</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div id="searchStatusBanner" class="hidden mb-3 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-lg text-sm font-semibold flex items-center justify-between">
             <span id="searchStatusText"></span>
         </div>
@@ -188,27 +223,27 @@
     </div>
 
     <script>
-        // Data derived directly from פירר ראשי.pdf + הוספות מהמסמך המשלים
+        // Data derived directly from פירר ראשי.pdf + הוספות מהמסמכים המשלימים
         const rawFamilyData = {
             id: "root",
             name: "פנחס ואלטה־חנה פירר",
             gen: 0,
-            dates: "פנחס: 1882-23/1/1953 (ז' שבט תשי\"ג) | אלטה־חנה: 1883-12/1/1970 (ה' שבט תש\"ל)",
-            location: "צאנז, גליציה (אוסטרו-הונגריה) > אנטוורפן, בלגיה > קלן, גרמניה > כפר פינס > ירושלים",
+            dates: "פנחס: 6/2/1882-23/1/1953 (ז' שבט תשי\"ג) | אלטה־חנה: 21/4/1883-12/1/1970 (ה' שבט תש\"ל) | נישואין: 24/8/1904 (י\"ג אלול תרס\"ד) בדוּקְלָה, גליציה",
+            location: "צאנז, גליציה (אוסטרו-הונגריה) > אנטוורפן, בלגיה (1911) > קלן, גרמניה (1914, רח' Kämmergasse ורח' Blaubach) > כפר פינס > ירושלים",
             children: [
                 {
                     id: "tova_klotz",
                     name: "1. טובה־יונה (טוני) ושלמה־זלמן קלוץ",
                     gen: 1,
-                    dates: "טובה־יונה: 1906-1979 | שלמה־זלמן: -1972",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה"
+                    dates: "טובה־יונה: 1906-1979 | שלמה־זלמן: -1972 | נישואין: 1928 (קלן)",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה (עד 1938) > בריסל, בלגיה (במלחמת העולם השנייה) > אנטוורפן, בלגיה"
                 },
                 {
                     id: "avraham_firer",
                     name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי פירר",
                     gen: 1,
-                    dates: "אברהם־אריה: 1907-2009",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > שוויץ > ניו יורק, ארה\"ב",
+                    dates: "אברהם־אריה: 1907-2009 | נישואין: 1938 (ברלין)",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין > אנטוורפן (1938) > בריחה לשוויץ (עם בנם התינוק שמואל) > ניו יורק, ארה\"ב",
                     children: [
                         {
                             id: "shmuel_dvora_firer",
@@ -240,8 +275,8 @@
                     id: "menachem_firer",
                     name: "3. מנחם־מנדל ושרה פירר",
                     gen: 1,
-                    dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט)",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > כפר פינס",
+                    dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה: 1932",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > גרינגסהוף, גרמניה > רודגס, פתח תקווה> ממייסדי כפר פינס (1934)",
                     children: [
                         {
                             id: "ruth_yitzchak_lev",
@@ -254,6 +289,7 @@
                                     id: "aharon_shlomit_soch",
                                     name: "אהרון ושלומית־דבורה סוכצ'בסקי",
                                     gen: 3,
+                                    dates: "שלומית־דבורה: 1966",
                                     location: "אשדוד",
                                     children: [
                                         {
@@ -343,6 +379,7 @@
                                     id: "natan_bela_lev",
                                     name: "נתן ובלה לב",
                                     gen: 3,
+                                    dates: "נתן: 1967",
                                     location: "רמת בית שמש",
                                     children: [
                                         {
@@ -407,12 +444,14 @@
                                     id: "pinchas_eliyahu_lev",
                                     name: "פינחס־אליה לב",
                                     gen: 3,
+                                    dates: "1968",
                                     location: "ירושלים"
                                 },
                                 {
                                     id: "mordechai_ester_lev",
                                     name: "מרדכי (מוטי) ואסתר לב",
                                     gen: 3,
+                                    dates: "מרדכי: 1970",
                                     location: "עלי",
                                     children: [
                                         { id: "yehuda_ozer_1", name: "יהודה־עוזר", gen: 4, dates: "1996" },
@@ -443,6 +482,7 @@
                                     id: "binyamin_malka_lev",
                                     name: "בנימין־זאב ומלכה לב",
                                     gen: 3,
+                                    dates: "בנימין־זאב: 1971",
                                     location: "עפרה",
                                     children: [
                                         { id: "tal_marom_1", name: "טל־מרום", gen: 4, dates: "1999" },
@@ -455,6 +495,7 @@
                                     id: "michael_ayala_lev",
                                     name: "מיכאל ואילה לב",
                                     gen: 3,
+                                    dates: "מיכאל: 1975",
                                     location: "כוכב השחר",
                                     children: [
                                         {
@@ -880,7 +921,7 @@
                     name: "4. ליזה ומשה פיטובסקי",
                     gen: 1,
                     dates: "ליזה: 24/12/1912 | משה: 1900-1960",
-                    location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
+                    location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים (1933)",
                     children: [
                         { id: "miryam_shlomo_natan", name: "מרים ושלמה (פיטר) נתן", gen: 2, location: "מוצא עילית (ילדים: אשדוד)" },
                         {
@@ -893,7 +934,16 @@
                                 { id: "moshe_swid", name: "משה סוויד", gen: 3 }
                             ]
                         },
-                        { id: "itamar_liora_pitovsky", name: "איתמר וליאורה פיטובסקי", gen: 2, location: "ירושלים" }
+                        {
+                            id: "itamar_liora_pitovsky",
+                            name: "איתמר וליאורה פיטובסקי",
+                            gen: 2,
+                            dates: "איתמר: 1950-2010",
+                            location: "ירושלים",
+                            children: [
+                                { id: "michal_pitovsky", name: "מיכל פיטובסקי", gen: 3, dates: "1984" }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -901,7 +951,7 @@
                     name: "5. רחל ואריה לאופר",
                     gen: 1,
                     dates: "רחל: 1919-1973",
-                    location: "קלן, גרמניה > תל אביב",
+                    location: "קלן, גרמניה > כפר פינס > ירושלים > תל אביב",
                     children: [
                         {
                             id: "tirtza_aryeh_weisfeld",
@@ -930,8 +980,8 @@
                     id: "shmuel_firer",
                     name: "6. שמואל (מוללו) וגבריאלה־גולדה (גבי) פירר",
                     gen: 1,
-                    dates: "שמואל: 1920 | גבריאלה־גולדה: 1928",
-                    location: "קלן, גרמניה > כפר פינס > ירושלים > ניו יורק, ארה\"ב > רעננה",
+                    dates: "שמואל: 5/12/1920 | גבריאלה־גולדה: 1928",
+                    location: "קלן, גרמניה > כפר פינס > טירת צבי > נתניה > תל אביב > ניו יורק, ארה\"ב > רעננה",
                     children: [
                         {
                             id: "monika_moshe_mechtinger",
@@ -1543,6 +1593,27 @@
                     <span class="px-1.5 py-0.2 rounded badge-gen-4 font-semibold">דור ד: ${stats.genCounts[4]}</span>
                     <span class="px-1.5 py-0.2 rounded badge-gen-5 font-semibold">דור ה: ${stats.genCounts[5]}</span>
                 `;
+            }
+
+            // ניהול פתיחה/סגירה של אזור ההרחבה
+            const toggleExpansionBtn = document.getElementById("toggleExpansionBtn");
+            const expansionContent = document.getElementById("expansionContent");
+            const expansionChevron = document.getElementById("expansionChevron");
+            const expansionToggleLabel = document.getElementById("expansionToggleLabel");
+
+            if (toggleExpansionBtn && expansionContent) {
+                toggleExpansionBtn.addEventListener("click", () => {
+                    const isHidden = expansionContent.classList.contains("hidden");
+                    if (isHidden) {
+                        expansionContent.classList.remove("hidden");
+                        if (expansionChevron) expansionChevron.classList.add("rotate-180");
+                        if (expansionToggleLabel) expansionToggleLabel.textContent = "הסתר";
+                    } else {
+                        expansionContent.classList.add("hidden");
+                        if (expansionChevron) expansionChevron.classList.remove("rotate-180");
+                        if (expansionToggleLabel) expansionToggleLabel.textContent = "הצג פרטים";
+                    }
+                });
             }
 
             initInitialState(rawFamilyData);
