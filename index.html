@@ -8,9 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
+        html, body {
             font-family: 'Assistant', sans-serif;
             background-color: #f8fafc;
+            max-width: 100%;
+            overflow-x: hidden;
         }
         /* צבע ייעודי ומובחן (בורדו-ארגמן) לשורש המשפחה - פנחס ואלטה-חנה פירר */
         .gen-0 { border-top: 4px solid #881337; background-color: #fff1f2; border-color: #fecdd3; }
@@ -49,11 +51,11 @@
             <!-- Top Row: Title & Contact Icons -->
             <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                    <button type="button" id="homeLogoBtn" class="w-9 h-9 bg-emerald-600 hover:bg-emerald-700 active:scale-95 rounded-lg flex items-center justify-center text-white shadow-sm transition cursor-pointer" title="חזרה לדף הנחיתה הראשי" aria-label="חזרה לדף הנחיתה הראשי">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
-                    </div>
+                    </button>
                     <div>
                         <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
                     </div>
@@ -78,7 +80,7 @@
             <!-- Second Row: Search, Branch Filter & Print -->
             <div class="flex flex-wrap items-center gap-2.5 w-full">
                 <!-- Search Input Container -->
-                <div class="relative flex-1 sm:flex-initial">
+                <div class="relative w-full sm:w-auto sm:flex-initial">
                     <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה..." class="w-full sm:w-56 md:w-64 py-1.5 pr-9 pl-8 text-base bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
                     <svg class="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -94,14 +96,14 @@
                 <div class="hidden sm:block h-6 w-0.5 bg-slate-400 rounded-full mx-1 select-none" aria-hidden="true"></div>
 
                 <!-- Branch Filter Container -->
-                <div class="relative flex items-center bg-emerald-50/70 border border-emerald-200/90 rounded-md pr-2.5 pl-1.5 py-0.5 shadow-2xs">
+                <div class="relative flex items-center w-full sm:w-auto max-w-full bg-emerald-50/70 border border-emerald-200/90 rounded-md pr-2.5 pl-1.5 py-0.5 shadow-2xs">
                     <span class="text-sm font-bold text-emerald-800 ml-1.5 flex items-center gap-1 shrink-0">
                         <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                         </svg>
                         <span>הצג את:</span>
                     </span>
-                    <select id="branchFilter" class="py-1 px-2 text-base bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer">
+                    <select id="branchFilter" class="flex-1 min-w-0 w-full sm:w-auto py-1 px-2 text-sm sm:text-base bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer truncate">
                         <option value="all">כל הענפים (7 צאצאים)</option>
                         <option value="tova_klotz">1. טויבע (טוני) ושלמה־זלמן קלוץ</option>
                         <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה (גוסטי) פירר</option>
@@ -188,10 +190,10 @@
                 <div id="copyFeedback" class="hidden text-xs font-bold text-emerald-600">✓ הכתובת הועתקה ללוח!</div>
                 <div class="flex flex-col gap-2 pt-1">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pinilev@gmail.com&su=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%A4%D7%99%D7%A8%D7%A8" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-1.5">
-                        <span>פתיחה ישירה ב-Gmail</span>
+                        <span>פתיחה ב Gmail במחשב</span>
                     </a>
                     <a href="mailto:pinilev@gmail.com?subject=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%A4%D7%99%D7%A8%D7%A8" target="_top" class="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-1.5">
-                        <span>פתיחה בתוכנת המייל במכשיר</span>
+                        <span>פתיחה באפליקציה</span>
                     </a>
                 </div>
             </div>
@@ -250,7 +252,7 @@
                     name: "3. מנחם־מנדל ושרה פירר",
                     gen: 1,
                     dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | עלייה: 1932 | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה: 1933 | נישואין: 1934",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > <a href=\"https://www.google.com/maps/search/?api=1&query=Gehringshof,+Germany\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"פתח בגוגל מפות: גרינגסהוף, גרמניה\" class=\"text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition\">גרינגסהוף, גרמניה</a> > רודגס, פתח תקווה > ממייסדי כפר פינס (1934)",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > גרינגסהוף, גרמניה > רודגס, פתח תקווה > ממייסדי כפר פינס (1934)",
                     children: [
                         {
                             id: "ruth_yitzchak_lev",
@@ -1265,7 +1267,17 @@
                             </div>
                             <p>נישואין 24/8/1904 (י"ג אלול תרס"ד), <a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">דוּקְלָה, גליציה</a>.</p>
                             <p>הוריה של אלטה־חנה: בנימין־זאב ליפסקר (1860?–1945) ודינה לבית פרידמן (1862–1942).</p>
-                            <p>גרו בתחילה ב<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">צאנז, גליציה</a> (אוסטרו-הונגריה). ב-1912 עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">אנטוורפן, בלגיה</a>. ב-1914 גורשו והתיישבו ב<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">קלן, גרמניה</a>. ב-1936 עלו לארץ וגרו בכפר פינס אצל מנחם־מנדל ושרה פירר. ב-19XX עברו לירושלים.</p>
+                            <p>גרו בתחילה ב<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">צאנז, גליציה</a> (אוסטרו-הונגריה). ב-1912 עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">אנטוורפן, בלגיה</a>. ב-1914 גורשו והתיישבו ב<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">קלן, גרמניה</a>. ב-1936 עלו לארץ וגרו בכפר פינס אצל מנחם־מנדל ושרה פירר. ב-1940 עברו לירושלים.</p>
+                        </div>
+
+                        <!-- קו הפרדה גרפי ברור בין אזור תולדות לתחילת עץ הצאצאים -->
+                        <div class="pt-3 pb-1 flex items-center gap-3 select-none" aria-hidden="true">
+                            <div class="h-px flex-1 bg-rose-300/80"></div>
+                            <span class="text-xs sm:text-sm font-bold text-rose-800/85 tracking-wide flex items-center gap-1">
+                                <span>צאצאים</span>
+                                <span class="text-rose-600/80 text-xs">▼</span>
+                            </span>
+                            <div class="h-px flex-1 bg-rose-300/80"></div>
                         </div>
                     </div>
                 ` : ''}
@@ -1674,6 +1686,24 @@
             renderTree();
             setupBranchFilter();
             setupSearch();
+
+            const homeLogoBtn = document.getElementById("homeLogoBtn");
+            if (homeLogoBtn) {
+                homeLogoBtn.addEventListener("click", () => {
+                    const searchInput = document.getElementById("searchInput");
+                    const clearSearchBtn = document.getElementById("clearSearchBtn");
+                    const branchFilter = document.getElementById("branchFilter");
+
+                    if (searchInput) searchInput.value = "";
+                    currentSearchQuery = "";
+                    if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+                    if (branchFilter) branchFilter.value = "all";
+                    isToldotExpanded = false;
+
+                    applyFiltersAndRender();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            }
 
             const printTreeBtn = document.getElementById("printTreeBtn");
             if (printTreeBtn) {
