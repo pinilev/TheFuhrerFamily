@@ -103,8 +103,8 @@
                     </span>
                     <select id="branchFilter" class="py-1 px-2 text-base bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer">
                         <option value="all">כל הענפים (7 צאצאים)</option>
-                        <option value="tova_klotz">1. טובה־יונה (טוני) ושלמה־זלמן קלוץ</option>
-                        <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה־גוסטי פירר</option>
+                        <option value="tova_klotz">1. טויבע (טוני) ושלמה־זלמן קלוץ</option>
+                        <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה (גוסטי) פירר</option>
                         <option value="menachem_firer">3. מנחם־מנדל ושרה פירר</option>
                         <option value="liza_pitovsky">4. ליזה ומשה פיטובסקי</option>
                         <option value="rachel_laufer">5. רחל ואריה לאופר</option>
@@ -151,28 +151,28 @@
     <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
         <!-- תולדות (שורשים קדומים מחוץ לספירת העץ המרכזית) -->
         <section id="expansionSection" class="mb-3 rounded-lg border border-dashed border-amber-300 bg-amber-50/70 shadow-2xs overflow-hidden transition-all">
-            <button type="button" id="toggleExpansionBtn" class="w-full px-3 py-1.5 flex items-center justify-between gap-2 text-right hover:bg-amber-100/60 transition">
+            <button type="button" id="toggleExpansionBtn" class="w-full px-3.5 py-2 flex items-center justify-between gap-2 text-right hover:bg-amber-100/60 transition">
                 <div class="flex items-center gap-1.5 flex-wrap">
-                    <span class="inline-flex items-center gap-1 text-xs font-extrabold px-2 py-0.5 rounded bg-amber-600 text-white shadow-2xs">
+                    <span class="inline-flex items-center gap-1.5 text-sm sm:text-[15px] font-extrabold px-2.5 py-0.5 rounded bg-amber-600 text-white shadow-2xs">
                         <span>🌿</span>
                         <span>תולדות</span>
                     </span>
                 </div>
                 <div class="flex items-center gap-1.5 shrink-0">
-                    <span id="expansionToggleLabel" class="text-xs font-bold text-amber-800">הצג פרטים</span>
+                    <span id="expansionToggleLabel" class="text-sm font-bold text-amber-800">הצג פרטים</span>
                     <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center">
-                        <svg id="expansionChevron" class="w-3 h-3 transform transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                        <svg id="expansionChevron" class="w-3.5 h-3.5 transform transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </span>
                 </div>
             </button>
-            <div id="expansionContent" class="hidden px-3 pb-2.5 pt-1 border-t border-amber-200/80 space-y-1.5">
-                <div class="bg-white/95 rounded border border-amber-200 p-2.5 shadow-2xs space-y-1 text-xs sm:text-[13px] font-semibold text-slate-800 leading-snug">
+            <div id="expansionContent" class="hidden px-3.5 pb-3 pt-1.5 border-t border-amber-200/80 space-y-2">
+                <div class="bg-white/95 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-semibold text-slate-800 leading-relaxed">
                     <p>פנחס ואלטה־חנה פירר נישאו ב 24/8/1904 (י"ג אלול תרס"ד) ב<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">דוּקְלָה, גליציה</a>.</p>
                     <p>הוריו של פינחס פירר: שמואל פירר (1858-1910) ומרים (מנדל) (1855-1935).</p>
                     <p>הוריה של אלטה־חנה: בנימין־זאב ליפסקר (1860?–1945) ודינה לבית פרידמן (1862–1942).</p>
-                    <p>גרו בתחילה ב<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">צאנז, גליציה (אוסטרו-הונגריה)</a>. ב-1911 עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">אנטוורפן, בלגיה</a>. ב-1914 עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">קלן, גרמניה</a>. ב-193X עלו לארץ וגרו ב<a href="https://www.google.com/maps/search/?api=1&query=Kfar+Pines,+Israel" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: כפר פינס" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">כפר פינס</a> אצל מנחם־מנדל ושרה פירר. ב-19XX עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Jerusalem,+Israel" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: ירושלים" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">ירושלים</a>.</p>
+                    <p>גרו בתחילה ב<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">צאנז, גליציה (אוסטרו-הונגריה)</a>. ב-1912 עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">אנטוורפן, בלגיה</a>. ב-1914 גורשו לגרמניה והתיישבו ב<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">קלן</a>. ב-1936 עלו לארץ וגרו ב<a href="https://www.google.com/maps/search/?api=1&query=Kfar+Pines,+Israel" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: כפר פינס" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">כפר פינס</a> אצל מנחם־מנדל ושרה פירר. ב-19XX עברו ל<a href="https://www.google.com/maps/search/?api=1&query=Jerusalem,+Israel" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: ירושלים" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">ירושלים</a>.</p>
                 </div>
             </div>
         </section>
@@ -229,17 +229,17 @@
             children: [
                 {
                     id: "tova_klotz",
-                    name: "1. טובה־יונה (טוני) ושלמה־זלמן קלוץ",
+                    name: "1. טויבע (טוני) ושלמה־זלמן קלוץ",
                     gen: 1,
-                    dates: "טובה־יונה: 1906-1979 | שלמה־זלמן: -1972 | נישואין: 1928 (קלן)",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה (עד 1938) > בריסל, בלגיה (במלחמת העולם השנייה) > אנטוורפן, בלגיה"
+                    dates: "טויבע: 1906-1979 | שלמה־זלמן: -1972 | נישואין: 1928 (קלן)",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > מלחמת העולם: בתחילה הסתתרו באנטוורפן, משם לצרפת דרך דנקרק, אחרי המלחמה חזרו לאנטוורפן"
                 },
                 {
                     id: "avraham_firer",
-                    name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי פירר",
+                    name: "2. אברהם־אריה (לייביש) וגולדה (גוסטי) פירר",
                     gen: 1,
-                    dates: "אברהם־אריה: 1907-2009 | נישואין: 1938 (ברלין)",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין > אנטוורפן (1938) > בריחה לשוויץ (עם בנם התינוק שמואל) > ניו יורק, ארה\"ב",
+                    dates: "אברהם־אריה: 1907-2009 | נישואין: 1938 (ברלין) | גולדה: -1990",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין > בריחה ומסתור במשך 18 חודשים בחווה מחוץ לבריסל הכבושה בידי הנאצים. שם נולד שמואל > בריחה לשווייץ דרך צרפת (1944) > ניו יורק, ארה\"ב",
                     children: [
                         {
                             id: "shmuel_dvora_firer",
@@ -271,14 +271,14 @@
                     id: "menachem_firer",
                     name: "3. מנחם־מנדל ושרה פירר",
                     gen: 1,
-                    dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה: 1932",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > גרינגסהוף, גרמניה > רודגס, פתח תקווה> ממייסדי כפר פינס (1934)",
+                    dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | עלייה: 1932 | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה: 1933 | נישואין: 1934",
+                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > גרינגסהוף, גרמניה > רודגס, פתח תקווה > ממייסדי כפר פינס (1934)",
                     children: [
                         {
                             id: "ruth_yitzchak_lev",
                             name: "רות ויצחק לב",
                             gen: 2,
-                            dates: "רות: 1937-2015 | יצחק: 1923-2008",
+                            dates: "רות: 15/5/1937-19/2/2015 (ל' שבט תשע\"ה) | יצחק: 7.8.1923-14.12.2008 (י\"ז כסלו תשס\"ט)",
                             location: "בני ברק > עפרה",
                             children: [
                                 {
@@ -292,6 +292,7 @@
                                             id: "yisrael_sara_soch",
                                             name: "ישראל ושרה־לאה סוכצ'בסקי",
                                             gen: 4,
+                                            dates: "ישראל: 1985",
                                             children: [
                                                 { id: "simcha_bunim_1", name: "שמחה־בונם", gen: 5 },
                                                 { id: "malka_soch_1", name: "מלכה", gen: 5 },
@@ -306,6 +307,7 @@
                                             id: "avraham_ester_soch",
                                             name: "אברהם־מרדכי ואסתר־ליבה סוכצ'בסקי",
                                             gen: 4,
+                                            dates: "אברהם־מרדכי: 1987",
                                             children: [
                                                 { id: "chana_roizi_1", name: "חנה־רוייזי", gen: 5 },
                                                 { id: "yitzchak_soch_2", name: "יצחק", gen: 5 },
@@ -318,6 +320,7 @@
                                             id: "shmuel_rut_soch",
                                             name: "שמואל ורות סוכצ'בסקי",
                                             gen: 4,
+                                            dates: "שמואל: 1989",
                                             children: [
                                                 { id: "rachel_roizi_1", name: "רחל־רוייזי", gen: 5 },
                                                 { id: "sara_hinda_1", name: "שרה־הינדה", gen: 5 },
@@ -331,6 +334,7 @@
                                             id: "faige_michel_lerner",
                                             name: "פייגה־מיכל לרנר",
                                             gen: 4,
+                                            dates: "פייגה: 1990",
                                             children: [
                                                 { id: "simcha_bunim_2", name: "שמחה־בונים", gen: 5 },
                                                 { id: "baruch_menachem_1", name: "ברוך־מנחם", gen: 5 }
@@ -340,6 +344,7 @@
                                             id: "sara_avraham_mondri",
                                             name: "שרה ואברהם־חיים מונדרי",
                                             gen: 4,
+                                            dates: "שרה: 1994",
                                             children: [
                                                 { id: "rut_mondri_1", name: "רות", gen: 5 },
                                                 { id: "simcha_bunim_3", name: "שמחה־בונם", gen: 5 },
@@ -353,6 +358,7 @@
                                             id: "simcha_rachel_soch",
                                             name: "שמחה־בונם ורחל סוכצ'בסקי",
                                             gen: 4,
+                                            dates: "שמחה־בונם: 1996",
                                             children: [
                                                 { id: "bluma_tova_1", name: "בלומה־טובה", gen: 5 },
                                                 { id: "rut_soch_3", name: "רות", gen: 5 },
@@ -364,6 +370,7 @@
                                             id: "tzvi_yuta_soch",
                                             name: "צבי־אלימלך ויוטא־הענא סוכצ'בסקי",
                                             gen: 4,
+                                            dates: "צבי־אלימלך: 2002",
                                             children: [
                                                 { id: "lea_chana_1", name: "לאה־חנה", gen: 5 },
                                                 { id: "rut_soch_4", name: "רות", gen: 5 }
@@ -382,6 +389,7 @@
                                             id: "michal_yonatan_partok",
                                             name: "מיכל ויהונתן פרטוק",
                                             gen: 4,
+                                            dates: "מיכל: 1993",
                                             location: "לוד",
                                             children: [
                                                 { id: "hadar_ruth_1", name: "הדר־רות", gen: 5 },
@@ -394,6 +402,7 @@
                                             id: "yoel_dvora_lev",
                                             name: "יואל ודבורה לב",
                                             gen: 4,
+                                            dates: "יואל: 1995",
                                             location: "חריש",
                                             children: [
                                                 { id: "yinon_yitzchak_1", name: "ינון־יצחק", gen: 5 },
@@ -424,16 +433,17 @@
                                                 { id: "liat_tehila_1", name: "ליאל־תהילה", gen: 5 }
                                             ]
                                         },
-                                        { id: "meir_pnina_lev", name: "מאיר ופנינה לב", gen: 4 },
+                                        { id: "meir_pnina_lev", name: "מאיר ופנינה לב", gen: 4, dates: "מאיר: 2004" },
                                         {
                                             id: "tzvi_ester_lev",
                                             name: "צבי ואסתר־זיסל לב",
                                             gen: 4,
+                                            dates: "צבי: 2004",
                                             children: [
                                                 { id: "moria_lev_1", name: "מוריה", gen: 5 }
                                             ]
                                         },
-                                        { id: "yitzchak_lev_solo", name: "יצחק", gen: 4 }
+                                        { id: "yitzchak_lev_solo", name: "יצחק", gen: 4, dates: "2011" }
                                     ]
                                 },
                                 {
@@ -468,10 +478,11 @@
                                             id: "dvora_yaakov_izaks",
                                             name: "דבורה ויעקב איזקס",
                                             gen: 4,
+                                            dates: "דבורה: 2003",
                                             location: "מעלה אדומים"
                                         },
-                                        { id: "sara_lev_1", name: "שרה", gen: 4 },
-                                        { id: "roni_lev_1", name: "רוני", gen: 4 }
+                                        { id: "sara_lev_1", name: "שרה", gen: 4, dates: "2006" },
+                                        { id: "roni_lev_1", name: "רוני", gen: 4, dates: "2012" }
                                     ]
                                 },
                                 {
@@ -483,8 +494,8 @@
                                     children: [
                                         { id: "tal_marom_1", name: "טל־מרום", gen: 4, dates: "1999" },
                                         { id: "aviad_lev_1", name: "אביעד", gen: 4, dates: "2001" },
-                                        { id: "eitan_lev_1", name: "איתן", gen: 4 },
-                                        { id: "ziv_lev_1", name: "זיו", gen: 4 }
+                                        { id: "eitan_lev_1", name: "איתן", gen: 4, dates: "2003" },
+                                        { id: "ziv_lev_1", name: "זיו", gen: 4, dates: "2006" }
                                     ]
                                 },
                                 {
@@ -498,17 +509,18 @@
                                             id: "asael_chesed_lev",
                                             name: "עשהאל־חיים וחסד לב",
                                             gen: 4,
+                                            dates: "עשהאל־חיים: 2001",
                                             location: "הר המלך",
                                             children: [
                                                 { id: "shmuel_oz_1", name: "שמואל־עוז", gen: 5 },
                                                 { id: "yaala_lev_1", name: "יעלה", gen: 5 }
                                             ]
                                         },
-                                        { id: "tzvi_emuna_lev", name: "צבי־נריה ואמונה־שמחה לב", gen: 4 },
-                                        { id: "miryam_lev_1", name: "מרים", gen: 4 },
-                                        { id: "elyada_lev_1", name: "אלידע", gen: 4 },
-                                        { id: "simcha_lev_1", name: "שמחה", gen: 4 },
-                                        { id: "mayan_lev_1", name: "מעין", gen: 4 }
+                                        { id: "tzvi_emuna_lev", name: "צבי־נריה ואמונה־שמחה לב", gen: 4, dates: "צבי־נריה: 2002" },
+                                        { id: "miryam_lev_1", name: "מרים", gen: 4, dates: "2005" },
+                                        { id: "elyada_lev_1", name: "אלידע", gen: 4, dates: "2007" },
+                                        { id: "simcha_lev_1", name: "שמחה", gen: 4, dates: "2011" },
+                                        { id: "mayan_lev_1", name: "מעין", gen: 4, dates: "2014" }
                                     ]
                                 }
                             ]
@@ -530,6 +542,7 @@
                                             id: "meir_shifra_g",
                                             name: "מאיר־יצחק ושפרה",
                                             gen: 4,
+                                            dates: "מאיר־יצחק: 1989",
                                             location: "ירושלים",
                                             children: [
                                                 { id: "emuna_g_1", name: "אמונה", gen: 5 },
@@ -544,6 +557,7 @@
                                             id: "moria_eliyahu_julius",
                                             name: "מוריה־שרה ואליהו יוליוס",
                                             gen: 4,
+                                            dates: "מוריה־שרה: 1990",
                                             location: "נתניה",
                                             children: [
                                                 { id: "elyashiv_yisrael_1", name: "אלישיב־ישראל", gen: 5 },
@@ -925,8 +939,8 @@
                     id: "liza_pitovsky",
                     name: "4. ליזה ומשה פיטובסקי",
                     gen: 1,
-                    dates: "ליזה: 24/12/1912 | משה: 1900-1960",
-                    location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים (1933)",
+                    dates: "ליזה: 24/12/1912 | עלייה: 1936 | משה: 1900-1960",
+                    location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
                     children: [
                         { id: "miryam_shlomo_natan", name: "מרים ושלמה (פיטר) נתן", gen: 2, location: "מוצא עילית (ילדים: אשדוד)" },
                         {
@@ -955,7 +969,7 @@
                     id: "rachel_laufer",
                     name: "5. רחל ואריה לאופר",
                     gen: 1,
-                    dates: "רחל: 1919-1973",
+                    dates: "רחל: 1919-1971 | עלייה: 1936",
                     location: "קלן, גרמניה > כפר פינס > ירושלים > תל אביב",
                     children: [
                         {
@@ -985,7 +999,7 @@
                     id: "shmuel_firer",
                     name: "6. שמואל (מוללו) וגבריאלה־גולדה (גבי) פירר",
                     gen: 1,
-                    dates: "שמואל: 5/12/1920 | גבריאלה־גולדה: 1928",
+                    dates: "שמואל: 1920-2017 (י\"ח תמוז תשע\"ז) | עלייה: 1936 | גבריאלה־גולדה: 1928-2025",
                     location: "קלן, גרמניה > כפר פינס > טירת צבי > נתניה > תל אביב > ניו יורק, ארה\"ב > רעננה",
                     children: [
                         {
@@ -1017,7 +1031,7 @@
                     id: "yeshayahu_firer",
                     name: "7. ישעיהו (איזי) וחנה פירר",
                     gen: 1,
-                    dates: "ישעיהו: 1922-1997",
+                    dates: "ישעיהו: 1922-1997 | עלייה: 1936 | חנה: 1924-2012",
                     location: "קלן, גרמניה > כפר פינס > ניו יורק, ארה\"ב",
                     children: [
                         {
