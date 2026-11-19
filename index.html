@@ -61,15 +61,16 @@
                     </div>
                 </div>
 
-                <!-- Contact Icons (WhatsApp & Email) -->
-                <div class="flex items-center gap-2 shrink-0">
-                    <a href="https://wa.me/972545244344" target="_blank" rel="noopener noreferrer" class="p-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition shadow-sm flex items-center justify-center" title="שליחת הודעה בוואטסאפ" aria-label="וואטסאפ">
-                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <!-- Contact Group (Subtle Pill Wrapper without Colon) -->
+                <div class="flex items-center gap-2 bg-slate-50/90 border border-slate-200/80 rounded-full pr-3.5 pl-1.5 py-1 shrink-0">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-500 tracking-wide select-none">צרו קשר</span>
+                    <a href="https://wa.me/972545244344" target="_blank" rel="noopener noreferrer" class="p-1.5 bg-green-500 hover:bg-green-600 text-white rounded-full transition shadow-2xs flex items-center justify-center" title="שליחת הודעה בוואטסאפ" aria-label="וואטסאפ">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
                         </svg>
                     </a>
-                    <button id="emailContactBtn" class="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition shadow-sm flex items-center justify-center" title="יצירת קשר באימייל" aria-label="אימייל">
-                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button id="emailContactBtn" class="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition shadow-2xs flex items-center justify-center" title="יצירת קשר באימייל" aria-label="אימייל">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                         </svg>
@@ -104,7 +105,7 @@
                         <span>הצג את:</span>
                     </span>
                     <select id="branchFilter" class="flex-1 min-w-0 w-full sm:w-auto py-1 px-2 text-sm sm:text-base bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer truncate">
-                        <option value="all">כל הענפים (7 צאצאים)</option>
+                        <option value="all">כל הענפים (7 ענפים)</option>
                         <option value="tova_klotz">1. טויבע (טוני) ושלמה־זלמן קלוץ</option>
                         <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה (גוסטי) פירר</option>
                         <option value="menachem_firer">3. מנחם־מנדל ושרה פירר</option>
@@ -118,7 +119,26 @@
                 <!-- Divider before Action Buttons -->
                 <div class="hidden sm:block h-6 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
 
-                <div class="flex items-center gap-2">
+                <!-- Expand / Collapse All Controls -->
+                <div class="flex items-center gap-1.5">
+                    <button type="button" id="expandAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-md transition shadow-2xs flex items-center gap-1" title="הרחב את כל הענפים המוצגים">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
+                        </svg>
+                        <span>הרחב הכל</span>
+                    </button>
+                    <button type="button" id="collapseAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-md transition shadow-2xs flex items-center gap-1" title="כווץ את כל הענפים המוצגים">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path>
+                        </svg>
+                        <span>כווץ הכל</span>
+                    </button>
+                </div>
+
+                <!-- Divider before Print Controls -->
+                <div class="hidden sm:block h-6 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
+
+                <div class="flex items-center gap-2 flex-wrap">
                     <button id="printTreeBtn" class="px-3.5 py-1.5 text-sm font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5" title="הדפסת כל עץ היוחסין">
                         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -136,6 +156,10 @@
                             </svg>
                         </span>
                     </button>
+                    <label id="includeToldotPrintLabel" class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-600 font-semibold cursor-pointer select-none bg-slate-50 border border-slate-200 px-2 py-1 rounded-md hover:bg-slate-100 transition" title="כלול את סיפור המשפחה והייחוס בהדפסה">
+                        <input type="checkbox" id="includeToldotPrint" checked class="rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer">
+                        <span>כולל תולדות</span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -158,12 +182,22 @@
     </section>
 
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
-        <div id="searchStatusBanner" class="hidden mb-3.5 bg-blue-50 border border-blue-200 text-blue-800 px-3.5 py-2.5 rounded-lg text-base font-semibold flex items-center justify-between">
+    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8 pb-16">
+        <div id="searchStatusBanner" class="hidden mb-3.5 bg-blue-50 border border-blue-200 text-blue-800 px-3.5 py-2.5 rounded-lg text-base font-semibold flex flex-wrap items-center justify-between gap-2">
             <span id="searchStatusText"></span>
+            <span id="toldotSearchIndicator" class="hidden text-xs sm:text-sm bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full font-bold">
+                📜 נמצאו התאמות גם בחלונית "תולדות"
+            </span>
         </div>
         <div id="treeContainer" class="space-y-3"></div>
     </main>
+
+    <!-- Floating Back-to-Top Button -->
+    <button type="button" id="backToTopBtn" class="hidden fixed bottom-5 left-5 z-40 w-11 h-11 rounded-full bg-slate-800 hover:bg-slate-900 text-white shadow-lg border border-slate-600 flex items-center justify-center transition-all duration-200 active:scale-95" title="חזרה לראש העמוד" aria-label="חזרה לראש העמוד">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 
     <!-- Email Contact Modal -->
     <div id="emailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
@@ -216,17 +250,17 @@
                 },
                 {
                     id: "avraham_firer",
-                    name: "2. אברהם־אריה (לייביש) וגולדה (גוסטי) פירר",
+                    name: "2. אברהם־אריה (לייביש) וגולדה (גוסטי) לבית אופן פירר",
                     gen: 1,
-                    dates: "אברהם־אריה: 1907-2009 | גולדה: -1990 | נישואין: 1938 (ברלין)",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין > מלחה\"ע ה-2: הסתתרו במשך 18 חודשים בחווה מחוץ לבריסל. משם ברחו לשווייץ דרך צרפת > ניו יורק, ארה\"ב",
+                    dates: "אברהם־אריה: 1907-30/8/2009 (י' אלול תשס\"ט, שבת שובה תרס\"ח) | גולדה: -1990 | נישואין: 1938 (ברלין)",
+                    location: "צאנז, גליציה > דוקלה > אנטוורפן, בלגיה (1911) > קלן, גרמניה (1919) > ברלין > מלחה\"ע ה-2: הסתתרו 18 חודשים בחווה מחוץ לבריסל. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948)",
                     children: [
                         {
                             id: "shmuel_dvora_firer",
                             name: "שמואל ודבורה־חיה פירר",
                             gen: 2,
-                            dates: "שמואל: 1940",
-                            location: "שוויץ > ניו יורק, ארה\"ב",
+                            dates: "שמואל: 1940 (נולד בעת המסתור מחוץ לבריסל)",
+                            location: "בריסל, בלגיה > שווייץ (1944) > ניו יורק, ארה\"ב (1948)",
                             children: [
                                 { id: "sara_shmuel_firer", name: "שרה", gen: 3 },
                                 { id: "miryam_shmuel_firer", name: "מרים", gen: 3 },
@@ -235,10 +269,10 @@
                         },
                         {
                             id: "chaim_breindel_firer",
-                            name: "חיים ובריינדל פירר",
+                            name: "חיים ובריינדל (אוולין) פירר",
                             gen: 2,
-                            dates: "חיים: 1946",
-                            location: "ניו יורק, ארה\"ב > פלורידה, ארה\"ב",
+                            dates: "חיים: 1946 (נולד בשווייץ)",
+                            location: "שווייץ > ניו יורק, ארה\"ב (1948) > פלורידה, ארה\"ב",
                             children: [
                                 { id: "aviva_chaim_firer", name: "אביבה", gen: 3 },
                                 { id: "pinchas_chaim_firer", name: "פנחס פירר", gen: 3 },
@@ -252,7 +286,7 @@
                     name: "3. מנחם־מנדל ושרה פירר",
                     gen: 1,
                     dates: "מנחם־מנדל: 28/2/1909-15/5/1997 (ח' אייר תשנ\"ז) | עלייה: 1932 | שרה: 1914-14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה: 1933 | נישואין: 1934",
-                    location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > גרינגסהוף, גרמניה > רודגס, פתח תקווה > ממייסדי כפר פינס (1934)",
+                    location: "צאנז, גליציה > דוקלה > אנטוורפן, בלגיה > קלן, גרמניה (הושפע מהמרכז הציוני ומפרופ' ישעיהו ליבוביץ; עזב משרה בחברת המתכות ליסאואר) > הכשרה בגרינגסהוף, גרמניה > רודגס, פתח תקווה > ממייסדי כפר פינס (1934)",
                     children: [
                         {
                             id: "ruth_yitzchak_lev",
@@ -1049,6 +1083,17 @@
         let currentSearchQuery = "";
         let isToldotExpanded = false;
 
+        // נרמול מחרוזת לחיפוש (התעלמות ממקף מחבר ־, מקף רגיל - וגרשיים)
+        function normalizeForSearch(str) {
+            if (!str) return "";
+            return str
+                .toLowerCase()
+                .replace(/[־\-–—]/g, " ")
+                .replace(/["״׳']/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
         // פתיחה וסגירה של חלונית "תולדות" בתוך כרטיס השורש
         function toggleToldot(event) {
             if (event) event.stopPropagation();
@@ -1063,12 +1108,22 @@
             }
         }
 
-        // הדגשת טקסט תואם לחיפוש
+        // הדגשת טקסט תואם לחיפוש (תומך גם במקף מחבר/רגיל וגם מבלי לפגוע בתגיות HTML)
         function highlightText(text, query) {
-            if (!text || !query) return text || "";
-            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const regex = new RegExp(`(${escapedQuery})`, 'gi');
-            return text.replace(regex, '<mark class="bg-amber-200 text-slate-900 px-0.5 rounded font-extrabold">$1</mark>');
+            if (!text || !query || !query.trim()) return text || "";
+            const cleanTokens = normalizeForSearch(query).split(" ").filter(Boolean);
+            if (cleanTokens.length === 0) return text;
+
+            const escapedPattern = cleanTokens
+                .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+                .join('[\\s־\\-–—"\'״׳]*');
+            const regex = new RegExp(`(${escapedPattern})`, 'gi');
+
+            // הדגשה בטוחה רק מחוץ לתגיות HTML
+            return text.split(/(<[^>]+>)/g).map(part => {
+                if (part.startsWith('<')) return part;
+                return part.replace(regex, '<mark class="bg-amber-200 text-slate-900 px-0.5 rounded font-extrabold">$1</mark>');
+            }).join('');
         }
         // הוספת סמל קטן של נר זכרון במיכל מתכת בתוך הסוגריים של תאריכי פטירה עבריים
         function formatDatesWithMemorialCandle(htmlText) {
@@ -1080,17 +1135,27 @@
             return formatted;
         }
 
-        // סינון עץ הנתונים לפי שאילתת חיפוש ושמירה על נתיב האבות
+        // חישוב סך כל הצאצאים הישירים והעקיפים תחת צומת נתון
+        function countSubtreeDescendants(node) {
+            if (!node || !node.children || node.children.length === 0) return 0;
+            let count = 0;
+            for (const child of node.children) {
+                count += 1 + countSubtreeDescendants(child);
+            }
+            return count;
+        }
+
+        // סינון עץ הנתונים לפי שאילתת חיפוש (עם נרמול סימני פיסוק) ושמירה על נתיב האבות
         function filterTreeBySearch(node, query) {
-            const q = query.trim().toLowerCase();
+            const q = normalizeForSearch(query);
             if (!q) return { node, matchCount: 0 };
 
             let localMatchCount = 0;
 
             function traverse(curr) {
-                const nameMatch = curr.name && curr.name.toLowerCase().includes(q);
-                const datesMatch = curr.dates && curr.dates.toLowerCase().includes(q);
-                const locationMatch = curr.location && curr.location.toLowerCase().includes(q);
+                const nameMatch = normalizeForSearch(curr.name).includes(q);
+                const datesMatch = normalizeForSearch(curr.dates).includes(q);
+                const locationMatch = normalizeForSearch(curr.location).includes(q);
                 const isDirectMatch = nameMatch || datesMatch || locationMatch;
 
                 if (isDirectMatch) {
@@ -1155,8 +1220,8 @@
                 node.children.forEach(traverse);
             }
 
-            const totalPersons = 2 + totalDescendants;
-            return { totalPersons, totalDescendants, genCounts };
+            const totalFamiliesAndIndividuals = 1 + totalDescendants;
+            return { totalFamiliesAndIndividuals, totalDescendants, genCounts };
         }
 
         function initInitialState(node) {
@@ -1170,11 +1235,83 @@
             }
         }
 
+        function buildToldotInnerHtml(searchQuery = "") {
+            const hl = (txt) => highlightText(txt, searchQuery);
+            const candleSvg = `<svg style="width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; margin-inline-end: 2px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="נר זיכרון"><title>תאריך פטירה עברי</title><path d="M12 2.2C12 2.2 15.2 5.6 15.2 8.1C15.2 9.87 13.77 11.3 12 11.3C10.23 11.3 8.8 9.87 8.8 8.1C8.8 5.6 12 2.2 12 2.2Z" fill="#f97316"/><path d="M12 4.8C12 4.8 13.6 6.7 13.6 8.1C13.6 8.98 12.88 9.7 12 9.7C11.12 9.7 10.4 8.98 10.4 8.1C10.4 6.7 12 4.8 12 4.8Z" fill="#fde047"/><rect x="11.3" y="10.8" width="1.4" height="2.4" rx="0.5" fill="#475569"/><path d="M6.5 13.2H17.5L16.7 21.2C16.63 21.77 16.15 22.2 15.58 22.2H8.42C7.85 22.2 7.37 21.77 7.3 21.2L6.5 13.2Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.3" stroke-linejoin="round"/><ellipse cx="12" cy="13.2" rx="5.5" ry="1.2" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><path d="M7.1 16.2H16.9M7.4 19H16.6" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/></svg>`;
+
+            return `
+                <!-- אילן יוחסין - בעל ה"תוספות יום-טוב" ובעל התוספות משאנץ -->
+                <div class="bg-amber-50/80 rounded-md border border-amber-200 p-3 shadow-2xs text-sm sm:text-[15px] text-slate-800">
+                    <div class="font-extrabold text-amber-950 flex items-center gap-1.5 mb-2 pb-1.5 border-b border-amber-200/70">
+                        <span>📜</span>
+                        <span>${hl('ייחוס לבעל ה"תוספות יום־טוב" ולבעל התוספות משאנץ')}</span>
+                    </div>
+                    <div class="space-y-1.5 font-semibold leading-relaxed">
+                        <div class="flex items-start gap-2">
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">א</span>
+                            <span>${hl('רבי שמשון בן אברהם משאנץ (בעל התוספות משאנץ, צרפת)')} <span class="text-slate-600 font-medium text-sm">| 🗓️ <span dir="ltr" class="inline-block">1150–1214</span></span></span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-3 sm:pr-5 text-amber-900/80 text-xs sm:text-sm italic font-medium">
+                            <span class="text-amber-700 font-bold not-italic select-none">↳</span>
+                            <span>* דורות ביניים</span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-4 sm:pr-7">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">ב</span>
+                            <span>${hl('הרב גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין (בעל ה"תוספות יום־טוב")')} <span class="text-slate-600 font-medium text-sm">| 🗓️ <span dir="ltr" class="inline-block">1579-1654</span> (${candleSvg}${hl('ו\' באלול תי"ד')})</span></span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-6 sm:pr-10 text-amber-900/80 text-xs sm:text-sm italic font-medium">
+                            <span class="text-amber-700 font-bold not-italic select-none">↳</span>
+                            <span>* דורות עם מידע חלקי או לא ידוע</span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-8 sm:pr-12">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">ג</span>
+                            <span>${hl('הרב אליש (אליהו) ב"ר ברוך ברגמן – דיין בבית דינו של בעל ה"דברי חיים" מצאנז במשך 52 שנה')}</span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-10 sm:pr-[4rem]">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">ד</span>
+                            <span>${hl('רחל־פרומט (ברגמן) ושמעון פירר')}</span>
+                        </div>
+                        <div class="flex items-start gap-2 pr-12 sm:pr-[5rem]">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ה</span>
+                            <div>
+                                <div>${hl('שמואל פירר')} (<span dir="ltr" class="inline-block">1858-1910</span>) ${hl('ומרים')} (<span dir="ltr" class="inline-block">1855-1935</span>) <span class="text-slate-600 font-normal text-xs sm:text-sm">(${hl('בן־דודו של הרב שמואל פירר מקרוסנו')})</span></div>
+                                <div class="text-slate-600 font-medium text-xs sm:text-sm mt-0.5">${hl('ילדיהם: חיים, פנחס, נתן, מלכה, זלקה, אפרים, איטה')}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- קורות פנחס ואלטה-חנה פירר -->
+                <div class="bg-amber-50/80 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-semibold text-slate-800 leading-relaxed">
+                    <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span>🗓️</span>
+                            <span>${hl('פנחס')}: <span dir="ltr" class="inline-block">6/2/1882-23/1/1953</span> (${candleSvg}${hl('ז\' שבט תשי"ג')}) | ${hl('אלטה־חנה')}: <span dir="ltr" class="inline-block">21/4/1883-12/1/1970</span> (${candleSvg}${hl('ה\' שבט תש"ל')})</span>
+                        </div>
+                    </div>
+                    <p>${hl('נישואין')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}), <a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>.</p>
+                    <p>${hl('הוריה של אלטה־חנה: בנימין־זאב ליפסקר')} (<span dir="ltr" class="inline-block">1860?–1945</span>) ${hl('ודינה לבית פרידמן')} (<span dir="ltr" class="inline-block">1862–1942</span>).</p>
+                    <p>${hl('בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). בשנת 1911 יצא פנחס ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה (בעוד הבכורה טויבע נשארה זמנית בצאנז), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בקלן): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
+                    <p>${hl('בשנת 1917 עברה המשפחה ל')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl(', שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
+                    <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים).')}</p>
+                    <p>${hl('כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם ליזה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים).')}</p>
+                    <p>${hl('בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואלטן מיר געהאט א מיתה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).')}</p>
+                    <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובשנת 1940 עברו לדירה בשכונת מאה שערים בירושלים. שניהם טמונים בבית העלמין גבעת שאול בירושלים.')}</p>
+                </div>
+            `;
+        }
+
         function renderNode(node) {
             const hasChildren = node.children && node.children.length > 0;
             const isExpanded = !!expandedState[node.id];
             const isRootNode = node.id === 'root';
             const isHighlightedCard = currentSearchQuery && node.isDirectMatch;
+            const directChildrenCount = hasChildren ? node.children.length : 0;
+            const totalBranchCount = hasChildren ? countSubtreeDescendants(node) : 0;
             
             const card = document.createElement("div");
             card.id = `node-${node.id}`;
@@ -1188,8 +1325,19 @@
             const displayDates = formatDatesWithMemorialCandle(highlightText(node.dates, currentSearchQuery));
             const displayLocation = highlightText(node.location, currentSearchQuery);
 
+            const directLabel = directChildrenCount === 1 ? 'ילד/ה 1' : `${directChildrenCount} ילדים`;
+            const countBadgeText = !isRootNode && hasChildren
+                ? (totalBranchCount > directChildrenCount
+                    ? `${directLabel} · ${totalBranchCount} צאצאים`
+                    : directLabel)
+                : "";
+
+            const headerClickAttr = (!isRootNode && hasChildren)
+                ? `onclick="toggleNode('${node.id}', event)" class="flex items-center justify-between gap-2 cursor-pointer select-none group rounded-md -m-1 p-1 hover:bg-slate-50/80 transition"`
+                : `class="flex items-center justify-between gap-2"`;
+
             let html = `
-                <div class="flex items-center justify-between gap-2">
+                <div ${headerClickAttr}>
                     <div class="flex-1 flex flex-col gap-1">
                         <div class="flex items-center gap-2 flex-wrap">
                             ${node.gen > 0 ? `
@@ -1197,9 +1345,14 @@
                                     ${getHebrewGen(node.gen)}
                                 </span>
                             ` : ''}
-                            <h3 class="node-title ${titleSizeClass} leading-snug">
+                            <h3 class="node-title ${titleSizeClass} leading-snug ${!isRootNode && hasChildren ? 'group-hover:text-emerald-900 transition-colors' : ''}">
                                 ${displayName}
                             </h3>
+                            ${countBadgeText ? `
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/90">
+                                    ${countBadgeText}
+                                </span>
+                            ` : ''}
                         </div>
 
                         ${node.dates ? `
@@ -1224,7 +1377,7 @@
                                 </svg>
                             </button>
                         ` : (hasChildren ? `
-                            <button onclick="toggleNode('${node.id}', event)" class="w-8 h-8 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition flex items-center justify-center border border-emerald-300 shadow-sm" title="${isExpanded ? 'כווץ' : 'הרחב'}">
+                            <button type="button" onclick="toggleNode('${node.id}', event)" class="w-8 h-8 rounded-full bg-emerald-50 group-hover:bg-emerald-100 hover:bg-emerald-100 text-emerald-800 transition flex items-center justify-center border border-emerald-300 shadow-sm" title="${isExpanded ? 'כווץ' : 'הרחב'}">
                                 <svg class="w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                                 </svg>
@@ -1234,55 +1387,7 @@
                 </div>
                 ${isRootNode ? `
                     <div id="rootToldotContent" class="${isToldotExpanded ? '' : 'hidden'} mt-3 pt-2.5 border-t border-rose-200/80 space-y-2.5">
-                        <!-- אילן יוחסין - בעל ה"תוספות יום-טוב" -->
-                        <div class="bg-amber-50/80 rounded-md border border-amber-200 p-3 shadow-2xs text-sm sm:text-[15px] text-slate-800">
-                            <div class="font-extrabold text-amber-950 flex items-center gap-1.5 mb-2 pb-1.5 border-b border-amber-200/70">
-                                <span>📜</span>
-                                <span>ייחוס לבעל ה"תוספות יום־טוב"</span>
-                            </div>
-                            <div class="space-y-1.5 font-semibold leading-relaxed">
-                                <div class="flex items-start gap-2">
-                                    <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">א</span>
-                                    <span>הרב גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין (בעל ה"תוספות יום־טוב") <span class="text-slate-600 font-medium text-sm">| 🗓️ <span dir="ltr" class="inline-block">1579-1654</span> (<svg style="width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; margin-inline-end: 2px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="נר זיכרון"><title>תאריך פטירה עברי</title><path d="M12 2.2C12 2.2 15.2 5.6 15.2 8.1C15.2 9.87 13.77 11.3 12 11.3C10.23 11.3 8.8 9.87 8.8 8.1C8.8 5.6 12 2.2 12 2.2Z" fill="#f97316"/><path d="M12 4.8C12 4.8 13.6 6.7 13.6 8.1C13.6 8.98 12.88 9.7 12 9.7C11.12 9.7 10.4 8.98 10.4 8.1C10.4 6.7 12 4.8 12 4.8Z" fill="#fde047"/><rect x="11.3" y="10.8" width="1.4" height="2.4" rx="0.5" fill="#475569"/><path d="M6.5 13.2H17.5L16.7 21.2C16.63 21.77 16.15 22.2 15.58 22.2H8.42C7.85 22.2 7.37 21.77 7.3 21.2L6.5 13.2Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.3" stroke-linejoin="round"/><ellipse cx="12" cy="13.2" rx="5.5" ry="1.2" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><path d="M7.1 16.2H16.9M7.4 19H16.6" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/></svg>ו' באלול תי"ד)</span></span>
-                                </div>
-                                <div class="flex items-start gap-2 pr-3 sm:pr-5 text-amber-900/80 text-xs sm:text-sm italic font-medium">
-                                    <span class="text-amber-700 font-bold not-italic select-none">↳</span>
-                                    <span>* דורות עם מידע חלקי או לא ידוע</span>
-                                </div>
-                                <div class="flex items-start gap-2 pr-6 sm:pr-10">
-                                    <span class="text-amber-700 font-bold select-none">↳</span>
-                                    <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">ב</span>
-                                    <span>הרב אליהו ב"ר ברוך ברגמן</span>
-                                </div>
-                                <div class="flex items-start gap-2 pr-9 sm:pr-[3.75rem]">
-                                    <span class="text-amber-700 font-bold select-none">↳</span>
-                                    <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">ג</span>
-                                    <span>רחל־פרומט (ברגמן) ושמעון פירר</span>
-                                </div>
-                                <div class="flex items-start gap-2 pr-12 sm:pr-[5rem]">
-                                    <span class="text-amber-700 font-bold select-none">↳</span>
-                                    <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ד</span>
-                                    <div>
-                                        <div>שמואל פירר (<span dir="ltr" class="inline-block">1858-1910</span>) ומרים (<span dir="ltr" class="inline-block">1855-1935</span>)</div>
-                                        <div class="text-slate-600 font-medium text-xs sm:text-sm mt-0.5">ילדיהם: חיים, פנחס, נתן, מלכה, זלקה, אפרים, איטה</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- קורות פנחס ואלטה-חנה פירר -->
-                        <div class="bg-amber-50/80 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-semibold text-slate-800 leading-relaxed">
-                            <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
-                                <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span>🗓️</span>
-                                    <span>פנחס: <span dir="ltr" class="inline-block">6/2/1882-23/1/1953</span> (<svg style="width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; margin-inline-end: 2px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="נר זיכרון"><title>תאריך פטירה עברי</title><path d="M12 2.2C12 2.2 15.2 5.6 15.2 8.1C15.2 9.87 13.77 11.3 12 11.3C10.23 11.3 8.8 9.87 8.8 8.1C8.8 5.6 12 2.2 12 2.2Z" fill="#f97316"/><path d="M12 4.8C12 4.8 13.6 6.7 13.6 8.1C13.6 8.98 12.88 9.7 12 9.7C11.12 9.7 10.4 8.98 10.4 8.1C10.4 6.7 12 4.8 12 4.8Z" fill="#fde047"/><rect x="11.3" y="10.8" width="1.4" height="2.4" rx="0.5" fill="#475569"/><path d="M6.5 13.2H17.5L16.7 21.2C16.63 21.77 16.15 22.2 15.58 22.2H8.42C7.85 22.2 7.37 21.77 7.3 21.2L6.5 13.2Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.3" stroke-linejoin="round"/><ellipse cx="12" cy="13.2" rx="5.5" ry="1.2" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><path d="M7.1 16.2H16.9M7.4 19H16.6" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/></svg>ז' שבט תשי"ג) | אלטה־חנה: <span dir="ltr" class="inline-block">21/4/1883-12/1/1970</span> (<svg style="width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; margin-inline-end: 2px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="נר זיכרון"><title>תאריך פטירה עברי</title><path d="M12 2.2C12 2.2 15.2 5.6 15.2 8.1C15.2 9.87 13.77 11.3 12 11.3C10.23 11.3 8.8 9.87 8.8 8.1C8.8 5.6 12 2.2 12 2.2Z" fill="#f97316"/><path d="M12 4.8C12 4.8 13.6 6.7 13.6 8.1C13.6 8.98 12.88 9.7 12 9.7C11.12 9.7 10.4 8.98 10.4 8.1C10.4 6.7 12 4.8 12 4.8Z" fill="#fde047"/><rect x="11.3" y="10.8" width="1.4" height="2.4" rx="0.5" fill="#475569"/><path d="M6.5 13.2H17.5L16.7 21.2C16.63 21.77 16.15 22.2 15.58 22.2H8.42C7.85 22.2 7.37 21.77 7.3 21.2L6.5 13.2Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.3" stroke-linejoin="round"/><ellipse cx="12" cy="13.2" rx="5.5" ry="1.2" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><path d="M7.1 16.2H16.9M7.4 19H16.6" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/></svg>ה' שבט תש"ל)</span>
-                                </div>
-                            </div>
-                            <p>נישואין <span dir="ltr" class="inline-block">24/8/1904</span> (י"ג אלול תרס"ד), <a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">דוּקְלָה, גליציה</a>.</p>
-                            <p>הוריה של אלטה־חנה: בנימין־זאב ליפסקר (<span dir="ltr" class="inline-block">1860?–1945</span>) ודינה לבית פרידמן (<span dir="ltr" class="inline-block">1862–1942</span>).</p>
-                            <p>בתחילה התגוררו ב<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">צאנז, גליציה</a> (האימפריה האוסטרו־הונגרית). בשנת 1911 היגרו ל<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">אנטוורפן</a>, בלגיה כדי להשתלב בענף היהלומים. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו להעתיק את מגוריהם לגרמניה בהדרגה: בשנת 1913 התיישבה אלטה־חנה בעיר <a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">לנדשטול</a> ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי מחוז הריין. עם פרוץ מלחה"ע ה-1 (1914) הצטרפו אליה פנחס והילדים. בשנת 1917 עברה המשפחה ל<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">קלן</a>, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. בתקופת מגוריהם בקלן נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל. תחילה התגוררו בכפר פינס אצל מנחם־מנדל ושרה פירר, ובשנת 1940 עברו לדירה בשכונת "מאה שערים" בירושלים. שניהם טמונים בבית העלמין "גבעת שאול" בירושלים.</p>
-                            <p>את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו) השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים). כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם ליזה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מנדל, אונז אומן געהאט א מיסה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).</p>
-                        </div>
+                        ${buildToldotInnerHtml(currentSearchQuery)}
 
                         <!-- קו הפרדה גרפי ברור בין אזור תולדות לתחילת עץ הצאצאים -->
                         <div class="pt-3 pb-1 flex items-center gap-3 select-none" aria-hidden="true">
@@ -1407,6 +1512,7 @@
             const showAllTreeBtn = document.getElementById("showAllTreeBtn");
             const searchBanner = document.getElementById("searchStatusBanner");
             const searchStatusText = document.getElementById("searchStatusText");
+            const toldotSearchIndicator = document.getElementById("toldotSearchIndicator");
             const container = document.getElementById("treeContainer");
 
             // עדכון דינמי של כפתור ההדפסה בהתאם לענף הנבחר
@@ -1431,18 +1537,38 @@
             let baseData = getFilteredData();
 
             if (currentSearchQuery.trim() !== "") {
+                const normalizedQuery = normalizeForSearch(currentSearchQuery);
+                const plainToldotText = buildToldotInnerHtml("").replace(/<[^>]+>/g, " ");
+                const matchedInToldot = normalizedQuery.length > 0 && normalizeForSearch(plainToldotText).includes(normalizedQuery);
+
                 const { node: searchedNode, matchCount } = filterTreeBySearch(baseData, currentSearchQuery);
                 
+                if (matchedInToldot) {
+                    isToldotExpanded = true;
+                }
+
+                if (toldotSearchIndicator) {
+                    toldotSearchIndicator.classList.toggle("hidden", !matchedInToldot);
+                }
+
                 if (searchBanner && searchStatusText) {
                     searchBanner.classList.remove("hidden");
-                    searchStatusText.textContent = matchCount > 0 
-                        ? `נמצאו ${matchCount} תוצאות עבור "${currentSearchQuery.trim()}"` 
-                        : `לא נמצאו תוצאות עבור "${currentSearchQuery.trim()}"`;
+                    if (matchCount > 0) {
+                        searchStatusText.textContent = `נמצאו ${matchCount} תוצאות בעץ עבור "${currentSearchQuery.trim()}"`;
+                    } else if (matchedInToldot) {
+                        searchStatusText.textContent = `נמצאה התאמה ל-"${currentSearchQuery.trim()}" בתוך "תולדות"`;
+                    } else {
+                        searchStatusText.textContent = `לא נמצאו תוצאות עבור "${currentSearchQuery.trim()}"`;
+                    }
                 }
 
                 if (searchedNode) {
                     setAllExpanded(searchedNode, true);
                     renderTreeWithData(searchedNode);
+                } else if (matchedInToldot) {
+                    const rootOnly = { ...baseData, children: [] };
+                    expandedState[rootOnly.id] = true;
+                    renderTreeWithData(rootOnly);
                 } else if (container) {
                     container.innerHTML = `
                         <div class="bg-white rounded-xl border border-slate-200 p-8 text-center shadow-sm">
@@ -1453,6 +1579,7 @@
                 }
             } else {
                 if (searchBanner) searchBanner.classList.add("hidden");
+                if (toldotSearchIndicator) toldotSearchIndicator.classList.add("hidden");
                 if (branchFilter && branchFilter.value === "all") {
                     initInitialState(baseData);
                 } else {
@@ -1504,10 +1631,15 @@
         function openPrintWindow() {
             const dataToPrint = getFilteredData();
             const branchFilter = document.getElementById("branchFilter");
+            const includeToldotCheckbox = document.getElementById("includeToldotPrint");
+            const shouldIncludeToldot = includeToldotCheckbox ? includeToldotCheckbox.checked : true;
             const isBranchFiltered = branchFilter && branchFilter.value !== "all";
             const branchTitle = isBranchFiltered && dataToPrint.children && dataToPrint.children[0]
                 ? `ענף משפחת ${dataToPrint.children[0].name.replace(/^\d+\.\s*/, '')}`
                 : "";
+
+            const now = new Date();
+            const printDateStr = now.toLocaleDateString('he-IL', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
             function buildPrintHtml(node) {
                 const hasChildren = node.children && node.children.length > 0;
@@ -1515,6 +1647,9 @@
                     ? `<span class="badge badge-gen-${node.gen}">${getHebrewGen(node.gen)}</span>`
                     : '';
                 const titleClass = node.id === 'root' ? 'root-title' : 'node-title';
+                const toldotPrintBlock = (node.id === 'root' && shouldIncludeToldot)
+                    ? `<div class="print-toldot">${buildToldotInnerHtml("")}</div>`
+                    : '';
 
                 let html = `
                     <div class="node-wrapper gen-${node.gen}">
@@ -1525,6 +1660,7 @@
                             </div>
                             ${node.dates ? `<div class="node-meta">🗓️ ${formatDatesWithMemorialCandle(node.dates)}</div>` : ''}
                             ${node.location ? `<div class="node-meta">📍 ${node.location}</div>` : ''}
+                            ${toldotPrintBlock}
                         </div>
                 `;
 
@@ -1559,8 +1695,14 @@
                             @bottom-center {
                                 content: counter(page) "/" counter(pages);
                                 font-family: 'Assistant', Arial, sans-serif;
-                                font-size: 10pt;
+                                font-size: 9.5pt;
                                 color: #64748b;
+                            }
+                            @bottom-right {
+                                content: "הופק בתאריך ${printDateStr}";
+                                font-family: 'Assistant', Arial, sans-serif;
+                                font-size: 8.5pt;
+                                color: #94a3b8;
                             }
                         }
                         body {
@@ -1589,6 +1731,23 @@
                             font-weight: 700;
                             color: #2563eb;
                         }
+                        .print-toldot {
+                            margin-top: 8px;
+                            padding: 8px 10px;
+                            background-color: #fffbeb;
+                            border: 1px solid #fde68a;
+                            border-radius: 4px;
+                            font-size: 8.8pt;
+                            line-height: 1.45;
+                            color: #1e293b;
+                        }
+                        .print-toldot p {
+                            margin: 3px 0;
+                        }
+                        .print-toldot a {
+                            color: #1d4ed8;
+                            text-decoration: none;
+                        }
                         .node-wrapper {
                             margin-bottom: 4.5px;
                             padding-right: 7px;
@@ -1600,6 +1759,10 @@
                             background: #ffffff;
                             break-inside: avoid;
                             page-break-inside: avoid;
+                        }
+                        .gen-0 > .node-item {
+                            break-inside: auto;
+                            page-break-inside: auto;
                         }
                         .gen-0 { border-right: 4px solid #881337; }
                         .gen-0 > .node-item { background-color: #fff1f2; border-color: #fecdd3; }
@@ -1680,10 +1843,15 @@
             const stats = calculateStats(rawFamilyData);
             
             const totalPersonsEl = document.getElementById("totalPersons");
-            if (totalPersonsEl) totalPersonsEl.textContent = `${stats.totalPersons} נפשות`;
+            if (totalPersonsEl) totalPersonsEl.textContent = `${stats.totalFamiliesAndIndividuals} בתי אב ויחידים`;
 
             const totalDescEl = document.getElementById("totalDescendants");
             if (totalDescEl) totalDescEl.textContent = `${stats.totalDescendants} צאצאים`;
+
+            const branchFilterAllOption = document.querySelector('#branchFilter option[value="all"]');
+            if (branchFilterAllOption && rawFamilyData.children) {
+                branchFilterAllOption.textContent = `כל הענפים (${rawFamilyData.children.length} ענפים)`;
+            }
 
             const genBreakdownEl = document.getElementById("genBreakdown");
             if (genBreakdownEl) {
@@ -1700,6 +1868,35 @@
             renderTree();
             setupBranchFilter();
             setupSearch();
+
+            const expandAllBtn = document.getElementById("expandAllBtn");
+            if (expandAllBtn) {
+                expandAllBtn.addEventListener("click", () => {
+                    const currentData = getFilteredData();
+                    setAllExpanded(currentData, true);
+                    renderTreeWithData(currentData);
+                });
+            }
+
+            const collapseAllBtn = document.getElementById("collapseAllBtn");
+            if (collapseAllBtn) {
+                collapseAllBtn.addEventListener("click", collapseAllBranches);
+            }
+
+            const backToTopBtn = document.getElementById("backToTopBtn");
+            if (backToTopBtn) {
+                window.addEventListener("scroll", () => {
+                    if (window.scrollY > 350) {
+                        backToTopBtn.classList.remove("hidden");
+                    } else {
+                        backToTopBtn.classList.add("hidden");
+                    }
+                }, { passive: true });
+
+                backToTopBtn.addEventListener("click", () => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            }
 
             const homeLogoBtn = document.getElementById("homeLogoBtn");
             if (homeLogoBtn) {
