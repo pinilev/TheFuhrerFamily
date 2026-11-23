@@ -58,7 +58,7 @@
     <!-- Header (Sticky only on sm+ screens to save mobile viewport height) -->
     <header class="bg-white border-b border-slate-200 sm:sticky sm:top-0 z-30 shadow-sm">
         <div class="max-w-7xl mx-auto px-3 py-3 sm:px-6 lg:px-8 flex flex-col gap-3">
-            <!-- Top Row: Title, Utility Tools & Contact Icons -->
+            <!-- Top Row: Title -->
             <div class="flex flex-wrap items-center justify-between gap-2 w-full">
                 <div class="flex items-center gap-2.5">
                     <button type="button" id="homeLogoBtn" class="w-9 h-9 bg-emerald-600 hover:bg-emerald-700 active:scale-95 rounded-lg flex items-center justify-center text-white shadow-sm transition cursor-pointer" title="חזרה לדף הנחיתה הראשי" aria-label="חזרה לדף הנחיתה הראשי">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             
-            <!-- Second Row: Search, Branch Filter, Expand/Collapse & Print -->
+            <!-- Second Row: Search, Branch Filter, Print & Expand/Collapse (Far Left) -->
             <div class="flex flex-wrap items-center gap-2.5 w-full">
                 <!-- Search Input Container -->
                 <div class="relative w-full sm:w-auto sm:flex-initial">
@@ -116,28 +116,10 @@
                     </button>
                 </div>
 
-                <!-- Divider before Action Buttons -->
-                <div class="hidden sm:block h-6 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
-
-                <!-- Expand / Collapse All Controls -->
-                <div class="flex items-center gap-1.5">
-                    <button type="button" id="expandAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="הרחב את כל הענפים המוצגים">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
-                        </svg>
-                        <span>הרחב הכל</span>
-                    </button>
-                    <button type="button" id="collapseAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="כווץ את כל הענפים המוצגים">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path>
-                        </svg>
-                        <span>כווץ הכל</span>
-                    </button>
-                </div>
-
                 <!-- Divider before Print Controls -->
                 <div class="hidden sm:block h-6 w-[1px] bg-slate-200 mx-0.5" aria-hidden="true"></div>
 
+                <!-- Print Controls -->
                 <div class="flex items-center gap-2 flex-wrap">
                     <button id="printTreeBtn" class="px-3.5 py-1.5 text-sm font-semibold bg-slate-700 hover:bg-slate-800 text-white rounded-md transition shadow-sm flex items-center gap-1.5 cursor-pointer" title="הדפסת כל עץ היוחסין">
                         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -155,6 +137,22 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </span>
+                    </button>
+                </div>
+
+                <!-- Expand / Collapse All Controls Pushed Far Left -->
+                <div class="flex items-center gap-1.5 w-full sm:w-auto justify-end sm:mr-auto">
+                    <button type="button" id="expandAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="הרחב את כל הענפים המוצגים">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
+                        </svg>
+                        <span>הרחב הכל</span>
+                    </button>
+                    <button type="button" id="collapseAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="כווץ את כל הענפים המוצגים">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path>
+                        </svg>
+                        <span>כווץ הכל</span>
                     </button>
                 </div>
             </div>
@@ -384,7 +382,7 @@
                             id: "ruth_yitzchak_lev",
                             name: "רות ויצחק לב",
                             gen: 2,
-                            dates: "רות: 15/5/1937-19/2/2015 (ל' שבט תשע\"ה) – מורה לעברית ולהיסטוריה | יצחק: 7/8/1923-14/12/2008 (י\"ז כסלו תשס\"ט) – מהנדס אלקטרוניקה",
+                            dates: "רות: 15/5/1937 – 19/2/2015 (ל' שבט תשע\"ה) | יצחק: 7/8/1923 – 14/12/2008 (י\"ז כסלו תשס\"ט)",
                             location: "בני ברק > עפרה (1998)",
                             children: [
                                 {
@@ -1224,9 +1222,9 @@
 
         const expandedState = {};
         let savedExpandedStateBeforeFilter = null;
+        let savedToldotStateBeforeFilter = null;
         let currentSearchQuery = "";
         let isToldotExpanded = false;
-        let excludeToldotFromSearch = false;
         let activeGenDepth = null; // null = default, or 1..5 when clicked in stats bar
 
         // קבוע מאוחד עבור סמל נר הזיכרון לשימוש בכל חלקי האתר וההדפסה
@@ -1544,10 +1542,7 @@
 
             const displayName = highlightText(node.name, currentSearchQuery);
             const displayDates = formatDatesWithMemorialCandle(highlightText(node.dates, currentSearchQuery));
-            const formattedLocationText = node.location
-                ? node.location.replace(/\s*\|\s*(שרה,\s*בת\s*יהודה\s*וזיסל\s*מושקוביץ)/, '<br>$1')
-                : "";
-            const displayLocation = highlightText(formattedLocationText, currentSearchQuery);
+            const displayLocation = highlightText(node.location || "", currentSearchQuery);
 
             const directLabel = directChildrenCount === 1 ? 'ילד/ה 1' : `${directChildrenCount} ילדים`;
             const countBadgeText = !isRootNode && hasChildren
@@ -1594,14 +1589,32 @@
 
                     <div class="flex items-center gap-1.5 shrink-0">
                         ${isRootNode ? `
-                            <button type="button" onclick="toggleToldot(event)" class="inline-flex items-center gap-1.5 text-sm sm:text-[15px] font-extrabold px-3 py-1 rounded-md bg-amber-600 hover:bg-amber-700 text-white shadow-xs transition cursor-pointer" title="הצג או הסתר ייחוס ותולדות">
-                                <span>ייחוס ותולדות</span>
-                                <svg id="rootToldotChevron" class="w-3.5 h-3.5 transform transition-transform duration-200 ${isToldotExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
+                            <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                                <!-- דיוקנאות פנחס ואלטה-חנה פירר מתיקיית השורש -->
+                                <div class="flex items-center gap-2">
+                                    <div class="flex flex-col items-center">
+                                        <button type="button" onclick="openPortraitLightbox('pinchas.jpg', 'פנחס פירר (1882–1953)', event)" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-rose-300 shadow-sm bg-rose-100 hover:border-rose-500 hover:scale-105 transition cursor-pointer flex items-center justify-center" title="פנחס פירר — לחצו להגדלה">
+                                            <img src="pinchas.jpg" onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff1f2/881337?text=%D7%A4%D7%A0%D7%97%D7%A1';" alt="פנחס פירר" class="w-full h-full object-cover object-top">
+                                        </button>
+                                        <span class="text-[11px] font-bold text-rose-900 mt-0.5 leading-none">פנחס</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <button type="button" onclick="openPortraitLightbox('chana.jpg', 'אלטה־חנה (ליפסקר) פירר (1883–1970)', event)" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-rose-300 shadow-sm bg-rose-100 hover:border-rose-500 hover:scale-105 transition cursor-pointer flex items-center justify-center" title="אלטה־חנה פירר — לחצו להגדלה">
+                                            <img src="chana.jpg" onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff1f2/881337?text=%D7%97%D7%A0%D7%94';" alt="אלטה־חנה פירר" class="w-full h-full object-cover object-top">
+                                        </button>
+                                        <span class="text-[11px] font-bold text-rose-900 mt-0.5 leading-none">אלטה־חנה</span>
+                                    </div>
+                                </div>
+
+                                <button type="button" onclick="toggleToldot(event)" aria-expanded="${isToldotExpanded}" class="inline-flex items-center gap-1.5 text-sm sm:text-[15px] font-extrabold px-3 py-1 rounded-md bg-amber-600 hover:bg-amber-700 text-white shadow-xs transition cursor-pointer" title="הצג או הסתר ייחוס ותולדות">
+                                    <span>ייחוס ותולדות</span>
+                                    <svg id="rootToldotChevron" class="w-3.5 h-3.5 transform transition-transform duration-200 ${isToldotExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                            </div>
                         ` : (hasChildren ? `
-                            <button type="button" onclick="toggleNode('${node.id}', event)" class="w-8 h-8 rounded-full bg-emerald-50 group-hover:bg-emerald-100 hover:bg-emerald-100 text-emerald-800 transition flex items-center justify-center border border-emerald-300 shadow-sm cursor-pointer" title="${isExpanded ? 'כווץ' : 'הרחב'}">
+                            <button type="button" id="btn-${node.id}" onclick="toggleNode('${node.id}', event)" aria-expanded="${isExpanded}" class="w-8 h-8 rounded-full bg-emerald-50 group-hover:bg-emerald-100 hover:bg-emerald-100 text-emerald-800 transition flex items-center justify-center border border-emerald-300 shadow-sm cursor-pointer" title="${isExpanded ? 'כווץ' : 'הרחב'}">
                                 <svg id="chevron-${node.id}" class="w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                                 </svg>
@@ -1621,7 +1634,7 @@
                                 <span>הדפסת ייחוס ותולדות</span>
                             </button>
                         </div>
-                        ${buildToldotInnerHtml(excludeToldotFromSearch ? "" : currentSearchQuery)}
+                        ${buildToldotInnerHtml(currentSearchQuery)}
 
                         <!-- קו הפרדה גרפי ברור בין אזור תולדות לתחילת עץ הצאצאים -->
                         <div class="pt-3 pb-1 flex items-center gap-3 select-none" aria-hidden="true">
@@ -1653,6 +1666,35 @@
             return card;
         }
 
+        // חלונית תצוגה מוגדלת (Lightbox) לדיוקנאות מתוך תיקיית media
+        function openPortraitLightbox(imgSrc, caption, event) {
+            if (event) event.stopPropagation();
+
+            const existingModal = document.getElementById("portraitModal");
+            if (existingModal) existingModal.remove();
+
+            const modal = document.createElement("div");
+            modal.id = "portraitModal";
+            modal.className = "fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4";
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl border border-slate-200 shadow-2xl max-w-sm w-full p-4 space-y-3 text-center" dir="rtl">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <h3 class="text-base sm:text-lg font-extrabold text-rose-950">${caption}</h3>
+                        <button type="button" onclick="document.getElementById('portraitModal').remove()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-500 flex items-center justify-center font-bold cursor-pointer" aria-label="סגור">✕</button>
+                    </div>
+                    <div class="rounded-lg overflow-hidden border border-rose-200 bg-rose-50">
+                        <img src="${imgSrc}" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fff1f2/881337?text=%D7%AA%D7%9E%D7%95%D7%A0%D7%94+%D7%9C%D7%90+%D7%A0%D7%9E%D7%A6%D7%90%D7%94';" alt="${caption}" class="w-full max-h-[65vh] object-contain mx-auto">
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
         function toggleNode(nodeId, event) {
             if (event) event.stopPropagation();
             activeGenDepth = null;
@@ -1667,15 +1709,20 @@
                 expandedState[nodeId] = !expandedState[nodeId];
             }
             
-            const childrenContainer = document.getElementById(`children-${nodeId}`);
-            if (childrenContainer) {
-                childrenContainer.classList.toggle('hidden', !expandedState[nodeId]);
+            const containerEl = document.getElementById(`children-${nodeId}`);
+            if (containerEl) {
+                containerEl.classList.toggle('hidden', !expandedState[nodeId]);
             }
-            
-            // פנייה ישירה ומדויקת לאייקון החץ לפי המזהה הייחודי
+
+            // פנייה ישירה ומדויקת לאייקון החץ ולמאפייני הנגישות של הכפתור
             const chevronSvg = document.getElementById(`chevron-${nodeId}`);
             if (chevronSvg) {
                 chevronSvg.classList.toggle('rotate-180', expandedState[nodeId]);
+            }
+            const toggleBtn = document.getElementById(`btn-${nodeId}`);
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-expanded', String(!!expandedState[nodeId]));
+                toggleBtn.title = expandedState[nodeId] ? 'כווץ' : 'הרחב';
             }
         }
 
@@ -1789,7 +1836,6 @@
             function clearSearch() {
                 if (searchInput) searchInput.value = "";
                 currentSearchQuery = "";
-                excludeToldotFromSearch = false;
                 if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
                 applyFiltersAndRender();
             }
@@ -1803,7 +1849,6 @@
                     if (debounceTimer) clearTimeout(debounceTimer);
                     debounceTimer = setTimeout(() => {
                         currentSearchQuery = val;
-                        excludeToldotFromSearch = false;
                         activeGenDepth = null;
                         applyFiltersAndRender();
                     }, 150);
@@ -1842,16 +1887,21 @@
             // עדכון דינמי של סרגל הסטטיסטיקה בהתאם לענף המוצג
             updateStatsBar(baseData);
 
-            // ניהול שמירה ושחזור של מצב הפתיחה של העץ לפני כניסה לחיפוש
+            // ניהול שמירה ושחזור של מצב הפתיחה של העץ וחלונית תולדות לפני כניסה לחיפוש
             const isFilterActive = currentSearchQuery.trim() !== "";
             if (isFilterActive) {
                 if (!savedExpandedStateBeforeFilter) {
                     savedExpandedStateBeforeFilter = { ...expandedState };
+                    savedToldotStateBeforeFilter = isToldotExpanded;
                 }
             } else if (savedExpandedStateBeforeFilter) {
                 Object.keys(expandedState).forEach(k => delete expandedState[k]);
                 Object.assign(expandedState, savedExpandedStateBeforeFilter);
                 savedExpandedStateBeforeFilter = null;
+                if (savedToldotStateBeforeFilter !== null) {
+                    isToldotExpanded = savedToldotStateBeforeFilter;
+                    savedToldotStateBeforeFilter = null;
+                }
                 if (customExpandMode === null) {
                     customExpandMode = "keep";
                 }
@@ -1881,7 +1931,7 @@
             if (currentSearchQuery.trim() !== "") {
                 const normalizedQuery = normalizeForSearch(currentSearchQuery);
                 const plainToldotText = buildToldotInnerHtml("").replace(/<[^>]+>/g, " ");
-                const matchedInToldot = !excludeToldotFromSearch && normalizedQuery.length > 0 && normalizeForSearch(plainToldotText).includes(normalizedQuery);
+                const matchedInToldot = normalizedQuery.length > 0 && normalizeForSearch(plainToldotText).includes(normalizedQuery);
 
                 const { node: searchedNode, matchCount } = filterTreeBySearch(baseData, currentSearchQuery);
                 
@@ -1938,12 +1988,10 @@
             const branchId = branchFilter ? branchFilter.value : "all";
             if (branchId === "all") return rawFamilyData;
 
-            const rootClone = JSON.parse(JSON.stringify(rawFamilyData));
-            const targetChild = rootClone.children.find(c => c.id === branchId);
-            if (targetChild) {
-                rootClone.children = [targetChild];
-            }
-            return rootClone;
+            const targetChild = rawFamilyData.children.find(c => c.id === branchId);
+            return targetChild
+                ? { ...rawFamilyData, children: [targetChild] }
+                : rawFamilyData;
         }
 
         function renderTreeWithData(dataNode, forceExpand = false) {
@@ -1952,10 +2000,6 @@
                 container.innerHTML = "";
                 container.appendChild(renderNode(dataNode, forceExpand));
             }
-        }
-
-        function renderTree() {
-            renderTreeWithData(getFilteredData(), false);
         }
 
         function setAllExpanded(node, state) {
@@ -2031,7 +2075,6 @@
 
         function handleGenBarClick(genLevel) {
             currentSearchQuery = "";
-            excludeToldotFromSearch = false;
             const searchInput = document.getElementById("searchInput");
             const clearSearchBtn = document.getElementById("clearSearchBtn");
             if (searchInput) searchInput.value = "";
@@ -2062,9 +2105,6 @@
                     ? `<span class="badge badge-gen-${node.gen}">${getHebrewGen(node.gen)}</span>`
                     : '';
                 const titleClass = node.id === 'root' ? 'root-title' : 'node-title';
-                const printLocationText = node.location
-                    ? node.location.replace(/\s*\|\s*(שרה,\s*בת\s*יהודה\s*וזיסל\s*מושקוביץ)/, '<br>$1')
-                    : '';
 
                 let html = `
                     <div class="node-wrapper gen-${node.gen}">
@@ -2074,7 +2114,7 @@
                                 <span class="${titleClass}">${node.name}</span>
                             </div>
                             ${node.dates ? `<div class="node-meta">🗓️ ${formatDatesWithMemorialCandle(node.dates)}</div>` : ''}
-                            ${node.location ? `<div class="node-meta">📍 ${printLocationText}</div>` : ''}
+                            ${node.location ? `<div class="node-meta">📍 ${node.location}</div>` : ''}
                         </div>
                 `;
 
@@ -2221,9 +2261,14 @@
                     </div>
                     <script>
                         window.onload = function() {
-                            setTimeout(function() {
-                                window.print();
-                            }, 300);
+                            const triggerPrint = function() {
+                                setTimeout(function() { window.print(); }, 100);
+                            };
+                            if (document.fonts && document.fonts.ready) {
+                                document.fonts.ready.then(triggerPrint);
+                            } else {
+                                setTimeout(triggerPrint, 300);
+                            }
                         };
                     <\/script>
                 </body>
@@ -2393,9 +2438,14 @@
                             el.classList.add('section-box');
                         });
                         window.onload = function() {
-                            setTimeout(function() {
-                                window.print();
-                            }, 250);
+                            const triggerPrint = function() {
+                                setTimeout(function() { window.print(); }, 100);
+                            };
+                            if (document.fonts && document.fonts.ready) {
+                                document.fonts.ready.then(triggerPrint);
+                            } else {
+                                setTimeout(triggerPrint, 250);
+                            }
                         };
                     <\/script>
                 </body>
@@ -2426,7 +2476,6 @@
                     const clearSearchBtn = document.getElementById("clearSearchBtn");
                     if (searchInput) searchInput.value = "";
                     currentSearchQuery = "";
-                    excludeToldotFromSearch = false;
                     if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
                     applyFiltersAndRender();
                 });
@@ -2466,9 +2515,9 @@
 
                     if (searchInput) searchInput.value = "";
                     currentSearchQuery = "";
-                    excludeToldotFromSearch = false;
                     activeGenDepth = null;
                     savedExpandedStateBeforeFilter = null;
+                    savedToldotStateBeforeFilter = null;
                     if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
                     if (branchFilter) {
                         branchFilter.value = "all";
@@ -2534,7 +2583,6 @@
                         const clearSearchBtn = document.getElementById("clearSearchBtn");
                         if (searchInput) searchInput.value = "";
                         currentSearchQuery = "";
-                        excludeToldotFromSearch = false;
                         if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
                         applyFiltersAndRender();
                     }
