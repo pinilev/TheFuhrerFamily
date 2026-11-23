@@ -108,6 +108,12 @@
                         <option value="shmuel_firer">6. שמואל (מוללו) וגבריאלה־גולדה (גבי) (פרלמן) פירר</option>
                         <option value="yeshayahu_firer">7. ישעיהו (איזי) וחנה פירר</option>
                     </select>
+                    <button type="button" id="copyBranchLinkBtn" class="hidden mr-1.5 px-2 py-1 text-xs sm:text-sm font-bold bg-white hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded transition shadow-2xs flex items-center gap-1 shrink-0 cursor-pointer" title="העתק קישור ישיר לענף הנבחר">
+                        <svg id="copyBranchLinkIcon" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                        <span id="copyBranchLinkText">העתק קישור</span>
+                    </button>
                 </div>
 
                 <!-- Divider before Action Buttons -->
@@ -162,6 +168,9 @@
                 <div class="flex items-center gap-1.5 flex-wrap">
                     <span class="font-bold text-slate-600 text-xs sm:text-sm">📊</span>
                     <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-bold shadow-2xs text-xs sm:text-sm" id="totalDescendants">סופר...</span>
+                    <span class="text-slate-600 text-xs font-medium bg-white/75 border border-slate-300/80 px-2 py-0.5 rounded-full" title="כל כרטיס בעץ מייצג בית אב או יחיד/ה (זוג או יחיד/ה נספרים כ-1)">
+                        בתי אב / יחידים
+                    </span>
                 </div>
                 <div class="flex flex-wrap items-center gap-1" id="genBreakdown">
                     <!-- Dynamic Interactive Generation Breakdown -->
@@ -253,19 +262,19 @@
                     id: "tova_klotz",
                     name: "1. טויבע (טוני) ושלמה־זלמן קלוץ",
                     gen: 1,
-                    dates: "טויבע: 11/6/1906-28/7/1979 (ד' אב תשל\"ט) | שלמה־זלמן: -28/8/1972 (י\"ח באלול תשל\"ב) | נישואין: 1928 (קלן)",
+                    dates: "טויבע: 11/6/1906-28/7/1979 (ד' אב תשל\"ט) | שלמה־זלמן: פטירה 28/8/1972 (י\"ח באלול תשל\"ב) | נישואין: 1928 (קלן)",
                     location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > מלחה\"ע ה-2: בתחילה הסתתרו באנטוורפן, משם ברחו לצרפת דרך דנקרק > אנטוורפן, בלגיה"
                 },
                 {
                     id: "avraham_firer",
                     name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי (אופן) פירר",
                     gen: 1,
-                    dates: "אברהם־אריה: 14/9/1907-30/8/2009 (י' אלול תשס\"ט) | גולדה־גוסטי: -1990 | נישואין: 1938 (ברלין)",
+                    dates: "אברהם־אריה: 14/9/1907-30/8/2009 (י' אלול תשס\"ט) | גולדה־גוסטי: פטירה 1990 | נישואין: 1938 (ברלין)",
                     location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין, גרמניה > מלחמה\"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948)",
                     children: [
                         {
                             id: "shmuel_dvora_firer",
-                            name: "שמואל ודבורה־חיה פירר",
+                            name: "שמואל (סם) ודבורה־חיה פירר",
                             gen: 2,
                             dates: "שמואל: 1940 (נולד בעת המסתור מחוץ לבריסל)",
                             location: "בריסל, בלגיה > שווייץ > ניו יורק, ארה\"ב",
@@ -319,7 +328,7 @@
                         },
                         {
                             id: "chaim_breindel_firer",
-                            name: "חיים ובריינדל (אוולין) פירר",
+                            name: "חיים (הארי) ובריינדל (אוולין) פירר",
                             gen: 2,
                             dates: "חיים: 1946 (נולד בשווייץ)",
                             location: "שווייץ > ניו יורק, ארה\"ב > פלורידה, ארה\"ב",
@@ -375,7 +384,7 @@
                             id: "ruth_yitzchak_lev",
                             name: "רות ויצחק לב",
                             gen: 2,
-                            dates: "רות: 15/5/1937-19/2/2015 (ל' שבט תשע\"ה) – מורה לעברית ולהיסטוריה | יצחק: 7.8.1923-14.12.2008 (י\"ז כסלו תשס\"ט) – מהנדס אלקטרוניקה",
+                            dates: "רות: 15/5/1937-19/2/2015 (ל' שבט תשע\"ה) – מורה לעברית ולהיסטוריה | יצחק: 7/8/1923-14/12/2008 (י\"ז כסלו תשס\"ט) – מהנדס אלקטרוניקה",
                             location: "בני ברק > עפרה (1998)",
                             children: [
                                 {
@@ -633,7 +642,7 @@
                                     id: "varda_david_gershenzon",
                                     name: "ורדה ודוד גרשנזון",
                                     gen: 3,
-                                    location: "כפר דרום, גוש קטיף > נווה דקלים, גוש קטיף > בני דקלים",
+                                    location: "כפר דרום > נווה דקלים > בני דקלים",
                                     children: [
                                         {
                                             id: "meir_shifra_g",
@@ -739,6 +748,7 @@
                                     id: "tirtza_shmulik_tzimring",
                                     name: "תרצה ושמואל (שמוליק) צימרינג",
                                     gen: 3,
+                                    dates: "תרצה: 1974",
                                     location: "פתח תקווה",
                                     children: [
                                         { id: "michal_tz_1", name: "מיכל", gen: 4 },
@@ -753,7 +763,7 @@
                                     name: "אסנת וטל בביצקי",
                                     gen: 3,
                                     dates: "אסנת: 1976",
-                                    location: "פתח תקווה",
+                                    location: "רמת גן > פתח תקווה",
                                     children: [
                                         { id: "noam_rivka_1", name: "נועם־רבקה", gen: 4 },
                                         { id: "ori_yosef_1", name: "אורי־יוסף", gen: 4 },
@@ -1122,7 +1132,7 @@
                     id: "rachel_laufer",
                     name: "5. רחל ואריה לאופר",
                     gen: 1,
-                    dates: "רחל: 1/7/1919-04/03/1971 (ז' אדר תשל\"א) | עלייה: 1936 | נישואין: ירושלים | אריה: -05/06/2002 (כ\"ה סיון תשס\"ב)",
+                    dates: "רחל: 1/7/1919-4/3/1971 (ז' אדר תשל\"א) | עלייה: 1936 | נישואין: ירושלים | אריה: פטירה 5/6/2002 (כ\"ה סיון תשס\"ב)",
                     location: "קלן, גרמניה > כפר פינס > ירושלים > חיפה > תל אביב > לונג ביץ', ניו יורק (פטירת רחל; נטמנה בהר המנוחות, ירושלים)",
                     children: [
                         {
@@ -1153,7 +1163,7 @@
                     id: "shmuel_firer",
                     name: "6. שמואל (מוללו) וגבריאלה־גולדה (גבי) (פרלמן) פירר",
                     gen: 1,
-                    dates: "שמואל: 05/12/1920-11/07/2017 (י\"ח תמוז תשע\"ז) | גבי: 21/4/1928-2025 | עלייה שמואל: 1936 | נישואין: 1953",
+                    dates: "שמואל: 5/12/1920-11/7/2017 (י\"ח תמוז תשע\"ז) | גבי: 21/4/1928-2025 | עלייה שמואל: 1936 | נישואין: 1953",
                     location: "קלן, גרמניה > כפר פינס > טירת צבי (1939) > ירושלים (1941) > נתניה (1942–1946) > תל אביב (1947) > ניו יורק, ארה\"ב (1952) > רעננה",
                     children: [
                         {
@@ -1292,7 +1302,7 @@
             if (!htmlText) return "";
             let formatted = htmlText.replace(/\(([^)]*(?:תש|תר|תי)["״׳']?[^)]*)\)/g, `(${MEMORIAL_CANDLE_SVG}$1)`);
             // הוספת רווחים סביב המקף בטווחי תאריכים ויישור LTR עקבי לקריאות ברורה
-            formatted = formatted.replace(/((?:\d{1,2}[\/.])?(?:\d{1,2}[\/.])?\d{4}\??)\s*[-–]\s*((?:\d{1,2}[\/.])?(?:\d{1,2}[\/.])?\d{4}\??)/g, '<span dir="ltr" class="inline-block">$1 – $2</span>');
+            formatted = formatted.replace(/(~?(?:\d{1,2}[\/.])?(?:\d{1,2}[\/.])?\d{4}\??)\s*[-–]\s*(~?(?:\d{1,2}[\/.])?(?:\d{1,2}[\/.])?\d{4}\??)/g, '<span dir="ltr" class="inline-block">$1 – $2</span>');
             formatted = formatted.replace(/([-–])\s*(\d{4}\??)/g, '<span dir="ltr" class="inline-block">$1 $2</span>');
             return formatted;
         }
@@ -1469,7 +1479,7 @@
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">ה</span>
                             <div>
                                 <div>${hl('רחל־פרומט (לבית ברגמן, ')}<span dir="ltr" class="inline-block">~1842</span>${hl(') ושעיה־ברוך (שמעון) פירר (בן צבי־הירש פירר מגורליץ\', ')}<span dir="ltr" class="inline-block">~1840</span>${hl(')')} <span class="text-slate-600 font-medium text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1859</span></span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('(לפי רישום אחר, שמו של הבעל הוא: אברהם־לייב, שיתכן ועל שמו נקרא נכדו אברהם־אריה־לייביש. גם לגבי שנת הלידה יש גרסה שונה: ~1837)')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('(לפי רישום אחר, שמו של הבעל הוא: אברהם־לייב, שייתכן שעל שמו נקרא נכדו אברהם־אריה־לייביש. גם לגבי שנת הלידה יש גרסה שונה: ~1837)')}</div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('[ענף אחיו אשר־זעליג פירר (בן צבי־הירש): בנו היה הרב שמואל פירר ז"ל (רבה של קרוסנו, בן־דודו הראשון של שמואל פירר מצאנז) ← בנו יוסף־אשר ← בנו הרב בן־ציון פירר ז"ל (סופר חרדי יליד גליציה, רבה של ניר גלים וישיבת נווה הרצוג).]')}</div>
                             </div>
                         </div>
@@ -1477,13 +1487,13 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ו</span>
                             <div>
-                                <div>${hl('שמואל פירר')} <span dir="ltr" class="inline-block font-medium text-slate-700">1860?–7/12/1911</span> (${MEMORIAL_CANDLE_SVG}${hl('ט"ז בכסלו תרע"ב')}) ${hl('ומרים (מנדל)')} <span dir="ltr" class="inline-block font-medium text-slate-700">1862?–9/10/1935</span> <span class="text-slate-600 font-medium text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1879</span></span> <span class="text-slate-600 font-normal text-xs sm:text-sm">(${hl('בן־דודו הראשון של הרב שמואל פירר מקרוסנו')})</span></div>
+                                <div>${hl('שמואל פירר')} <span dir="ltr" class="inline-block font-medium text-slate-700">~1860 – 7/12/1911</span> (${MEMORIAL_CANDLE_SVG}${hl('ט"ז בכסלו תרע"ב')}) ${hl('ומרים (מנדל)')} <span dir="ltr" class="inline-block font-medium text-slate-700">~1862 – 9/10/1935</span> <span class="text-slate-600 font-medium text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1879</span></span> <span class="text-slate-600 font-normal text-xs sm:text-sm">(${hl('בן־דודו הראשון של הרב שמואל פירר מקרוסנו')})</span></div>
                                 <div class="text-slate-600 font-medium text-xs sm:text-sm mt-1 space-y-0.5">
                                     <div class="font-bold text-slate-700">${hl('ילדיהם (אחיו ואחיותיו של פנחס):')}</div>
                                     <div>• ${hl('חיים פירר (')}<span dir="ltr" class="inline-block">~1880</span>${hl(')')}</div>
                                     <div>• ${hl('פנחס פירר (1882–1953)')}</div>
                                     <div>• ${hl('נתן פירר (1883–1942) ואשתו רייזלה (1882) (גולדווסר) – ילדיהם: שמואל, רותקה, ליבה (1914–1943), נחום (1906–1942), חיים (1920–1943)')}</div>
-                                    <div>• ${hl('מלכה (פטירה 1959) ובעלה אברהם גוטוויין (-1952) – ילדיהם: שמואל, איזי')}</div>
+                                    <div>• ${hl('מלכה (פטירה 1959) ובעלה אברהם גוטוויין (פטירה 1952) – ילדיהם: שמואל, איזי')}</div>
                                     <div>• ${hl('זַלְקֶע־אשר פירר')} (<span dir="ltr" class="inline-block">~1887–21/4/1973</span>, ${MEMORIAL_CANDLE_SVG}${hl('ט\' בניסן תשל"ג')}) ${hl('– בזמן השואה נמלט מגליציה יחד עם אשתו ושתי בנותיו אל סיביר, שרד את המלחמה, ולאחריה עלה לארץ ישראל ויצר קשר עם המשפחה בכפר פינס. בנותיו: פרידה (פטירה 1991) (אשת משה קרמר; ילדיהם: אורי ומיכל) ורלה (אשת הנרי זילברברג; ילדיהם: אילנה ויורם)')}</div>
                                     <div>• ${hl('אפרים פירר (1895–1943) ואשתו שרה (1897) – בניהם שנספו עמם: שמואל (1925–1943), נחמיה (1925–1943), אריאל (1937–1943)')}</div>
                                     <div>• ${hl('איטה פירר (1900–1943)')}</div>
@@ -1507,11 +1517,11 @@
                             </span>
                         </div>
                     </div>
-                    <p>${hl('נישאו ב-')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}) ${hl('ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>${hl('. בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). בשנת 1911 יצא פנחס ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופת זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
+                    <p>${hl('נישאו ב-')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}) ${hl('ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>${hl('. בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). בשנת 1911 יצא פנחס ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
                     <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. מצילום תעודת זהות (תחליף דרכון / Personalausweis) גרמנית שהונפקה לו בקלן ב-5 בנובמבר 1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt); הוא נרשם רשמית כסוחר (Handelsmann), וקיבל המלצה רשמית מלשכת המסחר של קלן (Handelskammer zu Köln). מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש צבאי בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי (British Army) ושל משרד הדרכונים הגרמני (Deutsche Passstelle) כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר ומכירת סחורות (Verkauf von Sachen). בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
                     <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל וליזה־ליבה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב-1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם ליזה־ליבה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואלטן מיר געהאט א מיתה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).')}</p>
                     <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובשנת 1940 עברו לדירה בשכונת מאה שערים בירושלים. שניהם טמונים בבית העלמין גבעת שאול בירושלים.')}</p>
-                    <p>${hl('[הוריה של אלטה־חנה: בנימין־זאב ליפסקר בן ר\' משה אריה')} <span dir="ltr" class="inline-block">1860?–27/3/1945</span> (${MEMORIAL_CANDLE_SVG}${hl('י"ג בניסן תש"ה')}) ${hl('ודינה (לבית פרידמן)')} <span dir="ltr" class="inline-block">1862?–16/11/1942</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' בכסלו תש"ג')}) ${hl('עלו ארצה מדוקלה, גליציה בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה.')}<br>${hl('סבה (אבי אמה), זקן המשפחה ר\' מנחם־מנדל פרידמן מצאנז')} (<span dir="ltr" class="inline-block">~1840–1903</span>)${hl(', עלה לארץ ישראל בערך בשנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משֵינְיַאוַוה (גליציה) רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
+                    <p>${hl('[הוריה של אלטה־חנה: בנימין־זאב ליפסקר בן ר\' משה אריה')} <span dir="ltr" class="inline-block">~1860 – 27/3/1945</span> (${MEMORIAL_CANDLE_SVG}${hl('י"ג בניסן תש"ה')}) ${hl('ודינה (לבית פרידמן)')} <span dir="ltr" class="inline-block">~1862 – 16/11/1942</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' בכסלו תש"ג')}) ${hl('עלו ארצה מדוקלה, גליציה בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה.')}<br>${hl('סבה (אבי אמה), זקן המשפחה ר\' מנחם־מנדל פרידמן מצאנז')} (<span dir="ltr" class="inline-block">~1840–1903</span>)${hl(', עלה לארץ ישראל בערך בשנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משֵינְיַאוַוה (גליציה) רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
                 </div>
             `;
 }
@@ -1708,6 +1718,40 @@
         function setupBranchFilter() {
             const branchFilter = document.getElementById("branchFilter");
             const showAllTreeBtn = document.getElementById("showAllTreeBtn");
+            const copyBranchLinkBtn = document.getElementById("copyBranchLinkBtn");
+            const copyBranchLinkText = document.getElementById("copyBranchLinkText");
+            const copyBranchLinkIcon = document.getElementById("copyBranchLinkIcon");
+            let copyFeedbackTimeout = null;
+
+            if (copyBranchLinkBtn && branchFilter) {
+                copyBranchLinkBtn.addEventListener("click", async () => {
+                    const branchId = branchFilter.value;
+                    if (!branchId || branchId === "all") return;
+
+                    const baseUrl = window.location.href.split("#")[0];
+                    const shareUrl = `${baseUrl}#branch=${encodeURIComponent(branchId)}`;
+                    const copied = await copyTextToClipboard(shareUrl);
+
+                    if (copied && copyBranchLinkText) {
+                        if (copyFeedbackTimeout) clearTimeout(copyFeedbackTimeout);
+                        copyBranchLinkText.textContent = "הקישור הועתק!";
+                        copyBranchLinkBtn.classList.remove("bg-white", "hover:bg-emerald-100", "text-emerald-800");
+                        copyBranchLinkBtn.classList.add("bg-emerald-600", "text-white", "border-emerald-600");
+                        if (copyBranchLinkIcon) {
+                            copyBranchLinkIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>`;
+                        }
+
+                        copyFeedbackTimeout = setTimeout(() => {
+                            copyBranchLinkText.textContent = "העתק קישור";
+                            copyBranchLinkBtn.classList.add("bg-white", "hover:bg-emerald-100", "text-emerald-800");
+                            copyBranchLinkBtn.classList.remove("bg-emerald-600", "text-white", "border-emerald-600");
+                            if (copyBranchLinkIcon) {
+                                copyBranchLinkIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>`;
+                            }
+                        }, 2200);
+                    }
+                });
+            }
 
             if (branchFilter) {
                 branchFilter.addEventListener("change", () => {
@@ -1787,12 +1831,16 @@
             const printTreeBtnText = document.getElementById("printTreeBtnText");
             const printBranchHint = document.getElementById("printBranchHint");
             const showAllTreeBtn = document.getElementById("showAllTreeBtn");
+            const copyBranchLinkBtn = document.getElementById("copyBranchLinkBtn");
             const searchBanner = document.getElementById("searchStatusBanner");
             const searchStatusText = document.getElementById("searchStatusText");
             const toldotSearchIndicator = document.getElementById("toldotSearchIndicator");
             const container = document.getElementById("treeContainer");
 
             let baseData = getFilteredData();
+
+            // עדכון דינמי של סרגל הסטטיסטיקה בהתאם לענף המוצג
+            updateStatsBar(baseData);
 
             // ניהול שמירה ושחזור של מצב הפתיחה של העץ לפני כניסה לחיפוש
             const isFilterActive = currentSearchQuery.trim() !== "";
@@ -1809,9 +1857,7 @@
                 }
             }
 
-            updateGenBreakdownUI();
-
-            // עדכון דינמי של כפתור ההדפסה בהתאם לענף הנבחר
+            // עדכון דינמי של כפתור ההדפסה וכפתור שיתוף הקישור בהתאם לענף הנבחר
             if (branchFilter && printTreeBtn && printTreeBtnText) {
                 if (branchFilter.value === "all") {
                     printTreeBtnText.textContent = "הדפס הכל *";
@@ -1820,6 +1866,7 @@
                     printTreeBtn.classList.add("bg-slate-700", "hover:bg-slate-800");
                     if (printBranchHint) printBranchHint.classList.remove("hidden");
                     if (showAllTreeBtn) showAllTreeBtn.classList.add("hidden");
+                    if (copyBranchLinkBtn) copyBranchLinkBtn.classList.add("hidden");
                 } else {
                     printTreeBtnText.textContent = "הדפסת הענף";
                     printTreeBtn.title = "הדפסת הענף הנבחר בלבד";
@@ -1827,6 +1874,7 @@
                     printTreeBtn.classList.add("bg-emerald-600", "hover:bg-emerald-700", "ring-2", "ring-emerald-300");
                     if (printBranchHint) printBranchHint.classList.add("hidden");
                     if (showAllTreeBtn) showAllTreeBtn.classList.remove("hidden");
+                    if (copyBranchLinkBtn) copyBranchLinkBtn.classList.remove("hidden");
                 }
             }
 
@@ -1941,17 +1989,29 @@
         // עדכון סרגל הסטטיסטיקה בהתאם לעץ או לענף המוצג כרגע
         function updateStatsBar(dataNode) {
             const stats = calculateStats(dataNode);
+            const branchFilter = document.getElementById("branchFilter");
+            const isFiltered = branchFilter && branchFilter.value !== "all";
+            const totalStats = isFiltered ? calculateStats(rawFamilyData) : stats;
 
             const totalDescEl = document.getElementById("totalDescendants");
-            if (totalDescEl) totalDescEl.textContent = `${stats.totalDescendants} צאצאים`;
+            if (totalDescEl) {
+                if (isFiltered) {
+                    totalDescEl.innerHTML = `${stats.totalDescendants} צאצאים בענף <span class="font-normal opacity-90">(מתוך ${totalStats.totalDescendants})</span>`;
+                } else {
+                    totalDescEl.textContent = `${stats.totalDescendants} צאצאים`;
+                }
+            }
 
             const genBreakdownEl = document.getElementById("genBreakdown");
             if (genBreakdownEl) {
-                genBreakdownEl.innerHTML = [1, 2, 3, 4, 5].map(g => `
-                    <button type="button" id="genBtn-${g}" onclick="handleGenBarClick(${g})" class="px-2 py-0.5 rounded badge-gen-${g} text-xs sm:text-sm font-semibold transition cursor-pointer hover:opacity-90 ${stats.genCounts[g] === 0 ? 'opacity-50' : ''}" title="הצג עץ פתוח עד דור ${getHebrewGen(g)}">
-                        דור ${getHebrewGen(g)}: ${stats.genCounts[g]}
-                    </button>
-                `).join("");
+                genBreakdownEl.innerHTML = [1, 2, 3, 4, 5].map(g => {
+                    const totalGenSuffix = isFiltered ? ` <span class="opacity-80 font-normal">(${totalStats.genCounts[g]})</span>` : "";
+                    return `
+                        <button type="button" id="genBtn-${g}" onclick="handleGenBarClick(${g})" class="px-2 py-0.5 rounded badge-gen-${g} text-xs sm:text-sm font-semibold transition cursor-pointer hover:opacity-90 ${stats.genCounts[g] === 0 ? 'opacity-50' : ''}" title="הצג עץ פתוח עד דור ${getHebrewGen(g)}">
+                            דור ${getHebrewGen(g)}: ${stats.genCounts[g]}${totalGenSuffix}
+                        </button>
+                    `;
+                }).join("");
             }
             updateGenBreakdownUI();
         }
