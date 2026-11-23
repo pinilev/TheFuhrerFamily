@@ -103,7 +103,7 @@
                         <option value="tova_klotz">1. טויבע (טוני) ושלמה־זלמן קלוץ</option>
                         <option value="avraham_firer">2. אברהם־אריה (לייביש) וגולדה־גוסטי (אופן) פירר</option>
                         <option value="menachem_firer">3. מנחם־מנדל ושרה פירר</option>
-                        <option value="liza_pitovsky">4. ליזה־ליבה ומשה פיטובסקי</option>
+                        <option value="liza_pitovsky">4. לואיזה־ליזה ומשה פיטובסקי</option>
                         <option value="rachel_laufer">5. רחל ואריה לאופר</option>
                         <option value="shmuel_firer">6. שמואל (מוללו) וגבריאלה־גולדה (גבי) (פרלמן) פירר</option>
                         <option value="yeshayahu_firer">7. ישעיהו (איזי) וחנה פירר</option>
@@ -375,7 +375,7 @@
                     id: "menachem_firer",
                     name: "3. מנחם־מנדל ושרה (מושקוביץ) פירר",
                     gen: 1,
-                    dates: "מנחם־מנדל: 28/2/1909 - 15/5/1997 (ח' אייר תשנ\"ז) | עלייה: 1932 | שרה: 1915 - 14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה מנחם־מנדל: 1933 | עלייה שרה: 1934 | נישואין: 1934",
+                    dates: "מנחם־מנדל: 28/2/1909 – 15/5/1997 (ח' אייר תשנ\"ז) | עלייה: 1932 | שרה: 1915 – 14/7/1989 (י\"א תמוז תשמ\"ט) | עלייה מנחם־מנדל: 1933 | עלייה שרה: 1934 | נישואין: 1934",
                     location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > <a href=\"https://www.google.com/maps/search/?api=1&query=Fulda,+Germany\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"פתח בגוגל מפות: פולדה, גרמניה\" class=\"text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition\">פולדה, גרמניה</a> > <a href=\"https://www.google.com/maps/search/?api=1&query=Rodges,+36041+Fulda,+Germany\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"פתח בגוגל מפות: רודגס, גרמניה\" class=\"text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition\">רודגס, גרמניה</a> > <a href=\"https://www.google.com/maps/search/?api=1&query=Gehringshof,+36100+Petersberg,+Germany\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"פתח בגוגל מפות: גרינגסהוף, גרמניה\" class=\"text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition\">גרינגסהוף, גרמניה</a> > קבוצת רודגס, פתח תקווה > ממקימי כפר פינס (1934)",
                     children: [
                         {
@@ -1087,9 +1087,9 @@
                 },
                 {
                     id: "liza_pitovsky",
-                    name: "4. ליזה־ליבה ומשה פיטובסקי",
+                    name: "4. לואיזה־ליזה ומשה פיטובסקי",
                     gen: 1,
-                    dates: "ליזה: 24/12/1912-30/7/2002 (כ\"א אב תשס\"ב) | עלייה: 1935 | משה: 1900-1960 | נישואין: 1934",
+                    dates: "לואיזה־ליזה: 24/12/1912-30/7/2002 (כ\"א אב תשס\"ב) | עלייה: 1935 | משה: 1900-1960 | נישואין: 1934",
                     location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
                     children: [
                         {
@@ -1419,9 +1419,9 @@
         }
 
         function buildToldotInnerHtml(searchQuery = "") {
-    const hl = (txt) => highlightText(txt, searchQuery);
+            const hl = (txt) => highlightText(txt, searchQuery);
 
-    return `
+            return `
                 <!-- אילן יוחסין - בעל התוספות משאנץ ובעל ה"תוספות יום-טוב" -->
                 <div class="bg-amber-50/80 rounded-md border border-amber-200 p-3 shadow-2xs text-sm sm:text-[15px] text-slate-800">
                     <div class="font-extrabold text-amber-950 flex items-center gap-1.5 mb-2 pb-1.5 border-b border-amber-200/70">
@@ -1432,8 +1432,8 @@
                         <div class="flex items-start gap-2">
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">א</span>
                             <div>
-                                <div>${hl('רבי שמשון בן אברהם משאנץ (ר"ש משאנץ, מבעלי התוספות בצרפת)')} <span class="text-slate-600 font-medium text-sm">| 🗓️ <span dir="ltr" class="inline-block">1150–1214</span></span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('חיבר פירוש למשנה על סדרי זרעים וטהרות הנדפס בכל מהדורות הש"ס. בסוף ימיו עלה לארץ ישראל והתיישב בעכו (אין לבלבל בין שאנץ שבצרפת לבין צאנז שבפולין).')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי שמשון בן אברהם משאנץ')}</span> ${hl('(ר"ש משאנץ, מבעלי התוספות בצרפת)')} <span class="text-slate-600 text-sm">| 🗓️ <span dir="ltr" class="inline-block">1150–1214</span></span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('חיבר פירוש למשנה על סדרי זרעים וטהרות הנדפס בכל מהדורות הש"ס. בסוף ימיו עלה לארץ ישראל והתיישב בעכו. אין לבלבל בין שאנץ (סֶן Sens, בורגון) שבצרפת לבין צאנז שבפולין.')}</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 pr-3 sm:pr-5 text-amber-900/80 text-xs sm:text-sm italic font-medium">
@@ -1444,7 +1444,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">ב</span>
                             <div>
-                                <div>${hl('הרב גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין (בעל ה"תוספות יום־טוב")')} <span class="text-slate-600 font-medium text-sm">| 🗓️ <span dir="ltr" class="inline-block">1579-1654</span> (${MEMORIAL_CANDLE_SVG}${hl('ו\' באלול תי"ד')})</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('הרב גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין')}</span> ${hl('(בעל ה"תוספות יום־טוב")')} <span class="text-slate-600 text-sm">| 🗓️ <span dir="ltr" class="inline-block">1579-1654</span> (${MEMORIAL_CANDLE_SVG}${hl('ו\' באלול תי"ד')})</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('כיהן כרב בקהילות פראג, וינה, נימירוב והרב הראשי של קראקא (קראקוב). התמודד עם גזירות ת"ח–ת"ט (1648) ופעל רבות לשיקום הקהילות היהודיות באירופה.')}</div>
                             </div>
                         </div>
@@ -1456,7 +1456,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700/90 text-white text-xs font-extrabold shrink-0 mt-0.5">ג</span>
                             <div>
-                                <div>${hl('הרב יעקב ב"ר ברוך – אב"ד ור"מ בטוטשין (פולין־ליטא, כיום אוקראינה)')} <span class="text-slate-600 font-medium text-sm">| 🗓️ ${hl('תק"ל')} (<span dir="ltr" class="inline-block">1770</span>)</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('הרב יעקב ב"ר ברוך')}</span> ${hl('– אב"ד ור"מ בטוטשין (פולין־ליטא, כיום אוקראינה)')} <span class="text-slate-600 text-sm">| 🗓️ ${hl('תק"ל')} (<span dir="ltr" class="inline-block">1770</span>)</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר הספר "ברכת יעקב" – ביאור על שולחן ערוך חושן משפט (סימנים א–צו; נדפס באמסטרדם, 1786). מצאצאי רבי יעקב אב"ד בזויסמאר (אוקראינה), שנהרג בפרעות חמילניצקי (גזירות ת"ח, 1648).')}</div>
                             </div>
                         </div>
@@ -1468,15 +1468,15 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">ד</span>
                             <div>
-                                <div>${hl('הרב אליהו ב"ר ברוך ברגמן')} (<span class="text-slate-600 font-medium text-sm"><span dir="ltr" class="inline-block">~1820</span></span>)<span class="font-normal">${hl(', בעל הכינוי "אלי"ש דיין" (ראשי תיבות שמו) – ראב"ד בצאנז אצל בעל ה"דברי חיים" ובנו הרה"ג רבי אהרן הלברשטאם מצאנז במשך 52 שנה')}</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('במקביל, בגורליץ\' חי אבי שושלת פירר הידוע, צבי־הירש פירר (אביהם של שעיה־ברוך ואשר־זעליג).')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('הרב אליהו ב"ר ברוך ברגמן')}</span> (<span class="text-slate-600 text-sm"><span dir="ltr" class="inline-block">~1820</span></span>)${hl(', בעל הכינוי "אלי"ש דיין" (ראשי תיבות שמו) – ראב"ד בצאנז אצל בעל ה"דברי חיים" ובנו הרה"ג רבי אהרן הלברשטאם מצאנז במשך 52 שנה')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('במקביל, בגורליץ\' חי אבי שושלת פירר הידוע, ')}<span class="font-bold text-slate-800">${hl('צבי־הירש פירר')}</span>${hl(' (אביהם של שעיה־ברוך ואשר־זעליג).')}</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 pr-12 sm:pr-[5rem]">
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">ה</span>
                             <div>
-                                <div>${hl('רחל־פרומט (לבית ברגמן, ')}<span dir="ltr" class="inline-block">~1842</span>${hl(') ושעיה־ברוך (שמעון) פירר (בן צבי־הירש פירר מגורליץ\', ')}<span dir="ltr" class="inline-block">~1840</span>${hl(')')} <span class="text-slate-600 font-medium text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1859</span></span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רחל־פרומט (לבית ברגמן)')}</span> ${hl('(')}<span dir="ltr" class="inline-block">~1842</span>${hl(') ו')}<span class="font-bold text-slate-900">${hl('שעיה־ברוך (שמעון) פירר')}</span> ${hl('(בן צבי־הירש פירר מגורליץ\', ')}<span dir="ltr" class="inline-block">~1840</span>${hl(')')} <span class="text-slate-600 text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1859</span></span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('(לפי רישום אחר, שמו של הבעל הוא: אברהם־לייב, שייתכן שעל שמו נקרא נכדו אברהם־אריה־לייביש. גם לגבי שנת הלידה יש גרסה שונה: ~1837)')}</div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('[ענף אחיו אשר־זעליג פירר (בן צבי־הירש): בנו היה הרב שמואל פירר ז"ל (רבה של קרוסנו, בן־דודו הראשון של שמואל פירר מצאנז) ← בנו יוסף־אשר ← בנו הרב בן־ציון פירר ז"ל (סופר חרדי יליד גליציה, רבה של ניר גלים וישיבת נווה הרצוג).]')}</div>
                             </div>
@@ -1485,9 +1485,9 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ו</span>
                             <div>
-                                <div>${hl('שמואל פירר')} <span dir="ltr" class="inline-block font-medium text-slate-700">~1860 – 7/12/1911</span> (${MEMORIAL_CANDLE_SVG}${hl('ט"ז בכסלו תרע"ב')}) ${hl('ומרים (מנדל)')} <span dir="ltr" class="inline-block font-medium text-slate-700">~1862 – 9/10/1935</span> <span class="text-slate-600 font-medium text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1879</span></span> <span class="text-slate-600 font-normal text-xs sm:text-sm">(${hl('בן־דודו הראשון של הרב שמואל פירר מקרוסנו')})</span></div>
-                                <div class="text-slate-600 font-medium text-xs sm:text-sm mt-1 space-y-0.5">
-                                    <div class="font-bold text-slate-700">${hl('ילדיהם (אחיו ואחיותיו של פנחס):')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('שמואל פירר')}</span> <span dir="ltr" class="inline-block text-slate-700">~1860 – 7/12/1911</span> (${MEMORIAL_CANDLE_SVG}${hl('ט"ז בכסלו תרע"ב')}) ${hl('ו')}<span class="font-bold text-slate-900">${hl('מרים (מנדל)')}</span> <span dir="ltr" class="inline-block text-slate-700">~1862 – 9/10/1935</span> <span class="text-slate-600 text-sm">| ${hl('נישואין')}: <span dir="ltr" class="inline-block">~1879</span></span> <span class="text-slate-600 text-xs sm:text-sm">(${hl('בן־דודו הראשון של הרב שמואל פירר מקרוסנו')})</span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
+                                    <div class="font-semibold text-slate-700">${hl('ילדיהם (אחיו ואחיותיו של פנחס):')}</div>
                                     <div>• ${hl('חיים פירר (')}<span dir="ltr" class="inline-block">~1880</span>${hl(')')}</div>
                                     <div>• ${hl('פנחס פירר (1882–1953)')}</div>
                                     <div>• ${hl('נתן פירר (1883–1942) ואשתו רייזלה (1882) (גולדווסר) – ילדיהם: שמואל, רותקה, ליבה (1914–1943), נחום (1906–1942), חיים (1920–1943)')}</div>
@@ -1502,7 +1502,7 @@
                 </div>
 
                 <!-- קורות פנחס ואלטה-חנה פירר -->
-                <div class="bg-amber-50/80 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-semibold text-slate-800 leading-relaxed">
+                <div class="bg-amber-50/80 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-normal text-slate-800 leading-relaxed">
                     <div class="font-extrabold text-amber-950 flex items-center gap-1.5 mb-2 pb-1.5 border-b border-amber-200/70">
                         <span>📖</span>
                         <span>${hl('תולדות')}</span>
@@ -1511,18 +1511,18 @@
                         <div class="flex items-center flex-wrap gap-x-2 gap-y-1">
                             <span class="inline-flex items-center gap-1.5 whitespace-nowrap">
                                 <span>🗓️</span>
-                                <span>${hl('פנחס')}: <span dir="ltr" class="inline-block">6/2/1882-23/1/1953</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' שבט תשי"ג')}) | ${hl('אלטה־חנה')}: <span dir="ltr" class="inline-block">21/4/1883-12/1/1970</span> (${MEMORIAL_CANDLE_SVG}${hl('ה\' שבט תש"ל')})</span>
+                                <span><span class="font-bold text-slate-900">${hl('פנחס')}</span>: <span dir="ltr" class="inline-block">6/2/1882-23/1/1953</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' שבט תשי"ג')}) | <span class="font-bold text-slate-900">${hl('אלטה־חנה')}</span>: <span dir="ltr" class="inline-block">21/4/1883-12/1/1970</span> (${MEMORIAL_CANDLE_SVG}${hl('ה\' שבט תש"ל')})</span>
                             </span>
                         </div>
                     </div>
                     <p>${hl('נישאו ב-')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}) ${hl('ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>${hl('. בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). בשנת 1911 יצא פנחס ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
-                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. מצילום תעודת זהות (תחליף דרכון / Personalausweis) גרמנית שהונפקה לו בקלן ב-5 בנובמבר 1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt); הוא נרשם רשמית כסוחר (Handelsmann), וקיבל המלצה רשמית מלשכת המסחר של קלן (Handelskammer zu Köln). מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש צבאי בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי (British Army) ושל משרד הדרכונים הגרמני (Deutsche Passstelle) כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר ומכירת סחורות (Verkauf von Sachen). בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
-                    <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל וליזה־ליבה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב-1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם ליזה־ליבה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואלטן מיר געהאט א מיתה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).')}</p>
+                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. מצילום תעודת זהות (תחליף דרכון / Personalausweis) גרמנית שהונפקה לו בקלן ב-5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt); הוא נרשם רשמית כסוחר (Handelsmann), וקיבל המלצה רשמית מלשכת המסחר של קלן (Handelskammer zu Köln). מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש צבאי בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי (British Army) ושל משרד הדרכונים הגרמני (Deutsche Passstelle) כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר ומכירת סחורות (Verkauf von Sachen). בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
+                    <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל ולואיזה־ליזה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב-1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם לואיזה־ליזה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואלטן מיר געהאט א מיתה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).')}</p>
                     <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובשנת 1940 עברו לדירה בשכונת מאה שערים בירושלים. שניהם טמונים בבית העלמין גבעת שאול בירושלים.')}</p>
-                    <p>${hl('[הוריה של אלטה־חנה: בנימין־זאב ליפסקר בן ר\' משה אריה')} <span dir="ltr" class="inline-block">~1860 – 27/3/1945</span> (${MEMORIAL_CANDLE_SVG}${hl('י"ג בניסן תש"ה')}) ${hl('ודינה (לבית פרידמן)')} <span dir="ltr" class="inline-block">~1862 – 16/11/1942</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' בכסלו תש"ג')}) ${hl('עלו ארצה מדוקלה, גליציה בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה.')}<br>${hl('סבה (אבי אמה), זקן המשפחה ר\' מנחם־מנדל פרידמן מצאנז')} (<span dir="ltr" class="inline-block">~1840–1903</span>)${hl(', עלה לארץ ישראל בערך בשנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משֵינְיַאוַוה (גליציה) רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
+                    <p>${hl('[הוריה של אלטה־חנה: ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span>${hl(' בן ר\' משה אריה')} <span dir="ltr" class="inline-block">~1860 – 27/3/1945</span> (${MEMORIAL_CANDLE_SVG}${hl('י"ג בניסן תש"ה')}) ${hl('ו')}</span><span class="font-bold text-slate-900">${hl('דינה (לבית פרידמן)')}</span> <span dir="ltr" class="inline-block">~1862 – 16/11/1942</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' בכסלו תש"ג')}) ${hl('עלו ארצה מדוקלה, גליציה בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה.')}<br>${hl('סבה (אבי אמה), זקן המשפחה ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (<span dir="ltr" class="inline-block">~1840–1903</span>)${hl(', עלה לארץ ישראל בערך בשנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משֵינְיַאוַוה (גליציה) רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
                 </div>
             `;
-}
+        }
 
         function renderNode(node, forceExpand = false) {
             const hasChildren = node.children && node.children.length > 0;
