@@ -178,7 +178,7 @@
     </section>
 
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8 pb-16">
+    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8 pb-20">
         <div id="searchStatusBanner" class="hidden mb-3.5 bg-blue-50 border border-blue-200 text-blue-800 px-3.5 py-2.5 rounded-lg text-base font-semibold flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2 flex-wrap">
                 <span id="searchStatusText"></span>
@@ -242,8 +242,8 @@
         </div>
     </footer>
 
-    <!-- Floating Back-to-Top Button -->
-    <button type="button" id="backToTopBtn" class="hidden fixed bottom-5 left-5 z-40 w-10 h-10 rounded-full bg-slate-100/95 hover:bg-emerald-50 backdrop-blur-sm text-slate-800 hover:text-emerald-900 shadow-md hover:shadow-lg border-2 border-slate-300 hover:border-emerald-400 flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer" title="חזרה לראש העמוד" aria-label="חזרה לראש העמוד">
+    <!-- Floating Back-to-Top Button (Positioned cleanly in bottom-right without overlapping card content) -->
+    <button type="button" id="backToTopBtn" class="hidden fixed bottom-4 right-3 xl:right-6 z-40 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 hover:bg-emerald-50 backdrop-blur-sm text-slate-700 hover:text-emerald-900 shadow-md hover:shadow-lg border-2 border-slate-300 hover:border-emerald-400 flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer" title="חזרה לראש העמוד" aria-label="חזרה לראש העמוד">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
         </svg>
@@ -797,14 +797,36 @@
                                     dates: "נורית: 1965",
                                     location: "נוף איילון",
                                     children: [
-                                        { id: "tohar_priel_gueta", name: "טוהר־שרה ופריאל גואטה", gen: 4 },
-                                        { id: "kinar_binyamin_chaim", name: "כינר־בנימין־חיים", gen: 4 },
-                                        { id: "neriya_menachem", name: "נריה־מנחם", gen: 4 }
+                                        {
+                                            id: "tohar_priel_gueta",
+                                            name: "טוהר־שרה וקובי עוזיאל",
+                                            gen: 4,
+                                            children: [
+                                                { id: "hillel_uziel_1", name: "הלל", gen: 5 },
+                                                { id: "roni_uziel_1", name: "רוני", gen: 5 },
+                                                { id: "shachar_uziel_1", name: "שחר", gen: 5 }
+                                            ]
+                                        },
+                                        {
+                                            id: "kinar_binyamin_chaim",
+                                            name: "כינר־בנימין־חיים והודיה צוברה־צור",
+                                            gen: 4,
+                                            children: [
+                                                { id: "oriyan_lutvak_1", name: "אוריין", gen: 5 },
+                                                { id: "nehorai_lutvak_1", name: "נהוראי", gen: 5 },
+                                                { id: "tair_lutvak_1", name: "תאיר", gen: 5 },
+                                                { id: "achiya_lutvak_1", name: "אחיה", gen: 5 }
+                                            ]
+                                        },
+                                        { id: "neriya_menachem", name: "נריה־מנחם כפיר", gen: 4 },
+                                        { id: "yiska_hodaya_lutvak", name: "יסכה־הודיה", gen: 4 },
+                                        { id: "ori_meir_lutvak", name: "אורי־מאיר", gen: 4 },
+                                        { id: "elazar_yisrael_lutvak", name: "אלעזר־ישראל", gen: 4 }
                                     ]
                                 },
                                 {
                                     id: "ester_meir_edri",
-                                    name: "אסתר ומאיר אדרי",
+                                    name: "אסתר ומאיר־ניסים אדרי",
                                     gen: 3,
                                     dates: "אסתר: 1967",
                                     location: "ירושלים",
@@ -814,14 +836,52 @@
                                             name: "שרה־חיה וליאור סומך",
                                             gen: 4,
                                             children: [
-                                                { id: "tzofia_somech_1", name: "צופיה", gen: 5 }
+                                                { id: "tzofia_somech_1", name: "צופיה", gen: 5 },
+                                                { id: "shilo_reuven_somech_1", name: "שילה־ראובן", gen: 5 },
+                                                { id: "eliyah_yechiel_somech_1", name: "אליה־יחיאל", gen: 5 },
+                                                { id: "nave_somech_1", name: "נווה", gen: 5 },
+                                                { id: "david_somech_1", name: "דוד", gen: 5 },
+                                                { id: "talya_miryam_somech_1", name: "טליה־מרים", gen: 5 }
                                             ]
                                         },
-                                        { id: "yehuda_chaim_edri", name: "יהודה־חיים", gen: 4 },
-                                        { id: "hadasa_chana_edri", name: "הדסה־חנה", gen: 4 },
-                                        { id: "rachel_tzofia_edri", name: "רחל־צופיה", gen: 4 },
-                                        { id: "chanan_yisrael_edri", name: "חנן־ישראל", gen: 4 },
-                                        { id: "rut_hodaya_edri", name: "רות־הודיה", gen: 4 },
+                                        {
+                                            id: "yehuda_chaim_edri",
+                                            name: "יהודה־חיים ואביטל אדרי",
+                                            gen: 4,
+                                            children: [
+                                                { id: "roni_edri_1", name: "רוני", gen: 5 },
+                                                { id: "yahli_miryam_edri_1", name: "יהלי־מרים", gen: 5 },
+                                                { id: "ari_mayan_edri_1", name: "ארי־מעיין", gen: 5 }
+                                            ]
+                                        },
+                                        {
+                                            id: "hadasa_chana_edri",
+                                            name: "הדסה־חנה ותום מתתיהו",
+                                            gen: 4,
+                                            children: [
+                                                { id: "lavi_matityahu_1", name: "לביא", gen: 5 },
+                                                { id: "shachar_matityahu_1", name: "שחר", gen: 5 }
+                                            ]
+                                        },
+                                        {
+                                            id: "rachel_tzofia_edri",
+                                            name: "רחל־צופיה ואורי־מתניה אורגד",
+                                            gen: 4,
+                                            children: [
+                                                { id: "lilach_yiska_orgad_1", name: "לילך־יסכה", gen: 5 }
+                                            ]
+                                        },
+                                        {
+                                            id: "chanan_yisrael_edri",
+                                            name: "חנן־ישראל ורויטל אדרי",
+                                            gen: 4,
+                                            children: [
+                                                { id: "shoham_efrat_edri_1", name: "שוהם־אפרת", gen: 5 },
+                                                { id: "yael_edri_1", name: "יעל", gen: 5 },
+                                                { id: "ariel_yechiel_edri_1", name: "אריאל־יחיאל", gen: 5 }
+                                            ]
+                                        },
+                                        { id: "rut_hodaya_edri", name: "רות־הודיה ואמיתי כהן", gen: 4 },
                                         { id: "menachem_shalom_edri", name: "מנחם־שלום", gen: 4 }
                                     ]
                                 },
@@ -832,7 +892,7 @@
                                     dates: "אליעזר: 1968",
                                     location: "מודיעין",
                                     children: [
-                                        { id: "noa_kfir_zl", name: "נועה ז\"ל", gen: 4 },
+                                        { id: "noa_kfir_zl", name: "נועה־תהילה ז\"ל", gen: 4 },
                                         { id: "gilad_kfir_1", name: "גלעד", gen: 4 },
                                         { id: "dafna_kfir_1", name: "דפנה", gen: 4 },
                                         { id: "moria_kfir_1", name: "מוריה", gen: 4 },
@@ -841,35 +901,44 @@
                                 },
                                 {
                                     id: "binyamin_shula_kfir",
-                                    name: "בנימין־זאב (ביני) ושולה כפיר",
+                                    name: "בנימין־זאב (ביני) ושולמית־אביגיל (שולה) כפיר",
                                     gen: 3,
                                     location: "תקומה",
                                     children: [
                                         {
                                             id: "meitar_kfir_1",
-                                            name: "מיתר",
+                                            name: "מיתר (אליהו) וברוך־צורי נוקד",
                                             gen: 4,
                                             children: [
                                                 { id: "maor_ziva_1", name: "מאור־זיוה", gen: 5 },
                                                 { id: "avigail_meitar_1", name: "אביגיל", gen: 5 },
-                                                { id: "porat_aviya_1", name: "פורת־אביה", gen: 5 }
+                                                { id: "porat_aviya_1", name: "פורת־אביה (אליהו)", gen: 5 },
+                                                { id: "eyal_shachar_noked_1", name: "אייל־שחר", gen: 5 }
                                             ]
                                         },
-                                        { id: "lotem_kfir_1", name: "לוטם", gen: 4 },
-                                        { id: "magen_kfir_1", name: "מגן", gen: 4 },
+                                        {
+                                            id: "lotem_kfir_1",
+                                            name: "לוטם ודוד־חי חדד",
+                                            gen: 4,
+                                            children: [
+                                                { id: "noga_hadad_1", name: "נוגה", gen: 5 }
+                                            ]
+                                        },
+                                        { id: "magen_kfir_1", name: "מגן ורחל כפיר", gen: 4 },
                                         { id: "gilat_kfir_1", name: "גילת", gen: 4 },
                                         { id: "yaara_kfir_1", name: "יערה", gen: 4 }
                                     ]
                                 },
                                 {
                                     id: "shlomo_yonina_kfir",
-                                    name: "שלמה ויונינה כפיר",
+                                    name: "שלמה ויונינה־חיה כפיר",
                                     gen: 3,
                                     dates: "שלמה: 1978",
                                     children: [
                                         { id: "nofar_choshen_1", name: "נופר־חושן", gen: 4 },
                                         { id: "erez_yehuda_1", name: "ארז־יהודה", gen: 4 },
-                                        { id: "elinor_julia_1", name: "אלינור־ג'וליה", gen: 4 }
+                                        { id: "elinor_julia_1", name: "אלינור־ג'וליה", gen: 4 },
+                                        { id: "golan_shachar_kfir_1", name: "גולן־שחר", gen: 4 }
                                     ]
                                 }
                             ]
@@ -1089,7 +1158,7 @@
                     id: "liza_pitovsky",
                     name: "4. לואיזה־ליזה ומשה פיטובסקי",
                     gen: 1,
-                    dates: "לואיזה־ליזה: 24/12/1912-30/7/2002 (כ\"א אב תשס\"ב) | עלייה: 1935 | משה: 1900-1960 | נישואין: 1934",
+                    dates: "לואיזה־ליזה: 24/12/1912-30/7/2002 (כ\"א אב תשס\"ב) | עלייה: 1935 | משה: 1900-17/12/1962 (כ' כסלו תשכ\"ג) | נישואין: 1934",
                     location: "אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
                     children: [
                         {
@@ -1161,7 +1230,7 @@
                     id: "shmuel_firer",
                     name: "6. שמואל (מוללו) וגבריאלה־גולדה (גבי) (פרלמן) פירר",
                     gen: 1,
-                    dates: "שמואל: 5/12/1920-11/7/2017 (י\"ח תמוז תשע\"ז) | גבי: 21/4/1928-2025 | עלייה שמואל: 1936 | נישואין: 1953",
+                    dates: "שמואל: 5/12/1920-11/7/2017 (י\"ח תמוז תשע\"ז) | גבי: 21/4/1928-29/5/2025 (ב' סיוון תשפ\"ה) | עלייה שמואל: 1936 | נישואין: 1953",
                     location: "קלן, גרמניה > כפר פינס > טירת צבי (1939) > ירושלים (1941) > נתניה (1942–1946) > תל אביב (1947) > ניו יורק, ארה\"ב (1952) > רעננה",
                     children: [
                         {
@@ -1540,7 +1609,10 @@
                                  node.gen === 0 ? 'text-lg sm:text-xl font-black text-rose-950 tracking-wide' : 
                                  (node.gen >= 4 ? 'text-base sm:text-[17px] font-bold text-slate-900' : 'text-[17px] sm:text-lg font-bold text-slate-900');
 
-            const displayName = highlightText(node.name, currentSearchQuery);
+            let displayName = highlightText(node.name, currentSearchQuery);
+            if (isRootNode) {
+                displayName = displayName.replace('(ליפסקר)', '<span class="font-normal">(ליפסקר)</span>');
+            }
             const displayDates = formatDatesWithMemorialCandle(highlightText(node.dates, currentSearchQuery));
             const displayLocation = highlightText(node.location || "", currentSearchQuery);
 
@@ -2105,13 +2177,16 @@
                     ? `<span class="badge badge-gen-${node.gen}">${getHebrewGen(node.gen)}</span>`
                     : '';
                 const titleClass = node.id === 'root' ? 'root-title' : 'node-title';
+                const formattedPrintName = node.id === 'root'
+                    ? node.name.replace('(ליפסקר)', '<span style="font-weight: 400;">(ליפסקר)</span>')
+                    : node.name;
 
                 let html = `
                     <div class="node-wrapper gen-${node.gen}">
                         <div class="node-item">
                             <div class="node-header">
                                 ${badgeHtml}
-                                <span class="${titleClass}">${node.name}</span>
+                                <span class="${titleClass}">${formattedPrintName}</span>
                             </div>
                             ${node.dates ? `<div class="node-meta">🗓️ ${formatDatesWithMemorialCandle(node.dates)}</div>` : ''}
                             ${node.location ? `<div class="node-meta">📍 ${node.location}</div>` : ''}
