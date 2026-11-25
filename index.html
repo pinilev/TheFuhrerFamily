@@ -185,7 +185,7 @@
             <div class="flex flex-wrap items-center justify-between gap-1.5 text-xs sm:text-sm">
                 <div class="flex items-center gap-1.5 flex-wrap">
                     <span class="font-bold text-slate-600 text-xs sm:text-sm">📊</span>
-                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-bold shadow-2xs text-xs sm:text-sm" id="totalDescendants">סופר...</span>
+                    <button type="button" id="totalDescendants" class="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white px-2.5 py-0.5 rounded-full font-bold shadow-2xs text-xs sm:text-sm transition cursor-pointer" title="לחיצה להצגת כל העץ וביטול סינונים">סופר...</button>
                     <span class="text-slate-600 text-xs font-medium bg-white/75 border border-slate-300/80 px-2 py-0.5 rounded-full" title="כל כרטיס בעץ מייצג בית אב או יחיד/ה (זוג או יחיד/ה נספרים כ-1)">
                         בתי אב / יחידים
                     </span>
@@ -332,7 +332,7 @@
                         name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי (אופן) פירר",
                         gen: 1,
                         dates: "אברהם־אריה: 14/9/1907-30/8/2009 (י' אלול תשס\"ט) | גולדה־גוסטי: פטירה 1990 | נישואין: 1938 (ברלין)",
-                        location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין, גרמניה > מלחמה\"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948)",
+                        location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין, גרמניה > מלחמה\"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948; מ-2003 עבר לדיור המוגן \"עטרת אבות\" בברוקלין)",
                         children: [
                             {
                                 id: "shmuel_dvora_firer",
@@ -1865,10 +1865,10 @@
                             </span>
                         </div>
                     </div>
-                    <p>${hl('נישאו ב-')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}) ${hl('ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>${hl('. בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). בשנת 1911 יצא פנחס ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
-                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. מצילום תעודת זהות (תחליף דרכון / Personalausweis) גרמנית שהונפקה לו בקלן ב-5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt); הוא נרשם רשמית כסוחר (Handelsmann), וקיבל המלצה רשמית מלשכת המסחר של קלן (Handelskammer zu Köln). מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש צבאי בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי (British Army) ושל משרד הדרכונים הגרמני (Deutsche Passstelle) כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר ומכירת סחורות (Verkauf von Sachen). בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
+                    <p>${hl('נישאו ב-')} <span dir="ltr" class="inline-block">24/8/1904</span> (${hl('י"ג אלול תרס"ד')}) ${hl('ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה, פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוּקְלָה, גליציה')}</a>${hl('. בתחילה התגוררו ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נובי סונץ' (צאנז), פולין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a> ${hl('(האימפריה האוסטרו־הונגרית). כבר בנובמבר 1909 הצטייד פנחס בתעודת יושר רשמית מעיריית צאנז לקראת חיפוש תעסוקה בגרמניה, ובשנת 1911 יצא ל')}<a href="https://www.google.com/maps/search/?api=1&query=Antwerp,+Belgium" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: אנטוורפן, בלגיה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('אנטוורפן')}</a> ${hl('שבבלגיה ללמוד את מלאכת ליטוש היהלומים; בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז, שם למדה ב-1912 בבית הספר העממי כשהיא רשומה תחת שם המשפחה \'ליפסקר\'), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב-1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול, גרמניה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a> ${hl('ופתחה שם עסק לגביית תשלומים, שבמסגרתו גם נסעה ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
+                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות למוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים. מצילום תעודת זהות (תחליף דרכון / Personalausweis) גרמנית שהונפקה לו בקלן ב-5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt); הוא נרשם רשמית כסוחר (Handelsmann), וקיבל המלצה רשמית מלשכת המסחר של קלן (Handelskammer zu Köln). מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש צבאי בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי (British Army) ושל משרד הדרכונים הגרמני (Deutsche Passstelle) כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר ומכירת סחורות (Verkauf von Sachen). בתקופת מגוריהם בעיר נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd) ונמנו על הקהילה האורתודוקסית העצמאית \'עדת ישורון\' בראשות הרב ד"ר דוד קרליבך (שהנפיק להם בינואר 1923 אישור רשמי על נישואיהם בדוקלה על פי הכתובה המקורית). לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה בראנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
                     <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל־המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל ולואיזה־ליזה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב-1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם לואיזה־ליזה ובעלה משה פיטובסקי כמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). בתקופת מלחמת העולם השנייה ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואלטן מיר געהאט א מיתה משונה" (אלמלא מנדל, היינו זוכים למיתה משונה).')}</p>
-                    <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובשנת 1940 עברו לדירה בשכונת מאה שערים בירושלים. שניהם טמונים בבית העלמין גבעת שאול בירושלים.')}</p>
+                    <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובינואר 1940 עברו לדירה שכורה ברחוב מאה שערים בירושלים. שניהם טמונים בבית העלמין גבעת שאול בירושלים.')}</p>
                     <p>${hl('[הוריה של אלטה־חנה: ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span>${hl(' בן ר\' משה אריה')} <span dir="ltr" class="inline-block">~1860 – 27/3/1945</span> (${MEMORIAL_CANDLE_SVG}${hl('י"ג בניסן תש"ה')}) ${hl('ו')}</span><span class="font-bold text-slate-900">${hl('דינה (לבית פרידמן)')}</span> <span dir="ltr" class="inline-block">~1862 – 16/11/1942</span> (${MEMORIAL_CANDLE_SVG}${hl('ז\' בכסלו תש"ג')}) ${hl('עלו ארצה מדוקלה, גליציה בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה.')}<br>${hl('סבה (אבי אמה), זקן המשפחה ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (<span dir="ltr" class="inline-block">~1840–1903</span>)${hl(', עלה לארץ ישראל בערך בשנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משֵינְיַאוַוה (גליציה) רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
                 </div>
             `;
@@ -2304,20 +2304,25 @@
 
             const totalDescEl = document.getElementById("totalDescendants");
             if (totalDescEl) {
+                const hasAnyFilter = isFiltered || currentSearchQuery.trim() !== "" || activeGenDepth !== null;
                 if (isFiltered) {
                     totalDescEl.innerHTML = `${stats.totalDescendants} צאצאים בענף <span class="font-normal opacity-90">(מתוך ${totalStats.totalDescendants})</span>`;
                 } else {
                     totalDescEl.textContent = `${stats.totalDescendants} צאצאים`;
                 }
+                totalDescEl.title = hasAnyFilter
+                    ? "לחצו לביטול הסינון והצגת כל העץ"
+                    : "הצג את כל העץ (מצב ברירת מחדל)";
             }
 
             const genBreakdownEl = document.getElementById("genBreakdown");
             if (genBreakdownEl) {
                 genBreakdownEl.innerHTML = [1, 2, 3, 4, 5].map(g => {
-                    const totalGenSuffix = isFiltered ? ` <span class="opacity-80 font-normal">(${totalStats.genCounts[g]})</span>` : "";
+                    const totalGenSuffix = isFiltered ? `<span class="opacity-80 font-normal text-[11px] sm:text-xs mr-0.5">(${totalStats.genCounts[g]})</span>` : "";
                     return `
-                        <button type="button" id="genBtn-${g}" onclick="handleGenBarClick(${g})" class="px-2 py-0.5 rounded badge-gen-${g} text-xs sm:text-sm font-semibold transition cursor-pointer hover:opacity-90 ${stats.genCounts[g] === 0 ? 'opacity-50' : ''}" title="הצג עץ פתוח עד דור ${getHebrewGen(g)}">
-                            דור ${getHebrewGen(g)}: ${stats.genCounts[g]}${totalGenSuffix}
+                        <button type="button" id="genBtn-${g}" onclick="handleGenBarClick(${g})" class="inline-flex items-center gap-1.5 pr-2 pl-1 py-0.5 rounded-md badge-gen-${g} text-xs sm:text-sm font-semibold transition cursor-pointer hover:opacity-95 shadow-2xs ${stats.genCounts[g] === 0 ? 'opacity-50' : ''}" title="הצג עץ פתוח עד דור ${getHebrewGen(g)}">
+                            <span>דור ${getHebrewGen(g)}</span>
+                            <span class="bg-black/20 px-1.5 py-0 rounded text-xs font-extrabold leading-tight tracking-tight">${stats.genCounts[g]}${totalGenSuffix}</span>
                         </button>
                     `;
                 }).join("");
@@ -2913,6 +2918,25 @@
             const printTreeBtn = document.getElementById("printTreeBtn");
             if (printTreeBtn) {
                 printTreeBtn.addEventListener("click", openPrintWindow);
+            }
+
+            const totalDescendantsBtn = document.getElementById("totalDescendants");
+            if (totalDescendantsBtn) {
+                totalDescendantsBtn.addEventListener("click", () => {
+                    const searchInput = document.getElementById("searchInput");
+                    const clearSearchBtn = document.getElementById("clearSearchBtn");
+                    const branchFilter = document.getElementById("branchFilter");
+
+                    if (searchInput) searchInput.value = "";
+                    currentSearchQuery = "";
+                    activeGenDepth = null;
+                    savedExpandedStateBeforeFilter = null;
+                    savedToldotStateBeforeFilter = null;
+                    if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+                    if (branchFilter) branchFilter.value = "all";
+
+                    applyFiltersAndRender();
+                });
             }
 
             const exportJsonBtn = document.getElementById("exportJsonBtn");
