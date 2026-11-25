@@ -87,12 +87,12 @@
                         </svg>
                     </button>
                     <div>
-                        <h1 id="mainSiteTitle" class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight">עץ יוחסין משפחת פירר</h1>
+                        <h1 id="mainSiteTitle" class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight">עץ יוחסין פנחס ואלטה־חנה <span class="font-normal">(ליפסקר)</span> פירר</h1>
                     </div>
                 </div>
 
                 <!-- מסגרת תמונה משותפת של פנחס ואלטה-חנה פירר משמאל מול כותרת האתר -->
-                <button type="button" id="rootPortraitBtn" onclick="openPortraitLightbox('Pinhas&Hanna.jpg', currentLang === 'en' ? 'Pinhas & Alte-Chana Fuhrer (OBM)' : 'פנחס ואלטה־חנה פירר ז&quot;ל', event)" class="group shrink-0 rounded-lg overflow-hidden border-2 border-rose-200 hover:border-rose-400 bg-rose-50/70 shadow-xs hover:shadow-md transition p-0.5 cursor-pointer" title="פנחס ואלטה־חנה פירר — לחצו להגדלה">
+                <button type="button" id="rootPortraitBtn" onclick="openPortraitLightbox('Pinhas&Hanna.jpg', currentLang === 'en' ? 'Pinhas & Alte-Chana Fuhrer (Z&quot;L)' : 'פנחס ואלטה־חנה פירר ז&quot;ל', event)" class="group shrink-0 rounded-lg overflow-hidden border-2 border-rose-200 hover:border-rose-400 bg-rose-50/70 shadow-xs hover:shadow-md transition p-0.5 cursor-pointer" title="פנחס ואלטה־חנה פירר — לחצו להגדלה">
                     <img src="Pinhas&Hanna.jpg" onerror="this.onerror=null;this.src='https://placehold.co/180x110/fff1f2/881337?text=%D7%A4%D7%A0%D7%97%D7%A1+%D7%95%D7%90%D7%9C%D7%98%D7%94-%D7%97%D7%A0%D7%94';" alt="פנחס ואלטה־חנה פירר" class="h-11 sm:h-14 w-auto max-w-[115px] sm:max-w-[150px] object-cover rounded-md group-hover:scale-[1.03] transition-transform duration-200">
                 </button>
             </div>
@@ -101,7 +101,7 @@
             <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
                 <!-- Search Input Container (Shares row with compact expand/collapse icons on mobile) -->
                 <div class="relative flex-1 min-w-0 sm:flex-initial">
-                    <input type="text" id="searchInput" placeholder="חיפוש שם, כינוי, מקום או שנה ( / )..." class="w-full sm:w-56 md:w-64 py-1.5 ps-9 pe-8 text-sm sm:text-base bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
+                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או שנה" class="w-full sm:w-56 md:w-64 py-1.5 ps-9 pe-8 text-sm sm:text-base bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition font-medium text-slate-700 shadow-2xs">
                     <svg class="w-4 h-4 text-slate-400 absolute start-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -125,13 +125,13 @@
                     </span>
                     <select id="branchFilter" class="flex-1 min-w-0 w-full sm:w-auto py-1 px-2 text-sm sm:text-base bg-white border border-emerald-200 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition font-semibold text-slate-800 cursor-pointer truncate">
                         <option value="all">כל הענפים (7 ענפים)</option>
-                        <option value="tova_klotz">1. טויבע (טוני) ושלמה־זלמן קלוץ</option>
-                        <option value="avraham_fuhrer">2. אברהם־אריה (לייביש) וגולדה־גוסטי (אופן) פירר</option>
+                        <option value="tova_klotz">1. טויבע ושלמה־זלמן קלוץ</option>
+                        <option value="avraham_fuhrer">2. אברהם־אריה וגולדה־גוסטי פירר</option>
                         <option value="menachem_fuhrer">3. מנחם־מנדל ושרה פירר</option>
                         <option value="liza_pitovsky">4. לואיזה־ליזה ומשה פיטובסקי</option>
                         <option value="rachel_laufer">5. רחל ואריה לאופר</option>
-                        <option value="shmuel_fuhrer">6. שמואל (מוללו) וגבריאלה־גולדה (גבי) (פרלמן) פירר</option>
-                        <option value="yeshayahu_fuhrer">7. ישעיהו (איזי) וחנה פירר</option>
+                        <option value="shmuel_fuhrer">6. שמואל וגבריאלה־גולדה פירר</option>
+                        <option value="yeshayahu_fuhrer">7. ישעיהו וחנה פירר</option>
                     </select>
                 </div>
 
@@ -156,22 +156,6 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </span>
-                    </button>
-                </div>
-
-                <!-- Expand / Collapse All Controls (Compact icon buttons beside search on mobile, full buttons on sm+) -->
-                <div class="order-2 sm:order-none flex items-center gap-1 sm:gap-1.5 shrink-0 sm:ms-auto">
-                    <button type="button" id="expandAllBtn" class="p-2 sm:px-2.5 sm:py-1.5 text-xs sm:text-sm font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-md transition shadow-2xs flex items-center justify-center gap-1 cursor-pointer" title="הרחב את כל הענפים המוצגים" aria-label="הרחב הכל">
-                        <svg class="w-4 h-4 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
-                        </svg>
-                        <span id="expandAllBtnText" class="hidden sm:inline">הרחב הכל</span>
-                    </button>
-                    <button type="button" id="collapseAllBtn" class="p-2 sm:px-2.5 sm:py-1.5 text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-md transition shadow-2xs flex items-center justify-center gap-1 cursor-pointer" title="כווץ את כל הענפים המוצגים" aria-label="כווץ הכל">
-                        <svg class="w-4 h-4 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path>
-                        </svg>
-                        <span id="collapseAllBtnText" class="hidden sm:inline">כווץ הכל</span>
                     </button>
                 </div>
             </div>
@@ -337,7 +321,7 @@
                         name: "2. אברהם־אריה (לייביש) וגולדה־גוסטי (אופן) פירר",
                         gen: 1,
                         dates: "אברהם־אריה: 14/9/1907-30/8/2009 (י' אלול תשס\"ט) | גולדה־גוסטי: פטירה 1990 | נישואין: 1937 (ברלין)",
-                        location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין, גרמניה > מלחמה\"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948; מ-2003 עבר לדיור המוגן \"עטרת אבות\" בברוקלין)",
+                        location: "צאנז, גליציה > דוקלה, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ברלין, גרמניה > מלחה\"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה. באמצע 1944 ברחו לשווייץ דרך צרפת > וושינגטון הייטס וברוקלין, ניו יורק (1948; מ-2003 עבר לדיור המוגן \"עטרת אבות\" בברוקלין)",
                         children: [
                             {
                                 id: "shmuel_dvora_fuhrer",
@@ -1156,7 +1140,7 @@
                         name: "4. לואיזה־ליזה ומשה פיטובסקי הכהן",
                         gen: 1,
                         dates: "לואיזה־ליזה: 22/1/1912-12/8/1977 (כ\"ח אב תשל\"ז) | עלייה: 1933 | משה: 3/9/1903-2/5/1984 (ל' ניסן תשמ\"ד) | נישואין: 1934",
-                        location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > בית זית > מוצא עילית > מבשרת ציון",
+                        location: "צאנז, גליציה > אנטוורפן, בלגיה > קלן, גרמניה > ירושלים",
                         children: [
                             {
                                 id: "miryam_shlomo_peter_natan",
@@ -1327,6 +1311,7 @@
             "שמואלי": "Shmueli", "גוטליב": "Gottlieb", "ברגמן": "Bergman",
             "פרידמן": "Friedman", "הלברשטאם": "Halberstam", "גולדווסר": "Goldwasser",
             "גוטוויין": "Gutwein", "קרמר": "Kramer", "זילברברג": "Silberberg",
+            "הכהן": "HaCohen",
             // שמות פרטיים וכינויים
             "פנחס": "Pinhas", "פינחס": "Pinhas", "אלטה": "Alte", "חנה": "Chana",
             "טויבע": "Taube", "טוני": "Toni", "שלמה": "Shlomo", "זלמן": "Zalman",
@@ -1462,8 +1447,8 @@
             let str = heName.trim();
 
             // תארים מיוחדים
-            str = str.replace(/\bהכהן\b/g, "HaKohen");
-            str = str.replace(/ז"ל/g, "(OBM)");
+            str = str.replace(/(?:^|\s)הכהן(?=\s|$)/g, " HaCohen");
+            str = str.replace(/ז"ל/g, "(Z\"L)");
             str = str.replace(/הי"ד/g, "(HY\"D)");
             str = str.replace(/תבלח"א/g, "");
 
@@ -1526,7 +1511,7 @@
             str = str.replace(/נפל ברמת מגשימים, רמת הגולן/g, "Fell in action at Ramat Magshimim, Golan Heights");
             str = str.replace(/\(1948; מ-2003 עבר לדיור המוגן "עטרת אבות" בברוקלין\)/g, "(1948; from 2003 resided at Ateret Avot assisted living in Brooklyn)");
             str = str.replace(/מלחה"ע ה-2: בתחילה הסתתרו באנטוורפן, משם ברחו לצרפת דרך דנקרק/g, "WWII: Initially hid in Antwerp, then fled to France via Dunkirk");
-            str = str.replace(/מלחמה"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה\. באמצע 1944 ברחו לשווייץ דרך צרפת/g, "WWII: Hid for 1.5 years on a farm outside Brussels, Belgium; fled to Switzerland via France in mid-1944");
+            str = str.replace(/מלחה"ע ה-2: הסתתרו שנה וחצי בחווה מחוץ לבריסל, בלגיה\. באמצע 1944 ברחו לשווייץ דרך צרפת/g, "WWII: Hid for 1.5 years on a farm outside Brussels, Belgium; fled to Switzerland via France in mid-1944");
 
             // החלפת כל שמות המקומות מהמילון (ממוינים מהארוך לקצר למניעת התנגשות חלקית)
             const sortedKeys = Object.keys(EN_DICTIONARY).sort((a, b) => b.length - a.length);
@@ -1557,11 +1542,11 @@
         // פונקציית תרגום ממשק (UI Strings)
         function t(key) {
             const ui = {
-                siteTitle: { he: "עץ יוחסין משפחת פירר", en: "Fuhrer Family Tree" },
+                siteTitle: { he: "עץ יוחסין פנחס ואלטה־חנה (ליפסקר) פירר", en: "Pinhas & Alte-Chana (Lipsker) Fuhrer Family Tree" },
                 docTitle: { he: "תולדות פנחס וחנה פירר", en: "History of Pinhas & Chana Fuhrer" },
                 homeTitle: { he: "חזרה לדף הנחיתה הראשי", en: "Back to main view" },
                 portraitTitle: { he: "פנחס ואלטה־חנה פירר — לחצו להגדלה", en: "Pinhas & Alte-Chana Fuhrer — Click to enlarge" },
-                searchPlaceholder: { he: "חיפוש שם, כינוי, מקום או שנה ( / )...", en: "Search name, nickname, place or year ( / )..." },
+                searchPlaceholder: { he: "חיפוש שם, מקום או שנה", en: "Search name, place or year" },
                 clearSearchTitle: { he: "נקה חיפוש (Esc)", en: "Clear search (Esc)" },
                 showBranchLabel: { he: "הצג את:", en: "Show:" },
                 allBranchesOpt: { he: "כל הענפים (7 ענפים)", en: "All Branches (7 branches)" },
@@ -1571,10 +1556,6 @@
                 printBranchTitle: { he: "הדפסת הענף הנבחר בלבד", en: "Print selected branch only" },
                 printBranchHint: { he: "* או בחר ענף להדפסה", en: "* or select a branch to print" },
                 showAllBtn: { he: "* או הצג הכל", en: "* or show all" },
-                expandAllBtn: { he: "הרחב הכל", en: "Expand All" },
-                expandAllTitle: { he: "הרחב את כל הענפים המוצגים", en: "Expand all displayed branches" },
-                collapseAllBtn: { he: "כווץ הכל", en: "Collapse All" },
-                collapseAllTitle: { he: "כווץ את כל הענפים המוצגים", en: "Collapse all displayed branches" },
                 householdsBadge: { he: "בתי אב / יחידים", en: "Households / Individuals" },
                 householdsTitle: { he: "כל כרטיס בעץ מייצג בית אב או יחיד/ה (זוג או יחיד/ה נספרים כ-1)", en: "Each card represents a household or individual (couple or individual counts as 1)" },
                 resetFilterBtn: { he: "איפוס סינון ✕", en: "Reset Filter ✕" },
@@ -1582,7 +1563,7 @@
                 toldotBtnTitle: { he: "הצג או הסתר ייחוס ותולדות", en: "Show or hide lineage & history" },
                 printToldotBtn: { he: "הדפסת ייחוס ותולדות", en: "Print Lineage & History" },
                 descendantsDivider: { he: "צאצאים", en: "Descendants" },
-                footerLineage: { he: "אילן היוחסין של משפחת פירר — צאצאי פנחס ואלטה־חנה פירר ז\"ל", en: "Fuhrer Family Genealogy — Descendants of Pinhas & Alte-Chana Fuhrer (OBM)" },
+                footerLineage: { he: "אילן היוחסין של משפחת פירר — צאצאי פנחס ואלטה־חנה פירר ז\"ל", en: "Fuhrer Family Genealogy — Descendants of Pinhas & Alte-Chana Fuhrer (Z\"L)" },
                 footerUpdated: { he: "עודכן לאחרונה: נובמבר 2026", en: "Last updated: November 2026" },
                 backToTop: { he: "חזרה לראש העמוד", en: "Back to top" },
                 langBtnText: { he: "English", en: "עברית" }
@@ -1600,7 +1581,12 @@
             const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
             const setAttr = (id, attr, val) => { const el = document.getElementById(id); if (el) el.setAttribute(attr, val); };
 
-            setText("mainSiteTitle", t("siteTitle"));
+            const mainTitleEl = document.getElementById("mainSiteTitle");
+            if (mainTitleEl) {
+                mainTitleEl.innerHTML = currentLang === "en"
+                    ? 'Pinhas &amp; Alte-Chana <span class="font-normal">(Lipsker)</span> Fuhrer Family Tree'
+                    : 'עץ יוחסין פנחס ואלטה־חנה <span class="font-normal">(ליפסקר)</span> פירר';
+            }
             setAttr("homeLogoBtn", "title", t("homeTitle"));
             setAttr("rootPortraitBtn", "title", t("portraitTitle"));
             setAttr("searchInput", "placeholder", t("searchPlaceholder"));
@@ -1608,10 +1594,6 @@
             setText("branchFilterLabel", t("showBranchLabel"));
             setText("printBranchHint", t("printBranchHint"));
             setText("showAllTreeBtnText", t("showAllBtn"));
-            setText("expandAllBtnText", t("expandAllBtn"));
-            setAttr("expandAllBtn", "title", t("expandAllTitle"));
-            setText("collapseAllBtnText", t("collapseAllBtn"));
-            setAttr("collapseAllBtn", "title", t("collapseAllTitle"));
             setText("householdsBadge", t("householdsBadge"));
             setAttr("householdsBadge", "title", t("householdsTitle"));
             setText("bannerResetBtn", t("resetFilterBtn"));
@@ -1631,7 +1613,11 @@
                     } else {
                         const childNode = rawFamilyData.children.find(c => c.id === opt.value);
                         if (childNode) {
-                            opt.textContent = getDisplayName(childNode);
+                            const cleanTitle = getDisplayName(childNode)
+                                .replace(/\s*\([^)]*\)/g, "")
+                                .replace(/\s+/g, " ")
+                                .trim();
+                            opt.textContent = cleanTitle;
                         }
                     }
                 });
@@ -2104,7 +2090,7 @@
                             <div class="flex items-start gap-2">
                                 <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">1</span>
                                 <div>
-                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Shimshon ben Avraham of Sens')}</span> ${hl('(Rash of Sens, leading Tosafist in France)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214</span></div>
+                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Shimshon ben Avraham of Sens')}</span> ${hl('(Rash of Sens, leading Tosafist in France)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(according to another source: c. 1230/1250)')}</span></div>
                                     <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Author of the Mishnah commentary on Zeraim and Taharot printed in all editions of the Talmud. Late in life he immigrated to the Land of Israel and settled in Acre. Note: Sens (')}<a href="https://www.google.com/maps/search/?api=1&query=Sens,+Burgundy,+France" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 underline">Sens, Burgundy, France</a>${hl(') should not be confused with Sanz in Poland.')}</div>
                                 </div>
                             </div>
@@ -2117,7 +2103,7 @@
                                 <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">2</span>
                                 <div>
                                     <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Gershon Shaul Yom-Tov Lipmann HaLevi Heller Wallerstein')}</span> ${hl('(Author of "Tosafot Yom Tov")')} <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}6 Elul 5414)</span></div>
-                                    <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Served as Rabbi of Prague, Vienna, Nemirov, and Chief Rabbi of Krakow. Led Jewish communal recovery following the Khmelnytsky massacres of 1648–1649.')}</div>
+                                    <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Served as Rabbi of Prague, Vienna, ')}<a href="https://www.google.com/maps/search/?api=1&query=Nemyriv,+Ukraine" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Nemyriv, Ukraine" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Nemyriv, Ukraine')}</a>${hl(', and Chief Rabbi of ')}<a href="https://www.google.com/maps/search/?api=1&query=Krakow,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Krakow" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Krakow')}</a>${hl('. Led Jewish communal recovery following the Khmelnytsky massacres of 1648–1649.')}</div>
                                 </div>
                             </div>
                             <div class="flex items-start gap-2 ps-5 sm:ps-9 text-amber-900/80 text-xs sm:text-sm italic font-medium">
@@ -2140,7 +2126,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">4</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Eliyahu ben Baruch Bergman')}</span> (~1820)${hl(', known as "Elish Dayan" – Chief Dayan in Sanz under the "Divrei Chaim" (Rabbi Chaim Halberstam) and his son Rabbi Aharon Halberstam for 52 years.')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Eliyahu ben Baruch Bergman')}</span> (~1820; ${hl('another version: ~1837')})${hl(', known as "Elish Dayan" (acronym of his name) – Chief Dayan in Sanz under the "Divrei Chaim" (Rabbi Chaim Halberstam) and his son Rabbi Aharon Halberstam for 52 years.')}</div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Meanwhile in Gorlice lived the patriarch of the Fuhrer dynasty, ')}<span class="font-bold text-slate-800">${hl('Tzvi-Hirsch Fuhrer')}</span>${hl(' (father of Shaya-Baruch and Asher-Zelig).')}</div>
                             </div>
                         </div>
@@ -2148,23 +2134,24 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">5</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rachel-Frumet (née Bergman)')}</span> (~1842; according to another source: 1838) &amp; <span class="font-bold text-slate-900">${hl('Shaya-Baruch (Shimon) Fuhrer')}</span> ${hl('(son of Tzvi-Hirsch Fuhrer of Gorlice, ~1840)')} <span class="text-slate-600 text-sm">| Married: ~1859</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('[Branch of his brother Asher-Zelig Fuhrer: his son Rabbi Shmuel Fuhrer (Rabbi of Krosno, first cousin of Shmuel Fuhrer of Sanz) → his son Yosef-Asher → his son Rabbi Ben-Zion Fuhrer (noted author and Rabbi of Nir Galim).]') }</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rachel-Frumet')}</span> <span class="font-normal text-slate-700">${hl('(Bergman)')}</span> (~1842; according to another source: 1838) &amp; <span class="font-bold text-slate-900">${hl('Shaya-Baruch (Shimon) Fuhrer')}</span> ${hl('(son of Tzvi-Hirsch Fuhrer of Gorlice, ~1840)')} <span class="text-slate-600 text-sm">| Married: ~1859</span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('According to another record, the husband\'s name was Avraham-Leib (after whom his grandson Avraham-Aryeh Leibish may have been named), with an estimated birth year of ~1837.')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('[Branch of his brother Asher-Zelig Fuhrer: his son Rabbi Shmuel Fuhrer (Rabbi of Krosno, first cousin of Shmuel Fuhrer of Sanz) → his son Yosef-Asher → his son Rabbi Ben-Zion Fuhrer (noted author, Rabbi of Nir Galim and Yeshivat Neve Herzog).]') }</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 ps-14 sm:ps-[6rem]">
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">6</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Shmuel Fuhrer')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}16 Kislev 5672) &amp; <span class="font-bold text-slate-900">${hl('Miryam (Mendel)')}</span> ~1862 (according to another source: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}12 Tishrei 5696) <span class="text-slate-600 text-sm">| Married: ~1879</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Shmuel Fuhrer')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}16 Kislev 5672) &amp; <span class="font-bold text-slate-900">${hl('Miryam')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(Mendel)')}</span> ~1862 (according to another source: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}12 Tishrei 5696) <span class="text-slate-600 text-sm">| Married: ~1879</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
                                     <div class="font-semibold text-slate-700">${hl('Their children (siblings of Pinhas):')}</div>
                                     <div>• ${hl('Chaim Fuhrer (~1880)')}</div>
                                     <div>• ${hl('Pinhas Fuhrer (1882–1953)')}</div>
-                                    <div>• ${hl('Natan Fuhrer (1883–1942) & Reizla (1882) (Goldwasser) – children: Shmuel, Rutka, Liba (1914–1943), Nachum (1906–1942), Chaim (1920–1943)')}</div>
+                                    <div>• ${hl('Natan Fuhrer (1883–1942) & Reizla (1882–1920/1943) (Goldwasser) – children: Shmuel, Rutka, Liba (1914–1943), Nachum (1906–1942), Chaim (1920–1943; according to another record died at two days old)')}</div>
                                     <div>• ${hl('Malka (d. 1959) & Avraham Gutwein (d. 1952) – children: Shmuel, Izzy')}</div>
-                                    <div>• ${hl('Zalke-Asher Fuhrer')} ~1887–21/4/1973 (${MEMORIAL_CANDLE_SVG}19 Nisan 5733)${hl(' – escaped Galicia to Siberia during WWII with his wife and two daughters, survived, and immigrated to Israel. Daughters: Frida (d. 1991, m. Moshe Kramer; children: Uri & Michal) and Rela (m. Henry Silberberg; children: Ilana & Yoram)')}</div>
-                                    <div>• ${hl('Efraim Fuhrer (1895–1943) & Sara (1897) – perished in the Holocaust with their sons Shmuel (1925–1943), Nechemia (1925–1943), Ariel (1937–1943)')}</div>
+                                    <div>• ${hl('Zalke-Asher Fuhrer')} ~1887–21/4/1973 (${MEMORIAL_CANDLE_SVG}19 Nisan 5733)${hl(' – escaped Galicia to Siberia during WWII with his wife and two daughters, survived, immigrated to Israel, and reconnected with the family in Kfar Pines. Daughters: Frida (d. 1991, m. Moshe Kramer; children: Uri & Michal) and Rela (m. Henry Silberberg; children: Ilana & Yoram)')}</div>
+                                    <div>• ${hl('Efraim Fuhrer (1895–1943) & Sara (1897–1943) – perished in the Holocaust with their sons Shmuel (1925–1943), Nechemia (1925–1943), Ariel (1937–1943)')}</div>
                                     <div>• ${hl('Ita Fuhrer (1900–1943)')}</div>
                                 </div>
                             </div>
@@ -2181,11 +2168,11 @@
                     <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
                         <div>🗓️ <span class="font-bold text-slate-900">Pinhas</span>: 6/2/1882 – 23/1/1953 (${MEMORIAL_CANDLE_SVG}7 Shevat 5713) | <span class="font-bold text-slate-900">Alte-Chana</span>: 21/4/1883 – 12/1/1970 (${MEMORIAL_CANDLE_SVG}5 Shevat 5730)</div>
                     </div>
-                    <p>${hl('Married on 24/8/1904 (13 Elul 5664) in Dukla, Galicia. Initially they lived in Sanz, Galicia (Austro-Hungarian Empire). In November 1909 Pinhas obtained an official Certificate of Good Conduct from the municipality of Sanz to seek employment in Germany, and in 1911 he traveled to Antwerp, Belgium to learn the diamond-polishing trade. During this time Alte-Chana stayed with their sons Avraham-Aryeh and Menachem-Mendel at her parents\' home in Dukla, where the boys studied in Cheder (while their eldest daughter Taube remained temporarily in Sanz, attending elementary school in 1912 registered under her mother\'s family name "Lipsker"), before they all reunited in Antwerp. Because of their status as Austro-Hungarian "enemy aliens" in Belgium, the family relocated to Germany (where Alte-Chana\'s brother lived in Cologne): in 1913 Alte-Chana settled in Landstuhl and opened an installment collection business across the Rhine Province, joined by Pinhas and the children at the outbreak of WWI in 1914.')}</p>
-                    <p>${hl('In 1917 the family moved to Cologne, where Alte-Chana managed a laundry-goods and furniture store while Pinhas kept the books. A German identity document (Personalausweis) issued in Cologne on 5/11/1919 notes that following the collapse of the Austro-Hungarian Empire (1918), Pinhas was listed as stateless (Staatsangehörigkeit: unbestimmt), registered as a merchant (Handelsmann) with a recommendation from the Cologne Chamber of Commerce, and required special British Army and German Passport Office permits to cross into unoccupied Germany for trade. In Cologne they lived at three adjacent addresses in the Old Town (Altstadt-Süd) and belonged to the independent Orthodox congregation "Adass-Jeschurun" led by Rabbi Dr. David Carlebach (who issued an official verification of their Dukla marriage in January 1923 based on the original Ketubah). After the Nazis rose to power, the family endured boycotts and persecution; Alte-Chana was physically assaulted in Brand while collecting a debt. In late 1935 they were forced to liquidate their business, and in March 1936 they immigrated to the Land of Israel.')}</p>
-                    <p>${hl('The British Aliyah "Certificate" for Pinhas, Alte-Chana, and their three youngest children under age 18 (Rachel, Shmuel, and Yeshayahu) was secured by their son Menachem-Mendel through Moshe Shapira (then HaPoel HaMizrachi representative at the Jewish Agency and later Israel\'s Minister of the Interior). Thanks to the parents\' foresight and the help of Mendel and Louisa-Liza who had immigrated earlier, the parents and three youngest siblings left Germany in 1936 and were saved. To meet the British capitalist visa requirement, daughter Louisa-Liza and her husband Moshe Pitovsky registered as sponsors. During and after WWII, Pinhas would often say in Yiddish: "Ven nisht Mendel, volten mir gehat a misa meshuna" (Were it not for Mendel, we would have met a terrible fate).')}</p>
+                    <p>${hl('Married on 24/8/1904 (13 Elul 5664) in Dukla, Galicia. Initially they lived in Sanz. In November 1909 Pinhas obtained an official Certificate of Good Conduct from the municipality of Sanz to seek employment in Germany, and in 1911 he traveled to Antwerp, Belgium to learn the diamond-polishing trade. During this time Alte-Chana stayed with their sons Avraham-Aryeh and Menachem-Mendel at her parents\' home in Dukla, where the boys studied in Cheder (while their eldest daughter Taube remained temporarily in Sanz, attending elementary school in 1912 registered under her mother\'s family name "Lipsker"), before they all reunited in Antwerp. Because of their status as Austro-Hungarian "enemy aliens" in Belgium, the family relocated to Germany (where Alte-Chana\'s brother lived in Cologne): in 1913 Alte-Chana settled in Landstuhl and opened an installment sales and collection business across the Rhine Province, joined by Pinhas and the children at the outbreak of WWI in 1914.')}</p>
+                    <p>${hl('In 1917 the family moved to Cologne, where Alte-Chana managed a bedding, laundry-goods, and furniture store while Pinhas kept the books. A German identity document (Personalausweis) issued in Cologne on 5/11/1919 notes that following the collapse of the Austro-Hungarian Empire (1918), Pinhas was listed as stateless (Staatsangehörigkeit: unbestimmt), registered as a merchant (Handelsmann) with an official recommendation from the Cologne Chamber of Commerce. Since Cologne and the Rhineland were under British occupation, Pinhas required special permits from the British military authorities and the German Passport Office to cross into unoccupied Germany for trade. In Cologne they lived at three adjacent addresses in the Old Town (Altstadt-Süd) and belonged to the independent Orthodox congregation "Adass-Jeschurun" led by Rabbi Dr. David Carlebach (who issued an official verification of their Dukla marriage in January 1923 based on the original Ketubah). After the Nazis rose to power, the family endured boycotts and persecution; Alte-Chana was physically assaulted in Brand while collecting a debt. In late 1935 they were forced to liquidate their business, and in March 1936 they immigrated to the Land of Israel.')}</p>
+                    <p>${hl('The British Aliyah "Certificate" for Pinhas, Alte-Chana, and their three youngest children under age 18 (Rachel, Shmuel, and Yeshayahu) was secured by their son Menachem-Mendel through Moshe Shapira (then HaPoel HaMizrachi representative at the Jewish Agency and later Israel\'s Minister of the Interior). Thanks to the parents\' foresight and the help of Mendel and Louisa-Liza who had immigrated earlier, the parents and three youngest siblings left Germany in 1936 and were saved. To meet the British capitalist visa requirement, daughter Louisa-Liza and her husband Moshe Pitovsky registered as sponsors and applicants (as partners in a well-known restaurant in Jerusalem). During and after WWII, Pinhas would often say in Yiddish: "Ven nisht Mendel, volten mir gehat a misa meshuna" (Were it not for Mendel, we would have met a terrible fate).')}</p>
                     <p>${hl('In Israel they lived first in Kfar Pines with Menachem-Mendel and Sara Fuhrer, and in January 1940 moved to a rented apartment on Mea Shearim Street in Jerusalem. Both are buried at the Givat Shaul Cemetery in Jerusalem.')}</p>
-                    <p>${hl('[Alte-Chana\'s parents: ')}<span class="font-bold text-slate-900">${hl('Binyamin-Zeev Lipsker')}</span> (~1860 – 27/3/1945) &amp; <span class="font-bold text-slate-900">${hl('Dina')}</span> <span class="font-normal text-slate-700">${hl('(née Friedman)')}</span> (~1862 – 16/11/1942) ${hl('immigrated from Dukla to Israel in 1937 and are buried on the Mount of Olives in Jerusalem. Her maternal grandfather, ')}<span class="font-bold text-slate-900">${hl('R\' Menachem-Mendel Friedman of Sanz')}</span> (~1840–1903)${hl(', immigrated to Israel around 1890 with the blessing of the Rebbe of Sieniawa, Rabbi Yechezkel-Shraga Halberstam, and is buried in Safed. Menachem-Mendel Fuhrer used to note that his own children born in Israel ("Generation 2") were therefore already the fifth generation in the Land of Israel.]')}</p>
+                    <p>${hl('[Alte-Chana\'s family: Her parents, ')}<span class="font-bold text-slate-900">${hl('Binyamin-Zeev Lipsker')}</span> ${hl('son of R\' Moshe-Aryeh')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}13 Nisan 5705) &amp; <span class="font-bold text-slate-900">${hl('Dina')}</span> <span class="font-normal text-slate-700">${hl('(née Friedman)')}</span> (~1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}7 Kislev 5703) ${hl('immigrated from Dukla, Galicia to Israel in 1937 and are buried on the Mount of Olives in Jerusalem. Alte-Chana\'s siblings: Mordechai and Gitel (Gutherr) of Dukla. Her maternal grandfather, ')}<span class="font-bold text-slate-900">${hl('R\' Menachem-Mendel Friedman of Sanz')}</span> (~1840–1903)${hl(', immigrated to Israel around 1890 with the blessing of the Rebbe of Sieniawa, Rabbi Yechezkel-Shraga Halberstam, and is buried in Safed. Menachem-Mendel Fuhrer used to note that his own children born in Israel ("Generation 2") were therefore already the fifth generation in the Land of Israel.]')}</p>
                 </div>
             `;
             }
@@ -2201,7 +2188,7 @@
                         <div class="flex items-start gap-2">
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">א</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי שמשון בן אברהם משאנץ')}</span> ${hl('(הר"ש משאנץ, מגדולי בעלי התוספות בצרפת)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי שמשון בן אברהם משאנץ')}</span> ${hl('(הר"ש משאנץ, מגדולי בעלי התוספות בצרפת)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(לפי מקור נוסף: 1230/1250 בקירוב)')}</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר פירוש המשניות לסדרים זרעים וטהרות הנדפס בכל מהדורות הש"ס. לעת זקנותו עלה לארץ ישראל והתיישב בעכו. הערה: שאנץ (')}<a href="https://www.google.com/maps/search/?api=1&query=Sens,+Burgundy,+France" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 underline">Sens, חבל בורגונדי, צרפת</a>${hl(') אינה צאנז שבפולין.')}</div>
                             </div>
                         </div>
@@ -2214,9 +2201,76 @@
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">ב</span>
                             <div>
                                 <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין')}</span> ${hl('(בעל ה"תוספות יום־טוב")')} <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}ו' אלול תי"ד)</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('כיהן כרב בפראג, וינה, נמירוב ורבה הראשי של קראקא. הוביל את שיקום הקהילות לאחר גזירות ת"ח–ת"ט (1648–1649).')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('כיהן כרב בפראג, וינה, ')}<a href="https://www.google.com/maps/search/?api=1&query=Nemyriv,+Ukraine" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נמירוב, אוקראינה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('נמירוב, אוקראינה')}</a>${hl(' ורבה הראשי של ')}<a href="https://www.google.com/maps/search/?api=1&query=Krakow,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קרקוב" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קרקוב')}</a>${hl('. התמודד עם גזירות ת"ח–ת"ט (1648–1649) ופעל רבות לשיקום הקהילות היהודיות באירופה.')}</div>
                             </div>
-                    <p>${hl('[הוריה של אלטה־חנה: ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span> (~1860 – 27/3/1945) ו<span class="font-bold text-slate-900">${hl('דינה')}</span> <span class="font-normal text-slate-700">${hl('(לבית פרידמן)')}</span> (~1862 – 16/11/1942) ${hl('עלו מדוקלה לארץ ישראל ב-1937 ונטמנו בהר הזיתים בירושלים. סבה מצד אמה, ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (~1840–1903)${hl(', עלה לארץ ישראל בסביבות 1890 בברכת הרבי משינאווא, רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שילדיו שנולדו בארץ ("דור ב\'") היו אפוא כבר דור חמישי בארץ ישראל.]')}</p>
+                        </div>
+                        <div class="flex items-start gap-2 ps-5 sm:ps-9 text-amber-900/80 text-xs sm:text-sm italic font-medium">
+                            <span class="text-amber-700 font-bold not-italic select-none">↳</span>
+                            <span>* דורות ביניים</span>
+                        </div>
+                        <div class="flex items-start gap-2 ps-6 sm:ps-11">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700/90 text-white text-xs font-extrabold shrink-0 mt-0.5">ג</span>
+                            <div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי יעקב ב"ר ברוך')}</span> ${hl('– אב"ד וראש ישיבה בטוטשין (ווהלין, פולין־ליטא, כיום אוקראינה)')} <span class="text-slate-600 text-sm">| 🗓️ תק"ל (1770)</span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר הספר "ברכת יעקב" – ביאור על שולחן ערוך חושן משפט (סימנים א–צו; נדפס בלבוב/אמסטרדם תקמ"ו, 1786). מצאצאי רבי יעקב אב"ד צויזמיר (זויסמאר), שנהרג על קידוש השם בפרעות חמילניצקי (גזירות ת"ח, 1648).')}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2 ps-8 sm:ps-14 text-amber-900/80 text-xs sm:text-sm italic font-medium">
+                            <span class="text-amber-700 font-bold not-italic select-none">↳</span>
+                            <span>* דורות שתיעודם חלקי או לא ידוע</span>
+                        </div>
+                        <div class="flex items-start gap-2 ps-10 sm:ps-16">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">ד</span>
+                            <div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי אליהו בן ברוך ברגמן')}</span> (~1820; ${hl('קיימת גרסה שונה: ~1837')})${hl(', בעל הכינוי "אלי"ש דיין" (ראשי תיבות שמו) – ראב"ד בצאנז אצל בעל ה"דברי חיים" (רבי חיים הלברשטאם) ובנו הרה"ג רבי אהרן הלברשטאם מצאנז במשך 52 שנה.')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('במקביל חי בגורליץ\' אבי שושלת פירר הידוע, ')}<span class="font-bold text-slate-800">${hl('צבי־הירש פירר')}</span>${hl(' (אביהם של שעיה־ברוך ואשר־זעליג).')}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2 ps-12 sm:ps-[5rem]">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-500 text-white text-xs font-extrabold shrink-0 mt-0.5">ה</span>
+                            <div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רחל־פרומט')}</span> <span class="font-normal text-slate-700">${hl('(ברגמן)')}</span> (~1842; לפי מקור נוסף: 1838) ו<span class="font-bold text-slate-900">${hl('שעיה־ברוך (שמעון) פירר')}</span> ${hl('(בן צבי־הירש פירר מגורליץ\', ~1840)')} <span class="text-slate-600 text-sm">| נישואין: ~1859</span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('לפי רישום אחר, שמו של הבעל הוא אברהם־לייב, שייתכן שעל שמו נקרא נכדו אברהם־אריה לייביש, ושנת לידתו המשוערת היא ~1837.')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('[ענף אחיו אשר־זעליג פירר (בן צבי־הירש): בנו היה הרב שמואל פירר ז"ל (רבה של קרוסנו, בן דודו הראשון של שמואל פירר מצאנז) ← בנו יוסף־אשר ← בנו הרב בן־ציון פירר ז"ל (הסופר החרדי הנודע יליד גליציה, רבה של מושב ניר גלים וישיבת נווה הרצוג).]') }</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2 ps-14 sm:ps-[6rem]">
+                            <span class="text-amber-700 font-bold select-none">↳</span>
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ו</span>
+                            <div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('שמואל פירר')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}ט"ז בכסלו תרע"ב; בן־דודו הראשון של הרב שמואל פירר מקרוסנו) ו<span class="font-bold text-slate-900">${hl('מרים')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(מנדל)')}</span> ~1862 (לפי מקור נוסף: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}י"ב בתשרי תרצ"ו) <span class="text-slate-600 text-sm">| נישואין: ~1879</span></div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
+                                    <div class="font-semibold text-slate-700">${hl('ילדיהם (אחיו ואחיותיו של פנחס):')}</div>
+                                    <div>• ${hl('חיים פירר (~1880)')}</div>
+                                    <div>• ${hl('פנחס פירר (1882–1953)')}</div>
+                                    <div>• ${hl('נתן פירר (1883–1942) ואשתו רייזלה (גולדווסר) (1882–1920/1943) – ילדיהם: שמואל, רותקה, ליבה (1914–1943), נחום (1906–1942), חיים (1920–1943; לפי רישום אחר נפטר בגיל יומיים)')}</div>
+                                    <div>• ${hl('מלכה (נפטרה 1959) ובעלה אברהם גוטוויין (נפטר 1952) – ילדיהם: שמואל, איזי')}</div>
+                                    <div>• ${hl('זַלְקֶע־אשר פירר')} (1887 – 21/4/1973, ${MEMORIAL_CANDLE_SVG}י"ט בניסן תשל"ג)${hl(' – במלחה"ע ה-2 נמלט מגליציה יחד עם אשתו ושתי בנותיו אל סיביר, שרד את המלחמה, ולאחריה עלה לארץ ישראל ויצר קשר עם המשפחה בכפר פינס. בנותיו: פרידה (נפטרה 1991, אשת משה קרמר; ילדיהם: אורי ומיכל) ורלה (אשת הנרי זילברברג; ילדיהם: אילנה ויורם)')}</div>
+                                    <div>• ${hl('אפרים פירר (1895–1943) ואשתו שרה (1897–1943) – נספו בשואה עם בניהם: שמואל (1925–1943), נחמיה (1925–1943), אריאל (1937–1943)')}</div>
+                                    <div>• ${hl('איטה פירר (1900–1943)')}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- תולדות חיי פנחס ואלטה-חנה פירר -->
+                <div class="bg-amber-50/80 rounded border border-amber-200 p-3 shadow-2xs space-y-1.5 text-sm sm:text-[15px] font-normal text-slate-800 leading-relaxed">
+                    <div class="font-extrabold text-amber-950 flex items-center gap-1.5 mb-2 pb-1.5 border-b border-amber-200/70">
+                        <span>📖</span>
+                        <span>${hl('תולדות המשפחה')}</span>
+                    </div>
+                    <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
+                        <div>🗓️ <span class="font-bold text-slate-900">פנחס</span>: 6/2/1882 – 23/1/1953 (${MEMORIAL_CANDLE_SVG}ז' בשבט תשי"ג) | <span class="font-bold text-slate-900">אלטה־חנה</span>: 21/4/1883 – 12/1/1970 (${MEMORIAL_CANDLE_SVG}ה' בשבט תש"ל)</div>
+                    </div>
+                    <p>${hl('נישאו ב־24/8/1904 (י"ג באלול תרס"ד) בדוקלה, גליציה. בתחילה התגוררו בצאנז. כבר בנובמבר 1909 הצטייד פנחס בתעודת יושר רשמית מעיריית צאנז לקראת חיפוש תעסוקה בגרמניה, ובשנת 1911 יצא לאנטוורפן שבבלגיה ללמוד את מלאכת ליטוש היהלומים. בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז ולמדה ב־1912 בבית הספר העממי כשהיא רשומה תחת שם משפחת אמה, "ליפסקר"), ובהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר קלן): ב־1913 התיישבה אלטה־חנה בעיר לנדשטול ופתחה שם עסק למכירה וגביית תשלומים, שבמסגרתו נסעה ברחבי פרובינציית הריין, ועם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
+                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות לכלי מיטה, מוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים והחשבונות. מצילום תעודת זהות גרמנית (תחליף דרכון / Personalausweis) שהונפקה לו בקלן ב־5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt), נרשם רשמית כסוחר (Handelsmann) וקיבל המלצה רשמית מלשכת המסחר של קלן. מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי ושל משרד הדרכונים הגרמני כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר. בקלן נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע Altstadt-Süd) ונמנו על הקהילה האורתודוקסית העצמאית "עדת ישורון" בראשות הרב ד"ר דוד קרליבך, שאימת רשמית את נישואיהם מדוקלה בינואר 1923 על פי הכתובה המקורית. לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה ברנד כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
+                    <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל ולואיזה־ליזה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב־1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם לואיזה־ליזה ובעלה משה פיטובסקי כערבים וכמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). במהלך מלחה"ע ה-2 ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואָלטן מיר געהאַט אַ מיתה משונה" (אלמלא מנדל, היינו מתים מיתה משונה).')}</p>
+                    <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובינואר 1940 עברו לדירה שכורה ברחוב מאה שערים בירושלים. שניהם טמונים בבית העלמין בגבעת שאול בירושלים.')}</p>
+                    <p>${hl('[משפחתה של אלטה־חנה: הוריה, ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span> ${hl('בן ר\' משה אריה')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}י"ג בניסן תש"ה) ו<span class="font-bold text-slate-900">${hl('דינה')}</span> <span class="font-normal text-slate-700">${hl('(לבית פרידמן)')}</span> (1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}ז' בכסלו תש"ג) ${hl('עלו מדוקלה שבגליציה לארץ ישראל בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה. סבה (אבי אמה), זקן המשפחה ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (~1840–1903)${hl(', עלה לארץ ישראל בסביבות שנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משינְיָאווה (גליציה), רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
                 </div>
             `;
         }
@@ -2231,7 +2285,12 @@
                 /\(אופן\)/g,
                 /\(Offen\)/g,
                 /\(מושקוביץ\)/g,
+                /\(מושקוביצ\)/g,
                 /\(Moskowitz\)/g,
+                /\(פלדמן\)/g,
+                /\(Feldman\)/g,
+                /\(לוי\)/g,
+                /\(Levi\)/g,
                 /\(לרנר\)/g,
                 /\(Lerner\)/g,
                 /\(מונדרי\)/g,
@@ -2276,6 +2335,10 @@
                 /\(Nisimi\)/g,
                 /\(פרלמן\)/g,
                 /\(Perlman\)/g,
+                /\(גוטליב\)/g,
+                /\(Gottlieb\)/g,
+                /\(פיק\)/g,
+                /\(Pick\)/g,
                 /\(לבית\s+[^)]+\)/g,
                 /\(née\s+[^)]+\)/gi
             ];
@@ -2351,13 +2414,14 @@
                 <div ${headerClickAttr}>
                     <div class="flex-1 flex flex-col gap-1">
                         ${breadcrumbHtml}
+                        ${!isRootNode ? `
                         <div class="flex items-center gap-2 flex-wrap">
                             ${node.gen > 0 ? `
                                 <span class="node-badge text-sm font-bold px-2.5 py-0.5 rounded badge-gen-${node.gen} shrink-0">
                                     ${getHebrewGen(node.gen)}
                                 </span>
                             ` : ''}
-                            <h3 class="node-title ${titleSizeClass} leading-snug ${!isRootNode && hasChildren ? 'group-hover:text-emerald-900 transition-colors' : ''}">
+                            <h3 class="node-title ${titleSizeClass} leading-snug ${hasChildren ? 'group-hover:text-emerald-900 transition-colors' : ''}">
                                 ${displayName}
                             </h3>
                             ${countBadgeText ? `
@@ -2366,6 +2430,7 @@
                                 </span>
                             ` : ''}
                         </div>
+                        ` : ''}
 
                         ${node.dates ? `
                             <div class="text-[15px] sm:text-base ${isRootNode ? 'text-rose-900/85' : 'text-slate-500'} font-medium flex items-center gap-1.5 mt-0.5">
@@ -2711,23 +2776,6 @@
             }
         }
 
-        // הרחבה וכיווץ של העץ המוצג כרגע
-        function expandCurrentView() {
-            activeGenDepth = null;
-            savedExpandedStateBeforeFilter = null;
-            const displayedTree = getCurrentlyDisplayedTree();
-            setAllExpanded(displayedTree, true);
-            applyFiltersAndRender("keep");
-        }
-
-        function collapseCurrentView() {
-            activeGenDepth = null;
-            savedExpandedStateBeforeFilter = null;
-            const displayedTree = getCurrentlyDisplayedTree();
-            initInitialState(displayedTree);
-            applyFiltersAndRender("keep");
-        }
-
         // עדכון סרגל הסטטיסטיקה בהתאם לעץ או לענף המוצג כרגע
         function updateStatsBar(dataNode) {
             const stats = calculateStats(dataNode);
@@ -3031,7 +3079,7 @@
                         </div>
                     </div>
                     <div class="print-header">
-                        <h1>עץ יוחסין משפחת פירר</h1>
+                        <h1>עץ יוחסין פנחס ואלטה־חנה <span style="font-weight: 400;">(ליפסקר)</span> פירר</h1>
                         ${branchTitle ? `<h2>${branchTitle}</h2>` : ''}
                         <div class="print-date">הופק בתאריך ${printDateStr}</div>
                     </div>
@@ -3385,16 +3433,6 @@
                 });
             }
 
-            const expandAllBtn = document.getElementById("expandAllBtn");
-            if (expandAllBtn) {
-                expandAllBtn.addEventListener("click", expandCurrentView);
-            }
-
-            const collapseAllBtn = document.getElementById("collapseAllBtn");
-            if (collapseAllBtn) {
-                collapseAllBtn.addEventListener("click", collapseCurrentView);
-            }
-
             const backToTopBtn = document.getElementById("backToTopBtn");
             if (backToTopBtn) {
                 window.addEventListener("scroll", () => {
@@ -3457,6 +3495,30 @@
                 });
             }
 
+            // קיצורי מקלדת שימושיים: "/" להתמקדות בחיפוש, "Escape" לניקוי החיפוש או סגירת חלוניות
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+                    e.preventDefault();
+                    const searchInput = document.getElementById("searchInput");
+                    if (searchInput) searchInput.focus();
+                } else if (e.key === "Escape") {
+                    const portraitModal = document.getElementById("portraitModal");
+                    if (portraitModal) {
+                        portraitModal.remove();
+                        return;
+                    }
+                    const searchInput = document.getElementById("searchInput");
+                    if (searchInput && searchInput.value.trim() !== "") {
+                        searchInput.value = "";
+                        currentSearchQuery = "";
+                        const clearSearchBtn = document.getElementById("clearSearchBtn");
+                        if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+                        applyFiltersAndRender();
+                    }
+                }
+            });
+
+            // חיבור כפתורי הייצוא (JSON / CSV) בפוטר
             const exportJsonBtn = document.getElementById("exportJsonBtn");
             if (exportJsonBtn) {
                 exportJsonBtn.addEventListener("click", exportFamilyTreeAsJson);
@@ -3467,64 +3529,11 @@
                 exportCsvBtn.addEventListener("click", exportFamilyTreeAsCsv);
             }
 
+            // חיבור כפתור החלפת השפה (עברית / English)
             const langToggleBtn = document.getElementById("langToggleBtn");
             if (langToggleBtn) {
                 langToggleBtn.addEventListener("click", toggleLanguage);
             }
-
-            // התאמת פתיחת האימייל לפי הפלטפורמה: במובייל אפליקציית הדואר (mailto:), ובמחשב פתיחת Gmail בכרטיסייה חדשה
-            const defaultMailLink = document.getElementById("defaultMailLink");
-            if (defaultMailLink) {
-                const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                const gmailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=pinilev@gmail.com&su=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%A4%D7%99%D7%A8%D7%A8";
-                const mailtoUrl = "mailto:pinilev@gmail.com?subject=%D7%90%D7%99%D7%9C%D7%9F%20%D7%99%D7%95%D7%97%D7%A1%D7%99%D7%9F%20-%20%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%20%D7%A4%D7%99%D7%A8%D7%A8";
-
-                if (!isMobileDevice) {
-                    defaultMailLink.setAttribute("href", gmailComposeUrl);
-                    defaultMailLink.setAttribute("target", "_blank");
-                    defaultMailLink.setAttribute("rel", "noopener noreferrer");
-                }
-
-                defaultMailLink.addEventListener("click", (e) => {
-                    if (isMobileDevice) {
-                        if (window.top && window.top !== window.self) {
-                            e.preventDefault();
-                            try {
-                                window.top.location.href = mailtoUrl;
-                            } catch (err) {
-                                window.open(mailtoUrl, "_blank", "noopener,noreferrer");
-                            }
-                        }
-                    } else {
-                        e.preventDefault();
-                        window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
-                    }
-                });
-            }
-
-            // קיצורי מקלדת גלובליים: '/' למיקוד בחיפוש, 'Escape' לניקוי חיפוש
-            document.addEventListener("keydown", (e) => {
-                const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
-                const isTyping = tag === "input" || tag === "textarea" || tag === "select";
-
-                if (e.key === "/" && !isTyping) {
-                    e.preventDefault();
-                    const searchInput = document.getElementById("searchInput");
-                    if (searchInput) {
-                        searchInput.focus();
-                        searchInput.select();
-                    }
-                } else if (e.key === "Escape") {
-                    if (currentSearchQuery.trim() !== "") {
-                        const searchInput = document.getElementById("searchInput");
-                        const clearSearchBtn = document.getElementById("clearSearchBtn");
-                        if (searchInput) searchInput.value = "";
-                        currentSearchQuery = "";
-                        if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
-                        applyFiltersAndRender();
-                    }
-                }
-            });
         });
     </script>
 </body>
