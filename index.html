@@ -158,6 +158,22 @@
                         </span>
                     </button>
                 </div>
+
+                <!-- Expand / Collapse All Controls -->
+                <div class="flex items-center gap-1 ms-auto sm:ms-0">
+                    <button type="button" id="expandAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="הרחב את כל הענפים">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                        </svg>
+                        <span id="expandAllBtnText" class="hidden md:inline">הרחב הכל</span>
+                    </button>
+                    <button type="button" id="collapseAllBtn" class="px-2.5 py-1.5 text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-md transition shadow-2xs flex items-center gap-1 cursor-pointer" title="כווץ את כל הענפים">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25"></path>
+                        </svg>
+                        <span id="collapseAllBtnText" class="hidden md:inline">כווץ הכל</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -181,9 +197,9 @@
         <div id="searchStatusBanner" class="hidden mb-3.5 bg-blue-50 border border-blue-200 text-blue-800 px-3.5 py-2.5 rounded-lg text-base font-semibold flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2 flex-wrap">
                 <span id="searchStatusText"></span>
-                <span id="toldotSearchIndicator" class="hidden text-xs sm:text-sm bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full font-bold">
+                <button type="button" id="toldotSearchIndicator" class="hidden text-xs sm:text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full font-bold transition cursor-pointer" title="לחצו לפתיחת חלונית ייחוס ותולדות">
                     📜 נמצאו התאמות גם בחלונית "תולדות"
-                </span>
+                </button>
             </div>
             <button type="button" id="bannerResetBtn" class="text-xs sm:text-sm bg-white hover:bg-blue-100 text-blue-800 border border-blue-300 px-2.5 py-1 rounded-md font-bold transition cursor-pointer">
                 איפוס סינון ✕
@@ -246,6 +262,10 @@
                         <span class="text-slate-300 text-[11px] select-none">|</span>
                         <button type="button" id="exportCsvBtn" class="px-1.5 py-0 text-[11px] font-bold text-slate-600 hover:text-blue-800 hover:bg-blue-50 rounded-full transition cursor-pointer" title="הורדת טבלת CSV תואמת Excel ותוכנות גנאלוגיה">
                             CSV
+                        </button>
+                        <span class="text-slate-300 text-[11px] select-none">|</span>
+                        <button type="button" id="exportGedcomBtn" class="px-1.5 py-0 text-[11px] font-bold text-slate-600 hover:text-purple-800 hover:bg-purple-50 rounded-full transition cursor-pointer" title="הורדת קובץ GEDCOM תקני לייבוא ב-MyHeritage, Geni ותוכנות גנאלוגיה">
+                            GEDCOM
                         </button>
                     </div>
 
@@ -467,19 +487,6 @@
                                                     { id: "ruth_sochaczewski_p1", name: "רות", gen: 5 },
                                                     { id: "shmuel_sochaczewski_p1", name: "שמואל", gen: 5 },
                                                     { id: "chaim_yechezkel_sochaczewski_p1", name: "חיים־יחזקאל", gen: 5 }
-                                                ]
-                                            },
-                                            {
-                                                id: "avraham_mordechai_esther_liba_sochaczewski",
-                                                name: "אברהם מרדכי ואסתר ליבה סוכצ'בסקי",
-                                                gen: 4,
-                                                dates: "אברהם מרדכי: 1987",
-                                                children: [
-                                                    { id: "chana_roizi_sochaczewski_p1", name: "חנה רוייזי", gen: 5 },
-                                                    { id: "yitzchak_sochaczewski_p1", name: "יצחק", gen: 5 },
-                                                    { id: "ruth_sochaczewski_p1", name: "רות", gen: 5 },
-                                                    { id: "shmuel_sochaczewski_p1", name: "שמואל", gen: 5 },
-                                                    { id: "chaim_yechezkel_sochaczewski_p1", name: "חיים יחזקאל", gen: 5 }
                                                 ]
                                             },
                                             {
@@ -800,27 +807,6 @@
                                             { id: "raz_kfir_p6", name: "רז", gen: 4 },
                                             { id: "tzipora_kfir_p6", name: "צפורה", gen: 4 },
                                             { id: "hillel_sara_kfir_p6", name: "הלל־שרה", gen: 4 }
-                                        ]
-                                    },
-                                    {
-                                        id: "zeev_sima_kfir_p6",
-                                        name: "זאב וסימה כפיר",
-                                        gen: 3,
-                                        location: "רבבה",
-                                        children: [
-                                            {
-                                                id: "refael_ariel_moria_kfir_p6",
-                                                name: "רפאל־אריאל ומוריה כפיר",
-                                                gen: 4,
-                                                location: "תפוח",
-                                                children: [
-                                                    { id: "malachi_kfir_p6", name: "מלאכי", gen: 5 }
-                                                ]
-                                            },
-                                            { id: "oz_menachem_kfir_p6", name: "עוז מנחם", gen: 4 },
-                                            { id: "raz_kfir_p6", name: "רז", gen: 4 },
-                                            { id: "tzipora_kfir_p6", name: "צפורה", gen: 4 },
-                                            { id: "hillel_sara_kfir_p6", name: "הלל שרה", gen: 4 }
                                         ]
                                     },
                                     {
@@ -1588,7 +1574,13 @@
                 printBranchTitle: { he: "הדפסת הענף הנבחר בלבד", en: "Print selected branch only" },
                 printBranchHint: { he: "* או בחר ענף להדפסה", en: "* or select a branch to print" },
                 showAllBtn: { he: "* או הצג הכל", en: "* or show all" },
+                expandAllBtn: { he: "הרחב הכל", en: "Expand All" },
+                expandAllTitle: { he: "הרחב את כל הענפים", en: "Expand all branches" },
+                collapseAllBtn: { he: "כווץ הכל", en: "Collapse All" },
+                collapseAllTitle: { he: "כווץ את כל הענפים", en: "Collapse all branches" },
                 resetFilterBtn: { he: "איפוס סינון ✕", en: "Reset Filter ✕" },
+                toldotSearchFound: { he: "📜 נמצאו התאמות גם בחלונית \"תולדות\"", en: "📜 Matches also found in \"Lineage & History\"" },
+                toldotSearchTitle: { he: "לחצו לפתיחת חלונית ייחוס ותולדות", en: "Click to open Lineage & History" },
                 toldotBtn: { he: "ייחוס ותולדות", en: "Lineage & History" },
                 toldotBtnTitle: { he: "הצג או הסתר ייחוס ותולדות", en: "Show or hide lineage & history" },
                 toldotTeaser: {
@@ -1607,9 +1599,15 @@
             return (ui[key] && ui[key][currentLang]) || (ui[key] && ui[key].he) || key;
         }
 
-        // החלפת שפת האתר (עברית <-> אנגלית) כולל עדכון כיוון העמוד RTL/LTR
-        function toggleLanguage() {
-            currentLang = currentLang === "he" ? "en" : "he";
+        // החלת שפה (עברית / אנגלית) ועדכון כיוון העמוד ורכיבי הממשק
+        function applyLanguageUI(lang, shouldReRender = true) {
+            currentLang = lang === "en" ? "en" : "he";
+            try {
+                localStorage.setItem("fuhrer_tree_lang", currentLang);
+            } catch (e) {
+                // התעלמות משגיאת אחסון מקומי במצב גלישה פרטית מחמירה
+            }
+
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === "en" ? "ltr" : "rtl";
             document.title = t("docTitle");
@@ -1630,7 +1628,13 @@
             setText("branchFilterLabel", t("showBranchLabel"));
             setText("printBranchHint", t("printBranchHint"));
             setText("showAllTreeBtnText", t("showAllBtn"));
+            setText("expandAllBtnText", t("expandAllBtn"));
+            setAttr("expandAllBtn", "title", t("expandAllTitle"));
+            setText("collapseAllBtnText", t("collapseAllBtn"));
+            setAttr("collapseAllBtn", "title", t("collapseAllTitle"));
             setText("bannerResetBtn", t("resetFilterBtn"));
+            setText("toldotSearchIndicator", t("toldotSearchFound"));
+            setAttr("toldotSearchIndicator", "title", t("toldotSearchTitle"));
             setText("footerLineageText", t("footerLineage"));
             setText("footerUpdatedText", t("footerUpdated"));
             setAttr("backToTopBtn", "title", t("backToTop"));
@@ -1681,7 +1685,14 @@
                 }
             }
 
-            applyFiltersAndRender("keep");
+            if (shouldReRender) {
+                applyFiltersAndRender("keep");
+            }
+        }
+
+        // החלפת שפת האתר (עברית <-> אנגלית)
+        function toggleLanguage() {
+            applyLanguageUI(currentLang === "he" ? "en" : "he", true);
         }
 
         const expandedState = {};
@@ -1707,7 +1718,7 @@
         // סינון שדה מיקום: מאפשר אך ורק תגיות <a> בטוחות המפנות לגוגל מפות, ומקודד את שאר הטקסט
         function sanitizeLocationHtml(locationStr) {
             if (!locationStr) return "";
-            const anchorRegex = /<a\b[^>]*\bhref\s*=\s*["'](https:\/\/www\.google\.com\/maps\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+            const anchorRegex = /<a\b[^>]*\bhref\s*=\s*["'](https:\/\/(?:www\.)?google\.com\/maps\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
             let result = "";
             let lastIndex = 0;
             let match;
@@ -2128,7 +2139,7 @@
                             <div class="flex items-start gap-2">
                                 <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">1</span>
                                 <div>
-                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Shimshon ben Avraham of Sens')}</span> ${hl('(Rash of Sens, leading Tosafist in France)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(according to another source: c. 1230/1250)')}</span></div>
+                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Shimshon ben Avraham of Sens')}</span> (<a href="https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%90%D7%A0%D7%A5" target="_blank" rel="noopener noreferrer" title="Wikipedia: Rash of Sens" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Rash of Sens')}</a>${hl(', leading Tosafist in France)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(according to another source: c. 1230/1250)')}</span></div>
                                     <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Author of the Mishnah commentary on Zeraim and Taharot printed in all editions of the Talmud. Late in life he immigrated to the Land of Israel and settled in Acre. Note: Sens (')}<a href="https://www.google.com/maps/search/?api=1&query=Sens,+Burgundy,+France" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 underline">Sens, Burgundy, France</a>${hl(') should not be confused with Sanz in Poland.')}</div>
                                 </div>
                             </div>
@@ -2140,7 +2151,7 @@
                                 <span class="text-amber-700 font-bold select-none">↳</span>
                                 <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">2</span>
                                 <div>
-                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Gershon Shaul Yom-Tov Lipmann HaLevi Heller Wallerstein')}</span> ${hl('(Author of "Tosafot Yom Tov")')} <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}6 Elul 5414)</span></div>
+                                    <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Gershon Shaul Yom-Tov Lipmann HaLevi Heller Wallerstein')}</span> ${hl('(Author of ')}&quot;<a href="https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%9D-%D7%98%D7%95%D7%91_%D7%9C%D7%99%D7%A4%D7%9E%D7%9F_%D7%94%D7%9C%D7%A8" target="_blank" rel="noopener noreferrer" title="Wikipedia: Tosafot Yom Tov" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Tosafot Yom Tov')}</a>&quot;) <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}6 Elul 5414)</span></div>
                                     <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Served as Rabbi of Prague, Vienna, ')}<a href="https://www.google.com/maps/search/?api=1&query=Nemyriv,+Ukraine" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Nemyriv, Ukraine" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Nemyriv, Ukraine')}</a>${hl(', and Chief Rabbi of ')}<a href="https://www.google.com/maps/search/?api=1&query=Krakow,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Krakow" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Krakow')}</a>${hl('. Led Jewish communal recovery following the Khmelnytsky massacres of 1648–1649.')}</div>
                                 </div>
                             </div>
@@ -2153,7 +2164,7 @@
                                 <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700/90 text-white text-xs font-extrabold shrink-0 mt-0.5">3</span>
                                 <div>
                                     <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Yaakov ben Baruch')}</span> ${hl('– Av Beit Din & Rosh Yeshiva in ')}<a href="https://www.google.com/maps/search/?api=1&query=Tuchyn,+Rivne+Oblast,+Ukraine" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Tuchyn" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Tuchyn')}</a>${hl(' (Volhynia, Ukraine)')} <span class="text-slate-600 text-sm">| 🗓️ 1770</span></div>
-                                    <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Author of "Birkat Yaakov" on Shulchan Aruch Choshen Mishpat (printed in Lviv/Amsterdam, 1786). Descendant of Rabbi Yaakov Av Beit Din of ')}<a href="https://www.google.com/maps/search/?api=1&query=Sandomierz,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Sandomierz (Tzoyzmir)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Sandomierz')}</a>${hl(', martyred in 1648.')}</div>
+                                    <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('Author of ')}&quot;<a href="https://hebrewbooks.org/8594" target="_blank" rel="noopener noreferrer" title="HebrewBooks: Birkat Yaakov" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Birkat Yaakov')}</a>&quot;${hl(' on Shulchan Aruch Choshen Mishpat (printed in Lviv/Amsterdam, 1786). Descendant of Rabbi Yaakov Av Beit Din of ')}<a href="https://www.google.com/maps/search/?api=1&query=Sandomierz,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Sandomierz (Tzoyzmir)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Sandomierz')}</a>${hl(', martyred in 1648.')}</div>
                                 </div>
                             </div>
                             <div class="flex items-start gap-2 ps-8 sm:ps-14 text-amber-900/80 text-xs sm:text-sm italic font-medium">
@@ -2164,7 +2175,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">4</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Eliyahu ben Baruch Bergman')}</span> (~1820; ${hl('another version: ~1837')})${hl(', known as "Elish Dayan" (acronym of his name) – Chief Dayan in ')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Sanz, Galicia (Nowy Sącz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Sanz, Galicia')}</a>${hl(' under the "Divrei Chaim" (Rabbi Chaim Halberstam) and his son Rabbi Aharon Halberstam for 52 years.')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Rabbi Eliyahu ben Baruch Bergman')}</span> (~1820; ${hl('another version: ~1837')})${hl(', known as "Elish Dayan" (acronym of his name) – Chief Dayan in ')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Sanz, Galicia (Nowy Sącz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Sanz, Galicia')}</a>${hl(' under the ')}&quot;<a href="https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%94%D7%9C%D7%91%D7%A8%D7%A9%D7%98%D7%90%D7%9D" target="_blank" rel="noopener noreferrer" title="Wikipedia: Divrei Chaim (Rabbi Chaim Halberstam)" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Divrei Chaim')}</a>&quot;${hl(' (Rabbi Chaim Halberstam) and his son Rabbi Aharon Halberstam for 52 years.')}</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 ps-12 sm:ps-[5rem]">
@@ -2179,8 +2190,8 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">6</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Shmuel Fuhrer')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}16 Kislev 5672; ${hl('first cousin of Rabbi Shmuel Fuhrer of ')}<a href="https://www.google.com/maps/search/?api=1&query=Krosno,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Krosno" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Krosno')}</a>) &amp; <span class="font-bold text-slate-900">${hl('Miryam')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(Mendel)')}</span> ~1862 (according to another source: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}12 Tishrei 5696) <span class="text-slate-600 text-sm">| Married: ~1879</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('Shmuel Fuhrer')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}16 Kislev 5672; ${hl('first cousin of ')}<a href="https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%95%D7%90%D7%9C_%D7%A4%D7%99%D7%A8%D7%A8" target="_blank" rel="noopener noreferrer" title="Wikipedia: Rabbi Shmuel Fuhrer" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Rabbi Shmuel Fuhrer')}</a>${hl(' of ')}<a href="https://www.google.com/maps/search/?api=1&query=Krosno,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Krosno" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Krosno')}</a>) &amp; <span class="font-bold text-slate-900">${hl('Miryam')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(Mendel)')}</span> ~1862 (according to another source: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}12 Tishrei 5696) <span class="text-slate-600 text-sm">| Married: ~1879</span></div>
+                                <div class="siblings-container text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
                                     <div class="font-semibold text-slate-700">${hl('Their children (siblings of Pinhas):')}</div>
                                     <div>• <span class="font-bold text-slate-900">${hl('Chaim')}</span> ${hl('Fuhrer (~1880)')}</div>
                                     <div>• <span class="font-bold text-slate-900">${hl('Pinhas')}</span> ${hl('Fuhrer (1882–1953)')}</div>
@@ -2204,11 +2215,11 @@
                     <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
                         <div>🗓️ <span class="font-bold text-slate-900">Pinhas</span>: 6/2/1882 – 23/1/1953 (${MEMORIAL_CANDLE_SVG}7 Shevat 5713) | <span class="font-bold text-slate-900">Alte-Chana</span>: 21/4/1883 – 12/1/1970 (${MEMORIAL_CANDLE_SVG}5 Shevat 5730)</div>
                     </div>
-                    <p>${hl('Married on 24/8/1904 (13 Elul 5664) in ')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Dukla" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Dukla')}</a>${hl(', Galicia. Initially they lived in Sanz. In November 1909 Pinhas obtained an official Certificate of Good Conduct from the municipality of Sanz to seek employment in Germany, and in 1911 he traveled to Antwerp, Belgium to learn the diamond-polishing trade. During this time Alte-Chana stayed with their sons Avraham-Aryeh and Menachem-Mendel at her parents\' home in Dukla, where the boys studied in Cheder (while their eldest daughter Taube remained temporarily in Sanz, attending elementary school in 1912 registered under her mother\'s family name "Lipsker"), before they all reunited in Antwerp. Because of their status as Austro-Hungarian "enemy aliens" in Belgium, the family relocated to Germany (where Alte-Chana\'s brother lived in Cologne): in 1913 Alte-Chana settled in ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Landstuhl" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Landstuhl')}</a>${hl(' and opened an installment sales and collection business across the Rhine Province, joined by Pinhas and the children at the outbreak of WWI in 1914.')}</p>
-                    <p>${hl('In 1917 the family moved to Cologne, where Alte-Chana managed a bedding, laundry-goods, and furniture store while Pinhas kept the books. A German identity document (Personalausweis) issued in Cologne on 5/11/1919 notes that following the collapse of the Austro-Hungarian Empire (1918), Pinhas was listed as stateless (Staatsangehörigkeit: unbestimmt), registered as a merchant (Handelsmann) with an official recommendation from the Cologne Chamber of Commerce. Since Cologne and the Rhineland were under British occupation, Pinhas required special permits from the British military authorities and the German Passport Office to cross into unoccupied Germany for trade. In Cologne they lived at three adjacent addresses in the Old Town (')}<a href="https://www.google.com/maps/search/?api=1&query=Altstadt-S%C3%BCd,+Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Altstadt-Süd, Cologne" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Altstadt-Süd')}</a>${hl(') and belonged to the independent Orthodox congregation "Adass-Jeschurun" led by Rabbi Dr. David Carlebach (who issued an official verification of their Dukla marriage in January 1923 based on the original Ketubah). After the Nazis rose to power, the family endured boycotts and persecution; Alte-Chana was physically assaulted in ')}<a href="https://www.google.com/maps/search/?api=1&query=Brand,+Aachen,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Brand, Aachen" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Brand')}</a>${hl(' while collecting a debt. In late 1935 they were forced to liquidate their business, and in March 1936 they immigrated to the Land of Israel.')}</p>
-                    <p>${hl('The British Aliyah "Certificate" for Pinhas, Alte-Chana, and their three youngest children under age 18 (Rachel, Shmuel, and Yeshayahu) was secured by their son Menachem-Mendel through Moshe Shapira (then HaPoel HaMizrachi representative at the Jewish Agency and later Israel\'s Minister of the Interior). Thanks to the parents\' foresight and the help of Mendel and Louisa-Liza who had immigrated earlier, the parents and three youngest siblings left Germany in 1936 and were saved. To meet the British capitalist visa requirement, daughter Louisa-Liza and her husband Moshe Pitovsky registered as sponsors and applicants (as partners in a well-known restaurant in Jerusalem). During and after WWII, Pinhas would often say in Yiddish: "Ven nisht Mendel, volten mir gehat a misa meshuna" (Were it not for Mendel, we would have met a terrible fate).')}</p>
+                    <p>${hl('Married on 24/8/1904 (13 Elul 5664) in ')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Dukla" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Dukla')}</a>${hl(', Galicia. Initially they lived in Sanz. In November 1909 Pinhas obtained an official Certificate of Good Conduct from the municipality of Sanz to seek employment in Germany, and in 1911 he traveled to Antwerp, Belgium to learn the diamond-polishing trade. During this time Alte-Chana stayed with their sons Avraham-Aryeh and Menachem-Mendel at her parents\' home in Dukla, where the boys studied in Cheder (while their eldest daughter Taube remained temporarily in Sanz, attending elementary school in 1912 registered under her mother\'s family name "Lipsker"), before they all reunited in Antwerp. Because of their status as Austro-Hungarian "enemy aliens" in Belgium, the family relocated to Germany (where Alte-Chana\'s brother lived in ')}<a href="https://maps.google.com/?q=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Cologne" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Cologne')}</a>${hl('): in 1913 Alte-Chana settled in ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Landstuhl" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Landstuhl')}</a>${hl(' and opened an installment sales and collection business across the Rhine Province, joined by Pinhas and the children at the outbreak of WWI in 1914.')}</p>
+                    <p>${hl('In 1917 the family moved to Cologne, where Alte-Chana managed a bedding, laundry-goods, and furniture store while Pinhas kept the books. A German identity document (Personalausweis) issued in Cologne on 5/11/1919 notes that following the collapse of the Austro-Hungarian Empire (1918), Pinhas was listed as stateless (Staatsangehörigkeit: unbestimmt), registered as a merchant (Handelsmann) with an official recommendation from the Cologne Chamber of Commerce. Since Cologne and the Rhineland were under British occupation (British Army of the Rhine), Pinhas required special permits from the British military authorities and the German Passport Office to cross into unoccupied Germany (Freistaat Flaschenhals) for trade. In Cologne they lived at three adjacent addresses in the Old Town (')}<a href="https://www.google.com/maps/search/?api=1&query=Altstadt-S%C3%BCd,+Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Altstadt-Süd, Cologne" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Altstadt-Süd')}</a>${hl(') and belonged to the independent Orthodox congregation "Adass-Jeschurun" led by Rabbi Dr. David Carlebach (who issued an official verification of their Dukla marriage in January 1923 based on the original Ketubah). After the Nazis rose to power, the family endured boycotts and persecution; Alte-Chana was physically assaulted in ')}<a href="https://www.google.com/maps/search/?api=1&query=Brand,+Aachen,+Germany" target="_blank" rel="noopener noreferrer" title="Open in Google Maps: Brand, Aachen" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Brand')}</a>${hl(' while collecting a debt. In late 1935 they were forced to liquidate their business, and in March 1936 they immigrated to the Land of Israel.')}</p>
+                    <p>${hl('The British Aliyah ')}&quot;<a href="https://he.wikipedia.org/wiki/%D7%A1%D7%A8%D7%98%D7%99%D7%A4%D7%99%D7%A7%D7%98" target="_blank" rel="noopener noreferrer" title="Wikipedia: Aliyah Certificate" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('Certificate')}</a>&quot;${hl(' for Pinhas, Alte-Chana, and their three youngest children under age 18 (Rachel, Shmuel, and Yeshayahu) was secured by their son Menachem-Mendel through Moshe Shapira (then HaPoel HaMizrachi representative at the Jewish Agency and later Israel\'s Minister of the Interior). Thanks to the parents\' foresight and the help of Mendel and Louisa-Liza who had immigrated earlier, the parents and three youngest siblings left Germany in 1936 and were saved. To meet the British capitalist visa requirement, daughter Louisa-Liza and her husband Moshe Pitovsky registered as sponsors and applicants (as partners in a well-known restaurant in Jerusalem). During and after WWII, Pinhas would often say in Yiddish: "Ven nisht Mendel, volten mir gehat a misa meshuna" (Were it not for Mendel, we would have met a terrible fate).')}</p>
                     <p>${hl('In Israel they lived first in Kfar Pines with Menachem-Mendel and Sara Fuhrer, and in January 1940 moved to a rented apartment on Mea Shearim Street in Jerusalem. Both are buried at the Givat Shaul Cemetery in Jerusalem.')}</p>
-                    <p>${hl('[Alte-Chana\'s family: Her parents, ')}<span class="font-bold text-slate-900">${hl('Binyamin-Zeev Lipsker')}</span> ${hl('son of R\' Moshe-Aryeh')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}13 Nisan 5705) &amp; <span class="font-bold text-slate-900">${hl('Dina')}</span> <span class="font-normal text-slate-700">${hl('(née Friedman)')}</span> (~1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}7 Kislev 5703) ${hl('immigrated from Dukla, Galicia to Israel in 1937 and are buried on the Mount of Olives in Jerusalem. Alte-Chana\'s siblings: Mordechai and Gitel (Gutherr) of Dukla. Her maternal grandfather, ')}<span class="font-bold text-slate-900">${hl('R\' Menachem-Mendel Friedman of Sanz')}</span> (~1840–1903)${hl(', immigrated to Israel around 1890 with the blessing of the Rebbe of Sieniawa, Rabbi Yechezkel-Shraga Halberstam, and is buried in Safed. Menachem-Mendel Fuhrer used to note that his own children born in Israel ("Generation 2") were therefore already the fifth generation in the Land of Israel.]')}</p>
+                    <p>${hl('[Alte-Chana\'s family: Her parents, ')}<span class="font-bold text-slate-900">${hl('Binyamin-Zeev Lipsker')}</span> ${hl('son of R\' Moshe-Aryeh')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}13 Nisan 5705) &amp; <span class="font-bold text-slate-900">${hl('Dina')}</span> <span class="font-normal text-slate-700">${hl('(née Friedman)')}</span> (~1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}7 Kislev 5703) ${hl('immigrated from Dukla, Galicia to Israel in 1937 and are buried on the Mount of Olives in Jerusalem. Alte-Chana\'s siblings: Mordechai and Gitel (Gutherr) of Dukla. Her maternal grandfather, ')}<span class="font-bold text-slate-900">${hl('R\' Menachem-Mendel Friedman of Sanz')}</span> (~1840–1903)${hl(', immigrated to Israel around 1890 with the blessing of the Rebbe of Sieniawa, Rabbi Yechezkel-Shraga Halberstam, and is buried in Safed. Menachem-Mendel Fuhrer used to note that his own children and their generation born in Israel were therefore already the fifth generation in the Land of Israel.]')}</p>
                 </div>
             `;
             }
@@ -2224,7 +2235,7 @@
                         <div class="flex items-start gap-2">
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-800 text-white text-xs font-extrabold shrink-0 mt-0.5">א</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי שמשון בן אברהם משאנץ')}</span> ${hl('(הר"ש משאנץ, מגדולי בעלי התוספות בצרפת)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(לפי מקור נוסף: 1230/1250 בקירוב)')}</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי שמשון בן אברהם משאנץ')}</span> (<a href="https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%90%D7%A0%D7%A5" target="_blank" rel="noopener noreferrer" title="ויקיפדיה: שמשון משאנץ" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('הר"ש משאנץ')}</a>${hl(', מגדולי בעלי התוספות בצרפת)')} <span class="text-slate-600 text-sm">| 🗓️ 1150–1214 ${hl('(לפי מקור נוסף: 1230/1250 בקירוב)')}</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר פירוש המשניות לסדרים זרעים וטהרות הנדפס בכל מהדורות הש"ס. לעת זקנותו עלה לארץ ישראל והתיישב בעכו. הערה: שאנץ (')}<a href="https://www.google.com/maps/search/?api=1&query=Sens,+Burgundy,+France" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 underline">Sens, חבל בורגונדי, צרפת</a>${hl(') אינה צאנז שבפולין.')}</div>
                             </div>
                         </div>
@@ -2236,7 +2247,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700 text-white text-xs font-extrabold shrink-0 mt-0.5">ב</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין')}</span> ${hl('(בעל ה"תוספות יום־טוב")')} <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}ו' אלול תי"ד)</span></div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי גרשון שאול יום־טוב ליפמן הלוי הלר ולרשטיין')}</span> ${hl('(בעל ה')}"<a href="https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%9D-%D7%98%D7%95%D7%91_%D7%9C%D7%99%D7%A4%D7%9E%D7%9F_%D7%94%D7%9C%D7%A8" target="_blank" rel="noopener noreferrer" title="ויקיפדיה: יום-טוב ליפמן הלר" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('תוספות יום־טוב')}</a>") <span class="text-slate-600 text-sm">| 🗓️ 1579–1654 (${MEMORIAL_CANDLE_SVG}ו' אלול תי"ד)</span></div>
                                 <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('כיהן כרב בפראג, וינה, ')}<a href="https://www.google.com/maps/search/?api=1&query=Nemyriv,+Ukraine" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: נמירוב, אוקראינה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('נמירוב, אוקראינה')}</a>${hl(' ורבה הראשי של ')}<a href="https://www.google.com/maps/search/?api=1&query=Krakow,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קרקוב" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קרקוב')}</a>${hl('. התמודד עם גזירות ת"ח–ת"ט (1648–1649) ופעל רבות לשיקום הקהילות היהודיות באירופה.')}</div>
                             </div>
                         </div>
@@ -2249,7 +2260,7 @@
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-700/90 text-white text-xs font-extrabold shrink-0 mt-0.5">ג</span>
                             <div>
                                 <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי יעקב ב"ר ברוך')}</span> ${hl('– אב"ד וראש ישיבה ב')}<a href="https://www.google.com/maps/search/?api=1&query=Tuchyn,+Rivne+Oblast,+Ukraine" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: טוטשין" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('טוטשין')}</a>${hl(' (ווהלין, פולין־ליטא, כיום אוקראינה)')} <span class="text-slate-600 text-sm">| 🗓️ תק"ל (1770)</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר הספר "ברכת יעקב" – ביאור על שולחן ערוך חושן משפט (סימנים א–צו; נדפס בלבוב/אמסטרדם תקמ"ו, 1786). מצאצאי רבי יעקב אב"ד ')}<a href="https://www.google.com/maps/search/?api=1&query=Sandomierz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: צויזמיר (Sandomierz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צויזמיר')}</a>${hl(', שנהרג על קידוש השם בגזרות ת"ח–ת"ט.')}</div>
+                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-0.5">${hl('מחבר הספר ')}"<a href="https://hebrewbooks.org/8594" target="_blank" rel="noopener noreferrer" title="HebrewBooks: ספר ברכת יעקב" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('ברכת יעקב')}</a>"${hl(' – ביאור על שולחן ערוך חושן משפט (סימנים א–צו; נדפס בלבוב/אמסטרדם תקמ"ו, 1786). מצאצאי רבי יעקב אב"ד ')}<a href="https://www.google.com/maps/search/?api=1&query=Sandomierz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: צויזמיר (Sandomierz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צויזמיר')}</a>${hl(', שנהרג על קידוש השם בגזרות ת"ח–ת"ט.')}</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 ps-8 sm:ps-14 text-amber-900/80 text-xs sm:text-sm italic font-medium">
@@ -2260,7 +2271,7 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-600 text-white text-xs font-extrabold shrink-0 mt-0.5">ד</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי אליהו בן ברוך ברגמן')}</span> (~1820; ${hl('קיימת גרסה שונה: ~1837')})${hl(', בעל הכינוי "אלי"ש דיין" (ראשי תיבות שמו) – ראב"ד ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: צאנז, גליציה (Nowy Sącz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a>${hl(' אצל בעל ה"דברי חיים" (רבי חיים הלברשטאם) ובנו הרה"ג רבי אהרן הלברשטאם מצאנז במשך 52 שנה.')}</div>
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('רבי אליהו בן ברוך ברגמן')}</span> (~1820; ${hl('קיימת גרסה שונה: ~1837')})${hl(', בעל הכינוי "אלי"ש דיין" (ראשי תיבות שמו) – ראב"ד ב')}<a href="https://www.google.com/maps/search/?api=1&query=Nowy+S%C4%85cz,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: צאנז, גליציה (Nowy Sącz)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('צאנז, גליציה')}</a>${hl(' אצל בעל ה')}"<a href="https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%94%D7%9C%D7%91%D7%A8%D7%A9%D7%98%D7%90%D7%9D" target="_blank" rel="noopener noreferrer" title="ויקיפדיה: חיים הלברשטאם (הדברי חיים מצאנז)" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('דברי חיים')}</a>"${hl(' (רבי חיים הלברשטאם) ובנו הרה"ג רבי אהרן הלברשטאם מצאנז במשך 52 שנה.')}</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-2 ps-12 sm:ps-[5rem]">
@@ -2275,8 +2286,8 @@
                             <span class="text-amber-700 font-bold select-none">↳</span>
                             <span class="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-400 text-amber-950 text-xs font-extrabold shrink-0 mt-0.5">ו</span>
                             <div>
-                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('שמואל פירר')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}ט"ז בכסלו תרע"ב; ${hl('בן־דודו הראשון של הרב שמואל פירר מ')}<a href="https://www.google.com/maps/search/?api=1&query=Krosno,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קרוסנו" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קרוסנו')}</a>) ו<span class="font-bold text-slate-900">${hl('מרים')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(מנדל)')}</span> ~1862 (לפי מקור נוסף: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}י"ב בתשרי תרצ"ו) <span class="text-slate-600 text-sm">| נישואין: ~1879</span></div>
-                                <div class="text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
+                                <div class="font-normal"><span class="font-bold text-slate-900">${hl('שמואל פירר')}</span> ~1860 – 7/12/1911 (${MEMORIAL_CANDLE_SVG}ט"ז בכסלו תרע"ב; ${hl('בן־דודו הראשון של ')}<a href="https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%95%D7%90%D7%9C_%D7%A4%D7%99%D7%A8%D7%A8" target="_blank" rel="noopener noreferrer" title="ויקיפדיה: שמואל פירר" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('הרב שמואל פירר')}</a>${hl(' מ')}<a href="https://www.google.com/maps/search/?api=1&query=Krosno,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קרוסנו" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קרוסנו')}</a>) ו<span class="font-bold text-slate-900">${hl('מרים')}</span> <span style="font-weight: 400 !important;" class="font-normal text-slate-700">${hl('(מנדל)')}</span> ~1862 (לפי מקור נוסף: 1855) – 9/10/1935 (${MEMORIAL_CANDLE_SVG}י"ב בתשרי תרצ"ו) <span class="text-slate-600 text-sm">| נישואין: ~1879</span></div>
+                                <div class="siblings-container text-slate-600 font-normal text-xs sm:text-sm mt-1 space-y-0.5">
                                     <div class="font-semibold text-slate-700">${hl('ילדיהם (אחיו ואחיותיו של פנחס):')}</div>
                                     <div>• <span class="font-bold text-slate-900">${hl('חיים')}</span> ${hl('פירר (~1880)')}</div>
                                     <div>• <span class="font-bold text-slate-900">${hl('פנחס')}</span> ${hl('פירר (1882–1953)')}</div>
@@ -2300,11 +2311,11 @@
                     <div class="pb-2 mb-1.5 border-b border-amber-200/70 space-y-1 text-slate-700">
                         <div>🗓️ <span class="font-bold text-slate-900">פנחס</span>: 6/2/1882 – 23/1/1953 (${MEMORIAL_CANDLE_SVG}ז' בשבט תשי"ג) | <span class="font-bold text-slate-900">אלטה־חנה</span>: 21/4/1883 – 12/1/1970 (${MEMORIAL_CANDLE_SVG}ה' בשבט תש"ל)</div>
                     </div>
-                    <p>${hl('נישאו ב־24/8/1904 (י"ג באלול תרס"ד) ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוקלה')}</a>${hl(', גליציה. בתחילה התגוררו בצאנז. כבר בנובמבר 1909 הצטייד פנחס בתעודת יושר רשמית מעיריית צאנז לקראת חיפוש תעסוקה בגרמניה, ובשנת 1911 יצא לאנטוורפן שבבלגיה ללמוד את מלאכת ליטוש היהלומים. בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז ולמדה ב־1912 בבית הספר העממי כשהיא רשומה תחת שם משפחת אמה, "ליפסקר"). בהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר קלן): ב־1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a>${hl(' ופתחה שם עסק למכירה וגביית תשלומים, שבמסגרתו נסעה ברחבי פרובינציית הריין, ועם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
-                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות לכלי מיטה, מוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים והחשבונות. מצילום תעודת זהות גרמנית (תחליף דרכון / Personalausweis) שהונפקה לו בקלן ב־5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt), נרשם רשמית כסוחר (Handelsmann) וקיבל המלצה רשמית מלשכת המסחר של קלן. מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש בריטי, נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי ושל משרד הדרכונים הגרמני כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" לצורך נסיעות מסחר. בקלן נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע ')}<a href="https://www.google.com/maps/search/?api=1&query=Altstadt-S%C3%BCd,+Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: Altstadt-Süd, קלן" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Altstadt-Süd')}</a>${hl(') ונמנו על הקהילה האורתודוקסית העצמאית "עדת ישורון" בראשות הרב ד"ר דוד קרליבך, שאימת רשמית את נישואיהם מדוקלה בינואר 1923 על פי הכתובה המקורית. לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה ')}<a href="https://www.google.com/maps/search/?api=1&query=Brand,+Aachen,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: ברנד (Brand, Aachen)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('ברנד')}</a>${hl(' כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
-                    <p>${hl('את ה"סרטיפיקט" (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל ולואיזה־ליזה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב־1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם לואיזה־ליזה ובעלה משה פיטובסקי כערבים וכמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). במהלך מלחה"ע ה-2 ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואָלטן מיר געהאַט אַ מיתה משונה" (אלמלא מנדל, היינו מתים מיתה משונה).')}</p>
+                    <p>${hl('נישאו ב־24/8/1904 (י"ג באלול תרס"ד) ב')}<a href="https://www.google.com/maps/search/?api=1&query=Dukla,+Poland" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: דוקלה" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('דוקלה')}</a>${hl(', גליציה. בתחילה התגוררו בצאנז. כבר בנובמבר 1909 הצטייד פנחס בתעודת יושר רשמית מעיריית צאנז לקראת חיפוש תעסוקה בגרמניה, ובשנת 1911 יצא לאנטוורפן שבבלגיה ללמוד את מלאכת ליטוש היהלומים. בתקופה זו שהתה אלטה־חנה עם הבנים אברהם־אריה ומנחם־מנדל בבית הוריה בדוקלה, שם למדו הבנים בחדר (בעוד הבכורה טויבע נשארה זמנית בצאנז ולמדה ב־1912 בבית הספר העממי כשהיא רשומה תחת שם משפחת אמה, "ליפסקר"). בהמשך הצטרפו כולם לאנטוורפן. בשל מעמדם כ"נתיני אויב" אוסטרו־הונגרים בבלגיה, החלו בני המשפחה להעתיק את מגוריהם לגרמניה (שם התגורר אחיה של אלטה־חנה בעיר ')}<a href="https://maps.google.com/?q=Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: קלן" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('קלן')}</a>${hl('): ב־1913 התיישבה אלטה־חנה בעיר ')}<a href="https://www.google.com/maps/search/?api=1&query=Landstuhl,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: לנדשטול" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('לנדשטול')}</a>${hl(' ופתחה שם עסק למכירה וגביית תשלומים, שבמסגרתו נסעה ברחבי פרובינציית הריין, ועם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.')}</p>
+                    <p>${hl('בשנת 1917 עברה המשפחה לקלן, שם ניהלה אלטה־חנה חנות לכלי מיטה, מוצרי כביסה וריהוט, בעוד פנחס הופקד על ניהול הספרים והחשבונות. מצילום תעודת זהות גרמנית (תחליף דרכון / Personalausweis) שהונפקה לו בקלן ב־5/11/1919 עולה כי לאחר קריסת האימפריה האוסטרו־הונגרית (1918) הוגדר פנחס כחסר נתינות / בעל נתינות בלתי מוגדרת (Staatsangehörigkeit: unbestimmt), נרשם רשמית כסוחר (Handelsmann) וקיבל המלצה רשמית מלשכת המסחר של קלן. מכיוון שקלן וחבל הריין היו נתונים אז תחת כיבוש בריטי (British Army of the Rhine), נדרש פנחס לאישור מיוחד של השלטון הצבאי הבריטי ושל משרד הדרכונים הגרמני כדי לחצות את הגבול אל "גרמניה הבלתי כבושה" (Freistaat Flaschenhals) לצורך נסיעות מסחר. בקלן נדדו בני המשפחה בין שלוש כתובות סמוכות בלב העיר העתיקה (רובע ')}<a href="https://www.google.com/maps/search/?api=1&query=Altstadt-S%C3%BCd,+Cologne,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: Altstadt-Süd, קלן" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('Altstadt-Süd')}</a>${hl(') ונמנו על הקהילה האורתודוקסית העצמאית "עדת ישורון" בראשות הרב ד"ר דוד קרליבך, שאימת רשמית את נישואיהם מדוקלה בינואר 1923 על פי הכתובה המקורית. לאחר עליית הנאצים לשלטון סבלה המשפחה מחרם ומרדיפות, ואלטה־חנה אף הותקפה פיזית בעיירה ')}<a href="https://www.google.com/maps/search/?api=1&query=Brand,+Aachen,+Germany" target="_blank" rel="noopener noreferrer" title="פתח בגוגל מפות: ברנד (Brand, Aachen)" class="text-blue-700 hover:text-blue-900 underline decoration-blue-400 hover:decoration-blue-700 underline-offset-2 transition">${hl('ברנד')}</a>${hl(' כשביקשה לגבות חוב. בשלהי 1935 אולצו לחסל את עסקם, ובמרץ 1936 עלו לארץ ישראל.')}</p>
+                    <p>${hl('את ה')}"<a href="https://he.wikipedia.org/wiki/%D7%A1%D7%A8%D7%98%D7%99%D7%A4%D7%99%D7%A7%D7%98" target="_blank" rel="noopener noreferrer" title="ויקיפדיה: סרטיפיקט (רישיון עלייה)" class="text-emerald-700 hover:text-emerald-900 underline decoration-emerald-400 hover:decoration-emerald-700 underline-offset-2 transition font-medium">${hl('סרטיפיקט')}</a>"${hl(' (רישיון העלייה הבריטי) עבור פנחס, אלטה־חנה ושלושת ילדיהם הצעירים שהיו מתחת לגיל 18 (רחל, שמואל וישעיהו), השיג בנם מנחם־מנדל בהשתדלותו אצל משה שפירא (אז נציג הפועל המזרחי בסוכנות היהודית ולימים שר הפנים). הודות לראיית הנולד של ההורים ובעזרת האחים מנדל ולואיזה־ליזה שהקדימו לעלות ארצה, עזבו ההורים ושלושת האחים הצעירים את גרמניה ב־1936 וכך ניצלו חייהם. כדי לעמוד בדרישת הבריטים להוכחת יכולת כלכלית ("בעלי הון"), נרשמו בתם לואיזה־ליזה ובעלה משה פיטובסקי כערבים וכמבקשי הרישיון (כשותפים במסעדה מפורסמת בירושלים). במהלך מלחה"ע ה-2 ולאחריה נהג פנחס לומר ביידיש: "ווען נישט מענדל, וואָלטן מיר געהאַט אַ מיתה משונה" (אלמלא מנדל, היינו מתים מיתה משונה).')}</p>
                     <p>${hl('בארץ התגוררו תחילה בכפר פינס אצל מנחם־מנדל ושרה פירר, ובינואר 1940 עברו לדירה שכורה ברחוב מאה שערים בירושלים. שניהם טמונים בבית העלמין בגבעת שאול בירושלים.')}</p>
-                    <p>${hl('[משפחתה של אלטה־חנה: הוריה, ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span> ${hl('בן ר\' משה־אריה')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}י"ג בניסן תש"ה) ו<span class="font-bold text-slate-900">${hl('דינה')}</span> <span class="font-normal text-slate-700">${hl('(לבית פרידמן)')}</span> (1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}ז' בכסלו תש"ג) ${hl('עלו מדוקלה שבגליציה לארץ ישראל בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה. סבה (אבי אמה), זקן המשפחה ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (~1840–1903)${hl(', עלה לארץ ישראל בסביבות שנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משינְיָאווה (גליציה), רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ ("דור ב\'") הם כבר "דור חמישי בארץ ישראל".]')}</p>
+                    <p>${hl('[משפחתה של אלטה־חנה: הוריה, ')}<span class="font-bold text-slate-900">${hl('בנימין־זאב ליפסקר')}</span> ${hl('בן ר\' משה־אריה')} (~1860 – 27/3/1945, ${MEMORIAL_CANDLE_SVG}י"ג בניסן תש"ה) ו<span class="font-bold text-slate-900">${hl('דינה')}</span> <span class="font-normal text-slate-700">${hl('(פרידמן)')}</span> (1862 – 16/11/1942, ${MEMORIAL_CANDLE_SVG}ז' בכסלו תש"ג). ${hl('עלו מדוקלה לארץ ישראל בשנת תרצ"ז (1937) ונטמנו בהר הזיתים בירושלים. אחיה של אלטה־חנה: מרדכי וגיטל (גוטהרר) מדוקלה. סבה (אבי אמה), זקן המשפחה ')}<span class="font-bold text-slate-900">${hl('ר\' מנחם־מנדל פרידמן מצאנז')}</span> (~1840–1903)${hl(', עלה לארץ ישראל בסביבות שנת תר"ן (1890) לאחר שקיבל את ברכתו של האדמו"ר משינְיָאווה (גליציה), רבי יחזקאל־שרגא הלברשטאם, ונטמן בצפת. מנחם־מנדל פירר נהג לציין שלפיכך ילדיו שלו והדור שלהם שנולדו בארץ, הם כבר "דור חמישי בארץ ישראל".]')}</p>
                 </div>
             `;
         }
@@ -2521,7 +2532,7 @@
                                 <span>${t('printToldotBtn')}</span>
                     </button>
                 </div>
-                ${buildToldotInnerHtml()}
+                ${buildToldotInnerHtml(currentSearchQuery)}
 
                 <!-- קו הפרדה גרפי ברור בין אזור תולדות לתחילת עץ הצאצאים -->
                         <div class="pt-3 pb-1 flex items-center gap-3 select-none" aria-hidden="true">
@@ -2740,8 +2751,16 @@
             if (currentSearchQuery.trim() !== "") {
                 const { node: searchedNode, matchCount } = filterTreeBySearch(baseData, currentSearchQuery);
 
+                // בדיקת התאמות גם בפרק "ייחוס ותולדות"
+                const toldotPlainText = stripHtmlTags(buildToldotInnerHtml(""));
+                const normToldot = normalizeForSearch(toldotPlainText);
+                const queryTokens = normalizeForSearch(currentSearchQuery).split(" ").filter(Boolean);
+                const hasToldotMatch = queryTokens.length > 0 && queryTokens.every(token =>
+                    getTokenVariants(token).some(variant => normToldot.includes(variant))
+                );
+
                 if (toldotSearchIndicator) {
-                    toldotSearchIndicator.classList.add("hidden");
+                    toldotSearchIndicator.classList.toggle("hidden", !hasToldotMatch);
                 }
 
                 if (searchBanner && searchStatusText) {
@@ -2750,6 +2769,10 @@
                         searchStatusText.textContent = currentLang === "en"
                             ? `Found ${matchCount} matches in tree for "${currentSearchQuery.trim()}"`
                             : `נמצאו ${matchCount} תוצאות בעץ עבור "${currentSearchQuery.trim()}"`;
+                    } else if (hasToldotMatch) {
+                        searchStatusText.textContent = currentLang === "en"
+                            ? `No matches in branches for "${currentSearchQuery.trim()}", found in Lineage & History`
+                            : `לא נמצאו תוצאות בענפים עבור "${currentSearchQuery.trim()}", אך נמצאו התאמות ב"ייחוס ותולדות"`;
                     } else {
                         searchStatusText.textContent = currentLang === "en"
                             ? `No matches found for "${currentSearchQuery.trim()}"`
@@ -2868,21 +2891,6 @@
             }
         }
 
-        function handleGenBarClick(genLevel) {
-            currentSearchQuery = "";
-            const searchInput = document.getElementById("searchInput");
-            const clearSearchBtn = document.getElementById("clearSearchBtn");
-            if (searchInput) searchInput.value = "";
-            if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
-
-            if (activeGenDepth === genLevel) {
-                activeGenDepth = null;
-            } else {
-                activeGenDepth = genLevel;
-            }
-            applyFiltersAndRender();
-        }
-
         function openCenteredPopup(width, height) {
             const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
             const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
@@ -2900,13 +2908,16 @@
         function openPrintWindow() {
             const dataToPrint = getFilteredData();
             const branchFilter = document.getElementById("branchFilter");
+            const isEn = currentLang === "en";
             const rawBranchName = branchFilter && branchFilter.value !== "all" && dataToPrint.children && dataToPrint.children[0]
-                ? dataToPrint.children[0].name.replace(/^\d+\.\s*/, '').trim()
+                ? getDisplayName(dataToPrint.children[0]).replace(/^\d+\.\s*/, '').trim()
                 : "";
-            const branchTitle = rawBranchName ? `ענף משפחת ${escapeHtml(rawBranchName)}` : "";
+            const branchTitle = rawBranchName
+                ? (isEn ? `${escapeHtml(rawBranchName)} Branch` : `ענף משפחת ${escapeHtml(rawBranchName)}`)
+                : "";
 
             const now = new Date();
-            const printDateStr = now.toLocaleDateString('he-IL', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            const printDateStr = now.toLocaleDateString(isEn ? 'en-GB' : 'he-IL', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
             function buildPrintHtml(node) {
                 const hasChildren = node.children && node.children.length > 0;
@@ -2914,14 +2925,16 @@
                     ? `<span class="print-badge print-badge-gen-${node.gen}">${getHebrewGen(node.gen)}</span>` 
                     : '';
                 const titleClass = node.id === 'root' ? 'print-root-title' : 'print-node-title';
-                const safePrintName = escapeHtml(node.name);
+                const safePrintName = escapeHtml(getDisplayName(node));
                 const formattedPrintName = unboldMaidenNamesInHtml(
                     node.id === 'root'
-                        ? safePrintName.replace('(ליפסקר)', '<span style="font-weight: 400;">(ליפסקר)</span>')
+                        ? safePrintName
+                            .replace('(ליפסקר)', '<span style="font-weight: 400;">(ליפסקר)</span>')
+                            .replace('(Lipsker)', '<span style="font-weight: 400;">(Lipsker)</span>')
                         : safePrintName
                 );
-                const safePrintDates = escapeHtml(node.dates);
-                const safePrintLocation = sanitizeLocationHtml(node.location || "");
+                const safePrintDates = escapeHtml(getDisplayDates(node));
+                const safePrintLocation = sanitizeLocationHtml(getDisplayLocation(node));
 
                 let html = `
                     <div class="print-node-wrapper print-gen-${node.gen}">
@@ -2950,255 +2963,19 @@
             const printWindow = openCenteredPopup(900, 720);
             if (!printWindow) return;
 
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html lang="he" dir="rtl">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>משפחת פירר - עץ יוחסין להדפסה</title>
-                    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
-                    <style>
-                        @page {
-                            margin: 12mm 10mm 16mm 10mm;
-                            @bottom-center {
-                                content: "עמוד " counter(page) " מתוך " counter(pages);
-                                font-family: 'Assistant', Arial, sans-serif;
-                                font-size: 9pt;
-                                color: #64748b;
-                            }
-                        }
-                        body {
-                            font-family: 'Assistant', Arial, sans-serif;
-                            color: #1e293b;
-                            margin: 0;
-                            padding: 0;
-                            direction: rtl;
-                            font-size: 10.5pt;
-                            line-height: 1.4;
-                        }
-                        .print-header {
-                            text-align: center;
-                            margin-bottom: 16px;
-                            padding-bottom: 10px;
-                            border-bottom: 2px solid #cbd5e1;
-                        }
-                        .print-header h1 {
-                            margin: 0;
-                            font-size: 19pt;
-                            font-weight: 800;
-                            color: #0f172a;
-                        }
-                        .print-header h2 {
-                            margin: 4px 0 0 0;
-                            font-size: 14pt;
-                            font-weight: 700;
-                            color: #2563eb;
-                        }
-                        .print-header .print-date {
-                            margin-top: 4px;
-                            font-size: 9pt;
-                            color: #64748b;
-                        }
-                        .print-node-wrapper {
-                            margin-bottom: 6px;
-                            padding-right: 9px;
-                        }
-                        .print-node-item {
-                            border: 1px solid #e2e8f0;
-                            border-radius: 5px;
-                            padding: 5px 10px;
-                            background: #ffffff;
-                            page-break-inside: avoid;
-                            break-inside: avoid;
-                        }
-                        .print-gen-0 { border-right: 4px solid #881337; }
-                        .print-gen-0 > .print-node-item { background-color: #fff1f2; border-color: #fecdd3; }
-                        .print-gen-0 > .print-node-item .print-root-title { color: #881337; }
-                        .print-gen-1 { border-right: 4px solid #2563eb; }
-                        .print-gen-2 { border-right: 4px solid #16a34a; }
-                        .print-gen-3 { border-right: 4px solid #d97706; }
-                        .print-gen-4 { border-right: 4px solid #9333ea; }
-                        .print-gen-5 { border-right: 4px solid #db2777; }
-
-                        .print-node-header {
-                            display: flex;
-                            align-items: center;
-                            gap: 6px;
-                            flex-wrap: wrap;
-                        }
-                        .print-badge {
-                            display: inline-block;
-                            font-size: 8.5pt;
-                            font-weight: 700;
-                            padding: 1px 6px;
-                            border-radius: 4px;
-                            color: #ffffff;
-                            line-height: 1.3;
-                        }
-                        .print-badge-gen-1 { background-color: #2563eb; }
-                        .print-badge-gen-2 { background-color: #16a34a; }
-                        .print-badge-gen-3 { background-color: #d97706; }
-                        .print-badge-gen-4 { background-color: #9333ea; }
-                        .print-badge-gen-5 { background-color: #db2777; }
-
-                        .print-root-title {
-                            font-size: 15.5pt;
-                            font-weight: 800;
-                        }
-                        .print-node-title {
-                            font-weight: 700;
-                        }
-                        .print-gen-1 > .print-node-item .print-node-title { font-size: 12.5pt; }
-                        .print-gen-2 > .print-node-item .print-node-title { font-size: 11pt; }
-                        .print-gen-3 > .print-node-item .print-node-title { font-size: 10pt; }
-                        .print-gen-4 > .print-node-item .print-node-title { font-size: 9.5pt; }
-                        .print-gen-5 > .print-node-item .print-node-title { font-size: 9pt; }
-
-                        .print-node-meta {
-                            font-size: 9pt;
-                            color: #475569;
-                            margin-top: 2px;
-                        }
-                        .print-node-meta a {
-                            color: #475569;
-                            text-decoration: none;
-                        }
-                        .print-tree-children {
-                            margin-top: 6px;
-                            padding-right: 8px;
-                        }
-                        .preview-toolbar {
-                            position: sticky;
-                            top: 0;
-                            z-index: 100;
-                            background: #f8fafc;
-                            border-bottom: 1px solid #cbd5e1;
-                            padding: 10px 16px;
-                            margin: 0 0 14px 0;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: 10px;
-                        }
-                        .preview-toolbar-btn {
-                            font-family: 'Assistant', Arial, sans-serif;
-                            font-size: 10.5pt;
-                            font-weight: 700;
-                            padding: 6px 14px;
-                            border-radius: 6px;
-                            cursor: pointer;
-                            border: 1px solid #cbd5e1;
-                            background: #ffffff;
-                            color: #1e293b;
-                        }
-                        .preview-toolbar-btn.primary {
-                            background: #059669;
-                            border-color: #047857;
-                            color: #ffffff;
-                        }
-
-                        @media print {
-                            .preview-toolbar { display: none !important; }
-                            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="preview-toolbar">
-                        <span style="font-weight: 700; color: #334155; font-size: 10pt;">תצוגה מקדימה להדפסה</span>
-                        <div style="display: flex; gap: 8px;">
-                            <button type="button" class="preview-toolbar-btn primary" onclick="window.print()">🖨️ הדפס / שמור כ-PDF</button>
-                            <button type="button" class="preview-toolbar-btn" onclick="window.close()">✕ סגור</button>
-                        </div>
-                    </div>
-                    <div class="print-header">
-                        <h1>עץ יוחסין פנחס ואלטה־חנה <span style="font-weight: 400;">(ליפסקר)</span> פירר</h1>
-                        ${branchTitle ? `<h2>${branchTitle}</h2>` : ''}
-                        <div class="print-date">הופק בתאריך ${printDateStr}</div>
-                    </div>
-                    <div class="print-content">
-                        ${buildPrintHtml(dataToPrint)}
-                    </div>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-        }
-
-        // הדפסת פרק "ייחוס ותולדות" בלבד בצורה נקייה ומותאמת לעמוד A4 אחד
-        function openToldotPrintWindow() {
-            const now = new Date();
-            const isEn = currentLang === "en";
-            const printDateStr = now.toLocaleDateString(isEn ? 'en-GB' : 'he-IL', { year: 'numeric', month: '2-digit', day: '2-digit' });
-            const toldotContentHtml = buildToldotInnerHtml("");
-
-            // בניית ה-HTML המעוצב להדפסה מראש ב-DOM של הדף הראשי (אמין ובטוח לחלוטין)
-            const rawWrapper = document.createElement('div');
-            rawWrapper.innerHTML = toldotContentHtml;
-            const blocks = rawWrapper.children;
-            const assembledContainer = document.createElement('div');
-
-            if (blocks[0]) {
-                const sec1 = document.createElement('div');
-                sec1.className = 'section-box';
-                const title1 = blocks[0].querySelector('div:first-child');
-                sec1.innerHTML = '<div class="section-title">' + (title1 ? title1.innerHTML : '') + '</div>';
-                const rowsContainer = blocks[0].querySelector('div:nth-child(2)');
-                if (rowsContainer) {
-                    Array.from(rowsContainer.children).forEach((row, idx) => {
-                        const badge = row.querySelector('span.rounded');
-                        const textDiv = row.querySelector('div');
-                        if (badge && textDiv) {
-                            const r = document.createElement('div');
-                            r.className = 'lineage-row' + (idx > 0 ? ' indent-' + Math.min(5, Math.floor(idx / 2)) : '');
-                            r.innerHTML = '<span class="lineage-badge">' + badge.textContent.trim() + '</span><div>' + textDiv.innerHTML + '</div>';
-                            const subItems = r.querySelector('.space-y-0\\.5');
-                            if (subItems) subItems.className = 'siblings-list';
-                            sec1.appendChild(r);
-                        } else {
-                            const note = document.createElement('div');
-                            note.className = 'lineage-note indent-' + Math.min(5, Math.floor(idx / 2));
-                            note.textContent = row.textContent.trim();
-                            sec1.appendChild(note);
-                        }
-                    });
-                }
-                assembledContainer.appendChild(sec1);
-            }
-
-            if (blocks[1]) {
-                const sec2 = document.createElement('div');
-                sec2.className = 'section-box';
-                const title2 = blocks[1].querySelector('div:first-child');
-                const datesDiv = blocks[1].querySelector('div:nth-child(2)');
-                sec2.innerHTML =
-                    '<div class="section-title">' + (title2 ? title2.innerHTML : '') + '</div>' +
-                    '<div class="dates-banner">' + (datesDiv ? datesDiv.innerHTML : '') + '</div>';
-                blocks[1].querySelectorAll('p').forEach(p => {
-                    const pClone = document.createElement('p');
-                    pClone.innerHTML = p.innerHTML;
-                    sec2.appendChild(pClone);
-                });
-                assembledContainer.appendChild(sec2);
-            }
-
-            const printWindow = openCenteredPopup(860, 750);
-            if (!printWindow) return;
-
             const docLang = isEn ? 'en' : 'he';
             const docDir = isEn ? 'ltr' : 'rtl';
-            const docTitle = isEn ? 'Fuhrer Family - Lineage & History' : 'משפחת פירר - ייחוס ותולדות';
-            const previewBanner = isEn ? 'Print Preview (Fitted to A4 Page)' : 'תצוגה מקדימה להדפסה (מותאם לעמוד A4)';
+            const sideEdge = isEn ? 'left' : 'right';
+            const padEdge = isEn ? 'padding-left' : 'padding-right';
+            const pageFooterText = isEn ? '"Page " counter(page) " of " counter(pages)' : '"עמוד " counter(page) " מתוך " counter(pages)';
+            const docTitle = isEn ? 'Fuhrer Family - Genealogy Tree' : 'משפחת פירר - עץ יוחסין להדפסה';
+            const previewLabel = isEn ? 'Print Preview' : 'תצוגה מקדימה להדפסה';
             const printBtnLabel = isEn ? '🖨️ Print / Save as PDF' : '🖨️ הדפס / שמור כ-PDF';
             const closeBtnLabel = isEn ? '✕ Close' : '✕ סגור';
-            const headerTitleHtml = isEn
-                ? 'Pinhas &amp; Alte-Chana <span style="font-weight: 400;">(Lipsker)</span> Fuhrer'
-                : 'פנחס ואלטה־חנה <span style="font-weight: 400;">(ליפסקר)</span> פירר';
-            const headerSubText = isEn
-                ? `Family Lineage &amp; History • ${printDateStr}`
-                : `ייחוס ותולדות המשפחה • ${printDateStr}`;
-            const indentProp = isEn ? 'padding-left' : 'padding-right';
-            const subListPadProp = isEn ? 'padding-left' : 'padding-right';
+            const mainHeaderHtml = isEn
+                ? 'Pinhas &amp; Alte-Chana <span style="font-weight: 400;">(Lipsker)</span> Fuhrer Family Tree'
+                : 'עץ יוחסין פנחס ואלטה־חנה <span style="font-weight: 400;">(ליפסקר)</span> פירר';
+            const generatedDateText = isEn ? `Generated on ${printDateStr}` : `הופק בתאריך ${printDateStr}`;
 
             printWindow.document.write(`
                 <!DOCTYPE html>
@@ -3209,11 +2986,13 @@
                     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
                     <style>
                         @page {
-                            size: A4 portrait;
-                            margin: 8mm 10mm 8mm 10mm;
-                        }
-                        * {
-                            box-sizing: border-box;
+                            margin: 12mm 10mm 16mm 10mm;
+                            @bottom-center {
+                                content: ${pageFooterText};
+                                font-family: 'Assistant', Arial, sans-serif;
+                                font-size: 9pt;
+                                color: #64748b;
+                            }
                         }
                         body {
                             font-family: 'Assistant', Arial, sans-serif;
@@ -3221,169 +3000,440 @@
                             margin: 0;
                             padding: 0;
                             direction: ${docDir};
-                            font-size: 7.7pt;
-                            line-height: 1.32;
-                            background: #ffffff;
+                            background-color: #f1f5f9;
                         }
-                        .doc-header {
-                            display: flex;
-                            align-items: baseline;
-                            justify-content: space-between;
-                            border-bottom: 2px solid #881337;
-                            padding-bottom: 4px;
-                            margin-bottom: 6px;
-                        }
-                        .doc-header h1 {
-                            margin: 0;
-                            font-size: 13.5pt;
-                            font-weight: 800;
-                            color: #881337;
-                        }
-                        .doc-header .sub {
-                            font-size: 9.5pt;
-                            font-weight: 700;
-                            color: #475569;
-                        }
-                        .section-box {
-                            border: 1px solid #e2e8f0;
-                            border-radius: 5px;
-                            padding: 5.5px 8px;
-                            margin-bottom: 6px;
-                            background: #ffffff;
-                        }
-                        .section-box:last-child {
-                            margin-bottom: 0;
-                        }
-                        .section-title {
-                            font-size: 9pt;
-                            font-weight: 800;
-                            color: #881337;
-                            border-bottom: 1px solid #fecdd3;
-                            padding-bottom: 2px;
-                            margin-bottom: 4px;
-                        }
-                        .lineage-row {
-                            display: flex;
-                            align-items: flex-start;
-                            gap: 4px;
-                            margin-bottom: 2.5px;
-                        }
-                        .lineage-badge {
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 13px;
-                            height: 13px;
-                            border-radius: 3px;
-                            background: #b45309;
-                            color: #ffffff;
-                            font-size: 7pt;
-                            font-weight: 800;
-                            flex-shrink: 0;
-                            margin-top: 1px;
-                        }
-                        .lineage-note {
-                            font-size: 7.1pt;
-                            color: #64748b;
-                            font-style: italic;
-                            margin-bottom: 2px;
-                        }
-                        .siblings-list {
-                            margin-top: 2px;
-                            ${subListPadProp}: 6px;
-                            font-size: 7.4pt;
-                        }
-                        .siblings-list div {
-                            margin-bottom: 1px;
-                        }
-                        .dates-banner {
-                            background: #fff1f2;
-                            border: 1px solid #fecdd3;
-                            border-radius: 4px;
-                            padding: 2.5px 6px;
-                            margin-bottom: 4px;
-                            font-size: 7.6pt;
-                            color: #1e293b;
-                        }
-                        p {
-                            margin: 0 0 3.5px 0;
-                            text-align: justify;
-                        }
-                        p:last-child {
-                            margin-bottom: 0;
-                        }
-                        a {
-                            color: #1e293b;
-                            text-decoration: none;
-                        }
-                        .indent-1 { ${indentProp}: 10px; }
-                        .indent-2 { ${indentProp}: 18px; }
-                        .indent-3 { ${indentProp}: 26px; }
-                        .indent-4 { ${indentProp}: 34px; }
-                        .indent-5 { ${indentProp}: 42px; }
-
                         .preview-toolbar {
                             position: sticky;
                             top: 0;
                             z-index: 100;
-                            background: #f8fafc;
-                            border-bottom: 1px solid #cbd5e1;
-                            padding: 8px 14px;
-                            margin-bottom: 10px;
+                            background: #1e293b;
+                            color: #ffffff;
+                            padding: 10px 20px;
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
+                            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
                         }
-                        .preview-toolbar-btn {
-                            font-family: 'Assistant', Arial, sans-serif;
-                            font-size: 9.5pt;
+                        .preview-toolbar-title {
+                            font-size: 13pt;
                             font-weight: 700;
-                            padding: 5px 12px;
-                            border-radius: 5px;
-                            cursor: pointer;
-                            border: 1px solid #cbd5e1;
-                            background: #ffffff;
-                            color: #1e293b;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
                         }
-                        .preview-toolbar-btn.primary {
-                            background: #b45309;
-                            border-color: #92400e;
+                        .preview-toolbar-actions {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        .btn-print-action {
+                            background: #10b981;
                             color: #ffffff;
+                            border: none;
+                            border-radius: 6px;
+                            padding: 7px 16px;
+                            font-family: inherit;
+                            font-size: 11.5pt;
+                            font-weight: 700;
+                            cursor: pointer;
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 6px;
+                        }
+                        .btn-print-action:hover {
+                            background: #059669;
+                        }
+                        .btn-close-preview {
+                            background: #475569;
+                            color: #ffffff;
+                            border: none;
+                            border-radius: 6px;
+                            padding: 7px 14px;
+                            font-family: inherit;
+                            font-size: 11pt;
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+                        .btn-close-preview:hover {
+                            background: #334155;
+                        }
+                        .print-page-sheet {
+                            max-width: 820px;
+                            margin: 18px auto 32px auto;
+                            background: #ffffff;
+                            padding: 24px 28px;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+                        }
+                        .print-main-header {
+                            border-bottom: 2px solid #881337;
+                            padding-bottom: 10px;
+                            margin-bottom: 16px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                        }
+                        .print-main-header h1 {
+                            margin: 0;
+                            font-size: 19pt;
+                            font-weight: 800;
+                            color: #881337;
+                        }
+                        .print-main-header .subtitle {
+                            font-size: 11.5pt;
+                            color: #475569;
+                            font-weight: 600;
+                            margin-top: 3px;
+                        }
+                        .print-main-header .date-stamp {
+                            font-size: 9.5pt;
+                            color: #64748b;
+                        }
+                        .print-node-wrapper {
+                            margin-bottom: 4px;
+                            position: relative;
+                        }
+                        .print-node-item {
+                            padding: 4px 8px;
+                            border-radius: 4px;
+                            border: 1px solid #e2e8f0;
+                            background: #ffffff;
+                            break-inside: avoid;
+                            page-break-inside: avoid;
+                        }
+                        .print-gen-0 > .print-node-item {
+                            background-color: #fff1f2 !important;
+                            border: 1px solid #fecdd3 !important;
+                            border-top: 3px solid #881337 !important;
+                            margin-bottom: 8px;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .print-gen-1 > .print-node-item { border-${sideEdge}: 3.5px solid #2563eb !important; background-color: #f8fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        .print-gen-2 > .print-node-item { border-${sideEdge}: 3px solid #16a34a !important; }
+                        .print-gen-3 > .print-node-item { border-${sideEdge}: 3px solid #d97706 !important; }
+                        .print-gen-4 > .print-node-item { border-${sideEdge}: 2.5px solid #9333ea !important; }
+                        .print-gen-5 > .print-node-item { border-${sideEdge}: 2.5px solid #db2777 !important; }
+
+                        .print-node-header {
+                            display: flex;
+                            align-items: center;
+                            gap: 6px;
+                            flex-wrap: wrap;
+                        }
+                        .print-badge {
+                            font-size: 9pt;
+                            font-weight: 700;
+                            padding: 0 5px;
+                            border-radius: 3px;
+                            color: white;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .print-badge-gen-1 { background-color: #2563eb !important; }
+                        .print-badge-gen-2 { background-color: #16a34a !important; }
+                        .print-badge-gen-3 { background-color: #d97706 !important; }
+                        .print-badge-gen-4 { background-color: #9333ea !important; }
+                        .print-badge-gen-5 { background-color: #db2777 !important; }
+
+                        .print-root-title {
+                            font-size: 13pt;
+                            font-weight: 800;
+                            color: #881337;
+                        }
+                        .print-node-title {
+                            font-size: 11.5pt;
+                            font-weight: 700;
+                            color: #0f172a;
+                        }
+                        .print-node-meta {
+                            font-size: 10pt;
+                            color: #475569;
+                            margin-top: 2px;
+                            line-height: 1.3;
+                        }
+                        .print-node-meta a {
+                            color: #1d4ed8;
+                            text-decoration: underline;
+                        }
+                        .print-tree-children {
+                            ${padEdge}: 16px;
+                            margin-top: 4px;
+                            border-${sideEdge}: 1.5px solid #cbd5e1;
                         }
                         @media print {
                             .preview-toolbar { display: none !important; }
+                            body { background-color: #ffffff !important; margin: 0; padding: 0; }
+                            .print-page-sheet { max-width: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
                             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                            .print-node-item { break-inside: avoid; page-break-inside: avoid; }
                         }
                     </style>
                 </head>
                 <body>
                     <div class="preview-toolbar">
-                        <span style="font-weight: 700; color: #334155; font-size: 9.5pt;">${previewBanner}</span>
-                        <div style="display: flex; gap: 8px;">
-                            <button type="button" class="preview-toolbar-btn primary" onclick="window.print()">${printBtnLabel}</button>
-                            <button type="button" class="preview-toolbar-btn" onclick="window.close()">${closeBtnLabel}</button>
+                        <div class="preview-toolbar-title">
+                            <span>📄</span>
+                            <span>${previewLabel}${branchTitle ? ` — ${branchTitle}` : ''}</span>
+                        </div>
+                        <div class="preview-toolbar-actions">
+                            <button type="button" class="btn-print-action" onclick="window.print()">${printBtnLabel}</button>
+                            <button type="button" class="btn-close-preview" onclick="window.close()">${closeBtnLabel}</button>
                         </div>
                     </div>
-                    <div class="doc-header">
-                        <h1>${headerTitleHtml}</h1>
-                        <span class="sub">${headerSubText}</span>
+                    <div class="print-page-sheet">
+                        <div class="print-main-header">
+                            <div>
+                                <h1>${mainHeaderHtml}</h1>
+                                ${branchTitle ? `<div class="subtitle">${branchTitle}</div>` : ''}
+                            </div>
+                            <div class="date-stamp">${generatedDateText}</div>
+                        </div>
+                        ${buildPrintHtml(dataToPrint)}
                     </div>
-                    <div id="printBodyContainer">${assembledContainer.innerHTML}</div>
                 </body>
                 </html>
             `);
             printWindow.document.close();
         }
 
-        // ניקוי תגיות HTML (כגון קישורי מפות) לצורך ייצוא טקסט נקי לקובץ CSV
-        function stripHtmlTags(str) {
-            if (!str) return "";
-            const tmp = document.createElement("div");
-            tmp.innerHTML = str;
-            return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
+        function openToldotPrintWindow() {
+            const isEn = currentLang === "en";
+            const now = new Date();
+            const printDateStr = now.toLocaleDateString(isEn ? 'en-GB' : 'he-IL', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            const toldotContentHtml = buildToldotInnerHtml("");
+
+            const printWindow = openCenteredPopup(880, 720);
+            if (!printWindow) return;
+
+            const docLang = isEn ? 'en' : 'he';
+            const docDir = isEn ? 'ltr' : 'rtl';
+            const pageFooterText = isEn ? '"Page " counter(page) " of " counter(pages)' : '"עמוד " counter(page) " מתוך " counter(pages)';
+            const docTitle = isEn ? 'Lineage & History - Pinhas & Alte-Chana Fuhrer' : 'ייחוס ותולדות - פנחס ואלטה־חנה פירר';
+            const previewLabel = isEn ? 'Print Preview: Lineage & History' : 'תצוגה מקדימה להדפסה: ייחוס ותולדות';
+            const printBtnLabel = isEn ? '🖨️ Print / Save as PDF' : '🖨️ הדפס / שמור כ-PDF';
+            const closeBtnLabel = isEn ? '✕ Close' : '✕ סגור';
+            const mainHeaderHtml = isEn
+                ? 'Lineage &amp; History — Pinhas &amp; Alte-Chana <span style="font-weight: 400;">(Lipsker)</span> Fuhrer'
+                : 'ייחוס ותולדות — פנחס ואלטה־חנה <span style="font-weight: 400;">(ליפסקר)</span> פירר';
+            const subtitleText = isEn ? 'Rabbinic Lineage & Family Biography' : 'שושלת רבנית ותולדות המשפחה';
+            const generatedDateText = isEn ? `Generated on ${printDateStr}` : `הופק בתאריך ${printDateStr}`;
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${docLang}" dir="${docDir}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${docTitle}</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+                    <style>
+                        @page {
+                            margin: 14mm 12mm 16mm 12mm;
+                            @bottom-center {
+                                content: ${pageFooterText};
+                                font-family: 'Assistant', Arial, sans-serif;
+                                font-size: 9pt;
+                                color: #64748b;
+                            }
+                        }
+                        body {
+                            font-family: 'Assistant', Arial, sans-serif;
+                            color: #1e293b;
+                            margin: 0;
+                            padding: 0;
+                            direction: ${docDir};
+                            background-color: #f1f5f9;
+                            line-height: 1.55;
+                        }
+                        .preview-toolbar {
+                            position: sticky;
+                            top: 0;
+                            z-index: 100;
+                            background: #1e293b;
+                            color: #ffffff;
+                            padding: 10px 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+                        }
+                        .preview-toolbar-title {
+                            font-size: 13pt;
+                            font-weight: 700;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+                        .preview-toolbar-actions {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        .btn-print-action {
+                            background: #10b981;
+                            color: #ffffff;
+                            border: none;
+                            border-radius: 6px;
+                            padding: 7px 16px;
+                            font-family: inherit;
+                            font-size: 11.5pt;
+                            font-weight: 700;
+                            cursor: pointer;
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 6px;
+                        }
+                        .btn-print-action:hover { background: #059669; }
+                        .btn-close-preview {
+                            background: #475569;
+                            color: #ffffff;
+                            border: none;
+                            border-radius: 6px;
+                            padding: 7px 14px;
+                            font-family: inherit;
+                            font-size: 11pt;
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+                        .btn-close-preview:hover { background: #334155; }
+                        .print-page-sheet {
+                            max-width: 800px;
+                            margin: 18px auto 32px auto;
+                            background: #ffffff;
+                            padding: 26px 32px;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+                        }
+                        .print-main-header {
+                            border-bottom: 2px solid #881337;
+                            padding-bottom: 10px;
+                            margin-bottom: 18px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                        }
+                        .print-main-header h1 {
+                            margin: 0;
+                            font-size: 18.5pt;
+                            font-weight: 800;
+                            color: #881337;
+                        }
+                        .print-main-header .subtitle {
+                            font-size: 11pt;
+                            color: #475569;
+                            font-weight: 600;
+                            margin-top: 3px;
+                        }
+                        .print-main-header .date-stamp {
+                            font-size: 9.5pt;
+                            color: #64748b;
+                        }
+                        .toldot-print-body > div {
+                            background-color: #fffbeb !important;
+                            border: 1px solid #fde68a !important;
+                            border-radius: 6px;
+                            padding: 14px 16px;
+                            margin-bottom: 16px;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .toldot-print-body > div > div:first-child {
+                            font-size: 13pt;
+                            font-weight: 800;
+                            color: #78350f;
+                            border-bottom: 1px solid #fde68a;
+                            padding-bottom: 6px;
+                            margin-bottom: 10px;
+                        }
+                        .toldot-print-body .flex.items-start {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 8px;
+                            margin-bottom: 8px;
+                        }
+                        .toldot-print-body span.inline-flex {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 4px;
+                            background-color: #92400e !important;
+                            color: #ffffff !important;
+                            font-size: 10pt;
+                            font-weight: 800;
+                            flex-shrink: 0;
+                            margin-top: 2px;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .toldot-print-body .font-bold { font-weight: 700; color: #0f172a; }
+                        .toldot-print-body .text-slate-600 { color: #475569; font-size: 10.5pt; }
+                        .toldot-print-body .siblings-container {
+                            margin-top: 6px;
+                            padding-${isEn ? 'left' : 'right'}: 12px;
+                            border-${isEn ? 'left' : 'right'}: 2px solid #fcd34d;
+                        }
+                        .toldot-print-body .siblings-container > div { margin-bottom: 3px; }
+                        .toldot-print-body p {
+                            margin: 0 0 10px 0;
+                            font-size: 11.5pt;
+                            color: #1e293b;
+                            text-align: justify;
+                        }
+                        .toldot-print-body a {
+                            color: #1d4ed8;
+                            text-decoration: underline;
+                        }
+                        .toldot-print-body .ps-3, .toldot-print-body .ps-4 { padding-${isEn ? 'left' : 'right'}: 16px; }
+                        .toldot-print-body .ps-5, .toldot-print-body .ps-6 { padding-${isEn ? 'left' : 'right'}: 28px; }
+                        .toldot-print-body .ps-8, .toldot-print-body .ps-10 { padding-${isEn ? 'left' : 'right'}: 40px; }
+                        .toldot-print-body .ps-12 { padding-${isEn ? 'left' : 'right'}: 52px; }
+                        .toldot-print-body .ps-14 { padding-${isEn ? 'left' : 'right'}: 64px; }
+                        @media print {
+                            .preview-toolbar { display: none !important; }
+                            body { background-color: #ffffff !important; margin: 0; padding: 0; }
+                            .print-page-sheet { max-width: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
+                            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="preview-toolbar">
+                        <div class="preview-toolbar-title">
+                            <span>📜</span>
+                            <span>${previewLabel}</span>
+                        </div>
+                        <div class="preview-toolbar-actions">
+                            <button type="button" class="btn-print-action" onclick="window.print()">${printBtnLabel}</button>
+                            <button type="button" class="btn-close-preview" onclick="window.close()">${closeBtnLabel}</button>
+                        </div>
+                    </div>
+                    <div class="print-page-sheet">
+                        <div class="print-main-header">
+                            <div>
+                                <h1>${mainHeaderHtml}</h1>
+                                <div class="subtitle">${subtitleText}</div>
+                            </div>
+                            <div class="date-stamp">${generatedDateText}</div>
+                        </div>
+                        <div class="toldot-print-body">
+                            ${toldotContentHtml}
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
         }
 
-        // הורדת קובץ למחשב המשתמש בצורה מאובטחת
+        function stripHtmlTags(html) {
+            if (!html) return "";
+            const temp = document.createElement("div");
+            temp.innerHTML = html;
+            return (temp.textContent || temp.innerText || "").replace(/\s+/g, " ").trim();
+        }
+
         function triggerFileDownload(content, filename, mimeType) {
             const blob = new Blob([content], { type: mimeType });
             const url = URL.createObjectURL(blob);
@@ -3396,143 +3446,300 @@
             setTimeout(() => URL.revokeObjectURL(url), 1000);
         }
 
-        // ייצוא נתוני העץ המלאים כקובץ JSON מגובה
         function exportTreeAsJson() {
-            const exportPayload = {
-                meta: {
-                    ...window.FAMILY_TREE_CONFIG.meta,
-                    exportedAt: new Date().toISOString()
-                },
-                synonymGroups: NAME_SYNONYM_GROUPS,
-                tree: rawFamilyData
+            const isBranchFiltered = document.getElementById("branchFilter")?.value !== "all" || currentSearchQuery.trim() !== "";
+            const targetTree = getCurrentlyDisplayedTree();
+            const payload = {
+                exportedAt: new Date().toISOString(),
+                source: "Fuhrer Family Tree (פנחס ואלטה-חנה פירר)",
+                scope: isBranchFiltered ? "filtered_view" : "full_tree",
+                tree: targetTree
             };
-            const dateStamp = new Date().toISOString().slice(0, 10);
-            triggerFileDownload(
-                JSON.stringify(exportPayload, null, 2),
-                `fuhrer-family-tree-${dateStamp}.json`,
-                "application/json;charset=utf-8"
-            );
+            const jsonStr = JSON.stringify(payload, null, 2);
+            const dateSlug = new Date().toISOString().slice(0, 10);
+            const filePrefix = isBranchFiltered ? "fuhrer-family-branch" : "fuhrer-family-tree";
+            triggerFileDownload(jsonStr, `${filePrefix}-${dateSlug}.json`, "application/json;charset=utf-8");
         }
 
-        // ייצוא נתוני העץ לטבלת CSV (עם BOM ל-Excel בעברית)
         function exportTreeAsCsv() {
+            const isBranchFiltered = document.getElementById("branchFilter")?.value !== "all" || currentSearchQuery.trim() !== "";
+            const targetTree = getCurrentlyDisplayedTree();
             const rows = [
-                ["מזהה (ID)", "דור", "שם", "הורים / שיוך ישיר", "תאריכים", "מיקום ונדודים"]
+                ["מזהה", "דור", "תווית דור", "שם מלא", "הורה / ענף אב", "תאריכים ואירועים", "מיקום גיאוגרפי"]
             ];
 
-            function escapeCsvCell(val) {
-                const str = val === null || val === undefined ? "" : String(val);
-                return `"${str.replace(/"/g, '""')}"`;
-            }
-
-            function traverse(node, parentName = "") {
+            function traverse(node, parentName) {
+                const genLabel = node.gen === 0 ? "שורש" : `דור ${getHebrewGen(node.gen)}`;
                 rows.push([
-                    node.id,
-                    node.gen === 0 ? "שורש" : `דור ${getHebrewGen(node.gen)}`,
-                    stripHtmlTags(node.name),
-                    stripHtmlTags(parentName),
+                    node.id || "",
+                    node.gen !== undefined ? String(node.gen) : "",
+                    genLabel,
+                    stripHtmlTags(node.name || ""),
+                    stripHtmlTags(parentName || ""),
                     stripHtmlTags(node.dates || ""),
                     stripHtmlTags(node.location || "")
                 ]);
-
                 if (node.children && node.children.length > 0) {
-                    for (const child of node.children) {
-                        traverse(child, node.name);
-                    }
+                    node.children.forEach(child => traverse(child, node.name));
                 }
             }
 
-            traverse(rawFamilyData, "");
+            traverse(targetTree, "");
 
-            const csvString = "\uFEFF" + rows.map(row => row.map(escapeCsvCell).join(",")).join("\r\n");
-            const dateStamp = new Date().toISOString().slice(0, 10);
-            triggerFileDownload(
-                csvString,
-                `fuhrer-family-tree-${dateStamp}.csv`,
-                "text/csv;charset=utf-8"
-            );
+            const csvContent = "\uFEFF" + rows.map(row =>
+                row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+            ).join("\r\n");
+
+            const dateSlug = new Date().toISOString().slice(0, 10);
+            const filePrefix = isBranchFiltered ? "fuhrer-family-branch" : "fuhrer-family-tree";
+            triggerFileDownload(csvContent, `${filePrefix}-${dateSlug}.csv`, "text/csv;charset=utf-8");
         }
 
-        // איפוס מלא והחזרת האתר לדף הנחיתה הראשי
-        function resetToHomeView() {
-            const searchInput = document.getElementById("searchInput");
-            const clearSearchBtn = document.getElementById("clearSearchBtn");
-            const branchFilter = document.getElementById("branchFilter");
+        // המרת עץ הנתונים לפורמט GEDCOM 5.5.1 תקני (לשיתוף וייבוא ב-MyHeritage, Geni ותוכנות גנאלוגיה)
+        function exportTreeAsGedcom() {
+            const isBranchFiltered = document.getElementById("branchFilter")?.value !== "all" || currentSearchQuery.trim() !== "";
+            const targetTree = getCurrentlyDisplayedTree();
+            const lines = [
+                "0 HEAD",
+                "1 SOUR FUHRER_FAMILY_TREE",
+                "2 NAME Fuhrer Family Genealogy Web App",
+                "1 GEDC",
+                "2 VERS 5.5.1",
+                "2 FORM LINEAGE-LINKED",
+                "1 CHAR UTF-8"
+            ];
 
-            if (searchInput) searchInput.value = "";
-            if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
-            if (branchFilter) branchFilter.value = "all";
+            let indiCounter = 1;
+            let famCounter = 1;
 
-            currentSearchQuery = "";
-            isToldotExpanded = false;
-            savedExpandedStateBeforeFilter = null;
-            savedToldotStateBeforeFilter = null;
+            function extractYear(datesStr, keyword) {
+                if (!datesStr) return "";
+                const kwRegex = new RegExp(`${keyword}[^|]*?(\\d{4})`);
+                const kwMatch = datesStr.match(kwRegex);
+                if (kwMatch) return kwMatch[1];
+                const rangeMatch = datesStr.match(/(\d{4})\s*[-–]\s*(\d{4})/);
+                if (rangeMatch) {
+                    return keyword === "פטירה" ? rangeMatch[2] : rangeMatch[1];
+                }
+                if (keyword === "לידה") {
+                    const anyYear = datesStr.match(/\b(18\d{2}|19\d{2}|20\d{2})\b/);
+                    if (anyYear && !datesStr.includes("פטירה") && !datesStr.includes("נישואין")) {
+                        return anyYear[1];
+                    }
+                }
+                return "";
+            }
 
-            initInitialState(rawFamilyData);
-            applyFiltersAndRender();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            // פיצול שם זוגי ("X וY משפחה") לשני פרטים נפרדים עבור מבנה FAM ב-GEDCOM
+            function parseCoupleOrIndividual(rawName) {
+                const clean = stripHtmlTags(rawName).replace(/^\d+\.\s*/, "").trim();
+                const coupleMatch = clean.match(/^(.+?)\s+ו([^\s].+)$/);
+                if (coupleMatch) {
+                    const part1 = coupleMatch[1].trim();
+                    const part2 = coupleMatch[2].trim();
+                    const p2Words = part2.split(" ");
+                    const surname = p2Words.length > 1 ? p2Words[p2Words.length - 1] : "";
+                    const p1HasSurname = part1.split(" ").length > 1 && surname && part1.endsWith(surname);
+                    const person1Name = (surname && !p1HasSurname) ? `${part1} /${surname}/` : part1;
+                    const person2Name = surname ? `${p2Words.slice(0, -1).join(" ")} /${surname}/` : part2;
+                    return { isCouple: true, person1Name, person2Name };
+                }
+                const words = clean.split(" ");
+                const formatted = words.length > 1
+                    ? `${words.slice(0, -1).join(" ")} /${words[words.length - 1]}/`
+                    : clean;
+                return { isCouple: false, person1Name: formatted };
+            }
+
+            function processNode(node, parentFamId) {
+                const parsed = parseCoupleOrIndividual(node.name);
+                const cleanDates = stripHtmlTags(node.dates || "");
+                const cleanLoc = stripHtmlTags(node.location || "");
+                const birthYear = extractYear(cleanDates, "לידה");
+                const deathYear = extractYear(cleanDates, "פטירה");
+                const marrYear = extractYear(cleanDates, "נישואין");
+
+                const indi1Id = `@I${indiCounter++}@`;
+                lines.push(`0 ${indi1Id} INDI`);
+                lines.push(`1 NAME ${parsed.person1Name}`);
+                if (parentFamId) lines.push(`1 FAMC ${parentFamId}`);
+                if (birthYear) {
+                    lines.push("1 BIRT");
+                    lines.push(`2 DATE ${birthYear}`);
+                }
+                if (deathYear || cleanNameHasMemorial(node.name)) {
+                    lines.push("1 DEAT Y");
+                    if (deathYear) lines.push(`2 DATE ${deathYear}`);
+                }
+                if (cleanLoc) lines.push(`1 NOTE מיקום: ${cleanLoc}`);
+                if (cleanDates) lines.push(`1 NOTE פרטים: ${cleanDates}`);
+
+                let indi2Id = null;
+                if (parsed.isCouple) {
+                    indi2Id = `@I${indiCounter++}@`;
+                    lines.push(`0 ${indi2Id} INDI`);
+                    lines.push(`1 NAME ${parsed.person2Name}`);
+                }
+
+                const hasChildren = node.children && node.children.length > 0;
+                if (parsed.isCouple || hasChildren) {
+                    const famId = `@F${famCounter++}@`;
+                    lines.push(`1 FAMS ${famId}`);
+                    // עדכון הפניית FAMS גם לבן/בת הזוג הראשון
+                    const indi1InsertIdx = lines.lastIndexOf(`0 ${indi1Id} INDI`) + 2;
+                    lines.splice(indi1InsertIdx, 0, `1 FAMS ${famId}`);
+
+                    const childIds = [];
+                    if (hasChildren) {
+                        node.children.forEach(child => {
+                            const childPrimaryId = processNode(child, famId);
+                            if (childPrimaryId) childIds.push(childPrimaryId);
+                        });
+                    }
+
+                    lines.push(`0 ${famId} FAM`);
+                    lines.push(`1 HUSB ${indi1Id}`);
+                    if (indi2Id) lines.push(`1 WIFE ${indi2Id}`);
+                    if (marrYear) {
+                        lines.push("1 MARR");
+                        lines.push(`2 DATE ${marrYear}`);
+                    }
+                    childIds.forEach(cid => lines.push(`1 CHIL ${cid}`));
+                }
+
+                return indi1Id;
+            }
+
+            function cleanNameHasMemorial(name) {
+                return /ז"ל|הי"ד/.test(name || "");
+            }
+
+            processNode(targetTree, null);
+            lines.push("0 TRLR");
+
+            const gedcomContent = lines.join("\r\n");
+            const dateSlug = new Date().toISOString().slice(0, 10);
+            const filePrefix = isBranchFiltered ? "fuhrer-family-branch" : "fuhrer-family-tree";
+            triggerFileDownload(gedcomContent, `${filePrefix}-${dateSlug}.ged`, "text/plain;charset=utf-8");
         }
 
-        // אתחול האפליקציה עם טעינת ה-DOM (כולל בדיקת data.json חיצוני אם קיים)
+        // אתחול האפליקציה עם טעינת העמוד
         document.addEventListener("DOMContentLoaded", async () => {
             await tryLoadExternalJsonData();
+
+            let initialLang = "he";
+            try {
+                if (localStorage.getItem("fuhrer_tree_lang") === "en") initialLang = "en";
+            } catch (e) {
+                // התעלמות משגיאת גישה ל-localStorage
+            }
+            applyLanguageUI(initialLang, false);
+
             initInitialState(rawFamilyData);
             applyFiltersAndRender();
             setupBranchFilter();
             setupSearch();
 
-            // קיצור דרך במקלדת: לחיצה על Escape מנקה את החיפוש או סוגרת תצוגת תמונה
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    const modal = document.getElementById("portraitModal");
-                    if (modal) {
-                        modal.remove();
-                        return;
-                    }
-                    const searchInput = document.getElementById("searchInput");
-                    const clearSearchBtn = document.getElementById("clearSearchBtn");
-                    if (currentSearchQuery.trim() !== "") {
-                        if (searchInput) searchInput.value = "";
-                        currentSearchQuery = "";
-                        if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
-                        applyFiltersAndRender();
-                    }
-                }
-            });
+            const langToggleBtn = document.getElementById("langToggleBtn");
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener("click", toggleLanguage);
+            }
 
-            // קישור לחיצות איפוס וחזרה לדף הנחיתה הראשי (אייקון עליון + כפתור "סה"כ צאצאים" + כפתור איפוס בבאנר)
+            // איפוס מלא וחזרה לדף הנחיתה הראשי בלחיצה על לוגו העץ או כפתור ספירת הצאצאים
+            function resetToLandingPage() {
+                const branchFilter = document.getElementById("branchFilter");
+                const searchInput = document.getElementById("searchInput");
+                const clearSearchBtn = document.getElementById("clearSearchBtn");
+
+                if (branchFilter) branchFilter.value = "all";
+                if (searchInput) searchInput.value = "";
+                if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+
+                currentSearchQuery = "";
+                savedExpandedStateBeforeFilter = null;
+                savedToldotStateBeforeFilter = null;
+                isToldotExpanded = false;
+
+                initInitialState(rawFamilyData);
+                applyFiltersAndRender();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
             const homeLogoBtn = document.getElementById("homeLogoBtn");
-            if (homeLogoBtn) homeLogoBtn.addEventListener("click", resetToHomeView);
+            if (homeLogoBtn) {
+                homeLogoBtn.addEventListener("click", resetToLandingPage);
+            }
 
             const totalDescendantsBtn = document.getElementById("totalDescendants");
-            if (totalDescendantsBtn) totalDescendantsBtn.addEventListener("click", resetToHomeView);
+            if (totalDescendantsBtn) {
+                totalDescendantsBtn.addEventListener("click", resetToLandingPage);
+            }
 
             const bannerResetBtn = document.getElementById("bannerResetBtn");
-            if (bannerResetBtn) bannerResetBtn.addEventListener("click", resetToHomeView);
+            if (bannerResetBtn) {
+                bannerResetBtn.addEventListener("click", resetToLandingPage);
+            }
 
-            // כפתור החלפת שפה (עברית <-> English)
-            const langToggleBtn = document.getElementById("langToggleBtn");
-            if (langToggleBtn) langToggleBtn.addEventListener("click", toggleLanguage);
-
-            // חיבור כפתורי ייצוא נתונים (JSON / CSV)
-            const exportJsonBtn = document.getElementById("exportJsonBtn");
-            if (exportJsonBtn) exportJsonBtn.addEventListener("click", exportTreeAsJson);
-
-            const exportCsvBtn = document.getElementById("exportCsvBtn");
-            if (exportCsvBtn) exportCsvBtn.addEventListener("click", exportTreeAsCsv);
-
-            const printTreeBtn = document.getElementById("printTreeBtn");
-            if (printTreeBtn) {
-                printTreeBtn.addEventListener("click", () => {
-                    openPrintWindow();
+            const toldotSearchIndicator = document.getElementById("toldotSearchIndicator");
+            if (toldotSearchIndicator) {
+                toldotSearchIndicator.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (!isToldotExpanded) {
+                        toggleToldot();
+                    }
+                    const toldotEl = document.getElementById("rootToldotContent");
+                    if (toldotEl) {
+                        toldotEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                    }
                 });
             }
 
-            // ניהול כפתור צף לחזרה מהירה לראש העמוד בעת גלילה
+            // כפתורי הרחבה וכיווץ של כל העץ
+            const expandAllBtn = document.getElementById("expandAllBtn");
+            if (expandAllBtn) {
+                expandAllBtn.addEventListener("click", () => {
+                    const currentData = getFilteredData();
+                    setAllExpanded(currentData, true);
+                    savedExpandedStateBeforeFilter = null;
+                    applyFiltersAndRender("keep");
+                });
+            }
+
+            const collapseAllBtn = document.getElementById("collapseAllBtn");
+            if (collapseAllBtn) {
+                collapseAllBtn.addEventListener("click", () => {
+                    const currentData = getFilteredData();
+                    setAllExpanded(currentData, false);
+                    savedExpandedStateBeforeFilter = null;
+                    applyFiltersAndRender("keep");
+                });
+            }
+
+            const printBtn = document.getElementById("printTreeBtn");
+            if (printBtn) {
+                printBtn.addEventListener("click", openPrintWindow);
+            }
+
+            const exportJsonBtn = document.getElementById("exportJsonBtn");
+            if (exportJsonBtn) {
+                exportJsonBtn.addEventListener("click", exportTreeAsJson);
+            }
+
+            const exportCsvBtn = document.getElementById("exportCsvBtn");
+            if (exportCsvBtn) {
+                exportCsvBtn.addEventListener("click", exportTreeAsCsv);
+            }
+
+            const exportGedcomBtn = document.getElementById("exportGedcomBtn");
+            if (exportGedcomBtn) {
+                exportGedcomBtn.addEventListener("click", exportTreeAsGedcom);
+            }
+
+            // כפתור צף לחזרה מהירה לראש העמוד בעת גלילה מטה
             const backToTopBtn = document.getElementById("backToTopBtn");
             if (backToTopBtn) {
                 window.addEventListener("scroll", () => {
-                    if (window.scrollY > 320) {
+                    if (window.scrollY > 360) {
                         backToTopBtn.classList.remove("hidden");
                     } else {
                         backToTopBtn.classList.add("hidden");
@@ -3543,6 +3750,29 @@
                     window.scrollTo({ top: 0, behavior: "smooth" });
                 });
             }
+
+            // קיצור מקלדת Escape לסגירת חלונית התמונה, חלונית תולדות או ניקוי החיפוש
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    const portraitModal = document.getElementById("portraitModal");
+                    if (portraitModal) {
+                        portraitModal.remove();
+                        return;
+                    }
+                    if (isToldotExpanded) {
+                        toggleToldot();
+                        return;
+                    }
+                    const searchInput = document.getElementById("searchInput");
+                    const clearSearchBtn = document.getElementById("clearSearchBtn");
+                    if (searchInput && searchInput.value.trim() !== "") {
+                        searchInput.value = "";
+                        currentSearchQuery = "";
+                        if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+                        applyFiltersAndRender();
+                    }
+                }
+            });
         });
     </script>
 </body>
