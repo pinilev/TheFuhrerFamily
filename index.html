@@ -71,6 +71,24 @@
                 animation: none;
             }
         }
+
+        /* סגנונות תצוגת תרשים זרימה (Flowchart View) */
+        .flowchart-canvas-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1.15px, transparent 1.15px);
+            background-size: 20px 20px;
+        }
+        .flow-node-box {
+            cursor: default;
+            user-select: none;
+            transition: filter 0.15s ease;
+        }
+        .flow-node-box.is-expandable {
+            cursor: pointer;
+        }
+        .flow-node-box.is-expandable:hover {
+            filter: drop-shadow(0 6px 14px rgba(15, 23, 42, 0.14));
+        }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen text-slate-800 text-lg">
@@ -91,13 +109,27 @@
                     </div>
                 </div>
 
-                <!-- מסגרת תמונה משותפת של פנחס ואלטה-חנה פירר משמאל מול כותרת האתר -->
-                <button type="button" id="rootPortraitBtn" onclick="openPortraitLightbox('Pinhas&Hanna.jpg', currentLang === 'en' ? 'Pinhas & Alte-Chana Fuhrer (Z&quot;L)' : 'פנחס ואלטה־חנה פירר ז&quot;ל', event)" class="group shrink-0 rounded-lg overflow-hidden border-2 border-rose-200 hover:border-rose-400 bg-rose-50/70 shadow-xs hover:shadow-md transition p-0.5 cursor-pointer" title="פנחס ואלטה־חנה פירר — לחצו להגדלה">
-                    <img src="Pinhas&Hanna.jpg" onerror="this.onerror=null;this.src='https://placehold.co/180x110/fff1f2/881337?text=%D7%A4%D7%A0%D7%97%D7%A1+%D7%95%D7%90%D7%9C%D7%98%D7%94-%D7%97%D7%A0%D7%94';" alt="פנחס ואלטה־חנה פירר" class="h-11 sm:h-14 w-auto max-w-[115px] sm:max-w-[150px] object-cover rounded-md group-hover:scale-[1.03] transition-transform duration-200">
-                </button>
+                <!-- מתג החלפת תצוגה + מסגרת תמונה משותפת של פנחס ואלטה-חנה פירר משמאל מול כותרת האתר -->
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <!-- View Mode Switcher: List Tree vs. Flowchart -->
+                    <div class="inline-flex items-center bg-slate-100 border border-slate-300 rounded-md p-0.5 shadow-2xs shrink-0" role="group" aria-label="בחירת תצוגת עץ">
+                        <button type="button" id="viewListBtn" class="px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-slate-900 shadow-2xs flex items-center gap-1 sm:gap-1.5 transition cursor-pointer" title="תצוגת עץ רשימה היררכית">
+                            <span aria-hidden="true">📋</span>
+                            <span id="viewListBtnText">רשימה</span>
+                        </button>
+                        <button type="button" id="viewFlowBtn" class="px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1 sm:gap-1.5 transition cursor-pointer" title="תצוגת תרשים זרימה חזותי">
+                            <span aria-hidden="true">🌳</span>
+                            <span id="viewFlowBtnText">תרשים זרימה</span>
+                        </button>
+                    </div>
+
+                    <button type="button" id="rootPortraitBtn" onclick="openPortraitLightbox('Pinhas&Hanna.jpg', currentLang === 'en' ? 'Pinhas & Alte-Chana Fuhrer (Z&quot;L)' : 'פנחס ואלטה־חנה פירר ז&quot;ל', event)" class="group shrink-0 rounded-lg overflow-hidden border-2 border-rose-200 hover:border-rose-400 bg-rose-50/70 shadow-xs hover:shadow-md transition p-0.5 cursor-pointer" title="פנחס ואלטה־חנה פירר — לחצו להגדלה">
+                        <img src="Pinhas&Hanna.jpg" onerror="this.onerror=null;this.src='https://placehold.co/180x110/fff1f2/881337?text=%D7%A4%D7%A0%D7%97%D7%A1+%D7%95%D7%90%D7%9C%D7%98%D7%94-%D7%97%D7%A0%D7%94';" alt="פנחס ואלטה־חנה פירר" class="h-11 sm:h-14 w-auto max-w-[115px] sm:max-w-[150px] object-cover rounded-md group-hover:scale-[1.03] transition-transform duration-200">
+                    </button>
+                </div>
             </div>
             
-            <!-- Second Row: Search, Branch Filter, Print (Hidden on Mobile) & Compact Expand/Collapse -->
+            <!-- Second Row: Search, Branch Filter & Print (Hidden on Mobile) -->
             <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
                 <!-- Search Input Container (Shares row with compact expand/collapse icons on mobile) -->
                 <div class="relative flex-1 min-w-0 sm:flex-initial">
@@ -190,6 +222,39 @@
             </button>
         </div>
         <div id="treeContainer" class="space-y-3"></div>
+
+        <!-- Always-Visible Lineage & History Card for Flowchart Mode -->
+        <div id="flowToldotCard" class="hidden mb-3"></div>
+
+        <!-- Flowchart Interactive Viewport -->
+        <div id="flowchartWrapper" class="hidden relative bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden">
+            <!-- Top Floating Controls inside Flowchart -->
+            <div class="absolute top-3 start-3 end-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+                <div class="inline-flex items-center gap-2 bg-amber-50/95 backdrop-blur-xs border-s-4 border-amber-500 text-amber-950 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-e-md select-none">
+                    <span class="text-amber-600 text-sm" aria-hidden="true">💡</span>
+                    <span id="flowHintBadge">גרור להזזה • גלגל לזום • לחץ על תיבה להרחבה/כיווץ</span>
+                </div>
+                <div class="pointer-events-auto inline-flex items-center gap-1 bg-white/95 backdrop-blur-xs border border-slate-300 rounded-lg p-1 shadow-sm">
+                    <button type="button" id="flowZoomInBtn" class="w-8 h-8 rounded hover:bg-slate-100 text-slate-700 font-extrabold text-base flex items-center justify-center transition cursor-pointer" title="הגדל תצוגה (+)">+</button>
+                    <span id="flowZoomLevel" class="px-1.5 text-xs font-bold text-slate-600 tabular-nums select-none">100%</span>
+                    <button type="button" id="flowZoomOutBtn" class="w-8 h-8 rounded hover:bg-slate-100 text-slate-700 font-extrabold text-base flex items-center justify-center transition cursor-pointer" title="הקטן תצוגה (-)">−</button>
+                    <div class="w-px h-5 bg-slate-200 mx-0.5"></div>
+                    <button type="button" id="flowFitBtn" class="px-2.5 h-8 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1 transition cursor-pointer" title="התאם למסך">
+                        <span id="flowFitBtnText">מרכז</span>
+                    </button>
+                    <button type="button" id="flowExpandAllBtn" class="px-2.5 h-8 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1 transition cursor-pointer" title="הרחב או כווץ את כל הענפים בתרשים">
+                        <span id="flowExpandAllBtnText">הרחב הכל</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interactive SVG Canvas -->
+            <div id="flowchartViewport" class="w-full h-[68vh] min-h-[480px] max-h-[820px] flowchart-canvas-bg cursor-grab active:cursor-grabbing overflow-hidden touch-none">
+                <svg id="flowchartSvg" class="w-full h-full block" xmlns="http://www.w3.org/2000/svg">
+                    <g id="flowchartStage"></g>
+                </svg>
+            </div>
+        </div>
     </main>
 
     <!-- Page Footer -->
@@ -1611,7 +1676,16 @@
                 footerLineage: { he: "אילן היוחסין של משפחת פירר — צאצאי פנחס ואלטה־חנה פירר ז\"ל", en: "Fuhrer Family Genealogy — Descendants of Pinhas & Alte-Chana Fuhrer (Z\"L)" },
                 footerUpdated: { he: "עודכן לאחרונה: נובמבר 2026", en: "Last updated: November 2026" },
                 backToTop: { he: "חזרה לראש העמוד", en: "Back to top" },
-                langBtnText: { he: "English", en: "עברית" }
+                langBtnText: { he: "English", en: "עברית" },
+                viewListText: { he: "רשימה", en: "List" },
+                viewFlowText: { he: "תרשים זרימה", en: "Flowchart" },
+                flowHint: {
+                    he: "גרור להזזה • גלגל לזום • לחץ על תיבה להרחבה/כיווץ",
+                    en: "Drag to pan • Scroll to zoom • Click a card to expand/collapse"
+                },
+                flowFitText: { he: "מרכז", en: "Fit" },
+                flowExpandAll: { he: "הרחב הכל", en: "Expand All" },
+                flowCollapseAll: { he: "כווץ הכל", en: "Collapse All" }
             };
             return (ui[key] && ui[key][currentLang]) || (ui[key] && ui[key].he) || key;
         }
@@ -1656,6 +1730,11 @@
             setText("footerUpdatedText", t("footerUpdated"));
             setAttr("backToTopBtn", "title", t("backToTop"));
             setText("langToggleBtnText", t("langBtnText"));
+            setText("viewListBtnText", t("viewListText"));
+            setText("viewFlowBtnText", t("viewFlowText"));
+            setText("flowHintBadge", t("flowHint"));
+            setText("flowFitBtnText", t("flowFitText"));
+            updateFlowExpandButtonLabel();
 
             // עדכון רשימת הענפים בתפריט הנפתח
             const branchFilter = document.getElementById("branchFilter");
@@ -1717,6 +1796,20 @@
         let savedToldotStateBeforeFilter = null;
         let currentSearchQuery = "";
         let isToldotExpanded = false;
+        let currentViewMode = "list"; // 'list' | 'flow'
+
+        // מצב ניווט וזום של תרשים הזרימה
+        const flowViewportState = {
+            x: 0,
+            y: 40,
+            scale: 1,
+            isDragging: false,
+            dragMoved: false,
+            startX: 0,
+            startY: 0,
+            contentWidth: 800,
+            contentHeight: 500
+        };
 
         // קבוע מאוחד עבור סמל נר הזיכרון לשימוש בכל חלקי האתר וההדפסה
         const MEMORIAL_CANDLE_SVG = `<svg style="width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; margin-inline-end: 2px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="נר זיכרון"><title>תאריך פטירה עברי</title><path d="M12 2.2C12 2.2 15.2 5.6 15.2 8.1C15.2 9.87 13.77 11.3 12 11.3C10.23 11.3 8.8 9.87 8.8 8.1C8.8 5.6 12 2.2 12 2.2Z" fill="#f97316"/><path d="M12 4.8C12 4.8 13.6 6.7 13.6 8.1C13.6 8.98 12.88 9.7 12 9.7C11.12 9.7 10.4 8.98 10.4 8.1C10.4 6.7 12 4.8 12 4.8Z" fill="#fde047"/><rect x="11.3" y="10.8" width="1.4" height="2.4" rx="0.5" fill="#475569"/><path d="M6.5 13.2H17.5L16.7 21.2C16.63 21.77 16.15 22.2 15.58 22.2H8.42C7.85 22.2 7.37 21.77 7.3 21.2L6.5 13.2Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.3" stroke-linejoin="round"/><ellipse cx="12" cy="13.2" rx="5.5" ry="1.2" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><path d="M7.1 16.2H16.9M7.4 19H16.6" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/></svg>`;
@@ -2085,6 +2178,37 @@
                 }
 
                 return false;
+            });
+        }
+
+        // פתיחה וסגירה של חלונית "תולדות" בתוך כרטיס השורש (ובכרטיס העליון של תרשים הזרימה)
+        function toggleToldot(event) {
+            if (event) event.stopPropagation();
+            isToldotExpanded = !isToldotExpanded;
+
+            ["rootToldotContent", "flowToldotContent"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.toggle("hidden", !isToldotExpanded);
+                    if (isToldotExpanded) {
+                        el.classList.remove("branch-animate-in");
+                        void el.offsetWidth;
+                        el.classList.add("branch-animate-in");
+                    }
+                }
+            });
+
+            ["rootToldotTeaser", "flowToldotTeaser"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle("hidden", isToldotExpanded);
+            });
+
+            ["rootToldotCloseBtn", "flowToldotCloseBtn"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.toggle("hidden", !isToldotExpanded);
+                    el.setAttribute("aria-expanded", String(isToldotExpanded));
+                }
             });
         }
         // המרת מספר דור לאות עברית (א, ב, ג, ד, ה) או מספר באנגלית
@@ -2814,8 +2938,18 @@
                 }
 
                 if (searchedNode) {
-                    renderTreeWithData(searchedNode, customExpandMode !== "keep");
+                    if (currentViewMode === "flow") {
+                        renderFlowchartWithData(searchedNode, customExpandMode !== "keep", true);
+                    } else {
+                        renderTreeWithData(searchedNode, customExpandMode !== "keep");
+                    }
                 } else if (container) {
+                    if (currentViewMode === "flow") {
+                        const stage = document.getElementById("flowchartStage");
+                        if (stage) stage.innerHTML = "";
+                    }
+                    container.classList.remove("hidden");
+                    document.getElementById("flowchartWrapper")?.classList.add("hidden");
                     container.innerHTML = currentLang === "en" ? `
                         <div class="bg-white rounded-xl border border-slate-200 p-8 text-center shadow-sm">
                             <p class="text-slate-600 font-bold text-base mb-1.5">No matches found for "${escapeHtml(currentSearchQuery.trim())}"</p>
@@ -2838,7 +2972,11 @@
                         setAllExpanded(baseData, true);
                     }
                 }
-                renderTreeWithData(baseData, false);
+                if (currentViewMode === "flow") {
+                    renderFlowchartWithData(baseData, false, customExpandMode !== "keep");
+                } else {
+                    renderTreeWithData(baseData, false);
+                }
             }
         }
 
@@ -2855,9 +2993,457 @@
 
         function renderTreeWithData(dataNode, forceExpand = false) {
             const container = document.getElementById("treeContainer");
+            const flowWrapper = document.getElementById("flowchartWrapper");
+            const flowToldotCard = document.getElementById("flowToldotCard");
+            if (flowWrapper) flowWrapper.classList.add("hidden");
+            if (flowToldotCard) flowToldotCard.classList.add("hidden");
             if (container) {
+                container.classList.remove("hidden");
                 container.innerHTML = "";
                 container.appendChild(renderNode(dataNode, forceExpand));
+            }
+        }
+
+        // רינדור תיבת "ייחוס ותולדות" מעל קנבס תרשים הזרימה
+        function renderFlowToldotCard() {
+            const flowToldotCard = document.getElementById("flowToldotCard");
+            if (!flowToldotCard) return;
+
+            flowToldotCard.classList.remove("hidden");
+            flowToldotCard.innerHTML = `
+                <div class="rounded-lg shadow-sm border border-rose-200 p-3 gen-0 transition-all duration-200">
+                    <div id="flowToldotTeaser" role="button" tabindex="0" onclick="toggleToldot(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleToldot(event);}" aria-expanded="${isToldotExpanded}" class="${isToldotExpanded ? 'hidden' : ''} px-3.5 py-2 rounded-lg bg-amber-50/95 hover:bg-amber-100/90 border border-amber-300/90 ring-2 ring-amber-200/60 hover:ring-amber-300 text-xs sm:text-sm text-amber-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2 cursor-pointer transition shadow-2xs group">
+                        <div class="flex items-start sm:items-center gap-2 leading-snug">
+                            <span class="shrink-0 text-base sm:text-lg" aria-hidden="true">📜</span>
+                            <div>
+                                <span class="font-extrabold text-amber-950">${t('toldotBtn')}: </span>
+                                <span class="text-amber-900/95">${t('toldotTeaser')}</span>
+                            </div>
+                        </div>
+                        <span class="self-end sm:self-center shrink-0 font-extrabold text-white bg-amber-600 group-hover:bg-amber-700 px-3 py-1 rounded-md whitespace-nowrap flex items-center gap-1 shadow-2xs transition">
+                            <span>${t('toldotReadMore')}</span>
+                            <span aria-hidden="true">▾</span>
+                        </span>
+                    </div>
+                    <div id="flowToldotContent" class="${isToldotExpanded ? '' : 'hidden'} space-y-2.5">
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-rose-200/80">
+                            <span class="font-extrabold text-rose-950 text-sm sm:text-base flex items-center gap-1.5">
+                                <span aria-hidden="true">📜</span>
+                                <span>${t('toldotBtn')}</span>
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="event.stopPropagation(); openToldotPrintWindow();" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1 rounded-md bg-white hover:bg-amber-50 text-amber-900 border border-amber-300 shadow-2xs transition cursor-pointer" title="${t('printToldotBtn')}">
+                                    <svg class="w-3.5 h-3.5 shrink-0 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                        <rect x="6" y="14" width="12" height="8"></rect>
+                                    </svg>
+                                    <span>${t('printToldotBtn')}</span>
+                                </button>
+                                <button type="button" id="flowToldotCloseBtn" onclick="toggleToldot(event)" aria-expanded="${isToldotExpanded}" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 shadow-2xs transition cursor-pointer" title="${t('toldotBtnTitle')}">
+                                    <span>${t('toldotCollapseBtn')}</span>
+                                    <span aria-hidden="true">▴</span>
+                                </button>
+                            </div>
+                        </div>
+                        ${buildToldotInnerHtml(currentSearchQuery)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // =====================================================================
+        // מנוע תרשים הזרימה (Interactive SVG Flowchart Engine)
+        // =====================================================================
+        function switchViewMode(mode) {
+            currentViewMode = mode === "flow" ? "flow" : "list";
+            const viewListBtn = document.getElementById("viewListBtn");
+            const viewFlowBtn = document.getElementById("viewFlowBtn");
+
+            if (viewListBtn && viewFlowBtn) {
+                if (currentViewMode === "list") {
+                    viewListBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-slate-900 shadow-2xs flex items-center gap-1.5 transition cursor-pointer";
+                    viewFlowBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer";
+                } else {
+                    viewFlowBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-emerald-900 shadow-2xs flex items-center gap-1.5 transition cursor-pointer";
+                    viewListBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer";
+                }
+            }
+
+            applyFiltersAndRender("keep");
+        }
+
+        function wrapSvgLines(text, maxCharsPerLine, maxLines = 2) {
+            if (!text) return [];
+            const words = text.split(/\s+/).filter(Boolean);
+            const lines = [];
+            let current = "";
+
+            for (const word of words) {
+                const candidate = current ? `${current} ${word}` : word;
+                if (candidate.length <= maxCharsPerLine) {
+                    current = candidate;
+                } else {
+                    if (current) lines.push(current);
+                    current = word;
+                    if (lines.length >= maxLines) break;
+                }
+            }
+            if (current && lines.length < maxLines) {
+                lines.push(current);
+            } else if (current && lines.length === maxLines) {
+                const last = lines[maxLines - 1];
+                if (last.length > maxCharsPerLine - 2) {
+                    lines[maxLines - 1] = last.slice(0, maxCharsPerLine - 1) + "…";
+                } else if (!last.endsWith("…")) {
+                    lines[maxLines - 1] = last + "…";
+                }
+            }
+            return lines;
+        }
+
+        function extractShortYearsLabel(datesStr) {
+            if (!datesStr) return "";
+            const years = datesStr.match(/\b(18\d{2}|19\d{2}|20\d{2})\b/g);
+            if (!years || years.length === 0) return "";
+            if (years.length === 1) return years[0];
+            const first = years[0];
+            const second = years[1];
+            return first === second ? first : `${first}–${second}`;
+        }
+
+        function applyFlowTransform() {
+            const stage = document.getElementById("flowchartStage");
+            const zoomLabel = document.getElementById("flowZoomLevel");
+            if (stage) {
+                stage.setAttribute("transform", `translate(${flowViewportState.x}, ${flowViewportState.y}) scale(${flowViewportState.scale})`);
+            }
+            if (zoomLabel) {
+                zoomLabel.textContent = `${Math.round(flowViewportState.scale * 100)}%`;
+            }
+        }
+
+        function fitFlowchartToViewport() {
+            const viewport = document.getElementById("flowchartViewport");
+            if (!viewport) return;
+            const rect = viewport.getBoundingClientRect();
+            const vw = rect.width || 900;
+            const vh = rect.height || 560;
+            const cw = flowViewportState.contentWidth || 800;
+            const ch = flowViewportState.contentHeight || 400;
+
+            const padX = 48;
+            const padTop = 64;
+            const padBottom = 36;
+            const scaleX = (vw - padX * 2) / cw;
+            const scaleY = (vh - padTop - padBottom) / ch;
+            const targetScale = Math.max(0.28, Math.min(1.05, Math.min(scaleX, scaleY)));
+
+            flowViewportState.scale = targetScale;
+            flowViewportState.x = Math.round((vw - cw * targetScale) / 2);
+            flowViewportState.y = Math.round(padTop + Math.max(0, (vh - padTop - padBottom - ch * targetScale) / 2));
+            applyFlowTransform();
+        }
+
+        function zoomFlowchart(factor) {
+            const viewport = document.getElementById("flowchartViewport");
+            if (!viewport) return;
+            const rect = viewport.getBoundingClientRect();
+            const cx = (rect.width || 800) / 2;
+            const cy = (rect.height || 500) / 2;
+
+            const oldScale = flowViewportState.scale;
+            const newScale = Math.max(0.2, Math.min(2.2, oldScale * factor));
+            const ratio = newScale / oldScale;
+
+            flowViewportState.x = cx - (cx - flowViewportState.x) * ratio;
+            flowViewportState.y = cy - (cy - flowViewportState.y) * ratio;
+            flowViewportState.scale = newScale;
+            applyFlowTransform();
+        }
+
+        function areAnyFlowNodesExpanded(node) {
+            if (!node || !node.children) return false;
+            return node.children.some(c => expandedState[c.id] || areAnyFlowNodesExpanded(c));
+        }
+
+        function updateFlowExpandButtonLabel() {
+            const btnText = document.getElementById("flowExpandAllBtnText");
+            if (!btnText) return;
+            const displayed = getCurrentlyDisplayedTree();
+            const anyExpanded = areAnyFlowNodesExpanded(displayed);
+            btnText.textContent = anyExpanded ? t("flowCollapseAll") : t("flowExpandAll");
+        }
+
+        function renderFlowchartWithData(dataNode, forceExpand = false, autoFit = true) {
+            const listContainer = document.getElementById("treeContainer");
+            const flowWrapper = document.getElementById("flowchartWrapper");
+            const stage = document.getElementById("flowchartStage");
+
+            if (listContainer) listContainer.classList.add("hidden");
+            renderFlowToldotCard();
+            if (flowWrapper) flowWrapper.classList.remove("hidden");
+            if (!stage) return;
+
+            const isEn = currentLang === "en";
+            const dirAttr = isEn ? "ltr" : "rtl";
+            const CARD_W = 246;
+            const CARD_H = 108;
+            const H_GAP = 28;
+            const V_GAP = 58;
+
+            const genStyles = {
+                0: { fill: "#fff1f2", stroke: "#881337", badge: "#881337", title: "#881337", leafFill: "#fff1f2" },
+                1: { fill: "#ffffff", stroke: "#2563eb", badge: "#2563eb", title: "#0f172a", leafFill: "#f8fafc" },
+                2: { fill: "#ffffff", stroke: "#16a34a", badge: "#16a34a", title: "#0f172a", leafFill: "#f8fafc" },
+                3: { fill: "#ffffff", stroke: "#d97706", badge: "#d97706", title: "#0f172a", leafFill: "#f8fafc" },
+                4: { fill: "#ffffff", stroke: "#9333ea", badge: "#9333ea", title: "#0f172a", leafFill: "#f8fafc" },
+                5: { fill: "#ffffff", stroke: "#db2777", badge: "#db2777", title: "#0f172a", leafFill: "#f8fafc" }
+            };
+
+            // בניית עץ פריסה (Layout Tree) בהתאם לענפים הפתוחים
+            function buildLayoutTree(node) {
+                const hasChildren = Array.isArray(node.children) && node.children.length > 0;
+                const isExpanded = forceExpand ? true : !!expandedState[node.id];
+                const visibleChildren = (hasChildren && isExpanded)
+                    ? node.children.map(buildLayoutTree)
+                    : [];
+
+                let subtreeWidth = CARD_W;
+                if (visibleChildren.length > 0) {
+                    const childrenSum = visibleChildren.reduce((acc, c) => acc + c.subtreeWidth, 0);
+                    subtreeWidth = Math.max(CARD_W, childrenSum + H_GAP * (visibleChildren.length - 1));
+                }
+
+                return {
+                    data: node,
+                    hasChildren,
+                    isExpanded,
+                    children: visibleChildren,
+                    subtreeWidth,
+                    x: 0,
+                    y: 0
+                };
+            }
+
+            const layoutRoot = buildLayoutTree(dataNode);
+            let maxDepth = 0;
+
+            // הקצאת קואורדינטות (תומך בכיוון RTL בעברית וב-LTR באנגלית)
+            function assignCoords(lNode, leftX, depth) {
+                maxDepth = Math.max(maxDepth, depth);
+                lNode.x = leftX + (lNode.subtreeWidth - CARD_W) / 2;
+                lNode.y = depth * (CARD_H + V_GAP);
+
+                if (lNode.children.length > 0) {
+                    const orderedChildren = isEn ? lNode.children : [...lNode.children].reverse();
+                    const totalChildrenW = orderedChildren.reduce((acc, c) => acc + c.subtreeWidth, 0) + H_GAP * (orderedChildren.length - 1);
+                    let cursorX = leftX + (lNode.subtreeWidth - totalChildrenW) / 2;
+
+                    for (const child of orderedChildren) {
+                        assignCoords(child, cursorX, depth + 1);
+                        cursorX += child.subtreeWidth + H_GAP;
+                    }
+                }
+            }
+
+            assignCoords(layoutRoot, 0, 0);
+            flowViewportState.contentWidth = layoutRoot.subtreeWidth;
+            flowViewportState.contentHeight = (maxDepth + 1) * CARD_H + maxDepth * V_GAP + 24;
+
+            const edgesSvg = [];
+            const nodesSvg = [];
+
+            function renderLayoutNode(lNode) {
+                const node = lNode.data;
+                const style = genStyles[node.gen] || genStyles[1];
+                const isMatch = currentSearchQuery.trim() !== "" && node.isDirectMatch;
+                const isLeaf = !lNode.hasChildren;
+                const displayName = getDisplayName(node);
+                const formattedFlowName = unboldMaidenNamesInHtml(escapeHtml(displayName));
+                const shortYears = extractShortYearsLabel(getDisplayDates(node));
+                const shortLoc = stripHtmlTags(getDisplayLocation(node)).split(">")[0].trim();
+                const metaLine = [shortYears, shortLoc].filter(Boolean).join(" • ");
+
+                const strokeColor = isMatch ? "#f59e0b" : (isLeaf ? "#94a3b8" : style.stroke);
+                const fillColor = isMatch ? "#fef3c7" : (isLeaf ? style.leafFill : style.fill);
+                const strokeWidth = isMatch ? 3 : (node.gen === 0 ? 2.5 : (isLeaf ? 1.5 : 2));
+                const dashArrayAttr = isLeaf && !isMatch ? 'stroke-dasharray="5,3"' : '';
+
+                const genBadgeText = node.gen > 0 ? getHebrewGen(node.gen) : "★";
+                const directCount = lNode.hasChildren ? node.children.length : 0;
+                const totalSub = lNode.hasChildren ? countSubtreeDescendants(node) : 0;
+
+                // ציור קווי חיבור אורתוגונליים ("מסילה" אנכית-אופקית-אנכית עם פינות מעוגלות) לצאצאים
+                if (lNode.children.length > 0) {
+                    const parentBottomX = lNode.x + CARD_W / 2;
+                    const parentBottomY = lNode.y + CARD_H + 12;
+                    const childTopY = lNode.children[0].y;
+                    const railY = parentBottomY + Math.round((childTopY - parentBottomY) * 0.5);
+                    const cornerR = 10;
+
+                    // קו אנכי היורד מההורה אל המסילה האופקית
+                    edgesSvg.push(
+                        `<line x1="${parentBottomX}" y1="${parentBottomY}" x2="${parentBottomX}" y2="${railY}" stroke="#64748b" stroke-width="2" stroke-linecap="round" />`
+                    );
+
+                    for (const child of lNode.children) {
+                        const childTopX = child.x + CARD_W / 2;
+                        const dx = childTopX - parentBottomX;
+
+                        if (Math.abs(dx) < 1) {
+                            // ילד יחיד או מרכזי הנמצא בדיוק מתחת להורה
+                            edgesSvg.push(
+                                `<line x1="${childTopX}" y1="${railY}" x2="${childTopX}" y2="${childTopY}" stroke="#64748b" stroke-width="2" stroke-linecap="round" />`
+                            );
+                        } else {
+                            const dir = dx > 0 ? 1 : -1;
+                            const r = Math.min(cornerR, Math.abs(dx) / 2, Math.max(2, childTopY - railY - 2));
+                            const pathD = `M ${parentBottomX} ${railY} H ${childTopX - dir * r} Q ${childTopX} ${railY} ${childTopX} ${railY + r} V ${childTopY}`;
+                            edgesSvg.push(
+                                `<path d="${pathD}" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" />`
+                            );
+                        }
+                        renderLayoutNode(child);
+                    }
+                }
+
+                // תגית תחתונה ברורה: כפתור פתיחה/סגירה לבעלי צאצאים, או תגית "קצה ענף" לצאצא האחרון
+                let bottomPillHtml = "";
+                if (lNode.hasChildren) {
+                    const pillText = lNode.isExpanded
+                        ? (isEn ? `− Collapse (${directCount})` : `− כווץ (${directCount})`)
+                        : (totalSub > directCount
+                            ? (isEn ? `+ ${directCount} children (${totalSub})` : `+ ${directCount} ילדים (${totalSub} צאצאים)`)
+                            : (isEn ? `+ ${directCount} ${directCount === 1 ? 'child' : 'children'}` : `+ ${directCount === 1 ? 'ילד/ה 1' : directCount + ' ילדים'}`));
+                    const pillClass = lNode.isExpanded
+                        ? "bg-slate-200 text-slate-800 border-slate-300"
+                        : "bg-emerald-600 text-white border-emerald-700 shadow-2xs";
+                    bottomPillHtml = `
+                        <div class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold border ${pillClass} whitespace-nowrap">
+                            ${escapeHtml(pillText)}
+                        </div>
+                    `;
+                } else {
+                    const leafText = isEn ? "End of branch" : "קצה ענף (ללא צאצאים)";
+                    bottomPillHtml = `
+                        <div class="px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-slate-100 text-slate-500 border border-slate-200 whitespace-nowrap">
+                            ${escapeHtml(leafText)}
+                        </div>
+                    `;
+                }
+
+                // שימוש ב-foreignObject עם HTML/CSS אמיתי מבטיח שבירת שורות תקינה ב-RTL וב-LTR ללא חפיפה עם הקווים או התגיות
+                nodesSvg.push(`
+                    <g class="flow-node-box ${lNode.hasChildren ? 'is-expandable' : ''}" data-node-id="${escapeHtml(node.id)}" transform="translate(${lNode.x}, ${lNode.y})">
+                        <rect x="0" y="0" width="${CARD_W}" height="${CARD_H}" rx="10" fill="${fillColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}" ${dashArrayAttr} />
+                        <path d="M 10 0.75 H ${CARD_W - 10} Q ${CARD_W - 0.75} 0.75 ${CARD_W - 0.75} 6 H 0.75 Q 0.75 0.75 10 0.75 Z" fill="${isLeaf ? '#94a3b8' : style.stroke}" />
+                        <foreignObject x="8" y="8" width="${CARD_W - 16}" height="${CARD_H - 12}">
+                            <div xmlns="http://www.w3.org/1999/xhtml" dir="${dirAttr}" style="font-family: 'Assistant', sans-serif; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; box-sizing: border-box;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px; min-height: 0;">
+                                    <span style="background-color: ${style.badge}; color: #ffffff; font-size: 11px; font-weight: 800; min-width: 20px; height: 20px; padding: 0 4px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+                                        ${escapeHtml(genBadgeText)}
+                                    </span>
+                                    <div style="font-size: 13px; font-weight: 800; color: ${style.title}; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: break-word;">
+                                        ${formattedFlowName}
+                                    </div>
+                                </div>
+                                ${metaLine ? `
+                                    <div style="font-size: 11px; font-weight: 600; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-inline-start: 26px;">
+                                        ${escapeHtml(metaLine)}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="10" y="${CARD_H - 12}" width="${CARD_W - 20}" height="24">
+                            <div xmlns="http://www.w3.org/1999/xhtml" dir="${dirAttr}" style="font-family: 'Assistant', sans-serif; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                ${bottomPillHtml}
+                            </div>
+                        </foreignObject>
+                    </g>
+                `);
+            }
+
+            renderLayoutNode(layoutRoot);
+            stage.innerHTML = `<g class="flow-edges">${edgesSvg.join("")}</g><g class="flow-nodes">${nodesSvg.join("")}</g>`;
+
+            // חיבור לחיצות על קוביות בתרשים לצורך פתיחה/סגירה של ענפים
+            stage.querySelectorAll(".flow-node-box.is-expandable").forEach(el => {
+                el.addEventListener("click", (e) => {
+                    if (flowViewportState.dragMoved) return;
+                    e.stopPropagation();
+                    const nodeId = el.getAttribute("data-node-id");
+                    if (!nodeId || nodeId === "root") return;
+                    expandedState[nodeId] = !expandedState[nodeId];
+                    renderFlowchartWithData(getCurrentlyDisplayedTree(), false, false);
+                });
+            });
+
+            updateFlowExpandButtonLabel();
+            if (autoFit) {
+                fitFlowchartToViewport();
+            } else {
+                applyFlowTransform();
+            }
+        }
+
+        function setupFlowchartInteractions() {
+            const viewport = document.getElementById("flowchartViewport");
+            const viewListBtn = document.getElementById("viewListBtn");
+            const viewFlowBtn = document.getElementById("viewFlowBtn");
+            const zoomInBtn = document.getElementById("flowZoomInBtn");
+            const zoomOutBtn = document.getElementById("flowZoomOutBtn");
+            const fitBtn = document.getElementById("flowFitBtn");
+            const expandAllBtn = document.getElementById("flowExpandAllBtn");
+
+            if (viewListBtn) viewListBtn.addEventListener("click", () => switchViewMode("list"));
+            if (viewFlowBtn) viewFlowBtn.addEventListener("click", () => switchViewMode("flow"));
+            if (zoomInBtn) zoomInBtn.addEventListener("click", () => zoomFlowchart(1.22));
+            if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => zoomFlowchart(0.82));
+            if (fitBtn) fitBtn.addEventListener("click", fitFlowchartToViewport);
+
+            if (expandAllBtn) {
+                expandAllBtn.addEventListener("click", () => {
+                    const displayed = getCurrentlyDisplayedTree();
+                    const shouldCollapse = areAnyFlowNodesExpanded(displayed);
+                    setAllExpanded(rawFamilyData, !shouldCollapse);
+                    renderFlowchartWithData(getCurrentlyDisplayedTree(), false, true);
+                });
+            }
+
+            if (viewport) {
+                // גרירה באמצעות עכבר ומגע (Pointer Events)
+                viewport.addEventListener("pointerdown", (e) => {
+                    if (e.button !== 0 && e.pointerType === "mouse") return;
+                    flowViewportState.isDragging = true;
+                    flowViewportState.dragMoved = false;
+                    flowViewportState.startX = e.clientX - flowViewportState.x;
+                    flowViewportState.startY = e.clientY - flowViewportState.y;
+                });
+
+                window.addEventListener("pointermove", (e) => {
+                    if (!flowViewportState.isDragging) return;
+                    const nextX = e.clientX - flowViewportState.startX;
+                    const nextY = e.clientY - flowViewportState.startY;
+                    if (Math.abs(nextX - flowViewportState.x) > 4 || Math.abs(nextY - flowViewportState.y) > 4) {
+                        flowViewportState.dragMoved = true;
+                    }
+                    flowViewportState.x = nextX;
+                    flowViewportState.y = nextY;
+                    applyFlowTransform();
+                });
+
+                window.addEventListener("pointerup", () => {
+                    flowViewportState.isDragging = false;
+                    setTimeout(() => { flowViewportState.dragMoved = false; }, 30);
+                });
+
+                // זום באמצעות גלגלת העכבר
+                viewport.addEventListener("wheel", (e) => {
+                    e.preventDefault();
+                    const factor = e.deltaY < 0 ? 1.12 : 0.89;
+                    zoomFlowchart(factor);
+                }, { passive: false });
             }
         }
 
@@ -3672,6 +4258,7 @@
             applyFiltersAndRender();
             setupBranchFilter();
             setupSearch();
+            setupFlowchartInteractions();
 
             const langToggleBtn = document.getElementById("langToggleBtn");
             if (langToggleBtn) {
@@ -3720,7 +4307,7 @@
                     if (!isToldotExpanded) {
                         toggleToldot();
                     }
-                    const toldotEl = document.getElementById("rootToldotContent");
+                    const toldotEl = document.getElementById(currentViewMode === "flow" ? "flowToldotContent" : "rootToldotContent");
                     if (toldotEl) {
                         toldotEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
                     }
