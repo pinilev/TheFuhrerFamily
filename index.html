@@ -107,11 +107,7 @@
                     <div>
                         <h1 id="mainSiteTitle" class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight">עץ יוחסין פנחס ואלטה־חנה <span class="font-normal">(ליפסקר)</span> פירר</h1>
                     </div>
-                </div>
-
-                <!-- מתג החלפת תצוגה + מסגרת תמונה משותפת של פנחס ואלטה-חנה פירר משמאל מול כותרת האתר -->
-                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                    <!-- View Mode Switcher: List Tree vs. Flowchart -->
+                    <!-- View Mode Switcher: List Tree vs. Flowchart vs. Migration Map -->
                     <div class="inline-flex items-center bg-slate-100 border border-slate-300 rounded-md p-0.5 shadow-2xs shrink-0" role="group" aria-label="בחירת תצוגת עץ">
                         <button type="button" id="viewListBtn" class="px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-slate-900 shadow-2xs flex items-center gap-1 sm:gap-1.5 transition cursor-pointer" title="תצוגת עץ רשימה היררכית">
                             <span aria-hidden="true">📋</span>
@@ -120,6 +116,10 @@
                         <button type="button" id="viewFlowBtn" class="px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1 sm:gap-1.5 transition cursor-pointer" title="תצוגת תרשים זרימה חזותי">
                             <span aria-hidden="true">🌳</span>
                             <span id="viewFlowBtnText">תרשים זרימה</span>
+                        </button>
+                        <button type="button" id="viewMapBtn" class="px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1 sm:gap-1.5 transition cursor-pointer" title="מפת הנדודים של פנחס ואלטה־חנה">
+                            <span aria-hidden="true">🗺️</span>
+                            <span id="viewMapBtnText">מפת נדודים</span>
                         </button>
                     </div>
 
@@ -255,6 +255,9 @@
                 </svg>
             </div>
         </div>
+
+        <!-- Migration Map Interactive View -->
+        <div id="migrationMapWrapper" class="hidden space-y-3"></div>
     </main>
 
     <!-- Page Footer -->
@@ -262,21 +265,21 @@
         <div class="max-w-7xl mx-auto px-3 py-5 sm:px-6 lg:px-8 flex flex-col gap-3.5 text-sm text-slate-600">
             <!-- Top Row: Generation Legend -->
             <div class="flex flex-wrap items-center justify-between gap-3">
-                <div id="genLegendContainer" class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-bold text-slate-700 me-1">מקרא דורות:</span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700">
+                <div id="genLegendContainer" class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5 select-none pointer-events-none">
+                    <span class="font-bold text-slate-700 me-0.5">מקרא דורות:</span>
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
                         <span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-1">א</span> ילדים
                     </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700">
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
                         <span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-2">ב</span> נכדים
                     </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700">
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
                         <span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-3">ג</span> נינים
                     </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700">
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
                         <span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-4">ד</span> חִמֵּשִׁים
                     </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700">
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
                         <span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-5">ה</span> דור חמישי
                     </span>
                 </div>
@@ -1685,7 +1688,8 @@
                 },
                 flowFitText: { he: "מרכז", en: "Fit" },
                 flowExpandAll: { he: "הרחב הכל", en: "Expand All" },
-                flowCollapseAll: { he: "כווץ הכל", en: "Collapse All" }
+                flowCollapseAll: { he: "כווץ הכל", en: "Collapse All" },
+                viewMapText: { he: "מפת נדודים", en: "Migration Map" }
             };
             return (ui[key] && ui[key][currentLang]) || (ui[key] && ui[key].he) || key;
         }
@@ -1732,6 +1736,7 @@
             setText("langToggleBtnText", t("langBtnText"));
             setText("viewListBtnText", t("viewListText"));
             setText("viewFlowBtnText", t("viewFlowText"));
+            setText("viewMapBtnText", t("viewMapText"));
             setText("flowHintBadge", t("flowHint"));
             setText("flowFitBtnText", t("flowFitText"));
             updateFlowExpandButtonLabel();
@@ -1762,21 +1767,21 @@
             if (genLegendContainer) {
                 if (currentLang === "en") {
                     genLegendContainer.innerHTML = `
-                        <span class="font-bold text-slate-700 me-1">Generations:</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-1">1</span> Children</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-2">2</span> Grandchildren</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-3">3</span> Great-Grandchildren</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-4">4</span> 4th Gen</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-5">5</span> 5th Gen</span>
+                        <span class="font-bold text-slate-700 me-0.5">Generations:</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-1">1</span> Children</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-2">2</span> Grandchildren</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-3">3</span> Great-Grandchildren</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-4">4</span> 4th Gen</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-5">5</span> 5th Gen</span>
                     `;
                 } else {
                     genLegendContainer.innerHTML = `
-                        <span class="font-bold text-slate-700 me-1">מקרא דורות:</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-1">א</span> ילדים</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-2">ב</span> נכדים</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-3">ג</span> נינים</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-4">ד</span> חִמֵּשִׁים</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-50 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-700"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-5">ה</span> דור חמישי</span>
+                        <span class="font-bold text-slate-700 me-0.5">מקרא דורות:</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-1">א</span> ילדים</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-2">ב</span> נכדים</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-3">ג</span> נינים</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-4">ד</span> חִמֵּשִׁים</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600"><span class="px-1.5 py-0 rounded text-xs font-bold badge-gen-5">ה</span> דור חמישי</span>
                     `;
                 }
             }
@@ -1796,9 +1801,9 @@
         let savedToldotStateBeforeFilter = null;
         let currentSearchQuery = "";
         let isToldotExpanded = false;
-        let currentViewMode = "list"; // 'list' | 'flow'
-
-        // מצב ניווט וזום של תרשים הזרימה
+        let currentViewMode = "list"; // 'list' | 'flow' | 'map'
+        let activeMigrationStepIndex = 0;
+        let showChildrenRoutesOnMap = false;
         const flowViewportState = {
             x: 0,
             y: 40,
@@ -2938,7 +2943,9 @@
                 }
 
                 if (searchedNode) {
-                    if (currentViewMode === "flow") {
+                    if (currentViewMode === "map") {
+                        renderMigrationMapView();
+                    } else if (currentViewMode === "flow") {
                         renderFlowchartWithData(searchedNode, customExpandMode !== "keep", true);
                     } else {
                         renderTreeWithData(searchedNode, customExpandMode !== "keep");
@@ -2948,6 +2955,7 @@
                         const stage = document.getElementById("flowchartStage");
                         if (stage) stage.innerHTML = "";
                     }
+                    document.getElementById("migrationMapWrapper")?.classList.add("hidden");
                     container.classList.remove("hidden");
                     document.getElementById("flowchartWrapper")?.classList.add("hidden");
                     container.innerHTML = currentLang === "en" ? `
@@ -2972,7 +2980,9 @@
                         setAllExpanded(baseData, true);
                     }
                 }
-                if (currentViewMode === "flow") {
+                if (currentViewMode === "map") {
+                    renderMigrationMapView();
+                } else if (currentViewMode === "flow") {
                     renderFlowchartWithData(baseData, false, customExpandMode !== "keep");
                 } else {
                     renderTreeWithData(baseData, false);
@@ -2995,8 +3005,10 @@
             const container = document.getElementById("treeContainer");
             const flowWrapper = document.getElementById("flowchartWrapper");
             const flowToldotCard = document.getElementById("flowToldotCard");
+            const mapWrapper = document.getElementById("migrationMapWrapper");
             if (flowWrapper) flowWrapper.classList.add("hidden");
             if (flowToldotCard) flowToldotCard.classList.add("hidden");
+            if (mapWrapper) mapWrapper.classList.add("hidden");
             if (container) {
                 container.classList.remove("hidden");
                 container.innerHTML = "";
@@ -3056,19 +3068,19 @@
         // מנוע תרשים הזרימה (Interactive SVG Flowchart Engine)
         // =====================================================================
         function switchViewMode(mode) {
-            currentViewMode = mode === "flow" ? "flow" : "list";
+            currentViewMode = (mode === "flow" || mode === "map") ? mode : "list";
             const viewListBtn = document.getElementById("viewListBtn");
             const viewFlowBtn = document.getElementById("viewFlowBtn");
+            const viewMapBtn = document.getElementById("viewMapBtn");
 
-            if (viewListBtn && viewFlowBtn) {
-                if (currentViewMode === "list") {
-                    viewListBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-slate-900 shadow-2xs flex items-center gap-1.5 transition cursor-pointer";
-                    viewFlowBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer";
-                } else {
-                    viewFlowBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-emerald-900 shadow-2xs flex items-center gap-1.5 transition cursor-pointer";
-                    viewListBtn.className = "px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer";
-                }
-            }
+            const activeBtnClass = "px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-emerald-900 shadow-2xs flex items-center gap-1 sm:gap-1.5 transition cursor-pointer";
+            const inactiveBtnClass = "px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold rounded text-slate-600 hover:text-slate-900 flex items-center gap-1 sm:gap-1.5 transition cursor-pointer";
+
+            if (viewListBtn) viewListBtn.className = currentViewMode === "list"
+                ? "px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-bold rounded bg-white text-slate-900 shadow-2xs flex items-center gap-1 sm:gap-1.5 transition cursor-pointer"
+                : inactiveBtnClass;
+            if (viewFlowBtn) viewFlowBtn.className = currentViewMode === "flow" ? activeBtnClass : inactiveBtnClass;
+            if (viewMapBtn) viewMapBtn.className = currentViewMode === "map" ? activeBtnClass : inactiveBtnClass;
 
             applyFiltersAndRender("keep");
         }
@@ -3178,9 +3190,11 @@
         function renderFlowchartWithData(dataNode, forceExpand = false, autoFit = true) {
             const listContainer = document.getElementById("treeContainer");
             const flowWrapper = document.getElementById("flowchartWrapper");
+            const mapWrapper = document.getElementById("migrationMapWrapper");
             const stage = document.getElementById("flowchartStage");
 
             if (listContainer) listContainer.classList.add("hidden");
+            if (mapWrapper) mapWrapper.classList.add("hidden");
             renderFlowToldotCard();
             if (flowWrapper) flowWrapper.classList.remove("hidden");
             if (!stage) return;
@@ -3391,6 +3405,7 @@
             const viewport = document.getElementById("flowchartViewport");
             const viewListBtn = document.getElementById("viewListBtn");
             const viewFlowBtn = document.getElementById("viewFlowBtn");
+            const viewMapBtn = document.getElementById("viewMapBtn");
             const zoomInBtn = document.getElementById("flowZoomInBtn");
             const zoomOutBtn = document.getElementById("flowZoomOutBtn");
             const fitBtn = document.getElementById("flowFitBtn");
@@ -3398,6 +3413,7 @@
 
             if (viewListBtn) viewListBtn.addEventListener("click", () => switchViewMode("list"));
             if (viewFlowBtn) viewFlowBtn.addEventListener("click", () => switchViewMode("flow"));
+            if (viewMapBtn) viewMapBtn.addEventListener("click", () => switchViewMode("map"));
             if (zoomInBtn) zoomInBtn.addEventListener("click", () => zoomFlowchart(1.22));
             if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => zoomFlowchart(0.82));
             if (fitBtn) fitBtn.addEventListener("click", fitFlowchartToViewport);
@@ -3444,6 +3460,355 @@
                     const factor = e.deltaY < 0 ? 1.12 : 0.89;
                     zoomFlowchart(factor);
                 }, { passive: false });
+            }
+        }
+
+        // =====================================================================
+        // מנוע "מפת נדודים" של פנחס ואלטה־חנה פירר (Interactive Migration Map)
+        // =====================================================================
+        const PINHAS_CHANA_JOURNEY = [
+            {
+                step: 1,
+                yearHe: "1904",
+                yearEn: "1904",
+                titleHe: "דוקלה, גליציה",
+                titleEn: "Dukla, Galicia",
+                subtitleHe: "נישואין (י\"ג באלול תרס\"ד) ובית הורי אלטה־חנה",
+                subtitleEn: "Marriage (13 Elul 5664) & Alte-Chana's parents' home",
+                descHe: "ב־24/8/1904 נישאו פנחס ואלטה־חנה בדוקלה שבגליציה. בתקופה שבה יצא פנחס לבלגיה (1911), שהתה אלטה־חנה בדוקלה בבית הוריה, בנימין־זאב ודינה ליפסקר, שם למדו הבנים אברהם־אריה ומנחם־מנדל בחדר.",
+                descEn: "On August 24, 1904, Pinhas and Alte-Chana married in Dukla, Galicia. Later, while Pinhas traveled to Belgium in 1911, Alte-Chana stayed in Dukla with her parents, Binyamin-Zeev and Dina Lipsker, where their sons studied in Cheder.",
+                mapQuery: "Dukla, Poland",
+                x: 565,
+                y: 235
+            },
+            {
+                step: 2,
+                yearHe: "1904–1911",
+                yearEn: "1904–1911",
+                titleHe: "צאנז (Nowy Sącz), גליציה",
+                titleEn: "Sanz (Nowy Sącz), Galicia",
+                subtitleHe: "מגורים ראשונים ולידת הילדים הבכורים",
+                subtitleEn: "First marital home & birth of eldest children",
+                descHe: "לאחר נישואיהם התגוררו בצאנז, עיר הולדתו של פנחס (שבה כיהן סבו ר' אליהו ברגמן כראב\"ד). כאן נולדו טויבע (1906), אברהם־אריה (1907) ומנחם־מנדל (1909). בנובמבר 1909 הצטייד פנחס בתעודת יושר מעיריית צאנז לקראת יציאתו מערבה.",
+                descEn: "Following their marriage they settled in Sanz, Pinhas's hometown. Their three eldest children—Taube (1906), Avraham-Aryeh (1907), and Menachem-Mendel (1909)—were born here. In November 1909 Pinhas received a Certificate of Good Conduct from the Sanz municipality.",
+                mapQuery: "Nowy Sącz, Poland",
+                x: 515,
+                y: 222
+            },
+            {
+                step: 3,
+                yearHe: "1911–1914",
+                yearEn: "1911–1914",
+                titleHe: "אנטוורפן, בלגיה",
+                titleEn: "Antwerp, Belgium",
+                subtitleHe: "לימוד ליטוש יהלומים ואיחוד המשפחה",
+                subtitleEn: "Diamond polishing trade & family reunion",
+                descHe: "ב־1911 יצא פנחס לאנטוורפן ללמוד את מלאכת ליטוש היהלומים, ובהמשך הצטרפו אליו אלטה־חנה והילדים (ושם נולדה לואיזה־ליזה ב־1912). עם פרוץ מלחמת העולם הראשונה ב־1914 נאלצו לעזוב את בלגיה בשל מעמדם כ'נתיני אויב' אוסטרו־הונגרים.",
+                descEn: "In 1911 Pinhas traveled to Antwerp to learn diamond polishing, joined soon after by Alte-Chana and the children (Louisa-Liza was born there in 1912). At the outbreak of WWI in 1914, their Austro-Hungarian citizenship forced them to leave Belgium.",
+                mapQuery: "Antwerp, Belgium",
+                x: 225,
+                y: 162
+            },
+            {
+                step: 4,
+                yearHe: "1913–1917",
+                yearEn: "1913–1917",
+                titleHe: "לנדשטול (Landstuhl), גרמניה",
+                titleEn: "Landstuhl, Germany",
+                subtitleHe: "עסק מסחר וגבייה בחבל הריין",
+                subtitleEn: "Trade & installment business in the Rhine Province",
+                descHe: "ב־1913 התיישבה אלטה־חנה בעיר לנדשטול שבדרום־מערב גרמניה ופתחה עסק למכירה וגביית תשלומים ברחבי פרובינציית הריין. עם פרוץ מלחמת העולם הראשונה (1914) הצטרפו אליה פנחס והילדים.",
+                descEn: "In 1913 Alte-Chana settled in Landstuhl in southwestern Germany, establishing an installment sales business across the Rhine Province. Pinhas and the children joined her when WWI broke out in 1914.",
+                mapQuery: "Landstuhl, Germany",
+                x: 280,
+                y: 238
+            },
+            {
+                step: 5,
+                yearHe: "1917–1936",
+                yearEn: "1917–1936",
+                titleHe: "קלן (Cologne), גרמניה",
+                titleEn: "Cologne, Germany",
+                subtitleHe: "קהילת 'עדת ישורון', חנות המשפחה והעלייה ארצה",
+                subtitleEn: "Adass-Jeschurun congregation, family store & escape from Nazi Germany",
+                descHe: "ב־1917 עברה המשפחה לקלן (רובע Altstadt-Süd), שם נולדו רחל (1918), שמואל (1920) וישעיהו (1922). אלטה־חנה ניהלה חנות לכלי מיטה וריהוט ופנחס ניהל את הספרים. לאחר עליית הנאצים והתקיפה בברנד, חיסלו את עסקם ועלו ארצה במרץ 1936.",
+                descEn: "In 1917 the family moved to Cologne (Altstadt-Süd), where Rachel (1918), Shmuel (1920), and Yeshayahu (1922) were born. Alte-Chana ran a bedding and furniture store while Pinhas kept the books. Following Nazi boycotts and an assault in Brand, they liquidated their business and immigrated to Israel in March 1936.",
+                mapQuery: "Altstadt-Süd, Cologne, Germany",
+                x: 268,
+                y: 192
+            },
+            {
+                step: 6,
+                yearHe: "1936–1940",
+                yearEn: "1936–1940",
+                titleHe: "כפר פינס, ארץ ישראל",
+                titleEn: "Kfar Pines, Land of Israel",
+                subtitleHe: "הגעה ארצה בעזרת הסרטיפיקט ומגורים אצל מנחם־מנדל ושרה",
+                subtitleEn: "Arrival via Aliyah Certificate & first home with Menachem-Mendel & Sara",
+                descHe: "במרץ 1936 עלו פנחס, אלטה־חנה ושלושת ילדיהם הצעירים ארצה בסרטיפיקט שהשיג בנם מנחם־מנדל (בערבות לואיזה־ליזה ומשה פיטובסקי). בתחילה התגוררו בכפר פינס, המושב שמנחם־מנדל היה ממקימיו שנתיים קודם לכן.",
+                descEn: "In March 1936 Pinhas, Alte-Chana, and their three youngest children arrived in the Land of Israel on an Aliyah Certificate secured by Menachem-Mendel (guaranteed by Louisa-Liza & Moshe Pitovsky). They lived first in Kfar Pines, co-founded by Menachem-Mendel in 1934.",
+                mapQuery: "Kfar Pines, Israel",
+                x: 682,
+                y: 505
+            },
+            {
+                step: 7,
+                yearHe: "1940–1970",
+                yearEn: "1940–1970",
+                titleHe: "ירושלים (רחוב מאה שערים)",
+                titleEn: "Jerusalem (Mea Shearim St.)",
+                subtitleHe: "תחנת חייהם האחרונה ומנוחתם בגבעת שאול",
+                subtitleEn: "Final home & resting place at Givat Shaul Cemetery",
+                descHe: "בינואר 1940 עברו פנחס ואלטה־חנה לדירה שכורה ברחוב מאה שערים בירושלים, סמוך לבתם לואיזה־ליזה ובעלה משה פיטובסקי. פנחס נפטר בז' בשבט תשי\"ג (1953) ואלטה־חנה נפטרה בה' בשבט תש\"ל (1970); שניהם טמונים בהר המנוחות בגבעת שאול.",
+                descEn: "In January 1940 Pinhas and Alte-Chana moved to a rented apartment on Mea Shearim Street in Jerusalem, near their daughter Louisa-Liza and Moshe Pitovsky. Pinhas passed away in 1953 and Alte-Chana in 1970; both are buried at Givat Shaul Cemetery.",
+                mapQuery: "Mea Shearim, Jerusalem",
+                x: 690,
+                y: 538
+            }
+        ];
+
+        const CHILDREN_DISPERSAL_ROUTES = [
+            {
+                labelHe: "1. טויבע ושלמה־זלמן קלוץ: אנטוורפן ➔ בריחה דרך דנקרק לצרפת ➔ אנטוורפן",
+                labelEn: "1. Taube & Shlomo-Zalman Klotz: Antwerp ➔ Fled via Dunkirk to France ➔ Antwerp",
+                color: "#2563eb",
+                points: [[225, 162], [190, 168], [185, 235], [225, 162]]
+            },
+            {
+                labelHe: "2. אברהם־אריה וגוסטי: ברלין ➔ מסתור בבריסל ➔ שווייץ ➔ ניו יורק (1948)",
+                labelEn: "2. Avraham-Aryeh & Gusta: Berlin ➔ Hiding in Brussels ➔ Switzerland ➔ New York (1948)",
+                color: "#7c3aed",
+                points: [[385, 165], [228, 178], [285, 275], [75, 290]]
+            },
+            {
+                labelHe: "3. מנחם־מנדל: פולדה ורודגס ➔ עלייה ארצה (1933) ➔ ממקימי כפר פינס",
+                labelEn: "3. Menachem-Mendel: Fulda & Rodges ➔ Aliyah (1933) ➔ Co-founder of Kfar Pines",
+                color: "#16a34a",
+                points: [[320, 205], [682, 505]]
+            },
+            {
+                labelHe: "4–7. לואיזה־ליזה, רחל, שמואל וישעיהו: ירושלים, טירת צבי וניו יורק",
+                labelEn: "4–7. Louisa-Liza, Rachel, Shmuel & Yeshayahu: Jerusalem, Tirat Zvi & New York",
+                color: "#d97706",
+                points: [[268, 192], [690, 538], [75, 315]]
+            }
+        ];
+
+        function setMigrationStep(idx) {
+            activeMigrationStepIndex = Math.max(0, Math.min(PINHAS_CHANA_JOURNEY.length - 1, idx));
+            renderMigrationMapView();
+        }
+
+        function renderMigrationMapView() {
+            const listContainer = document.getElementById("treeContainer");
+            const flowWrapper = document.getElementById("flowchartWrapper");
+            const flowToldotCard = document.getElementById("flowToldotCard");
+            const mapWrapper = document.getElementById("migrationMapWrapper");
+
+            if (listContainer) listContainer.classList.add("hidden");
+            if (flowWrapper) flowWrapper.classList.add("hidden");
+            if (flowToldotCard) flowToldotCard.classList.add("hidden");
+            if (!mapWrapper) return;
+
+            mapWrapper.classList.remove("hidden");
+            const isEn = currentLang === "en";
+            const activeStop = PINHAS_CHANA_JOURNEY[activeMigrationStepIndex] || PINHAS_CHANA_JOURNEY[0];
+
+            // בניית מסלול הנדודים הראשי על גבי המפה הווקטורית
+            const mainPolylinePts = PINHAS_CHANA_JOURNEY.map(s => `${s.x},${s.y}`).join(" ");
+
+            // בניית שכבת נדודי הילדים (אופציונלי)
+            const childrenOverlaySvg = showChildrenRoutesOnMap ? CHILDREN_DISPERSAL_ROUTES.map(route => {
+                const ptsStr = route.points.map(p => `${p[0]},${p[1]}`).join(" ");
+                return `<polyline points="${ptsStr}" fill="none" stroke="${route.color}" stroke-width="2" stroke-dasharray="5,4" opacity="0.8" />`;
+            }).join("") : "";
+
+            // ציור תחנות המסע על המפה
+            const stopsSvg = PINHAS_CHANA_JOURNEY.map((stop, idx) => {
+                const isActive = idx === activeMigrationStepIndex;
+                const isPassed = idx < activeMigrationStepIndex;
+                const r = isActive ? 14 : 10;
+                const fill = isActive ? "#881337" : (isPassed ? "#be123c" : "#ffffff");
+                const stroke = isActive ? "#fecdd3" : "#881337";
+                const textFill = isActive || isPassed ? "#ffffff" : "#881337";
+                const labelText = isEn ? stop.titleEn.split(",")[0] : stop.titleHe.split(",")[0];
+                const labelOffsetY = (stop.step === 4) ? 24 : ((stop.step === 7) ? 22 : -16);
+
+                return `
+                    <g class="cursor-pointer group" onclick="setMigrationStep(${idx})">
+                        ${isActive ? `<circle cx="${stop.x}" cy="${stop.y}" r="22" fill="#881337" opacity="0.18" />` : ''}
+                        <circle cx="${stop.x}" cy="${stop.y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${isActive ? 3.5 : 2.5}" />
+                        <text x="${stop.x}" y="${stop.y + 4}" text-anchor="middle" font-size="${isActive ? '12' : '10.5'}" font-weight="800" fill="${textFill}" style="pointer-events: none;">${stop.step}</text>
+                        <rect x="${stop.x - 46}" y="${stop.y + labelOffsetY - 11}" width="92" height="16" rx="4" fill="${isActive ? '#881337' : 'rgba(255,255,255,0.92)'}" stroke="${isActive ? '#881337' : '#cbd5e1'}" stroke-width="1" />
+                        <text x="${stop.x}" y="${stop.y + labelOffsetY}" text-anchor="middle" font-size="10.5" font-weight="800" fill="${isActive ? '#ffffff' : '#1e293b'}" style="pointer-events: none;">${escapeHtml(labelText)}</text>
+                    </g>
+                `;
+            }).join("");
+
+            const mapTitle = isEn
+                ? "Migration Map: Pinhas & Alte-Chana Fuhrer (1904–1970)"
+                : "מפת הנדודים של פנחס ואלטה־חנה פירר (1904–1970)";
+            const mapSubtitle = isEn
+                ? "From Galicia through Belgium & Germany to the Land of Israel — click any stop or timeline button to explore"
+                : "מגליציה דרך בלגיה וגרמניה ועד העלייה לארץ ישראל — לחצו על תחנה במפה או בציר הזמן לצפייה בפרטים";
+            const childrenToggleText = isEn
+                ? "Show 7 Children's WWII & Aliyah Routes"
+                : "הצג גם את צירי הנדודים של 7 הילדים";
+
+            mapWrapper.innerHTML = `
+                <div class="bg-white rounded-xl border border-rose-200 shadow-sm overflow-hidden">
+                    <!-- כותרת מפת הנדודים -->
+                    <div class="bg-rose-50/90 border-b border-rose-200 px-4 py-3 flex flex-wrap items-center justify-between gap-2.5">
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-black text-rose-950 flex items-center gap-2">
+                                <span aria-hidden="true">🗺️</span>
+                                <span>${escapeHtml(mapTitle)}</span>
+                            </h2>
+                            <p class="text-xs sm:text-sm text-rose-900/80 font-medium mt-0.5">${escapeHtml(mapSubtitle)}</p>
+                        </div>
+                        <button type="button" id="toggleChildrenMapRoutesBtn" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold border transition cursor-pointer flex items-center gap-1.5 ${showChildrenRoutesOnMap ? 'bg-emerald-600 text-white border-emerald-700 shadow-2xs' : 'bg-white hover:bg-rose-100/70 text-rose-950 border-rose-300'}">
+                            <span>${showChildrenRoutesOnMap ? '✓' : '🧭'}</span>
+                            <span>${escapeHtml(childrenToggleText)}</span>
+                        </button>
+                    </div>
+
+                    <!-- פס תחנות אינטראקטיבי (Timeline Pills) -->
+                    <div class="bg-slate-50 border-b border-slate-200 px-3 py-2.5 flex items-center gap-1.5 overflow-x-auto">
+                        ${PINHAS_CHANA_JOURNEY.map((stop, idx) => {
+                            const isSelected = idx === activeMigrationStepIndex;
+                            const shortName = isEn ? stop.titleEn.split(",")[0] : stop.titleHe.split(",")[0];
+                            const yr = isEn ? stop.yearEn : stop.yearHe;
+                            return `
+                                <button type="button" onclick="setMigrationStep(${idx})" class="shrink-0 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold border transition cursor-pointer flex items-center gap-1.5 ${isSelected ? 'bg-rose-900 text-white border-rose-950 shadow-xs' : 'bg-white hover:bg-rose-50 text-slate-700 border-slate-300'}">
+                                    <span class="w-5 h-5 rounded-full text-[11px] font-extrabold flex items-center justify-center ${isSelected ? 'bg-white text-rose-900' : 'bg-rose-100 text-rose-900'}">${stop.step}</span>
+                                    <span>${escapeHtml(shortName)}</span>
+                                    <span class="text-[11px] opacity-80 font-semibold">(${escapeHtml(yr)})</span>
+                                </button>
+                                ${idx < PINHAS_CHANA_JOURNEY.length - 1 ? `<span class="text-slate-400 font-bold select-none shrink-0">${isEn ? '→' : '←'}</span>` : ''}
+                            `;
+                        }).join("")}
+                    </div>
+
+                    <!-- תצוגת מפה + כרטיסיית פרטי התחנה הנבחרת -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+                        <!-- מפת אירופה והמזרח התיכון (SVG אינטראקטיבי) -->
+                        <div class="lg:col-span-7 bg-[#e0f2fe] border-b lg:border-b-0 lg:border-e border-slate-200 relative overflow-hidden">
+                            <svg viewBox="30 60 720 520" class="w-full h-auto block select-none" role="img" aria-label="${escapeHtml(mapTitle)}">
+                                <defs>
+                                    <marker id="journeyArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#881337" />
+                                    </marker>
+                                </defs>
+                                <!-- רקע ים -->
+                                <rect x="30" y="60" width="720" height="520" fill="#e0f2fe" />
+                                <!-- קווי רוחב ואורך עדינים -->
+                                <g stroke="#bae6fd" stroke-width="1" stroke-dasharray="4,4">
+                                    <line x1="30" y1="180" x2="750" y2="180" />
+                                    <line x1="30" y1="300" x2="750" y2="300" />
+                                    <line x1="30" y1="420" x2="750" y2="420" />
+                                    <line x1="220" y1="60" x2="220" y2="580" />
+                                    <line x1="460" y1="60" x2="460" y2="580" />
+                                    <line x1="680" y1="60" x2="680" y2="580" />
+                                </g>
+
+                                <!-- קווי מתאר סכמטיים של יבשת אירופה, צפון אפריקה והלבנט -->
+                                <!-- מערב ומרכז אירופה -->
+                                <path d="M 110 265 L 135 215 L 185 185 L 215 155 L 265 130 L 325 125 L 395 130 L 495 120 L 620 110 L 660 280 L 585 335 L 520 355 L 470 395 L 440 385 L 420 325 L 365 315 L 345 365 L 315 355 L 295 295 L 245 305 L 185 315 L 140 305 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+                                <!-- בריטניה -->
+                                <path d="M 120 175 L 145 125 L 170 145 L 175 180 L 130 188 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+                                <!-- אנטוליה (טורקיה) -->
+                                <path d="M 520 365 L 675 355 L 695 405 L 535 415 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+                                <!-- ארץ ישראל והלבנט -->
+                                <path d="M 672 415 L 745 415 L 745 575 L 655 575 L 665 545 L 680 480 Z" fill="#fefce8" stroke="#94a3b8" stroke-width="1.5" />
+                                <!-- צפון אפריקה / מצרים -->
+                                <path d="M 130 430 L 420 445 L 650 535 L 655 575 L 130 575 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+                                <!-- כיוון ארה"ב (ניו יורק) בצד שמאל -->
+                                <g opacity="0.85">
+                                    <rect x="42" y="275" width="76" height="50" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="3,3" />
+                                    <text x="80" y="297" text-anchor="middle" font-size="10" font-weight="800" fill="#475569">${isEn ? '← USA' : '← ארה"ב'}</text>
+                                    <text x="80" y="312" text-anchor="middle" font-size="9.5" font-weight="600" fill="#64748b">${isEn ? 'New York' : 'ניו יורק'}</text>
+                                </g>
+
+                                <!-- תוויות אזורים גיאוגרפיים -->
+                                <text x="200" y="255" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="1">${isEn ? 'FRANCE' : 'צרפת'}</text>
+                                <text x="315" y="175" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="1">${isEn ? 'GERMANY' : 'גרמניה'}</text>
+                                <text x="485" y="175" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="1">${isEn ? 'POLAND / GALICIA' : 'פולין / גליציה'}</text>
+                                <text x="470" y="420" font-size="10.5" font-weight="600" fill="#38bdf8">${isEn ? 'Mediterranean Sea' : 'הים התיכון'}</text>
+                                <text x="712" y="495" font-size="10.5" font-weight="800" fill="#15803d">${isEn ? 'ISRAEL' : 'ארץ ישראל'}</text>
+
+                                <!-- שכבת נדודי הילדים (אם הופעלה) -->
+                                ${childrenOverlaySvg}
+
+                                <!-- קו המסלול של פנחס ואלטה־חנה -->
+                                <polyline points="${mainPolylinePts}" fill="none" stroke="#881337" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-mid="url(#journeyArrow)" marker-end="url(#journeyArrow)" />
+
+                                <!-- תחנות המסע -->
+                                ${stopsSvg}
+                            </svg>
+                        </div>
+
+                        <!-- פאנל פרטי התחנה הנבחרת -->
+                        <div class="lg:col-span-5 p-4 sm:p-5 flex flex-col justify-between bg-white space-y-4">
+                            <div class="space-y-2.5">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-rose-900 text-white">
+                                        <span>${isEn ? `Stop ${activeStop.step} of ${PINHAS_CHANA_JOURNEY.length}` : `תחנה ${activeStop.step} מתוך ${PINHAS_CHANA_JOURNEY.length}`}</span>
+                                    </span>
+                                    <span class="text-sm font-extrabold text-rose-800 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-md">
+                                        🗓️ ${escapeHtml(isEn ? activeStop.yearEn : activeStop.yearHe)}
+                                    </span>
+                                </div>
+
+                                <h3 class="text-xl font-black text-slate-900">
+                                    📍 ${escapeHtml(isEn ? activeStop.titleEn : activeStop.titleHe)}
+                                </h3>
+                                <div class="text-sm font-bold text-rose-900">
+                                    ${escapeHtml(isEn ? activeStop.subtitleEn : activeStop.subtitleHe)}
+                                </div>
+                                <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed pt-1 border-t border-slate-100">
+                                    ${escapeHtml(isEn ? activeStop.descEn : activeStop.descHe)}
+                                </p>
+
+                                <div class="pt-1">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activeStop.mapQuery)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg transition">
+                                        <span>🌐</span>
+                                        <span>${isEn ? `Open ${activeStop.titleEn} in Google Maps` : `פתיחת ${activeStop.titleHe} בגוגל מפות`}</span>
+                                    </a>
+                                </div>
+
+                                ${showChildrenRoutesOnMap ? `
+                                    <div class="mt-3 p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1.5">
+                                        <div class="text-xs font-extrabold text-slate-800">${isEn ? "7 Children's Dispersion Routes:" : "צירי הנדודים של 7 הילדים:"}</div>
+                                        ${CHILDREN_DISPERSAL_ROUTES.map(r => `
+                                            <div class="flex items-start gap-2 text-xs text-slate-700">
+                                                <span class="w-3 h-1.5 rounded-full mt-1.5 shrink-0" style="background-color: ${r.color};"></span>
+                                                <span>${escapeHtml(isEn ? r.labelEn : r.labelHe)}</span>
+                                            </div>
+                                        `).join("")}
+                                    </div>
+                                ` : ''}
+                            </div>
+
+                            <!-- כפתורי ניווט בין תחנות -->
+                            <div class="pt-3 border-t border-slate-200 flex items-center justify-between gap-2">
+                                <button type="button" onclick="setMigrationStep(${activeMigrationStepIndex - 1})" ${activeMigrationStepIndex === 0 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold border transition ${activeMigrationStepIndex === 0 ? 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed' : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-300 cursor-pointer'}">
+                                    ${isEn ? '← Previous Stop' : '→ התחנה הקודמת'}
+                                </button>
+                                <button type="button" onclick="setMigrationStep(${activeMigrationStepIndex + 1})" ${activeMigrationStepIndex === PINHAS_CHANA_JOURNEY.length - 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold border transition ${activeMigrationStepIndex === PINHAS_CHANA_JOURNEY.length - 1 ? 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed' : 'bg-rose-900 hover:bg-rose-800 text-white border-rose-950 cursor-pointer'}">
+                                    ${isEn ? 'Next Stop →' : 'התחנה הבאה ←'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const toggleChildrenBtn = document.getElementById("toggleChildrenMapRoutesBtn");
+            if (toggleChildrenBtn) {
+                toggleChildrenBtn.addEventListener("click", () => {
+                    showChildrenRoutesOnMap = !showChildrenRoutesOnMap;
+                    renderMigrationMapView();
+                });
             }
         }
 
